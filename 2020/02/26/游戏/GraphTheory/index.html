@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学">
+<meta property="og:url" content="https://withz.github.io/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://withz.github.io/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/pipeline.png">
+<meta property="article:published_time" content="2020-02-26T06:22:45.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.332Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="计算机图形学">
+<meta property="article:tag" content="Shader">
+<meta property="article:tag" content="OpenGL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://withz.github.io/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/pipeline.png">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/","path":"2020/02/26/游戏/GraphTheory/","title":"计算机图形学"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机图形学 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF"><span class="nav-number">1.1.</span> <span class="nav-text">渲染管线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9D%80%E8%89%B2%E5%99%A8%E8%AF%AD%E8%A8%80"><span class="nav-number">1.2.</span> <span class="nav-text">着色器语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GLSL"><span class="nav-number">1.2.1.</span> <span class="nav-text">GLSL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GLSL-%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.2.2.</span> <span class="nav-text">GLSL 实验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%AB%E6%8F%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">扫描转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86"><span class="nav-number">1.3.1.</span> <span class="nav-text">数值微分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bresenham-%E7%9B%B4%E7%BA%BF%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.2.</span> <span class="nav-text">Bresenham 直线算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AB%E5%88%86%E6%B3%95"><span class="nav-number">1.3.3.</span> <span class="nav-text">八分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bresenham-%E5%9C%86%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.4.</span> <span class="nav-text">Bresenham 圆算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bresenham-%E6%A4%AD%E5%9C%86%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.5.</span> <span class="nav-text">Bresenham 椭圆算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#X-%E6%89%AB%E6%8F%8F%E7%BA%BF"><span class="nav-number">1.3.6.</span> <span class="nav-text">X 扫描线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Y-%E5%90%91%E8%BF%9E%E8%B4%AF%E6%80%A7%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.7.</span> <span class="nav-text">Y 向连贯性算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%B9%E6%A0%87%E5%BF%97%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.8.</span> <span class="nav-text">边标志算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%8D%E5%AD%90%E5%A1%AB%E5%85%85%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.9.</span> <span class="nav-text">种子填充算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E8%B5%B0%E6%A0%B7%E6%8A%80%E6%9C%AF"><span class="nav-number">1.4.</span> <span class="nav-text">反走样技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%A0%E5%9E%8B%E6%8A%80%E6%9C%AF"><span class="nav-number">2.</span> <span class="nav-text">造型技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93"><span class="nav-number">2.1.</span> <span class="nav-text">实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E6%9D%A1"><span class="nav-number">2.2.</span> <span class="nav-text">样条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.3.</span> <span class="nav-text">模型表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.3.1.</span> <span class="nav-text">边界表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%AE%9E%E4%BD%93%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.3.2.</span> <span class="nav-text">构造实体表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E4%BD%8D%E7%BD%AE%E5%88%86%E5%89%B2%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.3.3.</span> <span class="nav-text">空间位置分割表示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%BD%A2"><span class="nav-number">2.4.</span> <span class="nav-text">分形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.5.</span> <span class="nav-text">粒子系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E9%98%B6%E6%AE%B5"><span class="nav-number">3.</span> <span class="nav-text">几何阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%81%E5%89%AA"><span class="nav-number">3.1.</span> <span class="nav-text">裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BC%96%E7%A0%81%E7%9A%84%E5%89%AA%E8%A3%81%E6%96%B9%E5%BC%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">基于编码的剪裁方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Liang-Barsky-%E5%89%AA%E8%A3%81%E7%AE%97%E6%B3%95"><span class="nav-number">3.1.2.</span> <span class="nav-text">Liang-Barsky 剪裁算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E8%BE%B9%E5%BD%A2%E8%A3%81%E5%89%AA"><span class="nav-number">3.1.3.</span> <span class="nav-text">多边形裁剪</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%8F%E5%B9%95%E6%98%A0%E5%B0%84"><span class="nav-number">3.2.</span> <span class="nav-text">屏幕映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%8F%98%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">模型变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E5%8F%98%E6%8D%A2"><span class="nav-number">3.4.</span> <span class="nav-text">视图变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%95%E5%BD%B1%E5%8F%98%E6%8D%A2"><span class="nav-number">3.5.</span> <span class="nav-text">投影变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PVM-%E7%9F%A9%E9%98%B5"><span class="nav-number">3.6.</span> <span class="nav-text">PVM 矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC%E7%AB%8B%E6%96%B9%E4%BD%93"><span class="nav-number">3.7.</span> <span class="nav-text">旋转立方体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2"><span class="nav-number">3.8.</span> <span class="nav-text">几何变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E5%8F%98%E6%8D%A2"><span class="nav-number">3.8.1.</span> <span class="nav-text">二维变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E5%8F%98%E6%8D%A2"><span class="nav-number">3.8.2.</span> <span class="nav-text">三维变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E9%80%86%E5%8F%98%E6%8D%A2"><span class="nav-number">3.8.3.</span> <span class="nav-text">三维逆变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E5%A4%8D%E5%90%88%E5%8F%98%E6%8D%A2"><span class="nav-number">3.8.4.</span> <span class="nav-text">三维复合变换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E5%8F%98%E6%8D%A2"><span class="nav-number">3.9.</span> <span class="nav-text">观察变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%95%E5%BD%B1%E5%8F%98%E6%8D%A2-1"><span class="nav-number">3.10.</span> <span class="nav-text">投影变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E7%A9%BA%E9%97%B4"><span class="nav-number">3.11.</span> <span class="nav-text">观察空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E6%A0%85%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="nav-number">4.</span> <span class="nav-text">光栅化阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E8%A7%89%E7%8E%B0%E8%B1%A1"><span class="nav-number">4.1.</span> <span class="nav-text">视觉现象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">4.2.</span> <span class="nav-text">颜色的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.3.</span> <span class="nav-text">光照模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">4.3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Phong-%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.3.2.</span> <span class="nav-text">Phong 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Whitted-%E5%85%89%E9%80%8F%E5%B0%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.3.3.</span> <span class="nav-text">Whitted 光透射模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA"><span class="nav-number">4.3.4.</span> <span class="nav-text">光线追踪</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%B9%E7%90%86"><span class="nav-number">4.4.</span> <span class="nav-text">纹理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E7%BA%B9%E7%90%86"><span class="nav-number">4.4.1.</span> <span class="nav-text">颜色纹理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%B9%E7%90%86%E8%B4%B4%E5%9B%BE%E8%BF%87%E7%A8%8B"><span class="nav-number">4.4.2.</span> <span class="nav-text">纹理贴图过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E7%BA%B9%E7%90%86"><span class="nav-number">4.4.3.</span> <span class="nav-text">几何纹理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE%E4%BD%BF%E7%94%A8"><span class="nav-number">4.4.4.</span> <span class="nav-text">法线贴图使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B4%E5%BD%B1"><span class="nav-number">4.5.</span> <span class="nav-text">阴影</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Shadow-Mapping"><span class="nav-number">4.5.1.</span> <span class="nav-text">Shadow Mapping</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%87%E5%85%83%E6%93%8D%E4%BD%9C"><span class="nav-number">4.6.</span> <span class="nav-text">片元操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E9%9A%90%E6%93%8D%E4%BD%9C"><span class="nav-number">4.6.1.</span> <span class="nav-text">消隐操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%8F%E6%98%8E%E5%A4%84%E7%90%86"><span class="nav-number">4.6.2.</span> <span class="nav-text">透明处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E5%AD%A6%E8%BF%9B%E9%98%B6"><span class="nav-number">5.</span> <span class="nav-text">图形学进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PBR-%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E6%B8%B2%E6%9F%93%E6%96%B9%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">PBR 基于物理的渲染方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B8%E6%88%8F%E4%B8%AD%E7%9A%84%E6%B8%B2%E6%9F%93%E6%8A%80%E6%9C%AF"><span class="nav-number">5.2.</span> <span class="nav-text">游戏中的渲染技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B2%92%E5%AD%90%E7%B3%BB%E7%BB%9F-1"><span class="nav-number">5.3.</span> <span class="nav-text">粒子系统</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计算机图形学 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机图形学
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-26 14:22:45" itemprop="dateCreated datePublished" datetime="2020-02-26T14:22:45+08:00">2020-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B8%B8%E6%88%8F%E4%B8%8E3D/" itemprop="url" rel="index"><span itemprop="name">游戏与3D</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>渲染流水线：渲染管线，决定给定模式和纹理，生成二维图形。</p>
+<p>应用程序阶段：产生顶点数据，摄像机位置，光照和纹理等。</p>
+<p>几何阶段：变形投影后的定点，颜色，纹理。</p>
+<p>光栅化：给每个像素正确配色。输出到屏幕的各个像素点颜色。</p>
+<h3 id="渲染管线"><a href="#渲染管线" class="headerlink" title="渲染管线"></a>渲染管线</h3><img src="/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/pipeline.png" class="" title="渲染管线">
+
+<p>可编程：顶点着色器，几何&#x2F;曲面细分着色器，片元着色器</p>
+<p>可选：几何&#x2F;曲面细分着色器</p>
+<p>可配置：裁剪，片元操作</p>
+<p>固定：屏幕映射，三角形设置，三角形遍历</p>
+<p>顶点着色器：</p>
+<ul>
+<li>模型变换：将模型坐标映射到世界坐标</li>
+<li>视图变换：将世界坐标映射到摄像机中</li>
+<li>顶点着色</li>
+</ul>
+<p>几何&#x2F;曲面细分着色器：顶点增删，曲面细分</p>
+<p>三角形遍历：求三角形覆盖的像素点，插值等方式</p>
+<p>片元着色器：纹理贴图</p>
+<h3 id="着色器语言"><a href="#着色器语言" class="headerlink" title="着色器语言"></a>着色器语言</h3><p>Phong光照明模型，Cook着色树</p>
+<p>Renderman，Pixiv公司</p>
+<p>OpenGL GLSL，可以跨平台</p>
+<h4 id="GLSL"><a href="#GLSL" class="headerlink" title="GLSL"></a>GLSL</h4><p>着色器：</p>
+<ul>
+<li>顶点着色器Vertex Shader</li>
+<li>几何着色器Geometry Shader</li>
+<li>曲面细分着色器Tessellation Shader</li>
+<li>片元着色器Fragment Shader</li>
+</ul>
+<p>在OpenGL中使用着色器流程：</p>
+<ul>
+<li>创建着色器对象</li>
+<li>源码关联着色器对象</li>
+<li>编译着色器</li>
+<li>创建程序对象</li>
+<li>将着色器关联到程序对象</li>
+</ul>
+<p>OpenGL通过uniform与GLSL通信。着色器之间通过in，inout，out调用函数。</p>
+<p>数据类型：</p>
+<ul>
+<li>标量</li>
+<li>矢量，可以是2 3 4个分量</li>
+<li>矩阵</li>
+<li>结构和数组</li>
+</ul>
+<p>控制结构，类似于C</p>
+<p>EBO：索引缓冲区对象，存储顶点的索引信息</p>
+<p>VBO：顶点缓冲区对象，存储顶点的各种信息，存入显存</p>
+<p>VAO：顶点数组对象，对VBO组的引用</p>
+<h4 id="GLSL-实验"><a href="#GLSL-实验" class="headerlink" title="GLSL 实验"></a>GLSL 实验</h4><p>开发环境：</p>
+<ul>
+<li>Visual Studio 2017</li>
+<li>OpenGL3.3</li>
+<li>GLSL330</li>
+<li>GLFW</li>
+<li>GLAD</li>
+</ul>
+<p>工程目录：</p>
+<ul>
+<li>src<ul>
+<li>.cpp</li>
+</ul>
+</li>
+<li>res<ul>
+<li>shader</li>
+<li>texture</li>
+<li>model</li>
+</ul>
+</li>
+<li>include<ul>
+<li>.h</li>
+</ul>
+</li>
+</ul>
+<p>过程： </p>
+<p>初始化GLFW：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化GLFW</span></span><br><span class="line"><span class="built_in">glfwInit</span>();</span><br><span class="line"><span class="comment">// 配置主版本号</span></span><br><span class="line"><span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// 配置次版本号</span></span><br><span class="line"><span class="built_in">glfwWindowHint</span>(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// 使用核心模式，无需向后兼容</span></span><br><span class="line"><span class="built_in">glfwWindowHint</span>(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line"><span class="comment">// Mac OS X系统使用</span></span><br><span class="line"><span class="built_in">glfwWindowHint</span>(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);</span><br><span class="line"><span class="comment">// 不可改变窗口大小，Mac OS</span></span><br><span class="line"><span class="built_in">glfwWindowHint</span>(GLFW_RESIZABLE, FALSE);</span><br></pre></td></tr></table></figure>
+
+<p>创建窗口：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> screen_width = <span class="number">1280</span>;</span><br><span class="line"><span class="type">int</span> screen_height = <span class="number">720</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> window = <span class="built_in">glfwCreateWindow</span>(</span><br><span class="line">    screen_width,   <span class="comment">// 窗口尺寸</span></span><br><span class="line">    screen_height,   </span><br><span class="line">    <span class="string">&quot;Window Title&quot;</span>, <span class="comment">// 标题</span></span><br><span class="line">    <span class="literal">nullptr</span>,  <span class="comment">// 是否全屏</span></span><br><span class="line">    <span class="literal">nullptr</span>,  <span class="comment">// 共享上下文（状态机）窗口</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(window == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将窗口的上下文设置为当前线程的主上下文</span></span><br><span class="line"><span class="built_in">glvwMakeContextCurrent</span>(window);</span><br></pre></td></tr></table></figure>
+
+<p>初始化GLAD：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化GLAD，加载OPENGL函数指针地址的函数</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="built_in">gladLoadGLLoader</span>((GLADloadproc)glfwGetProcAddress))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建视口：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 左下角位置，渲染窗口的宽，高</span></span><br><span class="line"><span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, screen_width, screen_height);</span><br></pre></td></tr></table></figure>
+
+<p>数据处理：生成和绑定VBO，VAO，属性指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 三角形定点数据</span></span><br><span class="line"><span class="type">const</span> <span class="type">float</span> triangle[] = &#123;</span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>,  <span class="number">0.0f</span>, <span class="comment">// 左下</span></span><br><span class="line">     <span class="number">0.5f</span>, <span class="number">-0.5f</span>,  <span class="number">0.0f</span>, <span class="comment">// 右上</span></span><br><span class="line">     <span class="number">0.0f</span>,  <span class="number">0.5f</span>,  <span class="number">0.0f</span>  <span class="comment">// 正上</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 生成与绑定VAO VBO</span></span><br><span class="line">GLuint vertex_array_object; <span class="comment">// VAO</span></span><br><span class="line"><span class="built_in">glGenVertexArrays</span>(<span class="number">1</span>, &amp;vertex_array_object);</span><br><span class="line"><span class="built_in">glBindVertexArray</span>(vertex_array_object);</span><br><span class="line"></span><br><span class="line">GLuint vertex_buffer_object; <span class="comment">// VBO</span></span><br><span class="line"><span class="built_in">glGenBuffers</span>(<span class="number">1</span>, &amp;vertex_buffer_object);</span><br><span class="line"><span class="built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, vertex_buffer_object);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将定点数据绑定到缓冲，这样可以借助VBO将数据一次性发送过去</span></span><br><span class="line"><span class="comment">// GL_STATIC_DRAW表示图像不会变化</span></span><br><span class="line"><span class="built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="built_in">sizeof</span>(triangle), triangle, GL_STATIC_DRAW);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置顶点属性指针</span></span><br><span class="line"><span class="built_in">glVertexAttribPointer</span>(</span><br><span class="line">    <span class="number">0</span>, <span class="comment">// 顶点着色器位置</span></span><br><span class="line">    <span class="number">3</span>, <span class="comment">// 顶点向量长度</span></span><br><span class="line">    GL_FLOAT,  <span class="comment">// 顶点类型</span></span><br><span class="line">    GL_FALSE,  <span class="comment">// 是否标准化</span></span><br><span class="line">    <span class="number">3</span>*<span class="built_in">sizeof</span>(<span class="type">float</span>),  <span class="comment">// 步长</span></span><br><span class="line">    (<span class="type">void</span>*)<span class="number">0</span>   <span class="comment">// 数据在数组的偏移量</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// 开启该通道</span></span><br><span class="line"><span class="built_in">glEnableVertexAttribArray</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>着色器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *vertex_shader_source = </span><br><span class="line">    <span class="string">&quot;#version 330 core\n&quot;</span></span><br><span class="line">    <span class="string">&quot;layout(location = 0) in vec3 aPos;\n&quot;</span>  <span class="comment">// 位置变量的属性位置值 0</span></span><br><span class="line">    <span class="string">&quot;void main()\n&quot;</span></span><br><span class="line">    <span class="string">&quot;&#123;\n&quot;</span></span><br><span class="line">    <span class="string">&quot;    gl_Position = vec4(aPos, 1.0);\n&quot;</span></span><br><span class="line">    <span class="string">&quot;&#125;\n\0&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片段着色器</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *fragment_shader_source = </span><br><span class="line">    <span class="string">&quot;#version 330 core\n&quot;</span></span><br><span class="line">    <span class="string">&quot;out vec4 FragColor;\n&quot;</span>  <span class="comment">// 输出的颜色向量</span></span><br><span class="line">    <span class="string">&quot;void main()\n&quot;</span></span><br><span class="line">    <span class="string">&quot;&#123;\n&quot;</span></span><br><span class="line">    <span class="string">&quot;    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n&quot;</span></span><br><span class="line">    <span class="string">&quot;&#125;\n\0&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>生成和编译着色器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器</span></span><br><span class="line"><span class="type">int</span> vertex_shader = <span class="built_in">glCreateShader</span>(GL_VERTEX_SHADER);</span><br><span class="line"><span class="built_in">glShaderSource</span>(vertex_shader, <span class="number">1</span>, &amp;vertex_shader_source, <span class="literal">NULL</span>);</span><br><span class="line"><span class="built_in">glCompileShader</span>(vertex_shader);</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> success;</span><br><span class="line"><span class="type">char</span> info_log[<span class="number">512</span>];</span><br><span class="line"><span class="built_in">glGetShaderiv</span>(vertex_shader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line"><span class="comment">// 检查是否编译成功</span></span><br><span class="line"><span class="keyword">if</span>(!success)&#123;</span><br><span class="line">    <span class="built_in">glGetShaderInfoLog</span>(vertex_shader, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    std::cout&lt;&lt;info_log&lt;&lt;std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 片段着色器</span></span><br><span class="line"><span class="type">int</span> fragment_shader = <span class="built_in">glCreateShader</span>(GL_FRAGMENT_SHADER);</span><br><span class="line"><span class="built_in">glShaderSource</span>(fragment_shader, <span class="number">1</span>, &amp;fragment_shader_source, <span class="literal">NULL</span>);</span><br><span class="line"><span class="built_in">glCompileShader</span>(fragment_shader);</span><br><span class="line"></span><br><span class="line"><span class="built_in">glGetShaderiv</span>(fragment_shader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line"><span class="comment">// 检查是否编译成功</span></span><br><span class="line"><span class="keyword">if</span>(!success)&#123;</span><br><span class="line">    <span class="built_in">glGetShaderInfoLog</span>(fragment_shader, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    std::cout&lt;&lt;info_log&lt;&lt;std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>链接着色器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 链接到着色器程序</span></span><br><span class="line"><span class="type">int</span> shader_program = <span class="built_in">glCreateProgram</span>();</span><br><span class="line"><span class="built_in">glAttachShader</span>(shader_program, vertex_shader);</span><br><span class="line"><span class="built_in">glAttachShader</span>(shader_program, fragment_shader);</span><br><span class="line"><span class="built_in">glLinkProgram</span>(shader_program);</span><br><span class="line"><span class="comment">// 检查是否链接成功</span></span><br><span class="line"><span class="built_in">glGetProgramiv</span>(shader_program, GL_LINK_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span>(!success)&#123;</span><br><span class="line">    <span class="built_in">glGetProgramInfoLog</span>(shader_program, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    std::cout&lt;&lt;info_log&lt;&lt;std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>删除着色器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glDeleteShader</span>(vertex_shader);</span><br><span class="line"><span class="built_in">glDeleteShader</span>(fragment_shader);</span><br></pre></td></tr></table></figure>
+
+<p>渲染：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!<span class="built_in">glfwWindowShouldClose</span>(window))&#123;</span><br><span class="line">    <span class="comment">// 清空颜色缓存，使用黑色清空</span></span><br><span class="line">    <span class="built_in">glClearColor</span>(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line">    <span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    <span class="comment">// 使用着色器</span></span><br><span class="line">    <span class="built_in">glUseProgram</span>(shader_program);</span><br><span class="line">    <span class="comment">// 绘制三角形</span></span><br><span class="line">    <span class="built_in">glBindVertexArray</span>(vertex_array_object);  <span class="comment">// 绑定VAO</span></span><br><span class="line">    <span class="built_in">glDrawArrays</span>(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);        <span class="comment">// 绘制三角形</span></span><br><span class="line">    <span class="built_in">glBindVertexArray</span>(<span class="number">0</span>);                    <span class="comment">// 解除绑定</span></span><br><span class="line">    <span class="comment">// 交换缓冲，双缓冲技术</span></span><br><span class="line">    <span class="comment">// 检查是否有触发事件，键盘，鼠标等</span></span><br><span class="line">    <span class="built_in">glfwSwapBuffers</span>(window);</span><br><span class="line">    <span class="built_in">glfwPollEvents</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>善后工作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除VAO VBO</span></span><br><span class="line"><span class="built_in">glDeleteVertexArrays</span>(<span class="number">1</span>, &amp;vertex_array_object);</span><br><span class="line"><span class="built_in">glDeleteBuffers</span>(<span class="number">1</span>, &amp;vertex_buffer_object);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清理资源，退出程序</span></span><br><span class="line"><span class="built_in">glfwTerminate</span>();</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="扫描转换"><a href="#扫描转换" class="headerlink" title="扫描转换"></a>扫描转换</h3><p>软光栅：通过描述的点数据来光栅化对应的像素，通过软件实现。</p>
+<p>光栅化方案：<br>点：直接四舍五入<br>直线：</p>
+<ul>
+<li>要求</li>
+<li>直线要直</li>
+<li>端点要准确，要无定向性和断裂</li>
+<li>亮度，色泽要均匀</li>
+<li>处理不同的线宽，颜色，线型</li>
+<li>算法</li>
+<li>驻点比较</li>
+<li>正负法</li>
+<li>数值微分</li>
+<li>Bresenham算法<br>圆：</li>
+<li>算法</li>
+<li>八分法</li>
+<li>Bresenham算法<br>多边形填充：</li>
+<li>算法</li>
+<li>X 扫描线思想</li>
+<li>Y 向连贯性算法</li>
+<li>边标志算法<br>区域填充：</li>
+<li>表示</li>
+<li>边界表示法</li>
+<li>内点表示法</li>
+<li>分类</li>
+<li>4邻接点</li>
+<li>8邻接点</li>
+<li>算法</li>
+<li>种子填充算法<ul>
+<li>4连通算法</li>
+<li>8连通算法</li>
+<li>边界填充（边界）</li>
+<li>泛填充（内点）<br>属性：</li>
+</ul>
+</li>
+<li>分类</li>
+<li>线型</li>
+<li>粗细</li>
+<li>颜色</li>
+<li>填充色（图案）</li>
+<li>算法</li>
+<li>线型：像素模板<code>11101110</code></li>
+<li>线宽：像素模板 <ul>
+<li>线刷子（水平、垂直），线帽，折角处</li>
+<li>方刷子</li>
+</ul>
+</li>
+<li>填充色：像素模板，遍历</li>
+</ul>
+<h4 id="数值微分"><a href="#数值微分" class="headerlink" title="数值微分"></a>数值微分</h4><p>数值微分DDA，从直线的微分方程生成直线。<br>计算直线的微分方程，得到斜率 <code>K</code>。<br>根据<code>K</code>和起始点坐标，按照<code>△x*t</code>增量求下一个点。<br><code>t</code>取值为<code>1/max(|△x|, |△y|)</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">DDAline</span><span class="params">(<span class="type">int</span> x0, <span class="type">int</span> y0, <span class="type">int</span> x1, <span class="type">int</span> y1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> dx, dy, espl, k;</span><br><span class="line">    <span class="type">float</span> x, y, xlncre, ylncre;</span><br><span class="line">    dx = x1-x0;</span><br><span class="line">    dy = y1-y0;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">abs</span>(dx)&gt;<span class="built_in">abs</span>(dy))&#123;</span><br><span class="line">        espl = <span class="built_in">abs</span>(dx);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        espl = <span class="built_in">abs</span>(dy);</span><br><span class="line">    &#125;</span><br><span class="line">    xlncre = (<span class="type">float</span>)dx/(<span class="type">float</span>)espl;</span><br><span class="line">    ylncre = (<span class="type">float</span>)dy/(<span class="type">float</span>)espl;</span><br><span class="line">    <span class="keyword">for</span>(k=<span class="number">0</span>;k&lt;=espl;k++)&#123;</span><br><span class="line">        <span class="built_in">putpixel</span>((<span class="type">int</span>)(x+<span class="number">0.5</span>), (<span class="type">int</span>)(y+<span class="number">0.5</span>));</span><br><span class="line">        x += xlncre;</span><br><span class="line">        y += ylncre;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>评价：算法容易实现，但是效率较低（浮点数）</p>
+<h4 id="Bresenham-直线算法"><a href="#Bresenham-直线算法" class="headerlink" title="Bresenham 直线算法"></a>Bresenham 直线算法</h4><p>由直线的两个端点可以得到直线：<code>F(x, y)=0</code></p>
+<p>当 <code>0&lt;=k&lt;=1</code> 时：由当前点P0求得候选点为<code>Pu(x(i+1), y(i+1))</code>与<code>Pd(x(x+1), y(i))</code>。求这两个候选点的中点<code>P(m, n)</code>，如果中点处于直线上方，也就是<code>F(m, n)&gt;0</code>，就选择<code>Pd</code>点；否则选<code>Pu</code>点。</p>
+<p>构造判别式：<code>d = F(x[i]+1, y[i]+0.5) = y[i]+0.5-k*(x[i]+1)-b</code><br>若d&gt;&#x3D;0，选Pd，否则选Pu。<br>即d&gt;&#x3D;0，y不变，否则增加1。</p>
+<p>d 的递推计算：<br>    d0    ：d &#x3D; 0.5-k<br>    d &gt;&#x3D; 0：d &#x3D; d-k<br>    d &lt;  0：d &#x3D; d-k+1</p>
+<p>消除浮点数（放大为整数）：<br>    d&#x3D;d<em>2<br>    k&#x3D;k</em>dx</p>
+<p>优化：<br>直接按照<code>d</code>选择Pu，Pd。<br>    d &#x3D; -0.5<br>    <code>d = d + k, x[i+1]=x[i]+1</code><br>    d &gt;  0.5：<code>y[i+1]=y[i]+1, d=d-1</code><br>    d &lt;&#x3D; 0.5：<code>y[i+1]=y[i]</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MidBrsenhamLine</span><span class="params">(<span class="type">int</span> x0, <span class="type">int</span> y0, <span class="type">int</span> x1, <span class="type">int</span> y1, <span class="type">int</span> color)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> dx, dy, d, UpIncre, DownIncre, x, y;</span><br><span class="line">    <span class="keyword">if</span>(x0 &gt; x1)&#123;</span><br><span class="line">        x=x1; x1=x0; x0=x;</span><br><span class="line">        y=y1; y1=y0; y0=y;</span><br><span class="line">    &#125;</span><br><span class="line">    x=x0; y=y0;</span><br><span class="line">    dx=x1-x0;</span><br><span class="line">    dy=y1-y0;</span><br><span class="line">    d=dx<span class="number">-2</span>*dy;</span><br><span class="line">    UpIncre=<span class="number">2</span>*dx<span class="number">-2</span>*dy;</span><br><span class="line">    DownIncre=<span class="number">-2</span>*dy;</span><br><span class="line">    <span class="keyword">while</span>(x &lt;= x1)&#123;</span><br><span class="line">        <span class="built_in">putpixel</span>(x, y, color);</span><br><span class="line">        x++;</span><br><span class="line">        <span class="keyword">if</span>(d &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            y++;</span><br><span class="line">            d+=UpIncre;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            d+=DownIncre;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">BrsenhamLine</span><span class="params">(<span class="type">int</span> x0, <span class="type">int</span> y0, <span class="type">int</span> x1, <span class="type">int</span> y1, <span class="type">int</span> color)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> dx, dy, e, x, y;</span><br><span class="line"></span><br><span class="line">    dx=x1-x0;</span><br><span class="line">    dy=y1-y0;</span><br><span class="line">    e=-dx;</span><br><span class="line">    x=x0;</span><br><span class="line">    y=y0;</span><br><span class="line">    <span class="keyword">while</span>(x &lt;= x1)&#123;</span><br><span class="line">        <span class="built_in">putpixel</span>(x, y, color);</span><br><span class="line">        x++;</span><br><span class="line">        <span class="keyword">if</span>(e &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            y++;</span><br><span class="line">            e=e<span class="number">-2</span>*dx;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="八分法"><a href="#八分法" class="headerlink" title="八分法"></a>八分法</h4><p>将圆八等分，取其中一段圆弧，y&#x3D;x与y轴正方向所夹圆弧，<code>y=sqrt(R^2-x^2)</code><br>离散计算：<br><code>x[i+1]=x[i]+1, y[i+1]=sqrt(R^2-x[i+1])</code></p>
+<p>先计算x还是先计算y，要看所选的圆弧在斜率是否大于1。</p>
+<p>或使用极坐标，还是那一段圆弧：<br><code>a[i+1]=a[i]+da</code> a -&gt; 角度<br><code>x[i+1]=round(R*cos(a[i+1]))</code><br><code>y[i+1]=round(R*sin(a[i+1]))</code></p>
+<h4 id="Bresenham-圆算法"><a href="#Bresenham-圆算法" class="headerlink" title="Bresenham 圆算法"></a>Bresenham 圆算法</h4><p>构造函数<code>F(x, y)=x^2+y^2-R^2</code></p>
+<p>将圆八等分，取其中一段圆弧，y&#x3D;x与y轴正方向所夹圆弧。</p>
+<p>此时最大位移方向是x方向，x每次加一，y不变或减1（两个候选点）。</p>
+<p>计算d的递推和初值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MidBrsenhamCircle</span><span class="params">(<span class="type">int</span> r, <span class="type">int</span> color)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> d, x, y;</span><br><span class="line"></span><br><span class="line">    x=<span class="number">0</span>;</span><br><span class="line">    y=r;</span><br><span class="line">    d=<span class="number">1</span>-r;</span><br><span class="line">    <span class="keyword">while</span>(x &lt;= y)&#123;</span><br><span class="line">        <span class="built_in">CirclePoint</span>(x, y, color)</span><br><span class="line">        <span class="keyword">if</span>(d &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            d+=<span class="number">2</span>*x+<span class="number">3</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            y+=<span class="number">2</span>*(x-y)+<span class="number">5</span>;</span><br><span class="line">            y--;</span><br><span class="line">        &#125;</span><br><span class="line">        x++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Bresenham-椭圆算法"><a href="#Bresenham-椭圆算法" class="headerlink" title="Bresenham 椭圆算法"></a>Bresenham 椭圆算法</h4><p>对于标准椭圆<code>F(x, y)=b^2*x^2+a^2*y^2-a^2*b^2</code></p>
+<p>将椭圆等分为4部分，同时判断x和y是否加1。</p>
+<p>计算d的递推和初值。</p>
+<h4 id="X-扫描线"><a href="#X-扫描线" class="headerlink" title="X 扫描线"></a>X 扫描线</h4><p>求得多边形各个顶点的<code>y[min]</code>与<code>y[max]</code>。</p>
+<p>使用扫描线与多边形求交点。</p>
+<p>对交点排序，填充交点之间的空间。</p>
+<h4 id="Y-向连贯性算法"><a href="#Y-向连贯性算法" class="headerlink" title="Y 向连贯性算法"></a>Y 向连贯性算法</h4><p>构造多边形的边表：边表的长度是多边形的最大扫描线数，表上每个节点表示一个桶，桶上标明当前扫描线的y坐标。再将每条边放入该边<code>y[min]</code>的桶中。</p>
+<p>每条新边记录的信息包括该边起点与x扫描线的交点x，该边的<code>y[max]</code>，斜率<code>1/k</code>（y+1时x的增量），下一条边指针next。</p>
+<p>新边排序按照x坐标递增，如果交点相同则按增量递增。</p>
+<p>对于每条边<code>y[max]=y[max]-1</code>，防止交点重复计算。</p>
+<p>有效边表：当前扫描线与多边形相交的边构成的表。</p>
+<p>扫描过程让有效边表与边表合并，并根据增量修改x值。通过顶点配对实现相应的填充。</p>
+<h4 id="边标志算法"><a href="#边标志算法" class="headerlink" title="边标志算法"></a>边标志算法</h4><p>对多边形的每个边进行直线扫描转换，给覆盖的点打上标记。</p>
+<p>对扫描线上按照左闭右开的原则配对标记点并填色。</p>
+<p>是适合硬件的算法。</p>
+<h4 id="种子填充算法"><a href="#种子填充算法" class="headerlink" title="种子填充算法"></a>种子填充算法</h4><p>种子：区域内任意一点。</p>
+<ol>
+<li>边界填充算法：</li>
+</ol>
+<ul>
+<li>输入：种子点坐标，填充色，边界色</li>
+<li>数据结构：栈</li>
+<li>算法输出：像素点集</li>
+</ul>
+<p>4连通边界填充算法：种子入栈，执行下面步骤；<br>栈顶出栈，置为填充色，并检查4邻接点：如果不是边界色，且没有被填充则入栈。</p>
+<ol start="2">
+<li><p>泛填充算法：是内点且未被填充，则入栈。</p>
+</li>
+<li><p>扫描线填充：<br>种子入栈；<br>栈顶出栈，填充该行；<br>检查扫描线上下的像素，其中最右边的入栈；</p>
+</li>
+</ol>
+<h3 id="反走样技术"><a href="#反走样技术" class="headerlink" title="反走样技术"></a>反走样技术</h3><p>过取样（后滤波）：先提高取样分辨率，再取平均，降低分辨率。</p>
+<p>对某一个像素扩充为3*3区域，并为区域上每一点赋予权值，再加权平均后合并为一个像素。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MidBrsenhamLine</span><span class="params">(<span class="type">int</span> x0, <span class="type">int</span> y0, <span class="type">int</span> x1, <span class="type">int</span> y1, <span class="type">int</span> color)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> dx, dy, d, UpIncre, DownIncre, x, y;</span><br><span class="line">    <span class="type">int</span> level;</span><br><span class="line">    <span class="keyword">if</span>(x0 &gt; x1)&#123;</span><br><span class="line">        x=x1; x1=x0; x0=x;</span><br><span class="line">        y=y1; y1=y0; y0=y;</span><br><span class="line">    &#125;</span><br><span class="line">    x=x0; y=y0;</span><br><span class="line">    dx=x1-x0;</span><br><span class="line">    dy=y1-y0;</span><br><span class="line">    d=dx<span class="number">-2</span>*dy;</span><br><span class="line">    UpIncre=<span class="number">2</span>*dx<span class="number">-2</span>*dy;</span><br><span class="line">    DownIncre=<span class="number">-2</span>*dy;</span><br><span class="line">    <span class="keyword">while</span>(x &lt;= x1)&#123;</span><br><span class="line">        level = __level;  <span class="comment">// 4个像素的亮度等级平均值</span></span><br><span class="line">        <span class="built_in">putpixel</span>(x, y, color);</span><br><span class="line">        x++;</span><br><span class="line">        <span class="keyword">if</span>(d &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            y++;</span><br><span class="line">            d+=UpIncre;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            d+=DownIncre;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>前滤波：区域取样。对图形覆盖到的像素，根据图形与像素重叠部分占像素面积的比值计算像素点亮度；改进后可以使用圆形模板，通过在像素中心的距离上积分权值得到亮度。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">AntialiasingLine</span><span class="params">(<span class="type">int</span> x0, <span class="type">int</span> y0, <span class="type">int</span> x1, <span class="type">int</span> y1, <span class="type">int</span> I)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y, dx, dy, m, w, e;</span><br><span class="line">    x=x0; y=y0;</span><br><span class="line">    dx=x1-x0;</span><br><span class="line">    dy=y1-y0;</span><br><span class="line">    m=I*dy/dx;</span><br><span class="line">    w=I-m;</span><br><span class="line">    e=I/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">SetPixel</span>(x, y, m/<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">while</span>(x &lt; x1)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e&lt;w)&#123;</span><br><span class="line">            x++; e+=m;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            x++; y++; e-=m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">SetPixel</span>(x, y, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="造型技术"><a href="#造型技术" class="headerlink" title="造型技术"></a>造型技术</h2><p>图形对象</p>
+<ul>
+<li>非图形信息：线型，颜色，体积，重量等</li>
+<li>图形信息：点线面之间的关系，几何尺寸</li>
+<li>几何信息：位置大小</li>
+<li>拓扑信息：点边面等</li>
+</ul>
+<p>图形的基本元素：体，面，环，边，顶点</p>
+<p>顶点：0维度几何元素。</p>
+<p>边：一维几何元素。可以是直线或曲线。</p>
+<p>环：二维几何元素。外环一般为逆时针，内环一般为顺时针。</p>
+<p>面：二维几何元素。必须有一个外环，可以没有内环。面有方向，用外法线表示。可以是平面或曲面。</p>
+<p>体：三维几何元素。由封闭的表面围成。边界是有限面的并集。</p>
+<p>几何造型：通过点线面体等几何元素经过平移，缩放，旋转和并，交，差等集合运算产生的物体模型。</p>
+<h3 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h3><p>实体的性质：<br>刚性：必须有一定的形状。<br>维数一致性：一个物体的各部分是三维的。<br>占据优先空间：体积有限。<br>边界的确定性：能够区分出物体的内部和外部。<br>封闭性：经过任意计算后，仍然是有效物体。</p>
+<p>实体的表面性质：<br>连通性：物体表面上任意两点可用实体表面上的一条路径连接。<br>有界性：物体表面可将空间分为互不连通的两部分，其中一部分是有界的。<br>非自相交性：物体表面不可自相交。<br>可定向性：表面的两侧可以明确定义出属于物体的内侧与外侧。<br>闭合性：由表面上的多边形网格各元素的拓扑关系决定。</p>
+<p>克莱因瓶和莫比乌斯环则不符合上述性质。</p>
+<p>正则形体：<br>三维空间中的正则集就是正则形体；<br>三维物体由内部点和边界点两部分， <strong>内部点</strong> 构成的点集的 <strong>闭包</strong> 就是正则集。</p>
+<p>二维流形：<br>对于实体表面上任意一点，在其任意小的领域内，该领域与平面上的圆盘是拓扑等价的。</p>
+<p>实体：正则形体 + 二维流形</p>
+<p>欧拉公式： <code>V - E + F = 2</code>（顶点 - 边 + 面 &#x3D; 2）</p>
+<p>欧拉公式适用于简单多面体（没有孔）。</p>
+<p>对于非简单多面体：<code>V - E + F  - H = 2 * ( C - G )</code>（顶点 - 边 + 面 - 孔 &#x3D; 2 * （独立不相连多面体 - 贯穿孔））</p>
+<h3 id="样条"><a href="#样条" class="headerlink" title="样条"></a>样条</h3><p>样条曲线：多项式曲线段连接的曲线。</p>
+<p>样条曲面：由两组样条曲线描述。</p>
+<p>插值样条曲线：选取适当的多项式让曲线经过每个控制点。</p>
+<p>逼近样条曲线：选取多项式使部分或全部控制点不在生成的曲线上。</p>
+<p>凸壳：包含一组控制点的凸多边形边界，是裁剪曲线的边界。</p>
+<p>曲线控制图：由控制点连线构成的折线。</p>
+<p>样条的描述方式：参数方程。</p>
+<p>$$<br>x&#x3D;x(u)<br>y&#x3D;y(u)<br>z&#x3D;z(u)<br>$$</p>
+<p>在分段处还要给定连续性条件。<br>0阶参数连续性(C0连续性)：简单表示相连。<br>1阶参数连续性(C1连续性)：相连处一阶导数相等。<br>2阶参数连续性(C2连续性)：相连处一阶和二阶导数相等。</p>
+<p>几何连续性：相怜处参数导数成正比。<br>0阶几何连续性(G0连续性)：简单表示相连。<br>1阶几何连续性(G1连续性)：相连处一阶导数成比例。<br>2阶几何连续性(G2连续性)：相连处一阶和二阶导数成比例。</p>
+<p>样条表示：</p>
+<ol>
+<li><code>x(u) = ax*u^3 + bx*u^2 + cx*u^1 + dx, 0 &lt;= u &lt;= 1</code></li>
+<li><code>x(u) = [u^3 u^2 u^1 1] * [ax bx cx dx]^T = U * C</code><br><code>C = Mspline * Mgemo</code><br>Mgemo：四元素列矩阵，包含控制点的坐标和几何约束（边界条件）<br>Mspline：4x4矩阵，几何约束值转化为多项式系数，提供样条曲线的特征。</li>
+<li>x(u) &#x3D; <code>g0 * BF0(u) + g1 * BF1(u) + ... + gk * BFk(u)</code><br>gK：约束参数，控制点坐标和控制点曲线斜率。<br>BFk(u)：混合函数，基本函数。</li>
+</ol>
+<p>样条曲面：<br><code>P(u, v) = sum(P(ku,kv) * BF(ku)(u) * BF(kv)(v))</code></p>
+<p>Bezier 曲线：<br>控制点，共n+1个，k从0到n：<code>P[k] = (x[k], y[k], z[k])</code><br>函数路径：<code>p(u) = sum(P[k] * BEZ[k,n] (u))</code><br><code>BEZ[k,n] (u)</code>：Bernstein多项式：<code>= C(n,k) * u^k * (1-u)^(n-k)</code><br><code>C(n,k)</code>：二项式系数</p>
+<p>Bezier 曲面：<br>由两组正交的Bezier曲线生成。<br><code>p(u,v) = sum_i( sum_j( P[i,j] * BEN[i,m] (u) * BEN[j,n] (v) ) )</code></p>
+<h3 id="模型表示"><a href="#模型表示" class="headerlink" title="模型表示"></a>模型表示</h3><p>边界表示：用一组曲面描述物体</p>
+<p>构造实体几何：使用基本实体运算得到</p>
+<p>空间分割表示：描述物体的内部性质，由连续立方体堆叠成。</p>
+<h4 id="边界表示"><a href="#边界表示" class="headerlink" title="边界表示"></a>边界表示</h4><p>多边形表面模型。</p>
+<ul>
+<li>数据结构：</li>
+<li>几何信息：<ul>
+<li>顶点表</li>
+<li>边表</li>
+<li>面表，方向：右手法则</li>
+</ul>
+</li>
+<li>拓扑信息：<ul>
+<li>翼边结构</li>
+</ul>
+</li>
+<li>属性信息：<ul>
+<li>透明度</li>
+<li>材质</li>
+<li>纹理</li>
+</ul>
+</li>
+</ul>
+<p>多边形网络<br>曲面边界：三角形带，四边形网格。</p>
+<p>扫描表示：<br>最终结果也是多边形表面模型。</p>
+<h4 id="构造实体表示"><a href="#构造实体表示" class="headerlink" title="构造实体表示"></a>构造实体表示</h4><p>集合运算过程，可以用一个二叉树描述（CSG树）</p>
+<ul>
+<li>叶子：对象</li>
+<li>非叶子：操作</li>
+<li>根：CSG对象</li>
+</ul>
+<p>通过光线投射算法，不必求解实体边界，可以快速实现光栅显示。</p>
+<h4 id="空间位置分割表示"><a href="#空间位置分割表示" class="headerlink" title="空间位置分割表示"></a>空间位置分割表示</h4><p>使用三维数组<code>P[I][J][K]</code>表示物体空间占用情况。</p>
+<p>使用八叉树表示实体，每个节点数据结构为：<br>01234567<br>BBBBBBBB<br>EBFBEBFE</p>
+<p>E：Empty，空<br>F：Full，满<br>B：Boundary，边界</p>
+<p>首先将整个空间分为8块，一个节点表示一个块。再将每个块细分为8个子块，每个子节点表示一个子块，如此细分下去，直到满足精度要求，如果是空或满则不必细分。</p>
+<p>松散八叉树。</p>
+<p>二叉空间分割，BSP树。每次将一个实体分为两半，方向任意。可以自适应分割，减少搜索时间。</p>
+<p>BSP树：</p>
+<ul>
+<li>轴对齐分割：选取一个轴，将空间一分为二。</li>
+<li>多边形对齐分割。非常耗时。可以严格从前从后遍历。</li>
+</ul>
+<p>BSP树可以用于碰撞检测。</p>
+<h3 id="分形"><a href="#分形" class="headerlink" title="分形"></a>分形</h3><p>特点：</p>
+<ul>
+<li>不规则</li>
+<li>自相似</li>
+</ul>
+<p>分形维数：把原图缩小为<code>1/a</code>的相似的<code>b</code>个图形，则有<code>a^D=b</code>。<code>D</code> 就是分形维数，可以是整数或分数。</p>
+<p>生成过程：初试生成元，生成元。</p>
+<p>例如：谢尔宾斯基三角形，科赫Koch雪花曲线。</p>
+<p>形状语法：给定一组产生式规则，设计者可以根据规则获取物体。<br>例如：<br>L 语法：</p>
+<ul>
+<li>几何解释：<ul>
+<li>F 向前画线</li>
+<li>右转60°</li>
+<li>左转60°</li>
+</ul>
+</li>
+</ul>
+<h3 id="粒子系统"><a href="#粒子系统" class="headerlink" title="粒子系统"></a>粒子系统</h3><p>用于模拟：水流，火，烟尘，爆炸，云雾，雪，流星，树叶等。</p>
+<p>微粒系统：一组分散的微小物体集合，大小和形状可随时间变化。</p>
+<p>模拟方式：</p>
+<ul>
+<li>随机过程模拟</li>
+<li>运动路径模拟</li>
+<li>力学模拟</li>
+</ul>
+<p>两要素：</p>
+<ul>
+<li>造型</li>
+<li>运动方式</li>
+</ul>
+<p>两过程：</p>
+<ul>
+<li>模拟</li>
+<li>渲染</li>
+</ul>
+<p>粒子有生命值，要有产生和消亡过程。因此基本属性包括：位置，速度，颜色，大小，生命值。</p>
+<p>公告板技术：粒子始终面向摄像机方向。</p>
+<h2 id="几何阶段"><a href="#几何阶段" class="headerlink" title="几何阶段"></a>几何阶段</h2><p>过程：</p>
+<p>建模坐标系：局部空间<br>模型变换<br>世界坐标系：世界空间<br>视图变换<br>观察坐标系：观察空间<br>投影变换<br>观察坐标系：裁剪空间<br>屏幕映射<br>屏幕坐标系：屏幕空间</p>
+<h3 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h3><p>保留观察空间内的物体。</p>
+<p>物体与窗口关系：</p>
+<ul>
+<li>窗口内，保留。</li>
+<li>窗口外，舍弃。</li>
+<li>窗口上，计算交点判断。</li>
+</ul>
+<h4 id="基于编码的剪裁方式"><a href="#基于编码的剪裁方式" class="headerlink" title="基于编码的剪裁方式"></a>基于编码的剪裁方式</h4><p>Cohen-Sutherland方法：基于编码的剪裁方式。（二维平面，直线段）</p>
+<ul>
+<li>简取：两点都在窗口内部。</li>
+<li>简弃：两点都在窗口外部。如果两点都在上面（或下面，或左边，或右边）则弃。</li>
+<li>其他情况：将线段按交点分段，之后重复上述过程。</li>
+</ul>
+<p>为每一个点赋予一个二进制编码<code>D3 D2 D1 D0</code>。</p>
+<ul>
+<li>x &lt; wxl：D0 &#x3D; 1 否则 D0 &#x3D; 0</li>
+<li>x &gt; wxr：D1 &#x3D; 1 否则 D1 &#x3D; 0</li>
+<li>y &lt; wyb：D2 &#x3D; 1 否则 D2 &#x3D; 0</li>
+<li>y &lt; wyt：D3 &#x3D; 1 否则 D3 &#x3D; 0</li>
+</ul>
+<p>则wxl wxr wyb wyt所切割的平面被划分为9个区域，每个区域有一个独立的编码。</p>
+<p>计算两个端点的编码<code>code_1</code>和<code>code_2</code>：</p>
+<ul>
+<li>code_1|code_2 &#x3D; 0：简取</li>
+<li>code_1&amp;code_2 !&#x3D; 0：简弃</li>
+<li>其他情况，求出交点再考虑。</li>
+</ul>
+<p>中点剪裁法：在其他情况中，不再求交点，而是将线二等分再重复上述过程。</p>
+<p>使用情况：大窗口，特小窗口。</p>
+<h4 id="Liang-Barsky-剪裁算法"><a href="#Liang-Barsky-剪裁算法" class="headerlink" title="Liang-Barsky 剪裁算法"></a>Liang-Barsky 剪裁算法</h4><p>首先对线段赋予方向，对任意直线段：IJ 有参数方程<br><code>x = x1 + u * (x2 - x1)</code><br><code>y = y1 + u * (y2 - y1)</code></p>
+<p>如果在窗口内则有：<br><code>wxl &lt;= x &lt;= wxr</code><br><code>wyb &lt;= y &lt;= wyt</code></p>
+<p>令<code>p1 = x1 - x2</code> , <code>q1 = x1 - wxl</code> …<br>则<code>u * pk &lt;= qk , k = 1, 2, 3, 4</code>  （左，右，下，上）</p>
+<p>起点：<code>Uone = max(0, u[k|pk &lt; 0], u[k|pk &lt; 0])</code><br>终点：<code>Utwo = min(1, u[k|pk &gt; 0], u[k|pk &gt; 0])</code></p>
+<p>最终得到直线的开始点和结束点，经过过滤不符合逻辑的线段，处理垂直和水平的线段后得到裁剪的线段。</p>
+<h4 id="多边形裁剪"><a href="#多边形裁剪" class="headerlink" title="多边形裁剪"></a>多边形裁剪</h4><p>Sutherland-Hodgeman 逐边裁剪算法，按窗口的左下右上的方法切割多边形，修改多边形的输出顶点。对于凹多边形有缺陷。</p>
+<p>Weiler-Atherton 算法，按顺时针方向沿多边形边界追踪每一条边，记录每次穿过窗口的点。当从不可见进入可见区域，则输出可见线段。当从可见进入不可见区域，则沿窗口边界顺时针找到另外一个交点，输出两点间的线段。</p>
+<p>Cohen-Sutherland 推广到三维：使用6位编码，分割空间为9个部分。</p>
+<p>Liang-Barsky 推广到三维：之前是6个候选点，现在是8个候选点。</p>
+<p>Sutherland-Hodgeman 推广到三维：裁剪三角形。</p>
+<h3 id="屏幕映射"><a href="#屏幕映射" class="headerlink" title="屏幕映射"></a>屏幕映射</h3><p>由裁剪空间进入屏幕映射，坐标系由右手系变为左手系，这时z轴的方向反向。</p>
+<p>z轴上的映射关系是：<br>裁剪空间：<code>z=1</code>  -&gt; 屏幕空间：<code>z&#39;=0</code><br>裁剪空间：<code>z=0</code>  -&gt; 屏幕空间：<code>z&#39;=0.5</code><br>裁剪空间：<code>z=-1</code> -&gt; 屏幕空间：<code>z&#39;=1</code></p>
+<p><code>z&#39; = (1-z)/2 + 0</code></p>
+<p>这部分由GPU完成。</p>
+<h3 id="模型变换"><a href="#模型变换" class="headerlink" title="模型变换"></a>模型变换</h3><p>在OpenGL中使用模型矩阵model实现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">glm::mat4 <span class="title">model</span><span class="params">(<span class="number">1</span>)</span></span>;  <span class="comment">// 创建模型</span></span><br><span class="line">model = gml::<span class="built_in">translate</span>(mode, glm::<span class="built_in">vec3</span>(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">-3.0f</span>));  <span class="comment">// 平移</span></span><br><span class="line">model = gml::<span class="built_in">rotate</span>(mode, (<span class="type">float</span>)<span class="built_in">glfGetTime</span>(), glm::<span class="built_in">vec3</span>(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>));  <span class="comment">// 旋转</span></span><br><span class="line">model = gml::<span class="built_in">scale</span>(mode, glm::<span class="built_in">vec3</span>(<span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.5f</span>));  <span class="comment">// 缩放</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="视图变换"><a href="#视图变换" class="headerlink" title="视图变换"></a>视图变换</h3><p>在OpenGL使用视图矩阵实现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">glm::mat4 <span class="title">view</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="comment">// 摄像机的位置，目标位置Zv，上方向量Yv，坐标系符合右手定则</span></span><br><span class="line">view = glm::<span class="built_in">lookAt</span>(camera_pos, camera_pos + camera_font, camera_up);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="投影变换"><a href="#投影变换" class="headerlink" title="投影变换"></a>投影变换</h3><p>在OpenGL使用视图矩阵projection实现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">glm::mat4 proj = glm::<span class="built_in">perspective</span>(</span><br><span class="line">    <span class="number">45.0f</span>,   <span class="comment">// 视野的角度 fov</span></span><br><span class="line">    (<span class="type">float</span>)width/(<span class="type">float</span>)height,  <span class="comment">// 视窗的宽高比</span></span><br><span class="line">    <span class="number">0.1f</span>,    <span class="comment">// 前截面</span></span><br><span class="line">    <span class="number">100.0f</span>   <span class="comment">// 后截面</span></span><br><span class="line">);  </span><br></pre></td></tr></table></figure>
+
+<h3 id="PVM-矩阵"><a href="#PVM-矩阵" class="headerlink" title="PVM 矩阵"></a>PVM 矩阵</h3><p>将Model，View，Projection合并为PVM矩阵。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gl_Pos = projection * view * model * <span class="built_in">vec4</span>(aPos, <span class="number">1.0f</span>);  <span class="comment">// 顺序不能出错，计算从右向左</span></span><br></pre></td></tr></table></figure>
+
+<p>在OpenGL中，向量都是列矩阵，而之前的理论推导均为行矩阵，因此需要倒过来计算。</p>
+<h3 id="旋转立方体"><a href="#旋转立方体" class="headerlink" title="旋转立方体"></a>旋转立方体</h3><p>模型设置：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建模型</span></span><br><span class="line"><span class="function">glm::mat4 <span class="title">model</span><span class="params">(<span class="number">1</span>)</span></span>; <span class="comment">// 局部坐标转换到世界坐标</span></span><br><span class="line"><span class="comment">// 平移旋转模型</span></span><br><span class="line">model = glm::<span class="built_in">translate</span>(model, glm::<span class="built_in">vec3</span>(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>));</span><br><span class="line">model = glm::<span class="built_in">rotate</span>(</span><br><span class="line">    model, </span><br><span class="line">    (<span class="type">float</span>)<span class="built_in">glfwGetTime</span>(),  <span class="comment">// 以当前时间作为旋转角度</span></span><br><span class="line">    glm::<span class="built_in">vec3</span>(<span class="number">0.5f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>)  <span class="comment">// 旋转轴</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// 观察矩阵</span></span><br><span class="line"><span class="function">glm::mat4 <span class="title">view</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">view = glm::<span class="built_in">lookAt</span>(camera_pos, camera_pos + camera_font, camera_up);</span><br><span class="line"><span class="comment">// 投影矩阵</span></span><br><span class="line">glm::mat4 projection = glm::<span class="built_in">perspective</span>(</span><br><span class="line">    glm::<span class="built_in">radians</span>(fov),   <span class="comment">// 视野的角度 fov</span></span><br><span class="line">    (<span class="type">float</span>)screen_width/(<span class="type">float</span>)screen_height,  <span class="comment">// 视窗的宽高比</span></span><br><span class="line">    <span class="number">0.1f</span>,    <span class="comment">// 前截面</span></span><br><span class="line">    <span class="number">100.0f</span>   <span class="comment">// 后截面</span></span><br><span class="line">);  </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>摄像机控制：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 键盘事件</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ProcessInput</span><span class="params">(GLFWwindow *window)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ESC 关闭窗口</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">glfwSetWindowShouldClose</span>(window, <span class="literal">true</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 按 W 向前移动</span></span><br><span class="line">    <span class="type">float</span> camera_speed = <span class="number">2.5f</span> * delta_time;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">glfwGetKey</span>(window, GLFW_KEY_W) == GLFW_PRESS)&#123;</span><br><span class="line">        camera_pos += camera_speed * camera_front;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册鼠标相应</span></span><br><span class="line"><span class="built_in">glfwSetCursorPosCallback</span>(window, MouseCallback);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鼠标事件</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">MouseCallback</span><span class="params">(GLFWwindow *window, <span class="type">double</span> xpos, <span class="type">double</span> ypos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glm::vec3 front;</span><br><span class="line">    front.x = <span class="built_in">cos</span>(glm::<span class="built_in">radians</span>(yaw) * <span class="built_in">cos</span>(glm::<span class="built_in">radians</span>(pitch)));</span><br><span class="line">    front.y = <span class="built_in">sin</span>(glm::<span class="built_in">radians</span>(pitch));</span><br><span class="line">    front.z = <span class="built_in">sin</span>(glm::<span class="built_in">radians</span>(yaw) * <span class="built_in">cos</span>(glm::<span class="built_in">radians</span>(pitch)));</span><br><span class="line">    camera_front = glm::<span class="built_in">normalize</span>(front);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将PVM传入着色器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取着色器内某个参数的位置</span></span><br><span class="line"><span class="type">int</span> model_location = <span class="built_in">glGetUniformLocation</span>(our_shader.ID, <span class="string">&quot;model&quot;</span>);</span><br><span class="line"><span class="comment">// 写入参数值</span></span><br><span class="line"><span class="built_in">glUniformMatrix4fv</span>(model_location, <span class="number">1</span>, GL_FALSE, glm::<span class="built_in">value_ptr</span>(model));</span><br></pre></td></tr></table></figure>
+
+<p>开启深度测试：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glEnable</span>(GL_DEPTH_TEST); <span class="comment">// 开启深度测试</span></span><br><span class="line"><span class="built_in">glDepthFunc</span>(GL_LESS);    <span class="comment">// 深度测试，输入的深度小于参考值则通过</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="几何变换"><a href="#几何变换" class="headerlink" title="几何变换"></a>几何变换</h3><h4 id="二维变换"><a href="#二维变换" class="headerlink" title="二维变换"></a>二维变换</h4><p>例如在二维空间下：</p>
+<p>平移变换：<br><code>x&#39; = x + Tx</code><br><code>y&#39; = y + Ty</code></p>
+<p>比例变换：<br><code>x&#39; = x * Sx</code><br><code>y&#39; = y * Sy</code></p>
+<p>旋转变换：<br><code>x&#39; = r * cos(A + B)</code><br><code>y&#39; = r * sin(A + B)</code></p>
+<p><code>x&#39; = x * cosA - y * sinA</code><br><code>y&#39; = x * sinA + y * cosA</code></p>
+<p>对称变换：5种情况<br><code>x&#39; = x</code><br><code>y&#39; = -y</code></p>
+<p>错切变换：<br><code>x&#39; = x + d * y</code><br><code>y&#39; = b * x + y</code></p>
+<p>使用齐次坐标表达方式，可以用3维向量表示2维向量，来简化计算。例如：<code>p[x, y]</code> 表示为 <code>p[hx, hy, h]</code>，h为不为<code>0</code>的系数，规范化表示：令<code>h = 1</code>。</p>
+<p>这样，就可以使用齐次坐标与变换矩阵相乘得到结果。</p>
+<p>对于变换矩阵<br>左上部分(4)：图像的比例，旋转，对称，错切<br>右上部分(2)：投影<br>左下部分(2)：平移<br>右下部分(1)：整体的比例变换</p>
+<p>平移变换：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 \<br>   0 &amp; 1 &amp; 0 \<br>   Tx &amp; Ty &amp; 1<br>  \end{matrix}<br>  \right] \tag{1}<br>$$</p>
+<p>比例变换：<br>$$<br> \left[<br> \begin{matrix}<br>   Sx &amp; 0 &amp; 0 \<br>   0 &amp; Sy &amp; 0 \<br>   0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{2}<br>$$</p>
+<p>旋转变换：<br>$$<br> \left[<br> \begin{matrix}<br>   cosA &amp; sinA &amp; 0 \<br>   -sinA &amp; cosA &amp; 0 \<br>   0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{3}<br>$$</p>
+<p>对称变换：5种情况<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 \<br>   0 &amp; -1 &amp; 0 \<br>   0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{4}<br>$$</p>
+<p>错切变换：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; b &amp; 0 \<br>   c &amp; 1 &amp; 0 \<br>   0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{5}<br>$$</p>
+<p>运算完毕后，对齐次坐标进行规范化（最后一项<code>h</code>）。</p>
+<h4 id="三维变换"><a href="#三维变换" class="headerlink" title="三维变换"></a>三维变换</h4><p>在3维空间中的齐次坐标表示为<code>p[hx, hy, hz, h]</code>，变换矩阵含义依然不变。</p>
+<p>平移变换：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; 1 &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; 1 &amp; 0 \<br>   Tx &amp; Ty &amp; Tz &amp; 1<br>  \end{matrix}<br>  \right] \tag{6}<br>$$</p>
+<p>比例变换：<br>$$<br> \left[<br> \begin{matrix}<br>   Sx &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; Sy &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; Sz &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{7}<br>$$</p>
+<p>旋转变换（右手定则）：</p>
+<p>绕<code>z</code>轴转动：<br>$$<br> \left[<br> \begin{matrix}<br>   cosA &amp; sinA &amp; 0 &amp; 0 \<br>   -sinA &amp; cosA &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; 1 &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{8}<br>$$</p>
+<p>绕<code>x</code>轴转动：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; cosA &amp; sinA &amp; 0 \<br>   0 &amp; -sinA &amp; cosA &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{9}<br>$$</p>
+<p>绕<code>y</code>轴转动：<br>$$<br> \left[<br> \begin{matrix}<br>   cosA &amp; 0 &amp; -sinA &amp; 0 \<br>   0 &amp; 1 &amp; 0 &amp; 0 \<br>   sinA &amp; 0 &amp; cosA &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{10}<br>$$</p>
+<p>对称变换：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; -1 &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; 1 &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{11}<br>$$</p>
+<p>错切变换：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; b &amp; c &amp; 0 \<br>   d &amp; 1 &amp; f &amp; 0 \<br>   g &amp; h &amp; 1 &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{12}<br>$$</p>
+<p>也就是<code>x&#39; = x + d*y + g*z</code></p>
+<h4 id="三维逆变换"><a href="#三维逆变换" class="headerlink" title="三维逆变换"></a>三维逆变换</h4><p>平移变换：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; 1 &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; 1 &amp; 0 \<br>   -Tx &amp; -Ty &amp; -Tz &amp; 1<br>  \end{matrix}<br>  \right] \tag{6}<br>$$</p>
+<p>比例变换：<br>$$<br> \left[<br> \begin{matrix}<br>   1&#x2F;Sx &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; 1&#x2F;Sy &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; 1&#x2F;Sz &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{7}<br>$$</p>
+<p>旋转变换（右手定则）（带入 -A）：</p>
+<p>绕<code>z</code>轴转动：<br>$$<br> \left[<br> \begin{matrix}<br>   cosA &amp; -sinA &amp; 0 &amp; 0 \<br>   -inA &amp; cosA &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; 1 &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{8}<br>$$</p>
+<p>绕<code>x</code>轴转动：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; cosA &amp; -sinA &amp; 0 \<br>   0 &amp; sinA &amp; cosA &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{9}<br>$$</p>
+<p>绕<code>y</code>轴转动：<br>$$<br> \left[<br> \begin{matrix}<br>   cosA &amp; 0 &amp; sinA &amp; 0 \<br>   0 &amp; 1 &amp; 0 &amp; 0 \<br>   -sinA &amp; 0 &amp; cosA &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{10}<br>$$</p>
+<h4 id="三维复合变换"><a href="#三维复合变换" class="headerlink" title="三维复合变换"></a>三维复合变换</h4><p>分析步骤：</p>
+<ol>
+<li>先将参考点移动到坐标原点（轴）</li>
+<li>进行相应变换</li>
+<li>在移动到原来位置</li>
+</ol>
+<h3 id="观察变换"><a href="#观察变换" class="headerlink" title="观察变换"></a>观察变换</h3><p>设观察参考点<code>P0[Xv, Yv, Zv]</code>，观察坐标系为右手定则。</p>
+<p>观察变换：将世界坐标系中的点<code>Q</code>变换到观察坐标系中。</p>
+<p>分析步骤：</p>
+<ol>
+<li>平移观察参考点到用户坐标系原点</li>
+<li>进行旋转变换，将三个坐标轴重合</li>
+<li>此时新得到的<code>Q</code>就是所求了</li>
+</ol>
+<h3 id="投影变换-1"><a href="#投影变换-1" class="headerlink" title="投影变换"></a>投影变换</h3><p>在观察变换中隐含了一个观察平面，也就是投影平面。</p>
+<p>平行投影：三视图</p>
+<ul>
+<li>正投影</li>
+<li>三视图：常用反应尺寸，但难以表达三维性质</li>
+<li>正轴测图：垂直投影方向</li>
+<li>等轴测，正二测，正三测</li>
+<li>斜投影：投影方向不垂直与投影面</li>
+<li>斜等测，斜二测</li>
+</ul>
+<p>透视投影：近大远小<br>一点透视：1个主灭点，投影面与1个坐标轴正交，与另外2个轴平行<br>两点透视：2个主灭点，投影面与2个坐标轴正交，与另外1个轴平行<br>三点透视：3个主灭点，与3个坐标轴都相交</p>
+<p>在变换矩阵的右上角，是有关投影的设置。<br>一点透视：相似成比例<br>x’ &#x3D; x &#x2F; (z&#x2F;d)<br>y’ &#x3D; y &#x2F; (z&#x2F;d)<br>z’ &#x3D; d</p>
+<p>变换矩阵：<br>$$<br> \left[<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; 1 &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; 1 &amp; 1&#x2F;d \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right] \tag{10}<br>$$</p>
+<h3 id="观察空间"><a href="#观察空间" class="headerlink" title="观察空间"></a>观察空间</h3><p>根据观察平面可以定义观察空间，根据投影方式不同，会产生出不同的形状观察空间。根据前截面和后截面的定义，还能得到观察空间的范围。</p>
+<p>得到的有限观察空间又叫裁剪空间，视景体。</p>
+<p>这里可以定义规范化的投影空间：<br>观察窗口在<code>XoY</code>面上<code>x = ±1, y = ±1</code>，前截面和后截面为<code>z = ±1</code><br>正投影：经过比例、平移变换得到投影空间。<br>斜平行投影：经过比例、平移、错切变换得到投影空间。<br>透视：透视变换。</p>
+<p>这部分可以直接使用函数调用：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">glm::mat4 proj = glm::<span class="built_in">perspective</span>(<span class="number">45.0f</span>, <span class="number">1.3f</span>, <span class="number">0.1f</span>, <span class="number">100.0f</span>);</span><br></pre></td></tr></table></figure>
+
+<p>之后就是裁剪和屏幕映射了。</p>
+<h2 id="光栅化阶段"><a href="#光栅化阶段" class="headerlink" title="光栅化阶段"></a>光栅化阶段</h2><p>首先是收集三角形，之后遍历三角形覆盖的像素，并对像素着色。最后通过片元操作（遮挡，透明等）得到三角形的真实像素。</p>
+<h3 id="视觉现象"><a href="#视觉现象" class="headerlink" title="视觉现象"></a>视觉现象</h3><p>颜色辨别</p>
+<ul>
+<li>对青绿色和橙黄色最敏感<br>颜色对比：由视觉暂留效应引起</li>
+<li>同时对比：环境色影响某一颜色的判断</li>
+<li>即时对比：观察浅绿色后，再看黄色，会感觉到猩红</li>
+<li>边界对比：多种颜色的边界处对比强烈（马赫带效应）</li>
+<li>色相对比：同类色(15)，邻近色(45)，对比色(90-120)，互补色(180)</li>
+<li>明度对比：颜色受环境的明度影响</li>
+<li>纯度对比：环境纯度低会使物体显得鲜亮<br>颜色错觉：</li>
+<li>同化现象：纹理会使背景色偏亮(暗)，纹理越接近背景，同化越明显</li>
+<li>色彩的醒目性</li>
+<li>色彩的进退：色块有前有后，对比度大时有进的感觉，反之有退的感觉</li>
+<li>色彩的冷暖</li>
+<li>色彩的胀缩</li>
+<li>色彩的软硬</li>
+<li>色彩的情绪</li>
+</ul>
+<h3 id="颜色的表示"><a href="#颜色的表示" class="headerlink" title="颜色的表示"></a>颜色的表示</h3><p>颜色的三特性：明度，色调，饱和度。<br>组合成空间表示–纺锤体：上下两个极端为明度中的白和黑；中间一圈表示色调；由圆心向外辐射表示饱和度。</p>
+<p>CIE色度图：舌型曲线。</p>
+<p>RGB, CMY：面向设备</p>
+<p>HSV, HSL：面向用户，六棱锥形状，纺锤体状</p>
+<p>OpenGL中的颜色模型：<br>存储方式：</p>
+<ul>
+<li>颜色索引</li>
+<li>颜色值<ul>
+<li>RGB 颜色模式，每个分量取值<code>0~1</code></li>
+<li>RGBA 颜色模式，多一个不透明度，<code>1</code>表示不透明<ul>
+<li>颜色混合：源颜色值s，源调和因子S，目标颜色值d，目标调和因子D<ul>
+<li>调和颜色：<code>SrRs + DrRd, SgGs + DgGd, SbBs + DbBd, SaAs + DaAd</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HDR：高动态范围图像，为了保留大于1.0的颜色值的细节，将颜色重新归一化</li>
+</ul>
+</li>
+</ul>
+<h3 id="光照模型"><a href="#光照模型" class="headerlink" title="光照模型"></a>光照模型</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>环境光：弥漫于整个空间的光线。不是来自于光源，而是来自于无限多的反射得到。</p>
+<ul>
+<li>特点：照射到物体表面的光均匀的来自于各个方向，并均匀的向各个方向反射。</li>
+<li>表示：<code>Ie = Ia * Ka</code><ul>
+<li>Ia：环境光强度</li>
+<li>Ka：物体对环境光的反射系数</li>
+</ul>
+</li>
+</ul>
+<p>漫反射光：设点光源发出光强为Ip的光，向四周均匀辐射。物体得到的漫反射光取决于与光源的距离和朝向。</p>
+<ul>
+<li>理想漫反射：在一个粗糙，无光泽的表面上，光线沿各个方向做相同的反射，亮度相同。</li>
+<li>特点：光源唯一，反射光均匀反射。</li>
+<li>表示：<code>Id = Ip * Kd * cosA</code><ul>
+<li>Ip：点光源亮度</li>
+<li>A: 入射光与法线夹角</li>
+<li>Kd：漫反射系数，与物体材料和光的波长决定</li>
+</ul>
+</li>
+</ul>
+<p>镜面反射：遵循反射定理，强度很大。</p>
+<ul>
+<li>理想反射：观察者和点光源在物体表面有，入射角等于反射角</li>
+<li>非理想反射：入射角不等于反射角，但是依然可以看到高光</li>
+<li>表示：<code>Is = Ip * Ks * (cosA)^n</code><ul>
+<li>Ks：镜面反射系数</li>
+<li>A：反射镜与观察者夹角的差值</li>
+<li>n：反射指数，数目越大，物体越光滑，高光光斑越聚焦</li>
+<li>公式为经验公式</li>
+</ul>
+</li>
+</ul>
+<p>综合表示：<code>I = Ia * Ka + Ip * Kd * (L · N) + Ip * Ks * (R · V)^n</code></p>
+<h4 id="Phong-模型"><a href="#Phong-模型" class="headerlink" title="Phong 模型"></a>Phong 模型</h4><p>为了简化计算，做近似处理</p>
+<p>近似处理：<code>I = Ia * Ka + Ip * Kd * (L · N) + Ip * Ks * (H · N)^n</code></p>
+<ul>
+<li>假设光源和视点在无穷远，采用平行投影，则<code>L</code>与<code>V</code>变为常量</li>
+<li>取<code>H</code>为<code>(L+V)/2</code>，<code>N</code>为法线</li>
+<li>最终得到高光的方向为一个常量。</li>
+<li>误差：高光区域变大，通过适当调高<code>n</code>修正。</li>
+</ul>
+<p>光强衰减：距离为d时</p>
+<ul>
+<li>最简单的衰减因子：1&#x2F;(d^2)</li>
+<li>实际使用：f(d) &#x3D; min(1, 1&#x2F;(c0 + c1 * d + c2 * d^2))</li>
+</ul>
+<p>此时的光强：<code>I = Ia * Ka + f(d) * Ip * Kd * (L · N) + f(d) *  Ip * Ks * (H · N)^n</code></p>
+<p>此外，对RGB三个通道需要分别计算光强，需要的参数包括三种颜色的反射系数，三种颜色的光强。</p>
+<p>消除马赫带效应的方法：</p>
+<ul>
+<li>多边形细分</li>
+<li>光照插值</li>
+<li>明暗处理：对顶点法向量做双线性插值</li>
+</ul>
+<p>平行光：不加衰减因子<br>点光源：保留衰减因子<br>聚光灯：光锥的内圆锥和外圆锥，中间是渐变</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 平行光</span></span><br><span class="line"><span class="function">vec3 <span class="title">CalcDirLight</span><span class="params">(DirLight light, vec3 normal, vec3 viewDir)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!light.on)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">vec3</span>(<span class="number">0.0f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 漫反射</span></span><br><span class="line">    vec3 lightDir = <span class="built_in">normalize</span>(-light.direction);</span><br><span class="line">    <span class="type">float</span> diff = <span class="built_in">max</span>(<span class="built_in">dot</span>(normal, lightDir), <span class="number">0.0f</span>);</span><br><span class="line">    <span class="comment">// 镜面反射</span></span><br><span class="line">    vec3 reflectDir = <span class="built_in">reflect</span>(-lightDir, normal);</span><br><span class="line">    <span class="type">float</span> spec = <span class="built_in">pow</span>(<span class="built_in">max</span>(<span class="built_in">dot</span>(viewDir, reflectDir), <span class="number">0.0f</span>), material.shininess);</span><br><span class="line">    <span class="comment">// 漫反射 物体颜色</span></span><br><span class="line">    vec3 diffuseColor = <span class="built_in">vec3</span>(material.diffuse);</span><br><span class="line">    <span class="comment">// 叠加颜色</span></span><br><span class="line">    vec3 ambient = light.ambient * diffuseColor;</span><br><span class="line">    vec3 diffuse = light.diffuse * diff * diffuseColor;</span><br><span class="line">    vec3 specular = light.specular * spec * <span class="built_in">vec3</span>(material.specular);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ambient + diffuse + specular;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 点光源</span></span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="type">float</span> d = <span class="built_in">lenght</span>(light.postion - fragPos);</span><br><span class="line">    <span class="type">float</span> attenuation = <span class="number">1.0</span> / (light.c + light.l * d + light.q * d * d);</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> (ambient + diffuse + specular) * attenuation;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 聚光灯</span></span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="type">float</span> theta = <span class="built_in">dot</span>(lightDir, <span class="built_in">normalize</span>(-light.direction));</span><br><span class="line">    <span class="type">float</span> epsilon = light.cutOff - light.outerCutOff;</span><br><span class="line">    <span class="type">float</span> intensity = <span class="built_in">clamp</span>((theta - light.outerCurOff)/ epsilon, <span class="number">0.0f</span>, <span class="number">1.0f</span>);  <span class="comment">// clamp 约束强度在 0 到 1 之间</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> (ambient + (diffuse + specular * intensity)) * attenuation;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Whitted-光透射模型"><a href="#Whitted-光透射模型" class="headerlink" title="Whitted 光透射模型"></a>Whitted 光透射模型</h4><p>全局光照(GI)，又叫间接光照。</p>
+<p>间接光照：</p>
+<ul>
+<li>来源：其他物体的反射，透射的折射光。</li>
+</ul>
+<p>在原来的基础上加入透射光强和反射光源。</p>
+<p>透射光强：It * Kt</p>
+<ul>
+<li>Kt：透射系数</li>
+</ul>
+<p>反射光源：Ir * Kr</p>
+<ul>
+<li>Kr：反射系数（镜面反射）</li>
+</ul>
+<p>综合表示：<code>I = Ia * Ka + Ip * Kd * (L · N) + Ip * Ks * (R · V)^n + It * Kt + Ir * Kr</code></p>
+<p>全局光照的主要算法：</p>
+<p>Ray Tracing：光线追踪<br>Path Tracing：路径追踪<br>Photon Mapping：光子映射<br>Point-based Global Illumilation：基于点的全局光照<br>Voxel-based Global Illumilation：基于体素的全局光照<br>Ambient Occlusion：环境光遮蔽</p>
+<h4 id="光线追踪"><a href="#光线追踪" class="headerlink" title="光线追踪"></a>光线追踪</h4><p>光线投射：从观察平面的每个像素射出一条射线，找到最接近的物体挡住射线的路径，得到光强。</p>
+<p>光线追踪：在光线投射的前提下，加入物体表面的反射，折射，直到与光源相交。</p>
+<p>计算方法：如果是漫反射，则直接计算该点被光源照射的颜色；如果是镜面反射或折射，则继续反射或折射到另一条光线。如此递归，直到达到结束条件（遇到光源，逃逸出场景，达到最大深度。</p>
+<p>缺陷：</p>
+<ul>
+<li>表面属性单一：完全没有折射光或反射光。</li>
+<li>不考虑漫反射：漫反射成为结束条件。</li>
+</ul>
+<p>修正：</p>
+<ul>
+<li>把表面属性改为混合的（反射20% + 折射30% + 漫反射50%）</li>
+<li>使用蒙特卡洛近似简化。</li>
+</ul>
+<p>路径追踪：光线追踪 + 蒙特卡洛方法</p>
+<h3 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h3><p>纹理类型：</p>
+<ul>
+<li>颜色纹理：花纹，图案</li>
+<li>几何纹理：表面微观几何形状</li>
+</ul>
+<h4 id="颜色纹理"><a href="#颜色纹理" class="headerlink" title="颜色纹理"></a>颜色纹理</h4><p>纹理模式：</p>
+<ul>
+<li>图像纹理</li>
+<li>函数纹理：使用函数定义简单的二维纹理，或随机高度场，或粗糙的几何纹理。</li>
+</ul>
+<p>纹理映射：<br>首先定义纹理模式，建立物体表面的点与纹理模式点之间的对应。<br>其次对应点与光照模型进行计算。</p>
+<p>纹理空间：二维单位正方形区域，描述纹理。</p>
+<p>纹理映射方法：</p>
+<ul>
+<li>建立物体空间表面和纹理空间的对应关系<ul>
+<li>对物体表面坐标<code>(x, y, z)</code>用<code>u, v</code>参数化</li>
+<li>反求参数<code>u, v</code>用<code>(x, y, z)</code>表达</li>
+<li>根据<code>u, v</code>得到纹理值，并带入光照模型</li>
+</ul>
+</li>
+</ul>
+<p>纹理映射代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置纹理属性</span></span><br><span class="line"><span class="built_in">glTexParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);</span><br><span class="line"><span class="comment">// 加载纹理</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> *data = <span class="built_in">stbi_load</span>(<span class="string">&quot;res/texture/contain.jpg&quot;</span>, &amp;width, &amp;height, &amp;nrchannels, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 生成纹理</span></span><br><span class="line"><span class="built_in">glGenTexutres</span>(<span class="number">1</span>, &amp;texture1);</span><br><span class="line"><span class="built_in">glTexImage2D</span>(GL_TEXTURE_2D, <span class="number">0</span>, GL_RGB, width, height <span class="number">0</span>, GL_RGB, GL_UNSIGNED_BYTE, data);</span><br><span class="line"><span class="comment">// 绑定纹理</span></span><br><span class="line"><span class="built_in">glBindTexture</span>(GL_TEXTURE_2D, texture1);</span><br></pre></td></tr></table></figure>
+
+<p>立方体贴图：</p>
+<ul>
+<li>盒子贴图</li>
+<li>天空盒贴图</li>
+</ul>
+<h4 id="纹理贴图过程"><a href="#纹理贴图过程" class="headerlink" title="纹理贴图过程"></a>纹理贴图过程</h4><p>纹理的定义和设置</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建纹理</span></span><br><span class="line">GLuint texture1;</span><br><span class="line"><span class="built_in">glGenTextrues</span>(<span class="number">1</span>, &amp;texture1);</span><br><span class="line"><span class="built_in">glBindTexture</span>(GL_TEXTURE_2D, texture1);</span><br><span class="line"><span class="comment">// S轴(x轴)方向上环绕方式 </span></span><br><span class="line"><span class="comment">// GL_REPEAT：重复</span></span><br><span class="line"><span class="comment">// GL_MIRRORED_REPEAT：重复且镜像</span></span><br><span class="line"><span class="comment">// GL_CLAMP_TO_EDGE：超出部分拉伸</span></span><br><span class="line"><span class="comment">// GL_CLAMP_TO_BORDER：超出部分填入其他颜色</span></span><br><span class="line"><span class="built_in">glTextParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);</span><br><span class="line"><span class="comment">// T轴(y轴)方向上环绕方式</span></span><br><span class="line"><span class="built_in">glTextParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);</span><br><span class="line"><span class="comment">// 纹理缩小的时候，过滤方式是 线性过滤：产生颗粒状图案，能更清晰看到纹理像素</span></span><br><span class="line"><span class="built_in">glTextParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);</span><br><span class="line"><span class="comment">// 纹理放大的时候，过滤方式是 临近过滤：产生平滑图案</span></span><br><span class="line"><span class="built_in">glTextParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br></pre></td></tr></table></figure>
+<p>载入资源</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> width, height, nrchannels;</span><br><span class="line"><span class="built_in">stbi_set_flip_vertically_on_load</span>(<span class="literal">true</span>);</span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> *data = <span class="built_in">stbi_load</span>(<span class="string">&quot;a.jpg&quot;</span>, &amp;width, &amp;height, &amp;nrchannels, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(data)&#123;</span><br><span class="line">  <span class="comment">// 生成纹理</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="comment">// 载入失败</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成纹理</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glTexImage2D</span>(GL_TEXTURE_2D, <span class="number">0</span>, GL_RGB, width, height, <span class="number">0</span>, GL_RRGB, GL_UNSIGNED_BYTE, data);</span><br><span class="line"><span class="built_in">glGenerateMipmap</span>(GL_TEXTURE_2D);</span><br></pre></td></tr></table></figure>
+<p>绑定纹理</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glActiveTexture</span>(GL_TEXTURE0);</span><br><span class="line"><span class="built_in">glBindTexture</span>(GL_TEXTURE_2D, texture1);</span><br><span class="line">...</span><br><span class="line"><span class="built_in">glDrawArrays</span>(GL_TRANGLES, <span class="number">0</span>, <span class="number">36</span>);  <span class="comment">// 绘制</span></span><br></pre></td></tr></table></figure>
+<p>立方体数据</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">float</span> vectices[] = &#123;</span><br><span class="line">  <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">-0.5f</span>,  <span class="number">0.0f</span>,  <span class="number">0.0f</span>, <span class="comment">// 后面的两个是纹理的U V参数</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果使用立方体贴图，则不需要U V 参数</span></span><br></pre></td></tr></table></figure>
+
+<p>着色器</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// box.vs 顶点着色器</span></span><br><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="built_in">layout</span>(location = <span class="number">0</span>)</span><br><span class="line">in vec3 aPos;</span><br><span class="line"><span class="built_in">layout</span>(location = <span class="number">1</span>)</span><br><span class="line">in vec2 aTexCoord;</span><br><span class="line">out vec2 TexCoord;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  gl_Position = projection * view * model * <span class="built_in">vec4</span>(aPos, <span class="number">1.0</span>);</span><br><span class="line">  TexCoord = <span class="built_in">vec2</span>(aTexCoord.x, aTexCoord.y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// box.fs 片元着色器</span></span><br><span class="line"><span class="meta">#version 330</span></span><br><span class="line">coreout vec4 FragColor;</span><br><span class="line">in vec2 TexCoord;</span><br><span class="line">uniform sampler2D texture1;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  FragColor = <span class="built_in">texture</span>(texture1, TexCoord);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// skybox.vs</span></span><br><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="built_in">layout</span>(location = <span class="number">0</span>)</span><br><span class="line">in vec3 TexCoords;</span><br><span class="line">uniform mat4 projection;</span><br><span class="line">uniform mat4 view;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  TexCoord = aPos;</span><br><span class="line">  vec4 pos = projection * view  * <span class="built_in">vec4</span>(aPos, <span class="number">1.0</span>);</span><br><span class="line">  gl_Position = pos.xyww; <span class="comment">// z变为w，让其永远在最后面当背景</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// skybox.fs</span></span><br><span class="line"><span class="meta">#version 330</span></span><br><span class="line">out vec4 FragColor;</span><br><span class="line">in vec3 TexCoords;</span><br><span class="line">uniform samplerCube skybox;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  FragColor = <span class="built_in">texture</span>(skybox, TexCoords);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>天空贴图可以使用立方体贴图：</p>
+<pre><code> Top
+</code></pre>
+<p>Left Front Right Back<br>     Bottom</p>
+<p>立方体贴图有自己特殊的属性，可以使用方向向量对其索引和采样。</p>
+<p>纹理定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">load_cubemap</span><span class="params">(std::vector&lt;std::string&gt; faces)</span></span>&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> textureID;</span><br><span class="line">  <span class="built_in">glGenTextrues</span>(<span class="number">1</span>, &amp;textureID);</span><br><span class="line">  <span class="built_in">glBindTexture</span>(GL_TEXTURE_CUBE_MAP, textureID);</span><br><span class="line">  ...</span><br><span class="line">  <span class="built_in">glTextParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);</span><br><span class="line">  <span class="built_in">glTextParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);</span><br><span class="line">  <span class="built_in">glTextParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);</span><br><span class="line">  <span class="built_in">glTextParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);</span><br><span class="line">  <span class="built_in">glTextParameteri</span>(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br><span class="line">  <span class="keyword">return</span> textureID;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>资源载入：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">unsigned</span> <span class="type">int</span> <span class="title">load_cubemap</span><span class="params">(std::vector&lt;std::string&gt; faces)</span></span>&#123;</span><br><span class="line">  <span class="type">int</span> width, height, nrchannels;</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)&#123;</span><br><span class="line">    <span class="built_in">glTexImage2D</span>(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, <span class="number">0</span>, GL_RGB, width, height, <span class="number">0</span>, GL_RGB, GL_UNSIGNED_BYTE, data);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> textureID;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>天空盒不需要世界坐标系的模型变换，又由于相机始终在天空盒中心点，因此要消去view矩阵的位移部分。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view = glm::<span class="built_in">mat4</span>(glm::<span class="built_in">mat3</span>(glm::<span class="built_in">lookAt</span>(camera_position, camera_position + camera_front, camera_up)));  <span class="comment">// 去除相机位移</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="几何纹理"><a href="#几何纹理" class="headerlink" title="几何纹理"></a>几何纹理</h4><p>对物体表面的几何性质做微小扰动，产生凹凸不平的细节效果。<br>例如物体表面P(u, v)，都沿着法向量方向位移F(u, v)个单位长度，新表面的位置：<code>P&#39;(u, v) = P(u, v) + F(u, v) * N(u, v)</code>，最终还是利用光照产生立体感。</p>
+<p>算法：</p>
+<ul>
+<li>Bump Mapping 凹凸贴图：计算顶点光强时，给原始法向量加入一个扰动。</li>
+<li>Displacement Mapping 移位贴图：直接作用于顶点，根据像素值，使顶点沿发现移动，产生真正的凹凸平面。</li>
+<li>Normal Mapping 法线贴图：通过height map获得法向量信息，用RGB表示法向量的XYZ，之后计算光强，产生凹凸阴影效果。</li>
+<li>Parallax Mapping 视差贴图：通过height map和视线，陡峭的视角给顶点更多的位移，否则给少量位移，通过视差获得立体感。</li>
+<li>Relief Mapping 浮雕贴图：更精确的找出观察者视线与高度的交点，实现精确位移。</li>
+</ul>
+<p>法线贴图：<br>height map，高度图：</p>
+<ul>
+<li>存储的RGB值，实际上是法线的XYZ。</li>
+<li>光照后颜色值发生变换产生凹凸不平的效果。</li>
+<li>一个平面上的定点法向量方向根据height map取值。</li>
+<li>height map的法向量需要根据平面调整到全局情况中。</li>
+</ul>
+<p>切线空间的引入：</p>
+<ul>
+<li>每个平面有一个自己的切线空间<ul>
+<li>T：tangent 切线，x轴</li>
+<li>B：bitangent 副切线，y轴</li>
+<li>N：normal 法线，z轴</li>
+</ul>
+</li>
+<li>通过平面上不共线3点确定TBN的方向量(TBN矩阵)</li>
+<li>TBN矩阵叠加到法向量方向上得到法线贴图</li>
+</ul>
+<h4 id="法线贴图使用"><a href="#法线贴图使用" class="headerlink" title="法线贴图使用"></a>法线贴图使用</h4><p>一般height map偏蓝色，因为蓝色B表示z轴方向，指向用户。</p>
+<p>使用height map：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GLuint cube_diffuse_texture = <span class="built_in">LoadTextureFromFile</span>(<span class="string">&quot;.jpg&quot;</span>); <span class="comment">// 纹理</span></span><br><span class="line">GLuint cube_normal_texture = <span class="built_in">LoadTextureFromFile</span>(<span class="string">&quot;.jpg&quot;</span>);  <span class="comment">// 法线</span></span><br><span class="line"></span><br><span class="line"><span class="function">Shader <span class="title">normalmap_shader</span><span class="params">(<span class="string">&quot;.vs&quot;</span>, <span class="string">&quot;.fs&quot;</span>)</span></span>;  <span class="comment">// 加载着色器</span></span><br></pre></td></tr></table></figure>
+<p>在着色器中使用法线贴图：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">uniform sampler2D texture_material;</span><br><span class="line">uniform sampler2D texture_normal;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  vec3 normal = <span class="built_in">texture</span>(texture_normal, fs_in.TexCoords).rgb; <span class="comment">// 采样</span></span><br><span class="line">  normal = <span class="built_in">normalize</span>(normal * <span class="number">2.0</span> - <span class="number">1.0</span>);  <span class="comment">// RGB(0,1)范围转换到法线(-1,1)</span></span><br><span class="line">  ...</span><br><span class="line">  vec3 result = ambient + diffuse + specular;</span><br><span class="line">  FragColor = <span class="built_in">vec4</span>(result, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>引入切线空间：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取TBN矩阵</span></span><br><span class="line"><span class="built_in">layout</span> (location = <span class="number">1</span>) in vec3 aNormal;</span><br><span class="line"><span class="built_in">layout</span> (location = <span class="number">3</span>) in vec3 aTangent;</span><br><span class="line"><span class="comment">// 计算TBN矩阵，右手系</span></span><br><span class="line">vec3 T = <span class="built_in">normalize</span>(<span class="built_in">vec3</span>(model * <span class="built_in">vec4</span>(aTangent, <span class="number">0.0f</span>)));</span><br><span class="line">vec3 N = <span class="built_in">normalize</span>(<span class="built_in">vec3</span>(model * <span class="built_in">vec4</span>(aNormal, <span class="number">0.0f</span>)));</span><br><span class="line">vec3 B = <span class="built_in">normalize</span>(<span class="built_in">cross</span>(T, N));</span><br><span class="line">vs_out.TBN = <span class="built_in">mat3</span>(T, B, N);  <span class="comment">// 传出TBN矩阵</span></span><br><span class="line"><span class="comment">// 引入切线到世界空间变换</span></span><br><span class="line">normal = <span class="built_in">texture</span>(normalMap, fs_in.TexCoords).rgb;</span><br><span class="line">normal = <span class="built_in">normalize</span>(normal * <span class="number">2.0</span> - <span class="number">1.0</span>);</span><br><span class="line">normal = <span class="built_in">normalize</span>(fs_in.TBN * normal);</span><br></pre></td></tr></table></figure>
+
+<p>着色器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">uniform sampler2D texture_material;</span><br><span class="line">uniform sampler2D texture_normal;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  vec3 normal = <span class="built_in">texture</span>(texture_normal, fs_in.TexCoords).rgb; <span class="comment">// 采样</span></span><br><span class="line">  normal = <span class="built_in">normalize</span>(normal * <span class="number">2.0</span> - <span class="number">1.0</span>);  <span class="comment">// RGB(0,1)范围转换到法线(-1,1)</span></span><br><span class="line">  <span class="comment">// 引入切线到世界坐标变换</span></span><br><span class="line">  normal = <span class="built_in">normalize</span>(fs_in.TBN * normal);</span><br><span class="line">  <span class="comment">// 处理光照</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h3><p>基本思想：将视点移动到光源位置，用多边形区域排序消隐算法将多边形分为两类：向光与背光。再将视点移动到原来位置，对向光和背光多边形进行消隐，选用一种光照模型计算多边形亮度。</p>
+<p>例如使用Phong模型，则对背光多边形只保留环境光。</p>
+<p>主流算法：<br>Shadow Mapping：物体处于阴影是因为它与光源之间存在遮蔽物。<br>Shadow Volumn：根据光源和遮蔽物位置关系计算场景的阴影区域，然后对所有物体检测，确定是否受阴影影响。</p>
+<h4 id="Shadow-Mapping"><a href="#Shadow-Mapping" class="headerlink" title="Shadow Mapping"></a>Shadow Mapping</h4><p>步骤：</p>
+<ol>
+<li>以光源为视点，对场景进行渲染，得到一幅所有物体相对于光源的depth map(shadow map)，每个位置存储该点上离最近片元的深度值。</li>
+<li>恢复视点位置，对每个像素计算和光源的距离，将该值与depth map的值比较，确定该像素是否存在阴影当中。根据是否处于阴影，使用不同的光照计算策略。</li>
+</ol>
+<p>存在问题：阴影失真<br>解决方法：使用阴影偏移，简单对表面加入偏移量，让片元在表面上方。</p>
+<p>使用FBO存储Shadow Map：<br>一个完整的帧缓冲(FBO)需要：</p>
+<ul>
+<li>至少一个缓冲：颜色，深度，模板缓冲</li>
+<li>至少一个颜色附件：Attachment</li>
+<li>所有附件是完整的：保留了内存</li>
+<li>每个缓冲都有相同的样本数</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建并绑定一个帧缓冲</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> fbo;</span><br><span class="line"><span class="built_in">glGenFramebuffers</span>(<span class="number">1</span>, &amp;fbo);</span><br><span class="line"><span class="built_in">glBindFramebuffer</span>(GL_FRAMEBUFFER, fbo);</span><br><span class="line"><span class="comment">// 绑定附件 使用纹理存储shadow map</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> texture;</span><br><span class="line"><span class="built_in">glGenTextures</span>(<span class="number">1</span>, &amp;texture);</span><br><span class="line"><span class="built_in">glBindTexture</span>(GL_TEXTURE_2D, texture);</span><br><span class="line"><span class="built_in">glTexImage2D</span>(GL_TEXTURE_2D, <span class="number">0</span>, GL_RGB, <span class="number">800</span>, <span class="number">600</span>, <span class="number">0</span>, GL_RGB, GL_UNSIGNED_BYTE, <span class="literal">NULL</span>);</span><br><span class="line"><span class="built_in">glTexParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);</span><br><span class="line"><span class="built_in">glTexParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br><span class="line"><span class="comment">// 附加到帧缓冲上</span></span><br><span class="line"><span class="built_in">glFramebufferTexture2D</span>(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, texture, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 检查帧缓冲完整性</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">glCheckFramebufferStatus</span>(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE)&#123;</span><br><span class="line">  <span class="comment">// 帧缓冲完整</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 处理后续工作</span></span><br><span class="line"><span class="built_in">glBindFramebuffer</span>(GL_FRAMEBUFFER, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">glDeleteFramebuffers</span>(<span class="number">1</span>, &amp;fbo);</span><br></pre></td></tr></table></figure>
+
+<p>产生阴影效果：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 渲染阴影深度贴图</span></span><br><span class="line"><span class="built_in">glBindFramebuffer</span>(GL_FRAMEBUFFER, dpethMapFBO);</span><br><span class="line"><span class="built_in">glClearColor</span>(<span class="number">0.1f</span>, <span class="number">0.1f</span>, <span class="number">0.1f</span>, <span class="number">0.1f</span>);</span><br><span class="line"><span class="built_in">glClear</span>(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</span><br><span class="line"><span class="built_in">glViewport</span>(<span class="number">0</span>, <span class="number">0</span>, SHADOW_WIDTH, SHADOW_HEIGHT);</span><br><span class="line"><span class="comment">// 传入着色器</span></span><br><span class="line">shaodwMap_shader.<span class="built_in">use</span>()</span><br><span class="line">shadowMap_shader.<span class="built_in">setMat4</span>(<span class="string">&quot;lightSpaceMatrix&quot;</span>, lightSpaceMatrix);</span><br><span class="line"><span class="built_in">renderScene</span>(shadowMap_shader);</span><br><span class="line"><span class="built_in">glBindFramebuffer</span>(GL_FRAMEBUFFER, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>利用帧缓冲中的shadow map，判断是否是阴影部分：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断阴影</span></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">ShadowCalculation</span><span class="params">(vec4 flagPosLightSpace)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;</span><br><span class="line">  <span class="comment">// 变换范围到 0 1 之间</span></span><br><span class="line">  projCoords = projCoords * <span class="number">0.5</span> + <span class="number">0.5</span>;</span><br><span class="line">  <span class="type">float</span> closestDepth = <span class="built_in">texture</span>(shadowMap, porjCoores.xy).r;</span><br><span class="line">  <span class="type">float</span> currentDepth = projCoords.z;</span><br><span class="line">  <span class="type">float</span> shadow = currentDepth &gt; closestDepth ? <span class="number">1.0</span> : <span class="number">0.0</span>;</span><br><span class="line">  <span class="keyword">return</span> shadow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 渲染阴影</span></span><br><span class="line"><span class="type">float</span> shadow = <span class="built_in">ShadowCalculation</span>(fs_in.FragPosLightSpace);</span><br><span class="line">vec3 lighting = (ambient + (<span class="number">1.0</span> - shadow) * (diffuse + specular)) * color;</span><br></pre></td></tr></table></figure>
+
+<p>问题：实际会遇到采样越界，阴影失真，锯齿感等问题。</p>
+<h3 id="片元操作"><a href="#片元操作" class="headerlink" title="片元操作"></a>片元操作</h3><p>片元操作包括</p>
+<ul>
+<li>模板测试：遮罩效果</li>
+<li>深度测试：透明，半透明，不透明效果</li>
+<li>颜色混合：运动模糊，泛光效果等</li>
+<li>最终输出到颜色缓冲区</li>
+</ul>
+<p>颜色缓存：存储每个像素点颜色值</p>
+<p>深度缓存：存储每个像素点的深度值</p>
+<p>模板缓存：存储模板，用于显示输出区域，例如规定值为<code>1</code>的点会被显示</p>
+<p>累计缓存：存储像素点的颜色值，用于合成多幅图像。产生反锯齿，反走样等内容。</p>
+<h4 id="消隐操作"><a href="#消隐操作" class="headerlink" title="消隐操作"></a>消隐操作</h4><p>消隐：决定场景中哪些物体可见，哪些物体被遮挡。</p>
+<p>面剔除分析：基于面的正反面定义。</p>
+<p>后向面判别：观察方向为V，面法向量为N，如果<code>(V * N &gt; 0)</code>，则是后向面，不可见。</p>
+<p>后向面判别是在深度测试之前进行，可以减轻计算压力。</p>
+<p>深度测试算法：</p>
+<ul>
+<li>深度缓冲器算法 Z-buffer：对每个像素点找到距离视点最近的片元，也就是最靠近屏幕的片元。<ul>
+<li>步骤：<ul>
+<li>初始化：将深度缓存与帧缓存中所有的单元(x, y)初始化：<ul>
+<li>深度缓存中各个(x, y)单元置为z的最大值1</li>
+<li>帧缓存中各(x, y)单元颜色置为背景色</li>
+</ul>
+</li>
+<li>处理场景中每个多边形：<ul>
+<li>计算多边形上各个点(x, y)的深度值z<ul>
+<li>如果在前面，则计入深度缓存和帧缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>深度排序算法 画家算法：<ul>
+<li>步骤：<ul>
+<li>深度排序：将多边形按照深度优先级排序，存入队列N中，进的优先级高，远的优先级低。</li>
+<li>扫描转换：从队列N中逐个选择多个多边形绘制，由优先级低的开始绘制，逐个对多边形进行扫描转换。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在OpenGL中可以直接进行面剔除：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glEnable</span>(GL_CULL_FACE); </span><br><span class="line"><span class="built_in">glCullFace</span>(mode); <span class="comment">// mode：GL_FRONT GL_BACK GL_FRONT_AND_BACK</span></span><br><span class="line"><span class="comment">// 深度测试默认是关闭状态，需要的时候可以打开</span></span><br><span class="line"><span class="built_in">glEnable</span>(GL_DEPTH_TEST);</span><br></pre></td></tr></table></figure>
+
+<h4 id="透明处理"><a href="#透明处理" class="headerlink" title="透明处理"></a>透明处理</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开启混合</span></span><br><span class="line"><span class="built_in">glEnable</span>(GL_BLEND);</span><br><span class="line"><span class="comment">// 设置混合的源和目标因子</span></span><br><span class="line"><span class="comment">// GL_SRC_ALPHA 从纹理对于的PNG图片获取不透明值</span></span><br><span class="line"><span class="comment">// GL_ONE_MINUS_SRC_ALPHA = 1 - GL_SRC_ALPHA</span></span><br><span class="line"><span class="built_in">glBlendFunc</span>(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);</span><br></pre></td></tr></table></figure>
+
+<p>对于不透明物体，使用深度缓冲正常绘制。<br>对于透明物体，需按照透明物体距离摄像头，由远到近绘制所有透明物体</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 排序</span></span><br><span class="line">std::map&lt;<span class="type">float</span>, glm::vec3&gt; sorted;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">unsigned</span> <span class="type">int</span> i = <span class="number">0</span>; i &lt; windows.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">  <span class="type">float</span> distance = glm::<span class="built_in">length</span>(camera.Position - windows[i]);</span><br><span class="line">  sorted[distance] = windows[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 绘制</span></span><br><span class="line"><span class="keyword">for</span>(</span><br><span class="line">  std::map&lt;<span class="type">float</span>, glm::vec3&gt;::reverse_iterator it = sorted.<span class="built_in">rbegin</span>();</span><br><span class="line">  it != sorted.<span class="built_in">rend</span>();</span><br><span class="line">  it++)</span><br><span class="line">  &#123;</span><br><span class="line">    model = glm::<span class="built_in">mat4</span>(<span class="number">1.0f</span>);</span><br><span class="line">    model = glm::<span class="built_in">translate</span>(model, it-&gt;second);</span><br><span class="line">    shader.<span class="built_in">setMat4</span>(<span class="string">&quot;model&quot;</span>, model);</span><br><span class="line">    <span class="built_in">glDrawArrays</span>(GL_TRIANGLES, <span class="number">0</span>, <span class="number">6</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图形学进阶"><a href="#图形学进阶" class="headerlink" title="图形学进阶"></a>图形学进阶</h2><h3 id="PBR-基于物理的渲染方式"><a href="#PBR-基于物理的渲染方式" class="headerlink" title="PBR 基于物理的渲染方式"></a>PBR 基于物理的渲染方式</h3><p>使用符合物理学的方式模拟光线，核心技术是BRDF(双向反射分布函数)，描述物体表面将光从任何一个入射方向到任何一个反射方向的反射特性。</p>
+<p>常见PBR模型：</p>
+<ul>
+<li>Lambert 漫反射模型</li>
+<li>Phong 模型</li>
+<li>Blinn-Phong 模型</li>
+<li>快速 Phong 模型</li>
+<li>可逆 Phong 模型</li>
+<li>Cook-Torrance BRDF 模型</li>
+<li>Ward BRDF 模型</li>
+</ul>
+<p>其中后两项是基于物理的BRDF模型。</p>
+<p>主要理论：</p>
+<ul>
+<li>次表面散射：对于半透明物体，光线射入后在其内部发生散射，最后射出物体并进入视野中产生的现象。光除了从原来的入射点射出，也有部分从内部的其他点射出。</li>
+<li>菲涅尔反射：当光经过折射率不同的界面上，会有部分光反射，部分光折射。反射部分的大小和观察角度有关，例如全反射现象。圆球上边缘的地方容易发生全反射，中间则偏透射。</li>
+<li>微平面理论：物体表面是一系列细小的，肉眼不可见的微平面构成的宏平面。整体有一个法向量N，每个微平面有单独的法向量N’，计算反射光线使用N’。实际采用NDF函数(发现分布函数 D(h) )来描述。使用方法：向NDF输入一个朝向h，函数返回朝向h的微表面占总体的比例。这样得到的高光反射是模糊的。</li>
+</ul>
+<h3 id="游戏中的渲染技术"><a href="#游戏中的渲染技术" class="headerlink" title="游戏中的渲染技术"></a>游戏中的渲染技术</h3><p>为了提高真实感：</p>
+<ul>
+<li>运动模糊：通过合并有微小位移的多幅图像</li>
+<li>镜头泛光：由于透镜无法理想的聚焦而产生的辉光。</li>
+</ul>
+<p>为了提高实时性：</p>
+<ul>
+<li>天空盒</li>
+<li>公告板：总是面向观察者，粒子效果</li>
+<li>延迟渲染</li>
+<li>层次细节</li>
+</ul>
+<p>正向渲染：先进行光照计算，再进行深度测试</p>
+<p>延迟渲染：先进行深度测试，再进行光照计算</p>
+<p>层次细节LOD：根据距离动态的渲染不同细节的模型，合理分配渲染资源。</p>
+<h3 id="粒子系统-1"><a href="#粒子系统-1" class="headerlink" title="粒子系统"></a>粒子系统</h3><p>数据处理：生成顶点数据，生成绑定VBO和VAO，设置属性指针。</p>
+<p>生成顶点数据：</p>
+<ul>
+<li>粒子的定义</li>
+<li>粒子的产生</li>
+<li>粒子的模拟</li>
+<li>粒子的排序</li>
+</ul>
+<p>粒子的定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Particle</span>&#123;</span><br><span class="line">  glm::vec3 pos, speed;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> r, g, b, a;</span><br><span class="line">  <span class="type">float</span> size;</span><br><span class="line">  <span class="type">float</span> life;</span><br><span class="line">  <span class="type">float</span> cameradistance;</span><br><span class="line"></span><br><span class="line">  <span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">const</span> Particle&amp; that) <span class="type">const</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>-&gt;cameradistance &gt; that.cameradistance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>粒子系统的属性：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> MaxParticles = <span class="number">200</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">float</span> life = <span class="number">2.0</span>;</span><br><span class="line">glm::vec3 startPos = glm::<span class="built_in">vec3</span>(<span class="number">0.0f</span>, <span class="number">0</span>, <span class="number">0.0f</span>); <span class="comment">// 粒子起点</span></span><br><span class="line">glm::vec3 endPos = glm::<span class="built_in">vec3</span>(<span class="number">0.0f</span>, <span class="number">0</span>, <span class="number">4.8f</span>); <span class="comment">// 粒子起点</span></span><br><span class="line">Particle ParticleContainer[MaxParticles];</span><br></pre></td></tr></table></figure>
+
+<p>粒子的产生：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> newparticles = deltaTime / life * MaxParticles;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;newParticles; i++)&#123;</span><br><span class="line">  <span class="comment">// 找出已经消亡的粒子，重新使用</span></span><br><span class="line">  <span class="type">int</span> particleIndex = <span class="built_in">FindUnusedPartticle</span>();</span><br><span class="line">  ParticlesContainer[particleIndex].life = life;</span><br><span class="line">  glm::vec3 maindir = glm::<span class="built_in">vec3</span>(<span class="number">0.0f</span>, <span class="number">10.0f</span>, <span class="number">0.0f</span>); <span class="comment">//  主要方向</span></span><br><span class="line">  ParticlesContainer[particleIndex].pos = startPos + randomdOffset; <span class="comment">// 起点</span></span><br><span class="line">  ParticlesContainer[particleIndex].speed = (endPos - startPos) / life;</span><br><span class="line">  <span class="comment">// 产生随机颜色，透明度，大小等其他属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>粒子模拟：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ParticlesCount = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;MaxParticles; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>(p.life &gt; <span class="number">0.0f</span>)&#123;</span><br><span class="line">    p.life -= deltaTime;</span><br><span class="line">    <span class="keyword">if</span>(p.life &gt; <span class="number">0.0f</span>)&#123;</span><br><span class="line">      p.pos +=  p.speed * (<span class="type">float</span>)deltaTime;</span><br><span class="line">      <span class="comment">// 将粒子p的位置，大小，颜色填充到数组particle_position_size_data particle_color_data中</span></span><br><span class="line">      p.cameradistance = glm::<span class="built_in">length</span>(p.pos - CameraPosition);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123; <span class="comment">// 如果消亡，则排序后，会被放到数组的最后</span></span><br><span class="line">      p.cameradistance = <span class="number">-1.0f</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ParticlesCount++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">SortParticles</span>();</span><br></pre></td></tr></table></figure>
+
+<p>粒子的渲染：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glBindVertexArray</span>(VertexArrayID);</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;ParticlesCount;i++)&#123;</span><br><span class="line">  shader.<span class="built_in">setVec4</span>(<span class="string">&quot;xyzs&quot;</span>, </span><br><span class="line">    particle_position_size_data[<span class="number">4</span>*i+<span class="number">0</span>],</span><br><span class="line">    particle_position_size_data[<span class="number">4</span>*i+<span class="number">1</span>],</span><br><span class="line">    particle_position_size_data[<span class="number">4</span>*i+<span class="number">2</span>],</span><br><span class="line">    particle_position_size_data[<span class="number">4</span>*i+<span class="number">3</span>],</span><br><span class="line">  );</span><br><span class="line">  shader.<span class="built_in">setVec4</span>(<span class="string">&quot;color&quot;</span>,</span><br><span class="line">    particle_color_data[<span class="number">4</span>*i+<span class="number">0</span>],</span><br><span class="line">    particle_color_data[<span class="number">4</span>*i+<span class="number">1</span>],</span><br><span class="line">    particle_color_data[<span class="number">4</span>*i+<span class="number">2</span>],</span><br><span class="line">    particle_color_data[<span class="number">4</span>*i+<span class="number">3</span>],</span><br><span class="line">  )</span><br><span class="line">  <span class="built_in">glDrawArrays</span>(GL_TRIANGLE_STRIP, <span class="number">0</span>, <span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>公告板技术：根据粒子中心在世界的坐标，以及相机的Up和Right向量，计算粒子的4个顶点坐标，使其始终面向摄像机。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vec3 vertexPosition_worldspace = particleCenter_worldspace </span><br><span class="line">  + CameraRight_worldspace * particleSize</span><br><span class="line">  + CameraUp_worldspace * particleSize;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag"># 计算机图形学</a>
+              <a href="/tags/Shader/" rel="tag"># Shader</a>
+              <a href="/tags/OpenGL/" rel="tag"># OpenGL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/MachineLearn/" rel="prev" title="机器学习理论笔记">
+                  <i class="fa fa-angle-left"></i> 机器学习理论笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/03/14/%E6%B8%B8%E6%88%8F/3dmaxExec/" rel="next" title="3D 建模与引擎">
+                  3D 建模与引擎 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

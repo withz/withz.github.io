@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云物联网平台使用">
+<meta property="og:url" content="https://withz.github.io/2020/02/04/%E7%89%A9%E8%81%94%E7%BD%91/Ali-IOT/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-04T08:23:50.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.336Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="物联网">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="阿里云">
+<meta property="article:tag" content="NodeMCU">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/02/04/%E7%89%A9%E8%81%94%E7%BD%91/Ali-IOT/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/02/04/%E7%89%A9%E8%81%94%E7%BD%91/Ali-IOT/","path":"2020/02/04/物联网/Ali-IOT/","title":"阿里云物联网平台使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>阿里云物联网平台使用 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">数据的流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MQTT"><span class="nav-number">2.</span> <span class="nav-text">MQTT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MQTT-%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">MQTT 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MQTT-%E5%8D%8F%E8%AE%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">MQTT 协议格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%89%A9%E8%81%94%E7%BD%91%E5%B9%B3%E5%8F%B0"><span class="nav-number">3.</span> <span class="nav-text">阿里云物联网平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E8%81%94%E7%BD%91%E4%BD%93%E7%B3%BB"><span class="nav-number">3.1.</span> <span class="nav-text">物联网体系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">3.1.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">3.1.2.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E5%B1%82"><span class="nav-number">3.1.3.</span> <span class="nav-text">感知层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%8F%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">3.2.</span> <span class="nav-text">平台功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81"><span class="nav-number">3.3.</span> <span class="nav-text">产品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87"><span class="nav-number">3.4.</span> <span class="nav-text">设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E7%9B%B4%E8%BF%9E"><span class="nav-number">3.5.</span> <span class="nav-text">设备直连</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E5%85%B3%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.6.</span> <span class="nav-text">网关连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E7%BB%84"><span class="nav-number">3.7.</span> <span class="nav-text">三元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A4%E8%AF%81%E6%96%B9%E6%A1%88"><span class="nav-number">3.8.</span> <span class="nav-text">认证方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.9.</span> <span class="nav-text">通信模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86"><span class="nav-number">3.10.</span> <span class="nav-text">设备声明周期管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.11.</span> <span class="nav-text">物模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%B5%81%E7%A8%8B"><span class="nav-number">3.12.</span> <span class="nav-text">消息流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="nav-number">3.13.</span> <span class="nav-text">设备管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">3.14.</span> <span class="nav-text">数据传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AE%A2%E9%98%85"><span class="nav-number">3.15.</span> <span class="nav-text">服务端订阅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E5%88%99%E5%BC%95%E6%93%8E"><span class="nav-number">3.16.</span> <span class="nav-text">规则引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E7%AB%AF%E5%BC%80%E5%8F%91"><span class="nav-number">3.17.</span> <span class="nav-text">设备端开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%91%E7%AB%AF%E5%BC%80%E5%8F%91"><span class="nav-number">3.18.</span> <span class="nav-text">云端开发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%A9%E6%B9%BF%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8%E6%A1%88%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">温湿度传感器案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">功能描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E6%A8%A1%E5%9E%8B-1"><span class="nav-number">4.2.</span> <span class="nav-text">物模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%B5%81%E7%A8%8B"><span class="nav-number">4.3.</span> <span class="nav-text">项目流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91IoT%E5%B9%B3%E5%8F%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">4.4.</span> <span class="nav-text">阿里云IoT平台配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91"><span class="nav-number">4.5.</span> <span class="nav-text">服务端应用开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-IoT-Studio-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91"><span class="nav-number">4.6.</span> <span class="nav-text">使用 IoT Studio 快速开发</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/02/04/%E7%89%A9%E8%81%94%E7%BD%91/Ali-IOT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="阿里云物联网平台使用 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阿里云物联网平台使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-04 16:23:50" itemprop="dateCreated datePublished" datetime="2020-02-04T16:23:50+08:00">2020-02-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%A9%E8%81%94%E7%BD%91%E4%B8%8E%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">物联网与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h2 id="数据的流程"><a href="#数据的流程" class="headerlink" title="数据的流程"></a>数据的流程</h2><p>数据从节点设备产生，到用户自己的服务器这一过程，我们把它分为两部分。前半部分是节点设备产生数据，经过网络传递到阿里云物联网平台，这一过程使用MQTT协议。后半部分则有阿里云物联网平台将数据转交给阿里云的其他产品，如用户自己的云平台。</p>
+<p>节点接入的两种方式。<br>资源受限的节点设备。<br>使用Paho MQTT Client协议栈接入<br>没有TLS<br>透传模式<br>MQTT通信协议与服务器约定：</p>
+<ul>
+<li>消息负载的二进制表达</li>
+<li>消息主题</li>
+</ul>
+<p>资源丰富的节点设备。<br>使用Linkkit SDK接入<br>FreeRTOS，Json，TLS<br>物模型<br>MQTT通信协议安装物模型规定（解耦设备端与应用端开发）</p>
+<p>Web 后端<br>基于阿里云物联网平台HTTP&#x2F;2 SDK订阅设备数据<br>使用SpringBoot + Mybatis轻量级框架可开发服务端逻辑<br>MySQL存储设备数据</p>
+<p>Web 前端<br>React<br>Umi.js Antd 框架组件<br>dva.js数据管理<br>Bizcharts数据可视化<br>定时向后端请求数据</p>
+<p>软件<br>STM32CubeMX<br>IAR Embedded Workbench<br>Pahoo MQTT Client Stack<br>Linkkit C-SDK<br>MbedTLS<br>FreeRTOS</p>
+<p>JDK 8<br>Intellij IDEA<br>Node.js<br>MySQL<br>Navicat for MySQL<br>VSCode<br>Git</p>
+<h2 id="MQTT"><a href="#MQTT" class="headerlink" title="MQTT"></a>MQTT</h2><h3 id="MQTT-介绍"><a href="#MQTT-介绍" class="headerlink" title="MQTT 介绍"></a>MQTT 介绍</h3><p>MQTT（消息队列遥测传输）是一种基于TCP开发的协议，工作在应用层，使用异步通信模式，解耦通信双方。</p>
+<p>MQTT协议具有许多优点，如可靠性，双向传输性，低开销，有序性，低带宽等，采用发布订阅模式。</p>
+<p>MQTT协议中包含了四类关键字。</p>
+<p>客户端（client）<br>服务器端&#x2F;代理（server&#x2F;broker）</p>
+<p>会话（session）</p>
+<p>消息（message）<br>主题（Topic）</p>
+<p>订阅（subscribe）<br>发布（publish）</p>
+<p>角色：代理，负责收发数据；发布者，发布消息到代理；订阅者，订阅消息，接收代理推送的消息。</p>
+<p>发布者和订阅者通过不同的Topic进行消息的双向传输。二者可以从Topic中发布和订阅消息。</p>
+<p>每个产品会定义Topic类，下属的所有设备都会生成相应的Topic。例如某设备的气压，温度，湿度等Topic。</p>
+<h3 id="MQTT-协议格式"><a href="#MQTT-协议格式" class="headerlink" title="MQTT 协议格式"></a>MQTT 协议格式</h3><p>主题：主题具有层级结构，支持通配符。通配符有单级通配符<code>+</code>与多级通配符<code>#</code>。</p>
+<p>连接与会话：连接由客户端发起，服务器根据连接参数（客户端ID，用户名，密码，心跳间隔，消息-主题-遗嘱，会话保持等）对客户端鉴权和授权，连接参数也将决定此次会话是否是持久会话。</p>
+<p>MQTT报文格式：<br>固定报头：2~5 Bytes，是所有报文必须包含的（MSB在前，LSB在后）。</p>
+<table>
+<thead>
+<tr>
+<th>4 bits</th>
+<th>1 bit</th>
+<th>2 bits</th>
+<th>1 bit</th>
+<th>1 ~ 4 Bytes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Message Type</td>
+<td>UDP</td>
+<td>QoS Level</td>
+<td>RETAIN</td>
+<td>Remaining Length</td>
+</tr>
+</tbody></table>
+<p>可变报头：长度由Remaining Length决定；</p>
+<p>有效载荷：长度由Remaining Length决定。</p>
+<p>Message Type：共14种。<br>UDP，QoS Level，RETAIN：只有PUBLISH报文使用。<br>QoS：<br>0 – 最多收到一次，接收方不产生应答；<br>1 – 最少收到一次，接收方返回PUBACK报文；<br>2 – 保证仅收到一次，且消耗资源较大。<br>RETAIN：当客户端发送的消息中Retain置位，则服务器保留该条消息以及QoS级别，当有新的订阅发生，并与该消息主题一致，服务器就会马上把该Retain置位的消息转发给订阅者（相当于给订阅者写了留言，订阅者一上线就收到了这条消息）。服务器仅保留最近一个Retain置位的消息。删除Retain置位的消息是通过客户端发送一条Payload为空的Retain为空的消息。<br>Remaining Length：决定可变报头与有效载荷的总长度。</p>
+<p>CONNECT – 连接报文（0x01）：</p>
+<ul>
+<li>可变报头</li>
+</ul>
+<p>|2 Bytes|4 Bytes|1 Byte|1 bit|1 bit|1 bit|2 bits|1 bit|1 bit|1 bit|2 Bytes|<br>|–|–|–|–|–|–|–|–|–|–|<br>|可变报头长度|MQTT|版本（0x03）|用户名Flag|密码Flag|Will Retail|Will QoS|Will Flag| Clean Session|保留|Keep Alive Timer|</p>
+<p>标志位 为 1 时表示负载中包含该部分信息。</p>
+<ul>
+<li>负载</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>1 Byte</th>
+<th>1 Byte</th>
+<th>1 Byte</th>
+<th>1 Byte</th>
+<th>1 Byte</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Client Indentifier</td>
+<td>Will Topic</td>
+<td>Will Message</td>
+<td>用户名</td>
+<td>密码</td>
+</tr>
+</tbody></table>
+<p>遗嘱（Will）：是连接服务器时告诉服务器的消息，服务器会保存这些消息。当连接意外断开时，服务器会将遗嘱消息转发给所有订阅该设备上Topic的设备。</p>
+<p>SUBSCRIBE – 订阅报文（0x08）：</p>
+<ul>
+<li>可变报头</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>2 Bytes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Message ID</td>
+</tr>
+</tbody></table>
+<ul>
+<li>负载</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>2 Bytes</th>
+<th>N Bytes</th>
+<th>6 bits</th>
+<th>2 bits</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Topic name String Length</td>
+<td>Topic Name</td>
+<td>保留</td>
+<td>QoS Level</td>
+</tr>
+</tbody></table>
+<p>QoS Level：作用于服务器到客户端的下行链路。</p>
+<p>PUBLISH – 发布报文（0x03）：</p>
+<ul>
+<li>可变报头</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>2 Bytes</th>
+<th>N Bytes</th>
+<th>2 Bytes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Topic name String Length</td>
+<td>Topic Name</td>
+<td>Message ID</td>
+</tr>
+</tbody></table>
+<ul>
+<li>负载</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>N Bytes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Publish Message（可选）</td>
+</tr>
+</tbody></table>
+<p>QoS Level：作用于客户端到服务器的上行链路。</p>
+<p>UNSUBSCRIBE – 取消订阅（0xA）：<br>有可变头部和负载</p>
+<p>PINGREQ – 发送心跳（0xC）：<br>无可变头部和负载</p>
+<p>DISCONNECT – 断开连接（0xE）：<br>无可变头部和负载</p>
+<h2 id="阿里云物联网平台"><a href="#阿里云物联网平台" class="headerlink" title="阿里云物联网平台"></a>阿里云物联网平台</h2><h3 id="物联网体系"><a href="#物联网体系" class="headerlink" title="物联网体系"></a>物联网体系</h3><h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>应用层主要包括了关于物联网的Web应用，例如智慧交通，智能家居等服务端应用，也包括物联网应用接口。</p>
+<p>在阿里云物联网体系中还加入了阿里云物联网平台作为物联网应用的总接口。</p>
+<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p>终端与应用层的各个应用通信，需要借助网络。例如：2&#x2F;3&#x2F;4G，NB-IoT，WiFi，蓝牙，LoRaWAN等。</p>
+<h4 id="感知层"><a href="#感知层" class="headerlink" title="感知层"></a>感知层</h4><p>包括物联网终端设备，例如传感器，芯片，控制器，通信模组等。</p>
+<h3 id="平台功能"><a href="#平台功能" class="headerlink" title="平台功能"></a>平台功能</h3><p>设备接入：支持多种通信协议，提供多种通信协议SDK，即可满足长连接，也满足短连接，提供多种入网接入访问。<br>设备通信：可以实现双向通信。<br>设备管理：支持完整的设备声明周期管理，包括设备注册，功能定义，脚本解析，在线调试，远程配置，固件升级，远程维护，实时监控，分组管理，设备删除等。提供上下线通知，数据存储，OTA升级，设备影子缓存（用于解决不可靠网络通信问题）。<br>安全能力：一机一密的设备认证，安全级别高；一型一密的安全机制，安全级别普通。支持TLS（HTTP，MQTT），DTLS（CoAP），安全级别高；支持TCP（MQTT），UDP（CoAP），安全级别普通。<br>数据转发：可配置规则实现设备与设备的通信；支持消息转发至消息队列，表格存储，流计算，TSDB，函数计算等应用中。</p>
+<p>另外还有：<br>服务端订阅设备消息：平台数据可以通过HTTP&#x2F;2通道至服务器，并提供HTTP&#x2F;2 SDK，实现数据订阅功能。服务器也可以使用SDK传输数据至平台。</p>
+<h3 id="产品"><a href="#产品" class="headerlink" title="产品"></a>产品</h3><p>产品是设备的集合，指通常具有相同功能的一组设备。每一个产品都有一个ProductKey。</p>
+<h3 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h3><p>归属于某个产品之下，指具体的某一个终端。每一个设备都有一个DeviceName。</p>
+<h3 id="设备直连"><a href="#设备直连" class="headerlink" title="设备直连"></a>设备直连</h3><p>设备直接连接物联网平台。</p>
+<h3 id="网关连接"><a href="#网关连接" class="headerlink" title="网关连接"></a>网关连接</h3><p>网关：网关是可以直接连接物联网平台的设备，可以拥有子设备。网关是代理子设备连接云端的设备。</p>
+<p>子设备：只能通过网关连接平台。</p>
+<h3 id="三元组"><a href="#三元组" class="headerlink" title="三元组"></a>三元组</h3><p>平台会为每一台设备分配一个三元组。三元组内容如下：<br>ProductKey：产品标识，在全网具有唯一性。<br>DeviceName：设备标识，仅在产品维度内具有唯一性。<br>DeviceSecret：设备秘钥，与DeviceName成对出现。</p>
+<h3 id="认证方案"><a href="#认证方案" class="headerlink" title="认证方案"></a>认证方案</h3><p>一共有三种认证方案：<br>一机一密：该方案要求设备事先烧录自己的三元组，在建立连接时，设备携带自己的三元组在平台上进行认证，认证通过后才可以传输数据。<br>一型一密：所有设备可以烧录相同的固件（ProductKey和DeviceName），设备在认证通过后接收自己的DeviceSecret。<br>子设备认证：网关联入平台后，子设备的认证方案。</p>
+<h3 id="通信模式"><a href="#通信模式" class="headerlink" title="通信模式"></a>通信模式</h3><p>发布&#x2F;订阅模式：平台维护所有的Topic的发布&#x2F;订阅用户列表，当有发布者发布某Topic消息的时候，平台会在用户列表中查询所有订阅者，并将消息下发给订阅某Topic的订阅者。适用于非实时场景。</p>
+<p>RRPC模式：基于MQTT协议封装的同步通信模式，服务端下发消息，设备可以同步得到响应。适用于实时场景。</p>
+<h3 id="设备声明周期管理"><a href="#设备声明周期管理" class="headerlink" title="设备声明周期管理"></a>设备声明周期管理</h3><p>创建设备：在平台上创建设备。<br>激活设备：由设备申请激活。<br>启用设备：由平台控制设备的启用。<br>禁用设备：由平台控制设备的禁用。<br>删除设备：在平台上删除设备。</p>
+<p>设备状态：可以查看设备是否激活，是否在线等。<br>设备标签：可以查看设备厂商、型号等。</p>
+<h3 id="物模型"><a href="#物模型" class="headerlink" title="物模型"></a>物模型</h3><p>属性：设备运行状态，支持GET与SET服务，应用可以发起对属性的读取和设置请求。<br>服务：设备可以被外部调用的方法，可以设置输入参数与输出参数。<br>事件：设备运行时的事件在感知外部和处理通知消息后等激发，可以包含多个输出参数，如设备故障、完成某任务的消息等。事件可以被订阅和推送。</p>
+<h3 id="消息流程"><a href="#消息流程" class="headerlink" title="消息流程"></a>消息流程</h3><p>终端设备 &lt;–&gt; MQTT协议 &lt;–&gt; 阿里云平台 &lt;–&gt; HTTP&#x2F;2协议 &lt;–&gt; 个人服务器 &lt;–&gt; HTTPS&#x2F;HTTP &lt;–&gt; 浏览器，用户终端</p>
+<h3 id="设备管理"><a href="#设备管理" class="headerlink" title="设备管理"></a>设备管理</h3><p>查看数据：支持一次数据快照与历史数据查看。<br>固件升级：支持OTA升级。</p>
+<h3 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h3><p>Alink协议接入：用于设备与云端的双向通信，格式为Json。<br>透传接入：设备直接上传二进制数据，云端对数据进行解析，并转化为Alink协议的格式。</p>
+<h3 id="服务端订阅"><a href="#服务端订阅" class="headerlink" title="服务端订阅"></a>服务端订阅</h3><p>配置HTTP&#x2F;2服务端订阅后，物联网平台会将消息推送到服务端，服务端通过接入HTTP&#x2F;2 SDK后就可以接收物联网平台的消息。HTTP&#x2F;2 SDK提供身份认证，Topic订阅，消息发送和接收的能力，并支持设备接入和云端接入。HTTP&#x2F;2 SDK即适用于服务端与平台传输大量信息，也支持设备与物联网平台之间的消息传输。</p>
+<h3 id="规则引擎"><a href="#规则引擎" class="headerlink" title="规则引擎"></a>规则引擎</h3><p>当设备基于Topic与平台进行消息通信时，用户可以通过规则引擎实现对设备数据的处理和转发，实现将数据转发至阿里云其他产品中。</p>
+<p>转发支持转发到RDS，Table Store，HiTSDB等数据库，DataHub进行流计算、离线计算，函数计算，另一个Topic，消息队列五种形式。</p>
+<h3 id="设备端开发"><a href="#设备端开发" class="headerlink" title="设备端开发"></a>设备端开发</h3><p>设备端开发SDK包含：</p>
+<ul>
+<li>C SDK</li>
+<li>Android SDK</li>
+<li>NodeJS SDK</li>
+<li>Java SDK</li>
+<li>Python SDK</li>
+<li>iOS SDK</li>
+</ul>
+<h3 id="云端开发"><a href="#云端开发" class="headerlink" title="云端开发"></a>云端开发</h3><p>云端开发SDK支持</p>
+<ul>
+<li>Java</li>
+<li>Python</li>
+<li>PHP</li>
+<li>.NET。</li>
+</ul>
+<p>API 包含：</p>
+<ul>
+<li>产品管理</li>
+<li>设备管理</li>
+<li>分组管理</li>
+<li>规则引擎</li>
+<li>Topic管理</li>
+<li>消息通信</li>
+<li>设备影子</li>
+</ul>
+<h2 id="温湿度传感器案例"><a href="#温湿度传感器案例" class="headerlink" title="温湿度传感器案例"></a>温湿度传感器案例</h2><h3 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a>功能描述</h3><p>配置一个温湿度检测物联网终端设备，可以监测当前温湿度，可以配置温度阈值，当高于温度阈值时，发出报警。</p>
+<p>设备方面：</p>
+<ul>
+<li>设备每5秒上报温湿度，闪烁绿灯；</li>
+<li>温度超过阈值，亮红灯，并每10秒向用户报警一次；</li>
+<li>收到用户解除警报信息后红灯闪烁；</li>
+<li>温度正常后，灭掉红灯。</li>
+</ul>
+<p>平台方面：</p>
+<ul>
+<li>温湿度值转发到用户服务器，同时在Web端显示温湿度曲线；</li>
+<li>报警消息转发到用户服务器，在Web端显示；</li>
+<li>Web页面可以解除警报。</li>
+<li>Web页面可以设置阈值。</li>
+</ul>
+<h3 id="物模型-1"><a href="#物模型-1" class="headerlink" title="物模型"></a>物模型</h3><p>属性：</p>
+<ul>
+<li>当前温度</li>
+<li>当前湿度</li>
+<li>温度阈值</li>
+</ul>
+<p>事件：</p>
+<ul>
+<li>属性达到上限</li>
+<li>温度超过阈值</li>
+</ul>
+<p>服务：</p>
+<ul>
+<li>设置阈值</li>
+<li>获取属性值</li>
+<li>解除警报</li>
+</ul>
+<h3 id="项目流程"><a href="#项目流程" class="headerlink" title="项目流程"></a>项目流程</h3><p>节点方面：</p>
+<ul>
+<li>初始化<ul>
+<li>系统初始化</li>
+<li>平台初始化</li>
+<li>MQTT连接参数计算</li>
+<li>连接阿里物联网平台</li>
+<li>订阅相关主题</li>
+</ul>
+</li>
+<li>主循环<ul>
+<li>MQTT连接是否正常</li>
+<li>读取温湿度</li>
+<li>判断是否报警</li>
+<li>发布设备属性</li>
+</ul>
+</li>
+<li>MQTT订阅回调函数<ul>
+<li>收到设置阈值Topic消息<ul>
+<li>更新温度阈值</li>
+</ul>
+</li>
+<li>收到解除警报Topic消息<ul>
+<li>解除警报</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="阿里云IoT平台配置"><a href="#阿里云IoT平台配置" class="headerlink" title="阿里云IoT平台配置"></a>阿里云IoT平台配置</h3><p>打开阿里物联网云平台页面，登录并进入产品管理页面。点击<code>创建产品</code>，选择<code>基础版</code>，输入<code>产品名称</code>，选择<code>设备</code>，认证选择<code>否</code>。</p>
+<p>进入设备页面，点击<code>添加设备</code>，输入<code>设备名称</code>，就可以生产三元组了。</p>
+<p>回到产品页面，在Topic类列表<code>定义Topic类</code>实现自定义Topic。</p>
+<p>在<code>服务端订阅</code>中<code>设置</code>：<code>设备上报消息</code>与<code>设备状态变化通知</code>，点击保存。</p>
+<h3 id="服务端应用开发"><a href="#服务端应用开发" class="headerlink" title="服务端应用开发"></a>服务端应用开发</h3><p>开发流程为：</p>
+<ul>
+<li>需求分析：功能、交互</li>
+<li>系统设计：UI设计、API设计、数据库设计</li>
+<li>编码开发：前端编码、后端编码</li>
+<li>联调测试：功能测试、交互测试</li>
+<li>系统运维：发布上线、持续运维</li>
+</ul>
+<p>后端开发流程</p>
+<ul>
+<li>数据库设计</li>
+<li>API 约定</li>
+<li>后端编写</li>
+<li>前后端联调</li>
+<li>部署上线运维</li>
+</ul>
+<p>框架</p>
+<ul>
+<li>MySQL</li>
+<li>Mybatis：在Java中操作MySQL</li>
+<li>SpringBoot：整合了MyBatis + SpringMVC等</li>
+<li>Maven：跨平台项目管理工具</li>
+</ul>
+<h3 id="使用-IoT-Studio-快速开发"><a href="#使用-IoT-Studio-快速开发" class="headerlink" title="使用 IoT Studio 快速开发"></a>使用 IoT Studio 快速开发</h3><p>在IoT Studio中，用户可以快速构建Web应用，手机APP，以及后端服务。</p>
+<p>进入<code>IoT Studio</code>，选择<code>开发服务</code>，<code>新建项目</code>，在<code>项目产品</code>和<code>项目设备</code>中<code>关联</code>自己的设备。</p>
+<p>之后选择<code>Web可视化开发</code>或<code>移动应用开发</code>，编辑相关内容，生成应用程序。例如生成Android App，经过几分钟编译打包后，在<code>移动应用开发</code>界面的<code>设置</code>，<code>构建管理</code>中下载安装APP。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag"># 物联网</a>
+              <a href="/tags/STM32/" rel="tag"># STM32</a>
+              <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag"># 阿里云</a>
+              <a href="/tags/NodeMCU/" rel="tag"># NodeMCU</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" rel="prev" title="Redis 入门">
+                  <i class="fa fa-angle-left"></i> Redis 入门
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/04/%E8%BF%90%E7%BB%B4/Docker/" rel="next" title="Docker">
+                  Docker <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/02/04/%E7%89%A9%E8%81%94%E7%BD%91/Ali-IOT/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

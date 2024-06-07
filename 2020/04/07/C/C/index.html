@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C">
+<meta property="og:url" content="https://withz.github.io/2020/04/07/C/C/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-07T12:15:04.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.284Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="C">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/04/07/C/C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/04/07/C/C/","path":"2020/04/07/C/C/","title":"C"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%8E%86%E5%8F%B2"><span class="nav-number">2.</span> <span class="nav-text">版本历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C99"><span class="nav-number">2.1.</span> <span class="nav-text">C99</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C11"><span class="nav-number">2.2.</span> <span class="nav-text">C11</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">字符串常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">5.</span> <span class="nav-text">结构体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E5%9F%9F"><span class="nav-number">6.</span> <span class="nav-text">位域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">7.</span> <span class="nav-text">标准输入输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="nav-number">8.</span> <span class="nav-text">文件读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%AE%8F"><span class="nav-number">9.</span> <span class="nav-text">预定义宏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">10.</span> <span class="nav-text">错误处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="nav-number">11.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">12.</span> <span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="nav-number">13.</span> <span class="nav-text">命令行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="nav-number">14.</span> <span class="nav-text">虚内存模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">15.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">16.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E5%BA%93"><span class="nav-number">17.</span> <span class="nav-text">参考库</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/04/07/C/C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-07 20:15:04" itemprop="dateCreated datePublished" datetime="2020-04-07T20:15:04+08:00">2020-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C-C/" itemprop="url" rel="index"><span itemprop="name">C/C++</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+
+<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/sitemap/">参考文档</a></p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>需要GCC，可以使用<a target="_blank" rel="noopener" href="http://mingw-w64.org/doku.php">MinGW-w64</a>，并配置<code>/bin</code>目录到环境变量。<br>编译文件使用命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c</span><br><span class="line">gcc main.c -o main.out</span><br></pre></td></tr></table></figure>
+
+<p>注意：在VC与GCC上，对于<code>long</code>型有关的变量，其长度定义的不一致。</p>
+<h2 id="版本历史"><a href="#版本历史" class="headerlink" title="版本历史"></a>版本历史</h2><p>C语言有：C89(90)，C99，C11。</p>
+<h3 id="C99"><a href="#C99" class="headerlink" title="C99"></a>C99</h3><p>新增关键字：<code>_Bool</code>,<code> _Complex</code>, <code>_Imaginary</code>, <code>inline</code>, <code>restrict</code><br>复合字面量：初始化结构的时候允许对特定的元素赋值，<code>struct test&#123;int a, b, c, d;&#125; foo = &#123; .a = 1, .c = 3, 4, .b = 5 &#125;; </code>。<br>格式化字符串中，利用 \u 支持 unicode 的字符。<br>修改了 &#x2F;% 处理负数时的定义，这样可以给出明确的结果，例如在C89中-22 &#x2F; 7 &#x3D; -3, -22% 7 &#x3D; -1，也可以-22 &#x2F; 7&#x3D; -4, -22% 7 &#x3D; 6。 而C99中明确为 -22 &#x2F; 7 &#x3D; -3, -22% 7 &#x3D; -1，只有一种结果。</p>
+<h3 id="C11"><a href="#C11" class="headerlink" title="C11"></a>C11</h3><p>新增关键字：<code>_Alignas</code>, <code>_Alignof</code>, <code>_Atomic</code>, <code>_Generic</code>, <code>_Noreturn</code>, <code>_Static_assert</code>, <code>_Thread_local</code>。</p>
+<p><code>alignof(T)</code>返回T的对齐方式，<code>aligned_alloc()</code>以指定字节和对齐方式分配内存，头文件<code>&lt;stdalign.h&gt;</code>定义了这些内容。<br><code>fopen()</code>增加了新的创建、打开模式<code>x</code>，在文件锁中比较常用。<br><code>quick_exit()</code>,又一种终止程序的方式，当<code>exit()</code>失败时用以终止程序。<br>多线程：头文件<code>&lt;threads.h&gt;</code>定义了创建和管理线程的函数，新的存储类修饰符<code>_Thread_local</code>限定了变量不能在多线程之间共享。<br><code>_Atomic</code>类型修饰符和头文件<code>&lt;stdatomic.h&gt;</code>。<br>改进的Unicode支持和头文件<code>&lt;uchar.h&gt;</code>。</p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>前缀：<code>0x</code>表示十六进制，<code>0</code>表示八进制，默认是十进制。<br>后缀：<code>u</code>表示无符号，<code>l</code>表示长整数。<br>size_t：64位中表示<code>long long unsigned int</code>，非64位中为<code>long unsigned int</code>。size_t大于等于地址线宽度。是sizeof的返回类型，就是表示一个size。<br>ptrdiff_t：用来保存两个指针减法操作的结果。</p>
+<h2 id="字符串常用函数"><a href="#字符串常用函数" class="headerlink" title="字符串常用函数"></a>字符串常用函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">strcpy</span>(s1, s2);  <span class="comment">// 复制s2到s1</span></span><br><span class="line"><span class="built_in">strcat</span>(s1, s2);  <span class="comment">// 连接s2到s1末端</span></span><br><span class="line"><span class="built_in">strlen</span>(s);       <span class="comment">// s长度</span></span><br><span class="line"><span class="built_in">strcmp</span>(s1, s2);  <span class="comment">// 比较</span></span><br><span class="line"><span class="built_in">strchr</span>(s, ch);   <span class="comment">// 查找ch位置</span></span><br><span class="line"><span class="built_in">strstr</span>(s1, s2);  <span class="comment">// 查找子串s2位置</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><p>结构体在函数传参中可以值传递，也可以地址传递。值传递时，不会改变原有的结构体，也就是调用时，结构体被复制了一份。</p>
+<h2 id="位域"><a href="#位域" class="headerlink" title="位域"></a>位域</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">bs</span>&#123;</span><br><span class="line">    <span class="type">unsigned</span> a:<span class="number">4</span>;</span><br><span class="line">    <span class="type">unsigned</span>  :<span class="number">4</span>;    <span class="comment">/* 空域 */</span></span><br><span class="line">    <span class="type">unsigned</span> b:<span class="number">4</span>;    <span class="comment">/* 从下一单元开始存放 */</span></span><br><span class="line">    <span class="type">unsigned</span> c:<span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="标准输入输出"><a href="#标准输入输出" class="headerlink" title="标准输入输出"></a>标准输入输出</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回值表示读取成功的变量数，为EOF表示读取结束</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">scanf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *format, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">printf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *format, ...)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>占位修饰符：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;%+&quot;</span> 显示正负</span><br><span class="line"><span class="string">&quot;%-&quot;</span> 左对齐</span><br><span class="line"><span class="string">&quot;% &quot;</span> 显示负或空</span><br><span class="line"><span class="string">&quot;%#&quot;</span> 显示进制格式，科学计数格式</span><br><span class="line"><span class="string">&quot;%0&quot;</span> <span class="number">0</span>填充前导数值</span><br><span class="line"><span class="string">&quot;%4&quot;</span> <span class="string">&quot;%*&quot;</span> 字宽最小值，*表示从参数中获取</span><br><span class="line"><span class="string">&quot;%5.2f&quot;</span> 保留几位小数和整数</span><br><span class="line"><span class="string">&quot;%6.4hd&quot;</span> <span class="type">short</span> <span class="type">int</span> / <span class="type">unsigned</span> <span class="type">short</span> <span class="type">int</span>, hhd 表示 <span class="type">char</span>/uchar</span><br><span class="line"><span class="string">&quot;%j&quot;</span> <span class="type">int</span> uint</span><br><span class="line"><span class="string">&quot;%l&quot;</span> <span class="type">long</span></span><br><span class="line"><span class="string">&quot;%ll&quot;</span> <span class="type">long</span> <span class="type">long</span></span><br><span class="line"><span class="string">&quot;%L&quot;</span> <span class="type">long</span> <span class="type">double</span></span><br><span class="line"><span class="string">&quot;%t&quot;</span> 表示 <span class="type">ptrdiff_t</span></span><br><span class="line"><span class="string">&quot;%z&quot;</span> 表示 <span class="type">size_t</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">FILE *<span class="title">fopen</span><span class="params">( <span class="type">const</span> <span class="type">char</span> * filename, <span class="type">const</span> <span class="type">char</span> * mode )</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fclose</span><span class="params">( FILE *fp )</span></span>;  <span class="comment">// 成功返回0，错误返回EOF</span></span><br><span class="line"><span class="comment">// 读取一个字符，错误返回EOF</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fgetc</span><span class="params">( FILE * fp )</span></span>;</span><br><span class="line"><span class="comment">// 读取n-1个字符到buf，并在buf末尾追加null</span></span><br><span class="line"><span class="function"><span class="type">char</span> *<span class="title">fgets</span><span class="params">( <span class="type">char</span> *buf, <span class="type">int</span> n, FILE *fp )</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fscanf</span><span class="params">(FILE *fp, <span class="type">const</span> <span class="type">char</span> *format, ...)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fputc</span><span class="params">( <span class="type">int</span> c, FILE *fp )</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fputs</span><span class="params">( <span class="type">const</span> <span class="type">char</span> *s, FILE *fp )</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fprintf</span><span class="params">(FILE *fp,<span class="type">const</span> <span class="type">char</span> *format, ...)</span></span>;</span><br><span class="line"><span class="comment">// 二进制I/O函数，用于读写存储块</span></span><br><span class="line"><span class="function"><span class="type">size_t</span> <span class="title">fread</span><span class="params">(<span class="type">void</span> *ptr, <span class="type">size_t</span> size_of_elements, </span></span></span><br><span class="line"><span class="params"><span class="function">             <span class="type">size_t</span> number_of_elements, FILE *a_file)</span></span>;</span><br><span class="line">              </span><br><span class="line"><span class="function"><span class="type">size_t</span> <span class="title">fwrite</span><span class="params">(<span class="type">const</span> <span class="type">void</span> *ptr, <span class="type">size_t</span> size_of_elements, </span></span></span><br><span class="line"><span class="params"><span class="function">             <span class="type">size_t</span> number_of_elements, FILE *a_file)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">feof</span> <span class="params">( FILE * fp )</span></span>; <span class="comment">// 判断是否到结尾</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">ferror</span> <span class="params">( FILE *fp )</span></span>; <span class="comment">// 判断是否出错</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rewind</span> <span class="params">( FILE *fp )</span></span>;<span class="comment">// 移动指针到开头</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">fseek</span> <span class="params">( FILE *fp, <span class="type">long</span> offset, <span class="type">int</span> origin )</span></span>; <span class="comment">// 移动指针到某个位置</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">ftell</span> <span class="params">( FILE * fp )</span></span>; <span class="comment">// 文件长度</span></span><br></pre></td></tr></table></figure>
+
+<p>FILE结构体为</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义FILE结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">_iobuf</span> &#123;</span><br><span class="line">    <span class="type">int</span> cnt; <span class="comment">// 剩余的字符，如果是输入缓冲区，那么就表示缓冲区中还有多少个字符未被读取</span></span><br><span class="line">    <span class="type">char</span> *ptr; <span class="comment">// 下一个要被读取的字符的地址</span></span><br><span class="line">    <span class="type">char</span> *base; <span class="comment">// 缓冲区基地址</span></span><br><span class="line">    <span class="type">int</span> flag; <span class="comment">// 读写状态标志位</span></span><br><span class="line">    <span class="type">int</span> fd; <span class="comment">// 文件描述符</span></span><br><span class="line">&#125; FILE;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="预定义宏"><a href="#预定义宏" class="headerlink" title="预定义宏"></a>预定义宏</h2><p><code>__DATE__</code>	当前日期，一个以 “MMM DD YYYY” 格式表示的字符常量。<br><code>__TIME__</code>	当前时间，一个以 “HH:MM:SS” 格式表示的字符常量。<br><code>__FILE__</code>	这会包含当前文件名，一个字符串常量。<br><code>__LINE__</code>	这会包含当前行号，一个十进制常量。<br><code>__STDC__</code>	当编译器以 ANSI 标准编译时，则定义为 1。<br>字符串常量化运算符（#）：转化常量为字符串<br>标记粘贴运算符（##）：拼接合并变量<br>#pragma：使用标准化方法，向编译器发布特殊的命令到编译器中</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> errno; <span class="comment">// 保存错误信息</span></span><br><span class="line"><span class="built_in">perror</span>(<span class="string">&quot;An error occered&quot;</span>)  <span class="comment">// 返回传入的字符串，并追加一个冒号和空格</span></span><br><span class="line"><span class="built_in">strerror</span>(errno)  <span class="comment">// 返回一个指针，指向errno代表的文本</span></span><br><span class="line">stderr <span class="comment">// 用来输入错误信息的文件流</span></span><br><span class="line"><span class="comment">// 例如</span></span><br><span class="line"><span class="built_in">fprintf</span>(stderr, <span class="string">&quot;错误号: %d\n&quot;</span>, errno);</span><br><span class="line"><span class="built_in">perror</span>(<span class="string">&quot;通过 perror 输出错误&quot;</span>);</span><br><span class="line"><span class="built_in">fprintf</span>(stderr, <span class="string">&quot;打开文件错误: %s\n&quot;</span>, <span class="built_in">strerror</span>(errno));</span><br><span class="line"><span class="comment">// 退出</span></span><br><span class="line"><span class="built_in">exit</span>(EXIT_SUCCESS); <span class="comment">// 正常退出</span></span><br><span class="line"><span class="built_in">exit</span>(EXIT_FAILURE); <span class="comment">// 不正常退出</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdarg.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">func</span><span class="params">(<span class="type">int</span>, ... )</span></span>&#123;</span><br><span class="line">    va_list valist;</span><br><span class="line">    <span class="comment">/* 为 num 个参数初始化 valist */</span></span><br><span class="line">    <span class="built_in">va_start</span>(valist, num);</span><br><span class="line">    <span class="comment">/* 访问所有赋给 valist 的参数 */</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; num; i++)&#123;</span><br><span class="line">       sum += <span class="built_in">va_arg</span>(valist, <span class="type">int</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 清理为 valist 保留的内存 */</span></span><br><span class="line">    <span class="built_in">va_end</span>(valist);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> *<span class="title">calloc</span><span class="params">(<span class="type">int</span> num, <span class="type">int</span> size)</span></span>;  <span class="comment">// 在堆区动态分配 num 个长度为 size 的连续空间 + 初始化为 0</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">free</span><span class="params">(<span class="type">void</span> *address)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">malloc</span><span class="params">(<span class="type">int</span> num)</span></span>;  <span class="comment">// 在堆区分配，不会初始化</span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">realloc</span><span class="params">(<span class="type">void</span> *address, <span class="type">int</span> newsize)</span></span>;  <span class="comment">// 重新分配</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// argv 第0个 文件名，第1个，首个参数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">( <span class="type">int</span> argc, <span class="type">char</span> *argv[] )</span> </span></span><br></pre></td></tr></table></figure>
+
+<p>Linux 下我们可使用 getopt 和 getopt_long 来对命令行参数进行解析：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="type">char</span> *optstr = <span class="string">&quot;p:n:m:c:&quot;</span>;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">option</span> opts[] = &#123;</span><br><span class="line">        &#123;<span class="string">&quot;path&quot;</span>, <span class="number">1</span>, <span class="literal">NULL</span>, <span class="string">&#x27;p&#x27;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;name&quot;</span>, <span class="number">1</span>, <span class="literal">NULL</span>, <span class="string">&#x27;n&#x27;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;mtime&quot;</span>, <span class="number">1</span>, <span class="literal">NULL</span>, <span class="string">&#x27;m&#x27;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;ctime&quot;</span>, <span class="number">1</span>, <span class="literal">NULL</span>, <span class="string">&#x27;c&#x27;</span>&#125;,</span><br><span class="line">        &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="type">int</span> opt;</span><br><span class="line">    <span class="keyword">while</span>((opt = <span class="built_in">getopt_long</span>(argc, argv, optstr, opts, <span class="literal">NULL</span>)) != <span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">switch</span>(opt) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;p&#x27;</span>: <span class="comment">// ...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">findInDir</span>(path);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="虚内存模型"><a href="#虚内存模型" class="headerlink" title="虚内存模型"></a>虚内存模型</h2><p>Linux：<br>由低地址到高地址分别为：保留区，代码区，常量区，全局变量区，堆（以及未分配内存），动态链接库，（未分配内存以及）栈（向低地址增长）内核空间。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/embedded_sky/article/details/44457453">Windows</a></p>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/c/120/">参考文档</a></p>
+<p>在头文件 <code>threads.h</code> 中，定义和声明了支持多线程的宏、类型和函数。所有直接与线程相关的标识符，均以前缀 <code>thrd_</code> 作为开头。</p>
+<p>线程操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建并开始执行一个新线程</span></span><br><span class="line"><span class="comment">// thr: thrd_t 类型</span></span><br><span class="line"><span class="comment">// func: 例如 int parallel_sum(void *arg)</span></span><br><span class="line"><span class="comment">// arg: 指向参数的指针</span></span><br><span class="line"><span class="comment">// 返回值: 是否创建成功 thrd_success</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">thrd_create</span><span class="params">(<span class="type">thrd_t</span> *thr, <span class="type">thrd_start_t</span> func, <span class="type">void</span> *arg)</span></span>;</span><br><span class="line"><span class="comment">// 阻塞等待某线程</span></span><br><span class="line"><span class="comment">// result: 线程返回值</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">thrd_join</span><span class="params">(<span class="type">thrd_t</span> thr, <span class="type">int</span> *result)</span></span>;</span><br><span class="line"><span class="comment">// 当线程 thr 执行完成后，自动释放线程占用的所有资源</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">thrd_detach</span><span class="params">(<span class="type">thrd_t</span> thr)</span></span>;</span><br><span class="line"><span class="comment">// 返回其所在线程的线程标识。</span></span><br><span class="line"><span class="function"><span class="type">thrd_t</span> <span class="title">thrd_current</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"><span class="comment">// 两个线程标识符 thr0、thr1 分别引用了两个不同线程时，返回 0。</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">thrd_equal</span><span class="params">(<span class="type">thrd_t</span> thr0, <span class="type">thrd_t</span> thr1)</span></span>;</span><br><span class="line"><span class="comment">// 使得正在调用的线程等待一段时间。仅当该函数收到唤醒的信号时，它才提前返回。</span></span><br><span class="line"><span class="comment">// duration: 等待时间</span></span><br><span class="line"><span class="comment">// remaining: 剩余时间</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">thrd_sleep</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> timespec*duration, <span class="keyword">struct</span> timespec*remaining)</span></span>;</span><br><span class="line"><span class="comment">// 尝试中断当前调用的线程，并将 CPU 时间分给另一个线程。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">thrd_yield</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"><span class="comment">// 以 result 作为结果值结束正在调用线程。</span></span><br><span class="line"><span class="function">_Noreturn <span class="type">void</span> <span class="title">thrd_exit</span><span class="params">(<span class="type">int</span> result)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">timespec</span>&#123;</span><br><span class="line">    <span class="type">time_t</span> tv_sec;   <span class="comment">// 秒≥0</span></span><br><span class="line">    <span class="type">long</span>   tv_nsec;  <span class="comment">// 0 ≤纳秒≤999 999 999</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>当每个线程为各自的变量使用全局标识符时，为保留这些变量各自的数据，可以采用线程对象和线程存储。</p>
+<p>线程对象（全局或静态对象）：每一个线程拥有属于自己的线程对象实例（不共享）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">thread_local</span> <span class="type">int</span> var = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>线程存储：线程内部使用。<br>通过初始创建一个全局的键（key）表示一个指向线程存储的指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建Key</span></span><br><span class="line"><span class="comment">// dtor: 例如 void destructor(void *data);  用作析构函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">tss_create</span><span class="params">(<span class="type">tss_t</span> *key, <span class="type">tss_dtor_t</span> dtor)</span></span>;</span><br><span class="line"><span class="comment">// 删除Key</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">tss_delete</span><span class="params">(<span class="type">tss_t</span> key)</span></span>;</span><br><span class="line"><span class="comment">// 设置key所表示的tss指针为val引用的内存地址</span></span><br><span class="line"><span class="comment">// val: 例如 malloc(size)</span></span><br><span class="line"><span class="comment">// 返回thrd_error或者thrd_success</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">tss_set</span><span class="params">(<span class="type">tss_t</span> key, <span class="type">void</span>*val)</span></span>;</span><br><span class="line"><span class="comment">// 返回内存块指针</span></span><br><span class="line"><span class="comment">// 返回thrd_error或者thrd_success</span></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="title">tss_get</span><span class="params">(<span class="type">tss_t</span> key)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>线程间通信：使用条件变量，以等待来自另一个线程的通知。互斥要自行实现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建条件变量</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cnd_init</span><span class="params">(<span class="type">cnd_t</span> *cond)</span></span>;</span><br><span class="line"><span class="comment">// 释放资源</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cnd_destroy</span><span class="params">(<span class="type">cnd_t</span> *cond)</span></span>;</span><br><span class="line"><span class="comment">// 在等待条件变量的线程中唤醒一个</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cnd_signal</span><span class="params">(<span class="type">cnd_t</span> *cond)</span></span>;</span><br><span class="line"><span class="comment">// 唤醒所有等待指定条件变量的线程</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cnd_broadcast</span><span class="params">(<span class="type">cnd_t</span> *cond)</span></span>;</span><br><span class="line"><span class="comment">// 阻塞正在调用的线程，并释放指定的互斥。</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cnd_wait</span><span class="params">(<span class="type">cnd_t</span> *cond, <span class="type">mtx_t</span> *mtx)</span></span>;</span><br><span class="line"><span class="comment">// 阻塞正在调用的线程，但仅维持由参数 ts 指定的时间</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cnd_timedwait</span><span class="params">(<span class="type">cnd_t</span> *restrict cond，<span class="type">mtx_t</span> *restrict mtx，<span class="type">const</span> <span class="keyword">struct</span> timespec *restrict ts)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>互斥操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化互斥锁</span></span><br><span class="line"><span class="comment">// mutextype: </span></span><br><span class="line"><span class="comment">// - mtx_plain 既不支持超时也不支持递归</span></span><br><span class="line"><span class="comment">// - mtx_timed 支持超时</span></span><br><span class="line"><span class="comment">// - mtx_plain | mtx_recursive</span></span><br><span class="line"><span class="comment">// - mtx_timed | mtx_recursive</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">mtx_init</span><span class="params">(<span class="type">mtx_t</span> *mtx, <span class="type">int</span> mutextype)</span></span>;</span><br><span class="line"><span class="comment">// 释放资源</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mtx_destroy</span><span class="params">(<span class="type">mtx_t</span> *mtx)</span></span>;</span><br><span class="line"><span class="comment">// 上锁，阻塞当前进程</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">mtx_lock</span><span class="params">(<span class="type">mtx_t</span> *mtx)</span></span>;</span><br><span class="line"><span class="comment">// 解锁</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">mtx_unlock</span><span class="params">(<span class="type">mtx_t</span> *mtx)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+<p>原子对象与原子操作：<code>stdatomic.h</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明一个原子对象，数组和函数类型不能为原子类型。</span></span><br><span class="line"><span class="comment">// 原子对象的初始化不是一个原子操作。</span></span><br><span class="line">_Atomic <span class="type">long</span> counter = <span class="built_in">ATOMIC_VAR_INIT</span>(<span class="number">0L</span>);</span><br><span class="line">_Atomic <span class="type">long</span> counter = <span class="built_in">ATOMIC_INIT</span>(<span class="number">0L</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原子操作</span></span><br><span class="line"><span class="built_in">atomic_store</span>();</span><br><span class="line"><span class="built_in">atomic_exchange</span>();</span><br><span class="line"><span class="built_in">atomic_compare_exchange_strong</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始和结束操作原子对象</span></span><br><span class="line"><span class="built_in">atomic_flag_test_and_set</span>();</span><br><span class="line"><span class="built_in">atomic_flag_clear</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断原子对象是否无锁（0有锁，1无锁，2始终无锁）</span></span><br><span class="line"><span class="function">_Bool <span class="title">atomic_is_lock_free</span><span class="params">(<span class="type">const</span> <span class="keyword">volatile</span> A *obj)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>内存次序：使用原子对象可以默认地防止此类重新排序。但是在较低的内存次序请求下，通过明确地使用原子操作提高性能。</p>
+<p>每个原子操作的函数都有一个以 <code>_explicit</code> 结尾版本。如<code>atomic_store_explicit()</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">memory_order</span> &#123;</span><br><span class="line">    <span class="comment">// 编译器可以自由地改变操作的顺序</span></span><br><span class="line">    memory_order_relaxed, </span><br><span class="line">    <span class="comment">// 原子对象释放操作</span></span><br><span class="line">    memory_order_release, </span><br><span class="line">    <span class="comment">// 原子对象捕获操作</span></span><br><span class="line">    memory_order_acquire,</span><br><span class="line">    <span class="comment">// 消耗操作</span></span><br><span class="line">    memory_order_consume,</span><br><span class="line">    <span class="comment">// 同时具有捕获和释放操作</span></span><br><span class="line">    memory_order_acq_rel,</span><br><span class="line">    <span class="comment">// 顺序一致性</span></span><br><span class="line">    memory_order_seq_cst,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例如</span></span><br><span class="line"><span class="built_in">atomic_store_explicit</span>(&amp;aptr, (<span class="type">intptr_t</span>)&amp;data,memory_order_release);</span><br><span class="line">dp = (<span class="keyword">struct</span> Data*)<span class="built_in">atomic_load_explicit</span>(&amp;aptr,</span><br><span class="line">memory_order_acquire);  </span><br></pre></td></tr></table></figure>
+
+<p>内存屏障（栅栏）：对于一个原子操作的内存次序请求，也可以通过一个原子操作单独指定。栅栏允许更大程度的内存顺序优化。<br>若参数值为 memory_order_release，函数 atomic_thread_fence（）建立一个释放栅栏（releas fence）。在这种情况下，原子写操作必须在释放栅栏之后发生。<br>若参数值为 memory_order_acquire 或 memory_order_consume，函数 atomic_thread_fence（）建立一个捕获栅栏（acquire fence）。在这种情况下，原子读操作必须在捕获栅栏之前发生。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">atomic_thread_fence</span><span class="params">(memory_order order)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C 内置排序算法 stdlib.h 中</span></span><br><span class="line"><span class="built_in">qsort</span>(arr.<span class="built_in">data</span>(), ARRAY_SIZE，<span class="built_in">sizeof</span>(<span class="type">int</span>), comp_function [a&gt;b +, a&lt;b -, a=b <span class="number">0</span>])</span><br><span class="line"><span class="comment">// C 内置二分搜索 stdlib.h 中，返回指向元素的指针</span></span><br><span class="line"><span class="type">void</span> *p = <span class="built_in">bsearch</span>(&amp;target, arr.<span class="built_in">data</span>(), ARRAY_SIZE, <span class="built_in">sizeof</span>(<span class="type">int</span>), comp_function);</span><br><span class="line"></span><br><span class="line"><span class="comment">// C 内置计时器 time.h</span></span><br><span class="line"><span class="type">clock_t</span> clk = <span class="built_in">clock</span>();  <span class="comment">// 返回当前时间，毫秒</span></span><br><span class="line"><span class="comment">// 格式化输出到内存</span></span><br><span class="line"><span class="built_in">snprintf</span>(buf, <span class="number">10</span>, <span class="string">&quot;%d&quot;</span>, x);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="参考库"><a href="#参考库" class="headerlink" title="参考库"></a>参考库</h2><p>assert.h: <code>assert(ignore) ((void)0)</code> 宏定义<br>ctype.h: 测试数据类型<br>errno.h: C 标准库中的特定函数修改它的值为一些非零值以表示某些类型的错误<br>float.h: 包含了一组与浮点值相关的依赖于平台的常量<br>limits.h: 决定了各种变量类型的各种属性<br>locale.h: 定义了特定地域的设置，比如日期格式和货币符号<br>math.h: 各种数学函数<br>setjmp.h: 定义了宏 setjmp()、函数 longjmp() 和变量类型 jmp_buf，该变量类型会绕过正常的函数调用和返回规则<br>signal.h: 定义了一个变量类型 sig_atomic_t、两个函数调用和一些宏来处理程序执行期间报告的不同信号<br>stdarg.h: 定义了一个变量类型 va_list 和三个宏，这三个宏可用于在参数个数可变时获取函数中的参数<br>stddef.h: 定义了各种变量类型和宏ptrdiff_t, size_t, wchar_t, NULL, offsetof<br>stdlib.h: size_t wchar_t NULL atof atoi atol strtod strtol等, malloc free, abort, exit, qsort, bsearch, system, abs, rand …<br>string.h: memcpy memmove memcmp memchr 以及字符串相关<br>time.h: struct tm, asctime, time, …</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/07/C/CMake/" rel="prev" title="CMake">
+                  <i class="fa fa-angle-left"></i> CMake
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/23/%E7%89%A9%E8%81%94%E7%BD%91/Respbrry/" rel="next" title="树莓派">
+                  树莓派 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/04/07/C/C/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Web">
+<meta property="og:url" content="https://withz.github.io/2020/02/09/Python/PythonWeb/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-09T04:04:06.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.328Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/02/09/Python/PythonWeb/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/02/09/Python/PythonWeb/","path":"2020/02/09/Python/PythonWeb/","title":"Python Web"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python Web | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%88%AC%E8%99%AB"><span class="nav-number">1.</span> <span class="nav-text">爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Robots-%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.1.</span> <span class="nav-text">Robots 协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Lib-%E5%8C%85"><span class="nav-number">1.2.</span> <span class="nav-text">URL Lib 包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX-%E4%B8%8E-HTTPS"><span class="nav-number">1.3.</span> <span class="nav-text">AJAX 与 HTTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib-3"><span class="nav-number">1.4.</span> <span class="nav-text">urllib 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requests-%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">requests 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XPATH-%E6%8A%80%E6%9C%AF"><span class="nav-number">1.6.</span> <span class="nav-text">XPATH 技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spider"><span class="nav-number">1.7.</span> <span class="nav-text">Spider</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web"><span class="nav-number">2.</span> <span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django"><span class="nav-number">2.1.</span> <span class="nav-text">Django</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flask"><span class="nav-number">2.2.</span> <span class="nav-text">Flask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cherrypy"><span class="nav-number">2.3.</span> <span class="nav-text">Cherrypy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tornado"><span class="nav-number">2.4.</span> <span class="nav-text">Tornado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F-Celery"><span class="nav-number">2.5.</span> <span class="nav-text">分布式系统 Celery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">2.5.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.5.2.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E5%90%88-Django"><span class="nav-number">2.5.3.</span> <span class="nav-text">结合 Django</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7-Flower"><span class="nav-number">2.5.4.</span> <span class="nav-text">监控 Flower</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-Supervisor"><span class="nav-number">2.5.5.</span> <span class="nav-text">进程管理 Supervisor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.5.6.</span> <span class="nav-text">模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">2.5.7.</span> <span class="nav-text">异步服务器与客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95"><span class="nav-number">2.6.</span> <span class="nav-text">接口测试</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/02/09/Python/PythonWeb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python Web | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python Web
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-09 12:04:06" itemprop="dateCreated datePublished" datetime="2020-02-09T12:04:06+08:00">2020-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h1 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h1><h2 id="Robots-协议"><a href="#Robots-协议" class="headerlink" title="Robots 协议"></a>Robots 协议</h2><p>Robots 协议指定了一个网站可以爬取的信息，例如： <code>http://www.taobao.com/robots.txt</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">User-agent:  Baiduspider</span><br><span class="line">Allow:  /article</span><br><span class="line">Allow:  /oshtml</span><br><span class="line">Allow:  /ershou</span><br><span class="line">Allow: /$</span><br><span class="line">Disallow:  /product/</span><br><span class="line">Disallow:  /</span><br><span class="line"></span><br><span class="line">User-Agent:  *</span><br><span class="line">Disallow:  /</span><br><span class="line"></span><br><span class="line"># 站点信息</span><br><span class="line">Sitemap: ...</span><br></pre></td></tr></table></figure>
+
+<p>使用爬虫技术，需要注意应：</p>
+<ul>
+<li>要伪装User-Agent，且需要多个，随机选取</li>
+<li>对参数进行URL编码</li>
+<li>注意是否是通过AJAX传输数据</li>
+<li>保存服务器下发的Cookies</li>
+</ul>
+<h2 id="URL-Lib-包"><a href="#URL-Lib-包" class="headerlink" title="URL Lib 包"></a>URL Lib 包</h2><p><code>urllib.request</code>，负责读写 url。 <code>urllib.error</code>，定义错误与异常。 <code>urllib.parse</code>，url参数的编码解码。 <code>urllib.robotparser</code>，用于分析robots.txt文件。</p>
+<p>简单的读写URL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from urllib.request import urlopen, Request</span><br><span class="line"></span><br><span class="line"># 直接打开一个url，Request对象，返回HTTPResponse对象，用法类似文件</span><br><span class="line">res = urlopen(url, data)</span><br><span class="line"></span><br><span class="line"># 构造Request</span><br><span class="line">req = Request(url, headers=&#123;</span><br><span class="line">    &#x27;User-agent&#x27;: &#x27;user agent&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"># 或 req.add_header(&#x27;&#x27;, &#x27;&#x27;)</span><br><span class="line">res = urlopen(req)</span><br><span class="line"></span><br><span class="line"># 查看结果</span><br><span class="line">res.closed  # 查看是否关闭，False</span><br><span class="line">with res:</span><br><span class="line">    res.status   # 状态码</span><br><span class="line">    res.reason   # 状态</span><br><span class="line">    res.getrul() # 真正的URL，例如重定向后的URL</span><br><span class="line">    res.info()   # headers</span><br><span class="line">    res.read()   # 返回读取的内容</span><br><span class="line">res.closed  # 查看是否关闭，True</span><br></pre></td></tr></table></figure>
+
+<p>URL参数的编码解码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from urllib.request import parse</span><br><span class="line"></span><br><span class="line">d = &#123;</span><br><span class="line">    &#x27;id&#x27;: 1,</span><br><span class="line">    &#x27;name&#x27;: &#x27;auther&#x27;,</span><br><span class="line">&#125;</span><br><span class="line"># url编码</span><br><span class="line">arg = parse.urlencode(d)</span><br><span class="line"># url解码</span><br><span class="line">d = parse.unquote(arg)</span><br><span class="line"># 使用</span><br><span class="line">url = f&quot;http://...?&#123;arg&#125;&quot;   # GET</span><br><span class="line"># 或 urlopen(req, arg.encode())  POST</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://httpbin.org/">HTTP 实验网站</a></p>
+<h2 id="AJAX-与-HTTPS"><a href="#AJAX-与-HTTPS" class="headerlink" title="AJAX 与 HTTPS"></a>AJAX 与 HTTPS</h2><p>在Chrome浏览器里，进入开发者选项，选择XHR分类，查看异步请求。利用其中的AJAX接口进行数据请求。</p>
+<p>HTTPS是由权威机构颁发的证书，颁发的证书文件需要事先上传至被认证的服务器上。当用户访问网站时，用户浏览器会首先得到该网站的服务器证书，用户拿到证书后进行验证，进而判断通信是否安全。</p>
+<p>在爬虫中，我们会遇到拥有HTTPS但是不信任的网站，因此要尽量忽略HTTPS以减少工作量。</p>
+<p>使用SSL模块忽略HTTPS：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import ssl</span><br><span class="line"></span><br><span class="line"># 忽略不信任的证书</span><br><span class="line">context = ssl._create_unverified_context()</span><br><span class="line">with urlopen(req, context = context) as res:</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<h2 id="urllib-3"><a href="#urllib-3" class="headerlink" title="urllib 3"></a>urllib 3</h2><p>urllib 3库是一个第三方库，提供了例如连接池管理等功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install urllib3</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import urllib3</span><br><span class="line"></span><br><span class="line"># 打开一个 URL 池管理器</span><br><span class="line">with urllib3.PoolManager() as http:</span><br><span class="line">    # http.urlopen()</span><br><span class="line">    resp = http.request()</span><br><span class="line">    # resp.status</span><br><span class="line">    # resp.reason</span><br><span class="line">    # resp.headers</span><br><span class="line">    # resp.data </span><br></pre></td></tr></table></figure>
+
+<h2 id="requests-库"><a href="#requests-库" class="headerlink" title="requests 库"></a>requests 库</h2><p>requests库是基于urllib3库的，而且提供了更加友好的API使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">resp = requests.request(&#x27;GET&#x27;, url, headers=&#123;</span><br><span class="line">        &#x27;User-Agent&#x27;: ua</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">with resp:</span><br><span class="line">    # resp.url</span><br><span class="line">    # resp.status_code</span><br><span class="line">    # resp.request.headers</span><br><span class="line">    # resp.text</span><br><span class="line">    # resp.cookies</span><br></pre></td></tr></table></figure>
+
+<p>使用带Cookie的访问：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with request.Session() as session:</span><br><span class="line">    for url in urls:</span><br><span class="line">        resp = session.get(url, headers=&#123;&#x27;&#x27;,&#x27;&#x27;&#125;)</span><br><span class="line">        with resp:</span><br><span class="line">            pass</span><br></pre></td></tr></table></figure>
+
+<h2 id="XPATH-技术"><a href="#XPATH-技术" class="headerlink" title="XPATH 技术"></a>XPATH 技术</h2><p>XPath是用来在XML中查找信息的语言。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;bookstore&gt;</span><br><span class="line"></span><br><span class="line">&lt;book&gt;</span><br><span class="line">  &lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt;</span><br><span class="line">  &lt;author&gt;J K. Rowling&lt;/author&gt; </span><br><span class="line">  &lt;year&gt;2005&lt;/year&gt;</span><br><span class="line">  &lt;price&gt;29.99&lt;/price&gt;</span><br><span class="line">&lt;/book&gt;</span><br><span class="line"></span><br><span class="line">&lt;/bookstore&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在XPath中定义了节点：</p>
+<ul>
+<li>元素：<code>&lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt;</code></li>
+<li>属性：<code>lang=&quot;en&quot;</code></li>
+<li>文本：</li>
+<li>命名空间：<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</code></li>
+<li>处理指令</li>
+<li>注释</li>
+<li>文档节点：<code>&lt;bookstore&gt;</code></li>
+</ul>
+<p>也包含节点关系，如：父，子，兄弟，所有祖先，所有后代。</p>
+<p>在XPath中，节点之间的父子关系可以用表达式表示：</p>
+<ul>
+<li><code>nodename</code>：选取此节点的所有子节点</li>
+<li><code>/</code>：根节点或分隔符 </li>
+<li><code>//</code>：后继节点，不考虑路径</li>
+<li><code>.</code>：当前节点</li>
+<li><code>..</code>：父节点</li>
+<li><code>@</code>：属性</li>
+<li><code>|</code>：选取多个路径</li>
+</ul>
+<p>谓语是用于按照索引选择子节点的工具：</p>
+<ul>
+<li><code>[1]</code>：第一个元素</li>
+<li><code>[last()]</code>：最后一个元素</li>
+<li><code>[position()&lt;3]</code>：前两个元素</li>
+<li><code>[@lang]</code>：拥有lang属性的元素</li>
+<li><code>[@lang=&#39;eng&#39;]</code>：满足条件的元素</li>
+<li><code>[price&gt;10]</code>：元素值大于10的元素</li>
+</ul>
+<p>通配符：</p>
+<ul>
+<li><code>*</code>：任何元素节点</li>
+<li><code>@*</code>：任何属性节点</li>
+<li><code>node()</code>：任何类型节点</li>
+</ul>
+<p>轴可定义相对于当前节点的节点集：</p>
+<ul>
+<li>ancestor：选取当前节点的所有祖先（父、祖父等）。</li>
+<li>ancestor-or-self：选取当前节点的所有祖先（父、祖父等）以及当前节点本身。</li>
+<li>attribute：选取当前节点的所有属性。</li>
+<li>child：选取当前节点的所有子元素。</li>
+<li>descendant：选取当前节点的所有后代元素（子、孙等）。</li>
+<li>descendant-or-self：选取当前节点的所有后代元素（子、孙等）以及当前节点本身。</li>
+<li>following：选取文档中当前节点的结束标签之后的所有节点。</li>
+<li>namespace：选取当前节点的所有命名空间节点。</li>
+<li>parent：选取当前节点的父节点。</li>
+<li>preceding：选取文档中当前节点的开始标签之前的所有节点。</li>
+<li>preceding-sibling：选取当前节点之前的所有同级节点。</li>
+<li>self：选取当前节点。</li>
+</ul>
+<p>使用轴可以选取某些节点：</p>
+<ul>
+<li>child::book：选取所有属于当前节点的子元素的 book 节点。</li>
+<li>child::text()：选取当前节点的所有文本子节点。</li>
+</ul>
+<p>安装 lxml 模块：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># linux 需要依赖</span><br><span class="line">sudo apt-get install libxml2-dev libxslt-dev </span><br><span class="line"># windows 不需要</span><br><span class="line">pip install lxml</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line"># 构建标签</span><br><span class="line">root = etree.Element(&#x27;html&#x27;)</span><br><span class="line">body = etree.Element(&#x27;body&#x27;)</span><br><span class="line">root.append(body)</span><br><span class="line"></span><br><span class="line"># 打印HTML</span><br><span class="line">print(etree.tostring(root))</span><br><span class="line">print(etree.tostring(</span><br><span class="line">    root,</span><br><span class="line">    pretty_print=True</span><br><span class="line">).decode())</span><br><span class="line"></span><br><span class="line"># 添加子元素</span><br><span class="line">sub = etree.SubElement(body, &#x27;child1&#x27;)</span><br><span class="line">sub = etree.SubElement(body, &#x27;child2&#x27;)</span><br><span class="line"></span><br><span class="line"># 解析HTML</span><br><span class="line">etree.HTML(text)</span><br><span class="line">a_node.xpath(&#x27;xpath 路径&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>在Chrome使用XPath工具：在选定的标签上右键-&gt;Copy-&gt;XPath，并根据给定的内容进行修改。也可以使用插件<code>ChroPath</code>调试。</p>
+<p>在分析选定标签的时候，可以优先找id属性，其次class属性。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &#x27;https://moive.douban.com&#x27;</span><br><span class="line">ua = &#x27;&#x27;</span><br><span class="line">with requests.get(</span><br><span class="line">    url,</span><br><span class="line">    headers=&#123;&#x27;User-Agent&#x27;: ua&#125;</span><br><span class="line">) as response:</span><br><span class="line">    # HTML 内容</span><br><span class="line">    content = response.txt</span><br><span class="line">    # 解析为 DOM</span><br><span class="line">    html = etree.HTML(content)</span><br><span class="line">    # 使用XPath得到内容</span><br><span class="line">    titles = html.xpath(&quot;//div[@class=&#x27;villboard-bd&#x27;]//tr/td/a/text()&quot;)</span><br><span class="line">    for item in titles:</span><br><span class="line">        print(item)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/xpath/index.asp">XPath 语言</a></p>
+<h2 id="Spider"><a href="#Spider" class="headerlink" title="Spider"></a>Spider</h2><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><h2 id="Flask"><a href="#Flask" class="headerlink" title="Flask"></a>Flask</h2><h2 id="Cherrypy"><a href="#Cherrypy" class="headerlink" title="Cherrypy"></a>Cherrypy</h2><h2 id="Tornado"><a href="#Tornado" class="headerlink" title="Tornado"></a>Tornado</h2><p><a target="_blank" rel="noopener" href="https://www.osgeo.cn/tornado/">官方文档</a> <a target="_blank" rel="noopener" href="https://github.com/tornadoweb/tornado">Github</a></p>
+<p>优势：</p>
+<ul>
+<li>适合构建微服务。</li>
+</ul>
+<p>用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import tornado.ioloop</span><br><span class="line">import tornado.web</span><br><span class="line"></span><br><span class="line">class MainHandler(tornado.web.RequestHandler):</span><br><span class="line">    def get(self):</span><br><span class="line">        self.write(&quot;Hello, world&quot;)</span><br><span class="line"></span><br><span class="line">def make_app():</span><br><span class="line">    return tornado.web.Application([</span><br><span class="line">        (r&quot;/&quot;, MainHandler),</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app = make_app()</span><br><span class="line">    app.listen(8888)</span><br><span class="line">    tornado.ioloop.IOLoop.current().start()</span><br></pre></td></tr></table></figure>
+
+<h2 id="分布式系统-Celery"><a href="#分布式系统-Celery" class="headerlink" title="分布式系统 Celery"></a>分布式系统 Celery</h2><p>特点：</p>
+<ul>
+<li>分布式系统</li>
+<li>异步任务队列</li>
+<li>支持任务调度</li>
+</ul>
+<p>工作：</p>
+<ul>
+<li>执行异步任务</li>
+<li>执行定时任务</li>
+</ul>
+<p>需要消息中间件：RabbitMQ 或 Redis</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasks.py</span><br><span class="line">from celery import Celery</span><br><span class="line">app = Celery(&quot;task_name&quot;, backend=&quot;redis://local:6379/2&quot;, broker=&quot;redis://local:6379/1&quot;)</span><br><span class="line"></span><br><span class="line">@app.task  # 变为异步</span><br><span class="line">def add(x, y):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<p>启动 worker</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">celery worker -A tasks -l INFO</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from tasks import add</span><br><span class="line">x = add.delay(1,2)</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>目录：</p>
+<ul>
+<li>celery_app<ul>
+<li>celeryconfig.app</li>
+<li>task1.py</li>
+<li>task2.py</li>
+</ul>
+</li>
+</ul>
+<p>app.py</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app = Celery(&quot;task_name&quot;)</span><br><span class="line">app.config_from_object(&quot;celery_app.celeryconfig&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>celeryconfig.py</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">BROKER_URL = &#x27;&#x27;</span><br><span class="line">CELERY_RESULT_BACKEND = &#x27;&#x27;  # 结果存储到数据库</span><br><span class="line">CELERY_TIMEZONE = &#x27;&#x27;</span><br><span class="line">CELERY_IMPORTS = (</span><br><span class="line">    &#x27;celery_app.task1&#x27;,</span><br><span class="line">    &#x27;celery_app.task2&#x27;,</span><br><span class="line">)</span><br><span class="line">CELERY_SCHEDULE = &#123;</span><br><span class="line">    &#x27;task1&#x27;: &#123;</span><br><span class="line">        &#x27;task&#x27;: &#x27;celery_app.task1.add&#x27;,</span><br><span class="line">        &#x27;schedule&#x27;: timedelta(seconds=10),</span><br><span class="line">        &#x27;args&#x27;: (2, 3),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结合-Django"><a href="#结合-Django" class="headerlink" title="结合 Django"></a>结合 Django</h3><h3 id="监控-Flower"><a href="#监控-Flower" class="headerlink" title="监控 Flower"></a>监控 Flower</h3><h3 id="进程管理-Supervisor"><a href="#进程管理-Supervisor" class="headerlink" title="进程管理 Supervisor"></a>进程管理 Supervisor</h3><h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def make_app():</span><br><span class="line">    return tornado.web.Application(</span><br><span class="line">        # 路由配置</span><br><span class="line">        [</span><br><span class="line">            (r&quot;/&quot;, MainHandler),</span><br><span class="line">        ],</span><br><span class="line">        # 渲染模板路径</span><br><span class="line">        template_path = os.path.join(</span><br><span class="line">            os.path.dirname(__file__), &quot;template&quot;</span><br><span class="line">        ),</span><br><span class="line">        # 开启 Debug</span><br><span class="line">        debug = True</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>控制器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class MainHandler(tornado.web.RequestHandler):</span><br><span class="line">    def get(self):</span><br><span class="line">        self.render(&quot;index.html&quot;, msg=&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>index.html</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;msg&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异步服务器与客户端"><a href="#异步服务器与客户端" class="headerlink" title="异步服务器与客户端"></a>异步服务器与客户端</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app = tornado.web.Application()</span><br><span class="line">http_server = tornado.httpserver.HTTPServer(app)</span><br><span class="line">http_server.listen(8888)</span><br><span class="line">tornado.ioloop.IOLoop.instance().start()</span><br></pre></td></tr></table></figure>
+
+<h2 id="接口测试"><a href="#接口测试" class="headerlink" title="接口测试"></a>接口测试</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/04/%E8%BF%90%E7%BB%B4/Docker/" rel="prev" title="Docker">
+                  <i class="fa fa-angle-left"></i> Docker
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/09/Python/PythonScience/" rel="next" title="Python 科学计算">
+                  Python 科学计算 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/02/09/Python/PythonWeb/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

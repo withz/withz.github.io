@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏开发">
+<meta property="og:url" content="https://withz.github.io/2021/05/13/%E6%B8%B8%E6%88%8F/GameStart/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-13T12:43:38.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.332Z">
+<meta property="article:author" content="Peng">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2021/05/13/%E6%B8%B8%E6%88%8F/GameStart/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2021/05/13/%E6%B8%B8%E6%88%8F/GameStart/","path":"2021/05/13/游戏/GameStart/","title":"游戏开发"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>游戏开发 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">基本架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A7"><span class="nav-number">1.1.</span> <span class="nav-text">帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2D-%E6%B8%B2%E6%9F%93"><span class="nav-number">1.2.</span> <span class="nav-text">2D 渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">线性代数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D"><span class="nav-number">1.4.</span> <span class="nav-text">3D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87"><span class="nav-number">1.5.</span> <span class="nav-text">输入设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E9%9F%B3"><span class="nav-number">1.6.</span> <span class="nav-text">声音</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">物理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%84%E5%83%8F%E6%9C%BA"><span class="nav-number">1.8.</span> <span class="nav-text">摄像机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="nav-number">1.9.</span> <span class="nav-text">人工智能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI"><span class="nav-number">1.10.</span> <span class="nav-text">UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.11.</span> <span class="nav-text">脚本系统</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2021/05/13/%E6%B8%B8%E6%88%8F/GameStart/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="游戏开发 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          游戏开发
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-13 20:43:38" itemprop="dateCreated datePublished" datetime="2021-05-13T20:43:38+08:00">2021-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B8%B8%E6%88%8F%E4%B8%8E3D/" itemprop="url" rel="index"><span itemprop="name">游戏与3D</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h1 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h1><h2 id="帧"><a href="#帧" class="headerlink" title="帧"></a>帧</h2><ol>
+<li>每秒绘制的帧数不固定，需要计算帧与帧之间的间隔时间，以便物理引擎使用。</li>
+<li>多线程渲染，显示帧，处理帧，输入帧都不在一个帧上，渲染线程比主线程慢一帧。</li>
+<li>渲染游戏对象，游戏对象分为三类：需要渲染和更新的（子弹，人物），只更新的（触发器，摄像机），只渲染的（背景）。游戏对象需要有两个接口，<code>渲染接口</code>，<code>更新接口</code>。</li>
+<li>程序维护一个渲染队列，一个更新队列。</li>
+</ol>
+<h2 id="2D-渲染"><a href="#2D-渲染" class="headerlink" title="2D 渲染"></a>2D 渲染</h2><p>垂直同步：采用双缓冲技术，在场消隐期减缓缓冲区。有时也可以采用三缓冲。</p>
+<p>精灵：是使用图片绘制的2D图像，表示一个角色或其他动态对象。载入精灵可以采用库<code>stb_image.c</code>。每个精灵都有一个绘制顺序，采用画家算法绘制；还有图像数据；以及位置数据。</p>
+<p>画家算法：先画背景后画角色，即所有精灵按位置排好顺序，按顺序绘制到屏幕上。</p>
+<p>动画：定义如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个动画</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AnimFrameData</span></span></span><br><span class="line"><span class="class">    <span class="title">int</span> <span class="title">startFrame</span>  // 第一帧的动画索引</span></span><br><span class="line"><span class="class">    <span class="title">int</span> <span class="title">numFrames</span>   // 动画总帧数</span></span><br><span class="line"><span class="class"><span class="title">end</span></span></span><br><span class="line"><span class="class">// 一组动画</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AnimData</span></span></span><br><span class="line"><span class="class">    <span class="title">ImageFile</span> <span class="title">images</span>[]        // 所有动画图片</span></span><br><span class="line"><span class="class">    <span class="title">AnimFrameData</span> <span class="title">frameInfo</span>[] // 所有动画用到的帧</span></span><br><span class="line"><span class="class"><span class="title">end</span></span></span><br></pre></td></tr></table></figure>
+
+<p>对于一个角色，定义它的动画可以包括如下属性</p>
+<ul>
+<li>所有动画数据</li>
+<li>当前动画编号</li>
+<li>当前动画帧号</li>
+<li>动画的播放速度</li>
+</ul>
+<p>纹理数据应打包传递给GPU，但注意一些设备的最大纹理尺寸是有要求的。</p>
+<p>滚屏：</p>
+<ul>
+<li>单轴滚屏：只能左右滚屏，图片可以切分后按需加载。绘制哪张背景，根据摄像机位置决定。</li>
+<li>无限滚屏：连续使用某种图片循环绘制。</li>
+<li>平行滚屏：背景分为多层，例如云朵比地面滚动的慢。</li>
+<li>四向滚屏：原点放置问题。</li>
+</ul>
+<p>砖块地图：地图中的每个网格可以存放一个编号，代表一个或多个精灵。通过这些精灵的拼凑来绘制地图。还有一类是斜视等视角砖块地图，例如《暗黑破坏神》。</p>
+<h2 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h2><p>向量：加，减，单位化，点积，叉积。</p>
+<p>卡马克快速平方根倒数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">float</span> <span class="title">Qsqrt</span><span class="params">(<span class="type">float</span> number)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">float</span> x2, y;</span><br><span class="line">    x2 = number * <span class="number">0.5F</span>;</span><br><span class="line">    y = number;</span><br><span class="line">    i = *(<span class="type">int</span>*)&amp;y;</span><br><span class="line">    i = <span class="number">0x5F3759DF</span> - (i&gt;&gt;<span class="number">1</span>);</span><br><span class="line">    y = *(<span class="type">float</span>*)&amp;i;</span><br><span class="line">    y = y * (<span class="number">1.5F</span> - x2 * y * y);  <span class="comment">// 牛顿迭代</span></span><br><span class="line">    <span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>向量反射：<br>0. 定义：入射速度<code>V1</code>，出射速度<code>V2</code>，碰撞墙面的单位法向量<code>N</code>。</p>
+<ol>
+<li>将<code>-V1</code>向<code>N</code>投影得到<code>V0</code></li>
+<li>令<code>S=V0+V1</code></li>
+<li>则<code>V2=-V1+2S</code></li>
+<li>推导得<code>V2=V1-2N*(V1*N)</code></li>
+</ol>
+<p>平面旋转：<br>0. 定义：当前单位方向<code>C</code>，目标单位方向<code>N</code>。</p>
+<ol>
+<li>计算两向量夹角<code>arccos(C, N)</code>。</li>
+<li>向量增广为三维，计算旋转方向<code>cross(C, N)</code>，若为正，逆时针转；若为负，顺时针转。</li>
+</ol>
+<p>线性插值：<code>Lerp(a, b, f) = (1-f) * a + f * b</code></p>
+<p>坐标系：DirectX默认为左手系，OpenGL默认为右手系。</p>
+<p>矩阵：加，减，数乘，矩阵乘积，求逆，转置。</p>
+<p>矩阵表示3D变换：OpenGL用列向量表示位置，其他引擎用行向量表示位置。</p>
+<h2 id="3D"><a href="#3D" class="headerlink" title="3D"></a>3D</h2><p>模型：由基本的三角形面构成。单个模型称为网络，一般一个角色模型可能由一万多个多边形构成，一个木桶模型可能由几百个多边形构成。</p>
+<p>坐标系：</p>
+<ol>
+<li>模型坐标系：原点通常在模型中央，或角色两脚中间。</li>
+<li>世界坐标系：所有对象都相对于世界原点偏移。</li>
+<li>摄像机坐标系：需要定义左方、上方、前方、位置4个向量。最终世界坐标将映射到摄像机视野中。</li>
+<li>投影坐标系：分为正交投影和透视投影。一般采用透视投影。需要定义视角，近平面，远平面。</li>
+</ol>
+<p>齐次坐标系：使用4维向量表示3维坐标，4维矩阵可以用乘法方式表示平移变换。（3维矩阵乘法只能表示旋转和缩放）</p>
+<p>矩阵变换：平移、旋转、缩放。</p>
+<p>变换矩阵 &#x3D; 缩放 x 旋转 x 平移</p>
+<p>缩放：<br>$$<br>    \begin{bmatrix}<br>    {s_{x}}&amp;{0}&amp;{0}&amp;{0}\<br>    {0}&amp;{s_{y}}&amp;{0}&amp;{0}\<br>    {0}&amp;{0}&amp;{s_{z}}&amp;{0}\<br>    {0}&amp;{0}&amp;{0}&amp;{1}\<br>    \end{bmatrix}<br>$$</p>
+<p>平移：<br>$$<br>    \begin{bmatrix}<br>    {1}&amp;{0}&amp;{0}&amp;{0}\<br>    {0}&amp;{1}&amp;{0}&amp;{0}\<br>    {0}&amp;{0}&amp;{1}&amp;{0}\<br>    {t_{x}}&amp;{t_{y}}&amp;{t_{z}}&amp;{1}\<br>    \end{bmatrix}<br>$$</p>
+<p>X轴旋转：<br>$$<br>    \begin{bmatrix}<br>    {1}&amp;{0}&amp;{0}&amp;{0}\<br>    {0}&amp;{cos(\theta)}&amp;{-sin(\theta)}&amp;{0}\<br>    {0}&amp;{sin(\theta)}&amp;{cos(\theta)}&amp;{0}\<br>    {0}&amp;{0}&amp;{0}&amp;{1}\<br>    \end{bmatrix}<br>$$</p>
+<p>Y轴旋转：<br>$$<br>    \begin{bmatrix}<br>    {cos(\theta)}&amp;{0}&amp;{sin(\theta)}&amp;{0}\<br>    {0}&amp;{1}&amp;{0}&amp;{0}\<br>    {-sin(\theta)}&amp;{0}&amp;{cos(\theta)}&amp;{0}\<br>    {0}&amp;{0}&amp;{0}&amp;{1}\<br>    \end{bmatrix}<br>$$</p>
+<p>Z轴旋转：<br>$$<br>    \begin{bmatrix}<br>    {cos(\theta)}&amp;{-sin(\theta)}&amp;{0}&amp;{0}\<br>    {sin(\theta)}&amp;{cos(\theta)}&amp;{0}&amp;{0}\<br>    {0}&amp;{0}&amp;{1}&amp;{0}\<br>    {0}&amp;{0}&amp;{0}&amp;{1}\<br>    \end{bmatrix}<br>$$</p>
+<p>颜色：由RGBA四个通道构成。可以附着在顶点上。</p>
+<p>顶点：包括位置、颜色、法线、纹理映射坐标(UV)等属性。</p>
+<p>光照：</p>
+<ul>
+<li>环境光：没有光源，充满整个空间</li>
+<li>方向光：例如太阳光</li>
+<li>点光源：可以使用衰减半径</li>
+<li>聚光灯：方向固定</li>
+</ul>
+<p>光照模型( BRDF 反射分布函数 )：</p>
+<ul>
+<li>Phong 光照模型：环境光、漫反射、高光。不考虑光的二次反射。</li>
+</ul>
+<p>着色：</p>
+<ul>
+<li>平面着色：三角形只使用一种颜色着色。</li>
+<li>Gouraud 着色：为3个顶点着色，中间部分通过插值着色。</li>
+<li>Phong 着色：利用<code>顶点法线</code>与<code>光源方向</code>计算着色的强度着色，中间部分对法线插值着色。</li>
+</ul>
+<p>深度缓冲：仅在渲染过程中使用，计算每个像素到摄像机的距离。当新的像素距离更近时，更新深度缓冲，同时绘制像素。绘制透明物体时，需关闭深度缓冲的写功能，当透明像素距离超过缓冲区值时，不绘制该像素，当透明像素距离小于缓冲区值时，叠加绘制该像素。该方法无需排序对象。</p>
+<p>帧缓冲区：每帧都要用。</p>
+<ol>
+<li>深度缓冲：一般采用24位或32位。</li>
+<li>颜色缓冲</li>
+<li>模板缓冲</li>
+</ol>
+<p>欧拉角：会产生方向锁。</p>
+<p>四元数：可以任意旋转。</p>
+<ul>
+<li>线性插值</li>
+<li>球形插值</li>
+</ul>
+<p>标准四元数：长度为<code>1</code>，写作 </p>
+<p>$q &#x3D; [ {q_v}, {q_s} ]$ </p>
+<p>其中 </p>
+<p>${q_v} &#x3D; a sin({\theta} &#x2F; 2 )$  </p>
+<p>${q_s} &#x3D; cos({\theta} &#x2F; 2)$</p>
+<p>a 表示旋转轴， ${\theta}$表示旋转角度</p>
+<p>Grassmann积：</p>
+<p>(pq)v &#x3D; ps * qv + qs * pv + pv x qv</p>
+<p>(pq)s &#x3D; ps * qs - pv * qv</p>
+<p>共轭四元数：将向量分量取逆即可。</p>
+<p>单位四元数：iv &#x3D; (0, 0, 0), is &#x3D; 1</p>
+<p>3D对象的表示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GameObejct3D</span> &#123;</span><br><span class="line">    Quaternion rotation;</span><br><span class="line">    Vector3 position;</span><br><span class="line">    <span class="type">float</span> scale;</span><br><span class="line">    <span class="function">Matrix <span class="title">GetWorldTransform</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 必须 先缩放 后旋转 再平移</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">CreateScale</span>(scale) </span><br><span class="line">                * <span class="built_in">CreateFromQuaternion</span>(rotation) </span><br><span class="line">                * <span class="built_in">CreateTranslation</span>(position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Quaternion</span> &#123;</span><br><span class="line">    Vector3 qv;</span><br><span class="line">    <span class="type">float</span> qs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="输入设备"><a href="#输入设备" class="headerlink" title="输入设备"></a>输入设备</h2><p>按键类型：模拟输入、数字输入、同时按键、序列按键。</p>
+<p>使用跨平台库解决设备输入问题。<a target="_blank" rel="noopener" href="https://www.libsdl.org/">SDL</a></p>
+<p>处理按键输入：</p>
+<ul>
+<li>释放 -&gt; 释放：未按</li>
+<li>释放 -&gt; 按下：按下</li>
+<li>按下 -&gt; 释放：松开</li>
+<li>按下 -&gt; 按下：一直按着</li>
+</ul>
+<p>处理模拟输入：</p>
+<ul>
+<li>需要对模拟量滤波处理，例如在摇杆中心位置附近设置无效区。</li>
+</ul>
+<p>基于事件的输入：</p>
+<ul>
+<li>采用订阅、发布模型<ul>
+<li>发布者持续关注按键变化，并通知有关的订阅者</li>
+<li>订阅者关注感兴趣的按键变化</li>
+</ul>
+</li>
+</ul>
+<p>按键映射：游戏可以将角色动作和按键定义分离开，例如游戏中绑定<code>Fire</code>，<code>Hide</code>等虚拟按键，再在这些按键上绑定真实按键。</p>
+<p>移动设备输入：</p>
+<ul>
+<li>触屏与手势：<ul>
+<li>模拟摇杆</li>
+<li>手势操作：例如两指缩放。检测方法：Rubine算法。</li>
+</ul>
+</li>
+<li>加速计与陀螺仪</li>
+</ul>
+<h2 id="声音"><a href="#声音" class="headerlink" title="声音"></a>声音</h2><p>播放声音的频道有限，因此需要尽可能利用所有频道播放声音。此外，还需要给音频设置优先级，在频道不够用的时候优先播放优先级高的音频。</p>
+<p>音频格式：</p>
+<ul>
+<li>wav：无压缩，适合短音频。</li>
+<li>ogg&#x2F;mp3：压缩音频，适合长音频。</li>
+</ul>
+<p>音频解决方案：<a target="_blank" rel="noopener" href="https://kcat.strangesoft.net/openal.html">OpenAL</a></p>
+<p>声音事件：将音频与元数据打包二成。例如，爆炸音效，可以包含多个爆炸音频，当使用时，可以随机选择其中一个音频播放，同时还可以指定音频优先级，渐入渐出效果；脚步音效，可以根据地面材质选择脚步的效果（草地，雪地，石头）。</p>
+<p>3D声音：需要考虑音源与监听者的相对位置。监听者的位置一般使用摄像机作为监听者，或摄像机与角色之间33%-66%的位置，朝向与摄像机一致。</p>
+<p>衰减：声音随着距离线性分贝衰减。常用方法有线性分贝衰减函数等。</p>
+<p>环绕声：例如5.1环绕系统或7.1环绕系统。</p>
+<p>数字信号处理：可以用来做声音特效，如回声，闷音，可以采用预设特效。</p>
+<p>预设音频特效：</p>
+<ul>
+<li>回声：<a target="_blank" rel="noopener" href="https://freeberb3.sourceforge.net/">Freeverb3</a></li>
+<li>音高偏移：例如多普勒效果。</li>
+<li>低通滤波器：蜂鸣声。</li>
+<li>声音遮挡：高音部分被遮挡，低音部分穿透障碍物。降低高频部分的声音。</li>
+<li>声音衍射：声音经过柱子衍射成多个波源，监听者可能会听到两次声音。</li>
+<li>声学衍射：Fresnel声学衍射，在监听者附近构建一个圆弧，发射者向圆弧射去一系列直线，判断中间是否有遮挡，或部分遮挡。</li>
+</ul>
+<p>区域标记：指定特效声音生效的区域。例如回声特效只能在山洞中生效。一般采用凸多边形。进入该区域时，回声特效渐变出现。</p>
+<h2 id="物理"><a href="#物理" class="headerlink" title="物理"></a>物理</h2><p>平面：表达式 <code>P * n + d = 0</code>。P为任意一点，n为法向量。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plane</span> &#123;</span><br><span class="line">    Vector3 normal;</span><br><span class="line">    <span class="type">float</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>射线与线段：表达式 <code>R(t) = R0 + v * t</code>。v为法向量。t的取值范围决定线的类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">RayCast</span> &#123;</span><br><span class="line">    Vector3 startPoint;</span><br><span class="line">    Vector3 endPoint;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>碰撞集合体：检测碰撞通常采用简单的集合体碰撞检测，例如球体，方盒，圆柱，胶囊体。此外，一个物体可以有多个级别的碰撞体，以便简化计算。根据不同的场合，也可以选择不同的碰撞检测体，例如判断子弹入射，可以使用高精度的组合几何体碰撞检测，判断是否与建筑碰撞，采用胶囊体即可。</p>
+<p>包围球：精度较低，适合初级碰撞检测。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">BoundingSphere</span>&#123;</span><br><span class="line">    Vector3 center</span><br><span class="line">    <span class="type">float</span> radius</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>轴对齐包围盒：保存包围盒的左上角和右下角坐标，通常用于角色。也适合初级碰撞检测。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">AABB2D</span>&#123;</span><br><span class="line">    Vector2 min</span><br><span class="line">    Vector2 max</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>朝向包围盒：表示方法众多，可以参考<code>Real-time Collision Detection</code>。</p>
+<p>胶囊体：圆柱加两个半球。常用于角色。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Capsule</span>&#123;</span><br><span class="line">    Vector3 startPoint</span><br><span class="line">    Vector3 endPoint</span><br><span class="line">    <span class="type">float</span> radius</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>凸多边形：效率很低。</p>
+<p>当前帧碰撞检测：</p>
+<ul>
+<li>球与球的交叉：采用距离与半径之和。</li>
+<li>AABB与AABB交叉</li>
+<li>线段与平面的交叉：如果不平行，则解方程组看交点。<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">R(t) * n + d = <span class="number">0</span></span><br><span class="line">(R0 + v * t) * n + d = <span class="number">0</span></span><br></pre></td></tr></table></figure></li>
+<li>线段与三角面的交叉：除了与平面交叉的要素之外，还应考虑交点是否在三角形内。判断方法，采用三角形AB、AC、BC叉乘AP、BP、CP的方式。</li>
+<li>球与平面交叉：过球心做与目标平面平行的平面，测量两平面距离与球半径。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">SpherePlaneIntersection</span><span class="params">(BoundingSphere s, Plane p)</span> </span>&#123;</span><br><span class="line">    <span class="type">float</span> ds = - <span class="built_in">DotProduct</span>(p.normal, s.center);</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">abs</span>(d - ds) &lt; s.radius)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>后续帧碰撞检测：某些高速运动的物体可能会直接穿过碰撞体，跳过碰撞发生的帧。如子弹穿过纸。因此需要用一种连续性的方法检测碰撞。</p>
+<ul>
+<li>球形扫掠体检测：用来判断两帧之间是否有碰撞发生。将上一帧与当前帧的子弹位置构成一个胶囊体，然后判断与另一个胶囊体或平面是否碰撞。求解思路：将两个胶囊体构造成参数方程，求解两个参数方程当<code>RA + RB == ||P(t) - Q(t)||</code>时，t的根的情况。</li>
+</ul>
+<p>响应碰撞：当碰撞发生后，碰撞的游戏对象做出的响应。</p>
+<ul>
+<li>碰撞后消失</li>
+<li>碰撞后减少生命值</li>
+<li>碰撞后弹开</li>
+</ul>
+<p>两个球体碰撞后弹开：需要考虑碰撞切面，碰撞后的速度，碰撞的时刻（防止粘到一起）。求解思路：求解碰撞切面，用两球心的连线做切面的法线即可；求解碰撞点，根据两球半径在两球心连线上插值得到；求解碰撞后的速度，速度大小可以考虑弹性碰撞和非弹性碰撞，速度方向。</p>
+<p>优化碰撞：采用八叉树的方式，每次剔除与玩家不产生碰撞的一半的空间，剔除过程还可以采用启发式搜索进行。</p>
+<p>基于物理的移动：采用经典力学</p>
+<ul>
+<li>线性力学</li>
+<li>角力学</li>
+</ul>
+<p>基于时间的积分：需要防止因为帧率变低导致的积分结果变大的问题。</p>
+<p>力的计算：力一直作用在物体上，有时需要用冲量来代替力，即<code>力 x 帧数</code>。例如跳跃时，先给角色一个帧的冲量起跳，到空中再计算加速度让角色回落到地面。</p>
+<p>欧拉积分：新的位置由旧的位置加上旧的速度与时间的积得到。该算法的问题是，速度一直采用旧的速度，会产生累计误差。</p>
+<p>半隐式欧拉积分：新的位置由旧的位置加上新的速度与时间的积得到。在Box2D中就是这一算法。</p>
+<p>Verlet积分法：相比于前两者，该方法采用平均速度代替其他的速度进行积分。</p>
+<p>四阶Runge-Kutta方法：采用泰勒近似求解的结果表示近似解，通常用于模拟汽车。</p>
+<p>角力学：转动惯量、力矩、角加速度、角速度、速度等。</p>
+<p>物理中间件：</p>
+<ul>
+<li>Havok：一个商业物理引擎</li>
+<li>PhysX：工业级物理引擎，小制作免费，收入高时收费。</li>
+<li>Box2D：2D游戏的物理引擎，例如<code>愤怒的小鸟</code>就在用。</li>
+</ul>
+<h2 id="摄像机"><a href="#摄像机" class="headerlink" title="摄像机"></a>摄像机</h2><p>透视投影：</p>
+<ul>
+<li>视场：看到的场景的广度，又称FOV。人的眼睛可以看到180°的范围，但是超过120°的范围一般是模糊不清的，只能察觉到运动物体。视场的大小和用户与屏幕的距离有关，一般屏幕占用户多大视角，就采用多大的视场。在PC中，可以采用90°的视场，不宜太大，会产生鱼眼效果。</li>
+</ul>
+<p>宽高比：4:3、16:9、16:10等。</p>
+<p>固定摄像机：根据玩家位置判断使用几号摄像机，如《生化危机1》。有些固定摄像机也可以小范围移动，例如在《战神》中的摄像机。</p>
+<p>第一人称摄像机：放在眼睛位置，但是为了看见手臂，会同时调整手臂和腿的位置（这些位置可能并不合理）。但是在考虑阴影时，或其他人视角时，又采用正常的模型。</p>
+<p>场景摄像机：利用样条线制作摄像机运动轨迹，达到电影级别的运镜效果。</p>
+<p>跟随摄像机：</p>
+<ul>
+<li>基础跟随摄像机：总是在物体后面保持一定距离，始终指向被观察物体。</li>
+<li>弹性跟随摄像机：与被观察物体的距离根据情况随时平滑调整。</li>
+<li>旋转摄像机：可以围绕被观察物体运动。控制模式可以采用增量偏航、增量俯仰，距离等参数，但是不使用横滚。</li>
+<li>第一人称摄像机：放在角色相对的位置上，采用绝对偏航，绝对俯仰记录摄像机角度。</li>
+<li>样条摄像机：利用<code>Catmull-Rom</code>样条线，实现摄像机的运动。样条线的切线表示了摄像机的朝向。</li>
+</ul>
+<p>摄像机碰撞：</p>
+<ul>
+<li>从目标射出一条射线到摄像机，判断二者之间是否存在不透明物体。</li>
+<li>或给摄像机设置碰撞模型。</li>
+<li>距离被观察物体太近时，可以考虑让被观察物体消失。</li>
+</ul>
+<p>拣选：使用鼠标选中屏幕中的物体。可以利用反投影，从摄像机的近平面某个坐标射出一条射线射向远平面同一个坐标，选中第一个交叉的物体。</p>
+<h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><p>游戏AI通常采用状态机或脚本的方式实现，而传统的AI算法更注重广泛存在的问题，例如寻路、决策树等算法。</p>
+<p>寻路：</p>
+<ul>
+<li>搜索空间的表示：一般采用图实现。可以将游戏世界用方格划分成网格，然后基于网格实现寻路。或使用路点划分。<ul>
+<li>寻路节点：只能沿着各个节点移动。</li>
+<li>导航网格：可以在划定的多边形区域内运动。当然，对于不同的游戏对象，可以使用不同的导航网格。例如小鸡和牛，狭小的地方牛去不了，但是小鸡可以去。</li>
+</ul>
+</li>
+<li>启发式算法：令h(x)为曼哈顿距离或欧式距离，根据h(x)进行启发式搜索。</li>
+<li>贪心算法：每次只选择当前最优的走法，不做长远考虑。</li>
+<li>A*算法：除了考虑于目标的距离h(x)外，还考虑已经寻路的开销g(x)。</li>
+<li>Dijkstra算法：令h(x)&#x3D;0，只保留g(x)进行搜索。该方法适用于同时有多个目标，选最近的目标的情况。</li>
+</ul>
+<p>状态机：</p>
+<ul>
+<li>有限状态机：定义状态，以及状态切换的条件。</li>
+<li>状态机的设计模式：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基类，具体的状态需要继承该类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AIState</span> &#123;  </span><br><span class="line">    AIController parent;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Update</span><span class="params">(<span class="type">float</span> deltaTime)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Enter</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Exit</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AIController</span>&#123;</span><br><span class="line">    AIState state;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">Update</span><span class="params">(<span class="type">float</span> deltaTime)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">SetState</span><span class="params">(AIState newState)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">AIController::Update</span><span class="params">(<span class="type">float</span> deltaTime)</span></span>&#123;</span><br><span class="line">    state.<span class="built_in">Update</span>(deltaTime);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">AIController::SetState</span><span class="params">(AIState newState)</span></span>&#123;</span><br><span class="line">    state.<span class="built_in">Exit</span>();</span><br><span class="line">    state = newState;</span><br><span class="line">    state.<span class="built_in">Enter</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>策略于计划：AI需要有宏观的、长远的目标，然后为达到目标尽力而为。一般在RTS游戏中较为常见。</p>
+<ul>
+<li>策略：微观策略由单位行动构成，采用状态机算法即可；宏观策略则更为复杂，例如可以采用优先级方式选择当前目标，同时兼顾重要于不重要的事情。</li>
+<li>计划：为达成目标采取的一系列行动。由于计划可能会失败，AI需要根据情况调整计划。</li>
+</ul>
+<h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><p>菜单栈：菜单的构成是一颗树，进入子级菜单时父级菜单要入栈。</p>
+<p>菜单按钮：可以点选，也可以使用上下左右选择。可以采用2D包围盒包围一个按钮，检测用户是否点击。</p>
+<p>HUD元素：在游戏场景中，显示玩家生命值等信息。</p>
+<p>准心：利用反投影，用屏幕中心的准心拣选目标。</p>
+<p>雷达：只需遍历游戏对象，并显示在2D屏幕上即可。</p>
+<p>多套分辨率支持：使用相对坐标定义UI元素位置。</p>
+<p>本地化：使用外部文件定义显示的文本。</p>
+<p>UI中间件：Autodesk ScaleForm。</p>
+<h2 id="脚本系统"><a href="#脚本系统" class="headerlink" title="脚本系统"></a>脚本系统</h2><p>可以将摄像机、AI行为、UI界面分开，使用脚本开发。</p>
+<p>脚本语言的类型：</p>
+<ul>
+<li>Lua：轻量级解释器(150KB)，且容易调用C&#x2F;C++。</li>
+<li>Python</li>
+<li>UnrealScript：编译型脚本语言，也可以调用C&#x2F;C++。还可以使用可视化脚本系统Kismet。</li>
+<li>QuakeC</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/26/%E8%BF%90%E7%BB%B4/Nginx/" rel="prev" title="Nginx">
+                  <i class="fa fa-angle-left"></i> Nginx
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/20/%E8%BF%90%E7%BB%B4/Linux/" rel="next" title="Linux">
+                  Linux <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2021/05/13/%E6%B8%B8%E6%88%8F/GameStart/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

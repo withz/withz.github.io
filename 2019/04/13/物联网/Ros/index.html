@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS 基础">
+<meta property="og:url" content="https://withz.github.io/2019/04/13/%E7%89%A9%E8%81%94%E7%BD%91/Ros/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-13T12:45:23.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.336Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="ROS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2019/04/13/%E7%89%A9%E8%81%94%E7%BD%91/Ros/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2019/04/13/%E7%89%A9%E8%81%94%E7%BD%91/Ros/","path":"2019/04/13/物联网/Ros/","title":"ROS 基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ROS 基础 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ROS%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1. ROS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ROS%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">2. ROS的工程架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ROS%E7%9A%84%E8%AE%A1%E7%AE%97%E5%9B%BE%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">3. ROS的计算图集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ROS%E5%B7%A5%E5%85%B7%E5%8C%85"><span class="nav-number">4.</span> <span class="nav-text">4. ROS工具包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%9C%AA%E5%AE%8C%E7%BB%93%EF%BC%88%E5%81%9C%E6%AD%A2%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">5. 未完结（停止更新）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2019/04/13/%E7%89%A9%E8%81%94%E7%BD%91/Ros/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ROS 基础 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ROS 基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-04-13 20:45:23" itemprop="dateCreated datePublished" datetime="2019-04-13T20:45:23+08:00">2019-04-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%A9%E8%81%94%E7%BD%91%E4%B8%8E%E7%A1%AC%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">物联网与硬件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<p>近期做的东西和ROS有关，因此想做一些关于ROS的笔记。这篇文章主要分为以下几个部分。</p>
+<blockquote>
+<ol>
+<li>ROS简介</li>
+<li>ROS的工程架构</li>
+<li>ROS的计算图集</li>
+<li>ROS工具包</li>
+<li>未完结</li>
+</ol>
+</blockquote>
+<h2 id="1-ROS简介"><a href="#1-ROS简介" class="headerlink" title="1. ROS简介"></a>1. ROS简介</h2><p>ROS（Robot OS）是运行在Ubuntu上的次级系统，它内部由多个节点构成，每个节点即一个进程。这些节点之间各自分工，又相互合作，共同完成一些列任务。一般一个ROS工程由master节点和多个子节点构成，master负责管理各个节点，而子节点则负责各自具体的任务。</p>
+<h2 id="2-ROS的工程架构"><a href="#2-ROS的工程架构" class="headerlink" title="2. ROS的工程架构"></a>2. ROS的工程架构</h2><p>对于一个ROS工程，它一般分为三部分：</p>
+<ul>
+<li>build：编译产生的中间文件；</li>
+<li>devel：编译的结果文件；</li>
+<li>src：源代码目录。</li>
+</ul>
+<p><strong>项目架构概览</strong></p>
+<blockquote>
+<ul>
+<li>&#x2F;catkin_ws<ul>
+<li>&#x2F;build</li>
+<li>&#x2F;devel</li>
+<li>&#x2F;src<ul>
+<li>&#x2F;folder_1<ul>
+<li>&#x2F;package_1</li>
+<li>&#x2F;package_2</li>
+</ul>
+</li>
+<li>&#x2F;folder_2<ul>
+<li>&#x2F;package_3</li>
+</ul>
+</li>
+<li>&#x2F;package_4</li>
+<li>&#x2F;metapackage</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>一个ROS工程的src部分，是由一个个Package组成的。每个Package一般对应一个应用或是一个节点。另外还有一类特殊的Package，叫做Metapackage，即虚包，它们没有自己的内容，但是由很多依赖，因此常用来做功能集使用。</p>
+<p><strong>Package架构概览</strong>：</p>
+<blockquote>
+<ul>
+<li>&#x2F;package<ul>
+<li>&#x2F;msg<ul>
+<li>x.msg</li>
+</ul>
+</li>
+<li>&#x2F;srv<ul>
+<li>x.srv</li>
+</ul>
+</li>
+<li>&#x2F;action<ul>
+<li>x.action</li>
+</ul>
+</li>
+<li>&#x2F;scripts<ul>
+<li>x.py</li>
+<li>x.sh</li>
+</ul>
+</li>
+<li>&#x2F;launch<ul>
+<li>x.launch</li>
+</ul>
+</li>
+<li>&#x2F;config<ul>
+<li>x.yaml</li>
+</ul>
+</li>
+<li>&#x2F;include<ul>
+<li>x.h</li>
+</ul>
+</li>
+<li>&#x2F;src<ul>
+<li>x.cpp</li>
+</ul>
+</li>
+<li>&#x2F;other_dirs<ul>
+<li>other_files</li>
+</ul>
+</li>
+<li>CMakeLists.txt</li>
+<li>package.xml</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>ROS支持C++和Python开发。在一个Package下，script下一般存放python文件，src、include文件夹下面分别存放了c++的.cpp文件和.h文件。launch文件夹下存放了ROS的启动文件，这些启动文件描述了这个包的启动过程中需要定义的参数，需要依赖的其它的包等内容。config文件夹下存放了一些配置文件，通过yaml语言定义。ROS自带了三种通信方式，其中msg描述了通过topic方式通信过程中的数据格式，srv、action则分别保存了service和action通信的数据格式。</p>
+<h2 id="3-ROS的计算图集"><a href="#3-ROS的计算图集" class="headerlink" title="3. ROS的计算图集"></a>3. ROS的计算图集</h2><p>计算图集，也叫通信架构，是ROS节点之间通信的工具。ROS节点之间的通信方式共有三种。</p>
+<p><strong>Topic</strong><br>Topic是最常见的通信方式，topic是一个独立于节点的存在。每个节点既可以发布topic，也可以订阅topic。发布者会始终无条件的发布消息，所以不论有没有其他节点在订阅消息，都会按照一定频率发布topic。并且topic的发布者可以不只是一个节点，偶尔也会有多个节点在同一个topic上发布消息。当然，订阅topic的节点也可以是多个。</p>
+<p>一个节点如果想发布topic，必须先创建一个msg，这个msg就像是一个结构体，节点可以在这个msg中存放一些数据，然后发布到topic上。另一个节点如果想订阅这个topic，就必须按照这个msg的结构进行监听。</p>
+<p>msg文件结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float32 x</span><br><span class="line">float32 y</span><br></pre></td></tr></table></figure>
+
+<p><strong>Service</strong><br>当进行一些复杂的，计算量大的任务时，Topic却无法胜任这种情况了，因为Topic是不论有没有订阅者，发布者都会无条件发布消息，这就会导致大量的计算资源被浪费了。而Service这种通信方式正是弥补了这一缺陷。Service会根据服务请求者的请求，按需执行，因此大大节约了计算资源。</p>
+<p>Service由服务的提供方提供相应服务，而请求方需要按照srv文件中定义的格式向服务提供方请求服务。</p>
+<p>srv文件结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求格式</span></span><br><span class="line">uint32 id</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 响应格式</span></span><br><span class="line">float32 x</span><br><span class="line">float32 y</span><br></pre></td></tr></table></figure>
+
+<p><strong>Action</strong><br>对于一些执行时间较长的服务，服务的请求方还需要知道服务的实时进度。这时候Action就派上用场了。Action除了像服务那样按需执行外，在执行的过程中，也会按照一定的频率向请求方发送一些其他的数据，这些数据都是在action文件中定义的。</p>
+<p>action文件结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求格式</span></span><br><span class="line">uint32 id</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 结果格式</span></span><br><span class="line">float32 x</span><br><span class="line">float32 y</span><br><span class="line">---</span><br><span class="line"><span class="comment">// 中间反馈格式</span></span><br><span class="line"><span class="built_in">string</span> state</span><br></pre></td></tr></table></figure>
+
+<p>数据格式文件中的数据类型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span></span><br><span class="line"><span class="built_in">string</span></span><br><span class="line">int8, int16, int32, int64</span><br><span class="line">uint8, uint16, uint32, uint64</span><br><span class="line">float32, float64</span><br><span class="line">time, duration</span><br><span class="line">variable-length <span class="built_in">array</span>[], fixed-length <span class="built_in">array</span>[C]</span><br><span class="line">other msg files</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-ROS工具包"><a href="#4-ROS工具包" class="headerlink" title="4. ROS工具包"></a>4. ROS工具包</h2><p>Gazebo 物理仿真工具<br>可以对机器人进行物理仿真，可以对机器人设置重量，碰撞模型，转动惯量等设置。</p>
+<p>Rviz 机器人可视化工具<br>主要用于机器人调试，数据可视化操作。</p>
+<p>MoveIt! 机械臂路径规划工具<br>专门用于机械臂控制使用，里面集成了大量的关于机械臂的工具包。</p>
+<p>Rqt ROS代码调试工具<br>提供了一系列代码调试工具：</p>
+<blockquote>
+<p>rqt_graph  绘制计算图（通信架构图）<br>rqt_plot 绘制数据变化曲线<br>rqt_console  查看日志的工具<br>rqt_*  其他工具</p>
+</blockquote>
+<h2 id="5-未完结（停止更新）"><a href="#5-未完结（停止更新）" class="headerlink" title="5. 未完结（停止更新）"></a>5. 未完结（停止更新）</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ROS/" rel="tag"># ROS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/03/29/%E5%85%B6%E4%BB%96/GitBlog/" rel="prev" title="Github 博客搭建">
+                  <i class="fa fa-angle-left"></i> Github 博客搭建
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/14/%E8%BF%90%E7%BB%B4/Web/" rel="next" title="Web开发概念">
+                  Web开发概念 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2019/04/13/%E7%89%A9%E8%81%94%E7%BD%91/Ros/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习理论笔记">
+<meta property="og:url" content="https://withz.github.io/2020/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/MachineLearn/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://withz.github.io/MachineLearn%5Cfisher-steps.png">
+<meta property="og:image" content="https://withz.github.io/MachineLearn%5Cpca-steps.png">
+<meta property="article:published_time" content="2020-02-23T05:54:15.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.352Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="机器学习理论">
+<meta property="article:tag" content="贝叶斯">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://withz.github.io/MachineLearn%5Cfisher-steps.png">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/MachineLearn/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/MachineLearn/","path":"2020/02/23/计算机理论/MachineLearn/","title":"机器学习理论笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>机器学习理论笔记 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E5%AD%A6"><span class="nav-number">1.1.</span> <span class="nav-text">基本数学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">最优化方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text">概率论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">算法分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BB%B7"><span class="nav-number">1.5.</span> <span class="nav-text">模型评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9"><span class="nav-number">1.6.</span> <span class="nav-text">模型选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">贝叶斯分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%86%B3%E7%AD%96"><span class="nav-number">2.2.</span> <span class="nav-text">贝叶斯决策</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E9%94%99%E8%AF%AF%E7%8E%87%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%86%B3%E7%AD%96"><span class="nav-number">2.2.1.</span> <span class="nav-text">最小错误率贝叶斯决策</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E9%A3%8E%E9%99%A9%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%86%B3%E7%AD%96"><span class="nav-number">2.2.2.</span> <span class="nav-text">最小风险贝叶斯决策</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neyman-Pearson-%E5%87%86%E5%88%99"><span class="nav-number">2.2.3.</span> <span class="nav-text">Neyman-Pearson 准则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%86%B3%E7%AD%96"><span class="nav-number">2.2.4.</span> <span class="nav-text">正态分布的统计决策</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">线性分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%88%A4%E5%88%AB%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">线性判别函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fisher%E7%BA%BF%E6%80%A7%E5%88%A4%E5%88%AB%E5%88%86%E6%9E%90"><span class="nav-number">3.2.</span> <span class="nav-text">Fisher线性判别分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E5%99%A8"><span class="nav-number">3.3.</span> <span class="nav-text">感知器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%B9%B3%E6%96%B9%E8%AF%AF%E5%B7%AE%E5%88%A4%E5%88%AB"><span class="nav-number">3.4.</span> <span class="nav-text">最小平方误差判别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="nav-number">3.5.</span> <span class="nav-text">线性支持向量机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%B1%BB%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">3.6.</span> <span class="nav-text">多类线性分类器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="nav-number">4.1.</span> <span class="nav-text">最大似然估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%BC%B0%E8%AE%A1"><span class="nav-number">4.2.</span> <span class="nav-text">贝叶斯估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%AB"><span class="nav-number">4.3.</span> <span class="nav-text">差别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">模型</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/MachineLearn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="机器学习理论笔记 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机器学习理论笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-23 13:54:15" itemprop="dateCreated datePublished" datetime="2020-02-23T13:54:15+08:00">2020-02-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">计算机理论</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="基本数学"><a href="#基本数学" class="headerlink" title="基本数学"></a>基本数学</h2><p>基础包括：</p>
+<ul>
+<li>导数</li>
+<li>向量<ul>
+<li>L-P范数：L1，绝对值和；L2，向量长度</li>
+<li>线性相关与线性无关</li>
+</ul>
+</li>
+<li>矩阵</li>
+<li>偏导</li>
+<li>梯度：多元函数对各自自变量偏导形成的向量</li>
+<li>雅克比矩阵：对于两个向量有映射：$y&#x3D;f(x)$，则雅克比矩阵是输出向量对输入向量的偏导数矩阵</li>
+<li>Hessian矩阵：一个多元函数的二阶偏导矩阵，一般是一个对称矩阵<ul>
+<li>简写：▽^2 f(x)</li>
+<li>正定，有极小值；负定：极大值；不定，不是极值点</li>
+</ul>
+</li>
+<li>泰勒展开<ul>
+<li>f(x)&#x3D;f(x0) + (▽f(x0))^T (x-x0) + 1&#x2F;2 (x-x0)^T H(x-x0) + o(||x-x0||^2)</li>
+</ul>
+</li>
+<li>行列式</li>
+<li>特征值与特征向量</li>
+<li>奇异值分解 SVD：<ul>
+<li>矩阵对角化只适用方阵，而奇异值分解适合非方阵情况。</li>
+<li>A&#x3D;UΣV^T</li>
+<li>U V 正交，分别列是左奇异向量，行是右奇异向量，Σ为对角阵</li>
+</ul>
+</li>
+<li>二次型<ul>
+<li>纯二次项构成的函数</li>
+</ul>
+</li>
+<li>向量与矩阵求导</li>
+</ul>
+<h2 id="最优化方法"><a href="#最优化方法" class="headerlink" title="最优化方法"></a>最优化方法</h2><p>例如求函数极小值问题：</p>
+<p>梯度下降法：保证梯度与变化率成绩小于零。<br>牛顿法：驻点处导数为零，通过迭代得到。<br>坐标下降法<br>拉格朗日乘数法：用于带约束条件使用<br>凸优化：</p>
+<ul>
+<li>仿射子空间</li>
+<li>多面体</li>
+<li>多个凸集的交集<br>拉格朗日对偶<br>KKT条件<br>拟牛顿法</li>
+</ul>
+<h2 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h2><p>随机事件与概率<br>条件概率<br>随机变量<br>数学期望与方差<br>随机向量<br>最大似然估计</p>
+<h2 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h2><p>有监督学习和无监督学习：聚类、数据降维。<br>分类与回归：样本是整数，分类；样本是浮点数，回归。<br>判别模型与生成模型。<br>强化学习。</p>
+<h2 id="模型评价"><a href="#模型评价" class="headerlink" title="模型评价"></a>模型评价</h2><p>正样本判定为正：TP<br>负样本判定为负：TN</p>
+<p>正样本判定为负：FN<br>负样本判定为正：FP</p>
+<p>精度：TP&#x2F;(TP+FP)<br>召回率：TP&#x2F;(TP+FN)</p>
+<p>ROC曲线：</p>
+<ul>
+<li>真阳率：TPR&#x3D;TP&#x2F;(TP+FN)，能被测出的人脸</li>
+<li>假阳率：FPR&#x3D;FP&#x2F;(FP+TN)，被误认为人脸</li>
+</ul>
+<p>混淆矩阵：应用于k分类问题，表示i类样本判定到j类。<br>交叉验证</p>
+<h2 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h2><p>过拟合与欠拟合<br>偏差与方差<br>正则化：使用L2范数，简化模型，让函数可导。</p>
+<h1 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h1><p>贝叶斯公式描述了两个相关的随机事件或随机变量的概率关系。使用贝叶斯公式，可以在已知样本特征的情况下反推所属类别。</p>
+<p>求解需要的参数：特征向量的概率分布，每一类出现的概率，每一类样本的条件概率。常用正态分布表示特征向量的概率分布。</p>
+<h2 id="朴素贝叶斯分类器"><a href="#朴素贝叶斯分类器" class="headerlink" title="朴素贝叶斯分类器"></a>朴素贝叶斯分类器</h2><p>假设特征向量的各个分量相互独立。</p>
+<p>对于每一类出现的概率，类概率是已知的，即每一个分类出现的概率是知道的。</p>
+<p>特征向量的概率分布，可以记为Z，归一化因子。</p>
+<p>每一类样本的条件概率，分两种情况估计：</p>
+<p>若特征向量的分量是离散型：P&#x3D;N(Xi&#x3D;v, y&#x3D;c)&#x2F;N(y&#x3D;c)</p>
+<p>连续型</p>
+<h2 id="贝叶斯决策"><a href="#贝叶斯决策" class="headerlink" title="贝叶斯决策"></a>贝叶斯决策</h2><h3 id="最小错误率贝叶斯决策"><a href="#最小错误率贝叶斯决策" class="headerlink" title="最小错误率贝叶斯决策"></a>最小错误率贝叶斯决策</h3><p>等价于最大后验概率。保证理论上错误率最小。</p>
+<p>min P(e) &#x3D; 积分(P(e|x) * p(x), dx) &#x3D; min P(e|x)</p>
+<p>等价形式：<br>如果<code>p(x|w1)*P(w1) &gt; p(x|w2)*P(w2)</code> 则选择w1。</p>
+<h3 id="最小风险贝叶斯决策"><a href="#最小风险贝叶斯决策" class="headerlink" title="最小风险贝叶斯决策"></a>最小风险贝叶斯决策</h3><p>不考虑错误带来的风险，而将各种错误一视同仁，是不恰当的。因此使用最小风险决策。理论上保证风险最小化。</p>
+<p>状态空间<code>Ω</code><br>样本<code>x</code>为<code>d</code>维随机变量<br>决策空间<code>A=&#123;..., αi, ...&#125;</code><br>损失函数<code>λ(αi, wi)</code></p>
+<p>最小期望风险 <code>min R(α)=积分(R(α(x)|x) * p(x), dx)</code></p>
+<p>步骤：</p>
+<ol>
+<li>计算后验概率</li>
+<li>利用决策表，计算条件风险R(ai|x)</li>
+<li>决策：选择最小条件风险a &#x3D; arg min (i&#x3D;1,..,k) R(ai|x)</li>
+</ol>
+<h3 id="Neyman-Pearson-准则"><a href="#Neyman-Pearson-准则" class="headerlink" title="Neyman-Pearson 准则"></a>Neyman-Pearson 准则</h3><p>在先验概率和损失未知的情况下如何决策，使用该准则。</p>
+<p>在某一个错误比另一个错误更重要的时候，使用该准则。</p>
+<p>基本思想：固定一类错误率，求另一类错误率最小。拉格朗日数乘法。</p>
+<p><code>min L = P1(e) + r(P2(e) - c)</code></p>
+<h3 id="正态分布的统计决策"><a href="#正态分布的统计决策" class="headerlink" title="正态分布的统计决策"></a>正态分布的统计决策</h3><p>分类器</p>
+<ul>
+<li>表达方式：判别函数，形式不一</li>
+<li>决策面，2个判别函数相等，关于x的方程</li>
+</ul>
+<p>马氏距离。</p>
+<p>正态分布的判别函数：</p>
+<ol>
+<li>协方差阵相等，类内各个维度不相关，且方差相等。最小距离分类器。超平面<code>wT(x-x0)=0</code></li>
+<li>协方差阵相等，超平面</li>
+<li>协方差阵不等，超曲面</li>
+</ol>
+<h1 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h1><p>简单，体积小，但比贝叶斯错误率高。</p>
+<h2 id="线性判别函数"><a href="#线性判别函数" class="headerlink" title="线性判别函数"></a>线性判别函数</h2><p>直接使用样本设计分类器。<br>判别函数：<code>g(x) = w^T * x + w0</code><br>w为权向量。g(x)为决策面方程。</p>
+<p>x到决策面垂足的距离：<code>r = g(x)/||w||</code></p>
+<p>线性判别相关软件包：<code>Liblinear</code></p>
+<p>线性回归：<code>f(x; w, b) = wT * x + b</code><br>增广化：<code>f(x; w^) = wT^ * x^</code></p>
+<p>学习准则：<code>R(w) = 1/2 || y - XT * w||^2</code>，求R(w)导数为0。</p>
+<h2 id="Fisher线性判别分析"><a href="#Fisher线性判别分析" class="headerlink" title="Fisher线性判别分析"></a>Fisher线性判别分析</h2><p>sample向线上投影，同类的聚集，不同的分开。重要的是投影的方向w。</p>
+<p>求每一类的中心，再算每类到各自中心的类内离散度<code>S = (xj - m)(xj - m)T</code>。</p>
+<p>总类内离散度矩阵为<code>SW = S1 + S2</code>。</p>
+<p>类间离散度矩阵<code>SB = (m1 - m2)(m1 - m2)T</code>。</p>
+<p>类间尽量分开，类内尽量紧致。</p>
+<p>投影后的中心为M，则<code>(M1-M2)=(wT(m1-m2))^2</code></p>
+<p><code>J(w) = (M1 - M2)^2 / (S1^2 + S2^2)</code> 类间分子尽量大，类内分母尽量小</p>
+<p>也就是：<code>J(w) = wT * SB * w / wT * SW * w</code></p>
+<p><img src="/MachineLearn%5Cfisher-steps.png" alt="计算步骤"></p>
+<p>分类好后再划线分割原始数据。</p>
+<p>主成分分析PCA：对一组数据向某一个方向投影，使其方差尽量大，尽量散开。</p>
+<p><img src="/MachineLearn%5Cpca-steps.png" alt="计算步骤"></p>
+<p>看奇异值大小，得出分到几维。</p>
+<p>LDA 与 PCA。<br>都是降维，都使用矩阵特征分解，都假设数据符合高斯分布。<br>LDA是有监督，PCA无监督。<br>LDA最多降维到C类数据的C-1维。<br>LDA还可以用于分类。<br>LDA选择分类性能最好的投影方向，PCA选择方差最大方向。</p>
+<p>PCA各种变种：<br>Sparse PCA<br>Online PCA<br>Robust PCA，鲁棒主成分分析。<br>Probabilistic PCA</p>
+<p>Laplacian Eigenmaps 拉布拉斯特征映射，降维，同类尽量紧凑。<br><code>E(y) = w(ij) * (yi - yj)^2</code>, 约束 <code>yTy = 1</code>。<br>算法：</p>
+<ul>
+<li>构建近邻图</li>
+<li>计算每条边的权重（不相连为0）<ul>
+<li>热核权重</li>
+<li>01权重</li>
+</ul>
+</li>
+<li>求特征向量方差，<code>Ly=λy</code>，将点xi映射到(y1, y2, …)i</li>
+</ul>
+<h2 id="感知器"><a href="#感知器" class="headerlink" title="感知器"></a>感知器</h2><p>线性可分。</p>
+<p>解向量和解区。</p>
+<h2 id="最小平方误差判别"><a href="#最小平方误差判别" class="headerlink" title="最小平方误差判别"></a>最小平方误差判别</h2><p>不知道是否线性可分。</p>
+<h2 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h2><h2 id="多类线性分类器"><a href="#多类线性分类器" class="headerlink" title="多类线性分类器"></a>多类线性分类器</h2><h1 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h1><h2 id="最大似然估计"><a href="#最大似然估计" class="headerlink" title="最大似然估计"></a>最大似然估计</h2><p>仅从训练样本出发，参数看做确定变量。</p>
+<h2 id="贝叶斯估计"><a href="#贝叶斯估计" class="headerlink" title="贝叶斯估计"></a>贝叶斯估计</h2><p>从参数的先验知识和样本出发，把参数看成未知的随机变量。</p>
+<p>将离散的决策状态变为连续的估计。<br>条件风险：损失函数*概率密度 的 积分。</p>
+<h2 id="差别"><a href="#差别" class="headerlink" title="差别"></a>差别</h2><p>最大似然估计：没有先验知识，假设模型不变，计算简单。</p>
+<p>贝叶斯：利用参数的先验信息，估计的概率模型相比于假设模型会发生变化，可理解性差，计算复杂。</p>
+<p>吉布斯采样：对后验分布随机采样，用参数的算数平均来估计期望。<br>Statistical Pattern Recognition<br>蒙特卡洛<br>马尔科夫链 </p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p>YOLO 实时快速目标检测方法</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/" rel="tag"># 机器学习理论</a>
+              <a href="/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF/" rel="tag"># 贝叶斯</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/19/%E5%89%8D%E7%AB%AF/ES6/" rel="prev" title="ES6">
+                  <i class="fa fa-angle-left"></i> ES6
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/" rel="next" title="计算机图形学">
+                  计算机图形学 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/MachineLearn/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

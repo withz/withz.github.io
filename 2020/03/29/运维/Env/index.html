@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="配置各种环境">
+<meta property="og:url" content="https://withz.github.io/2020/03/29/%E8%BF%90%E7%BB%B4/Env/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-29T06:19:17.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.356Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="NodeJS">
+<meta property="article:tag" content="VS Code &amp; C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/03/29/%E8%BF%90%E7%BB%B4/Env/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/03/29/%E8%BF%90%E7%BB%B4/Env/","path":"2020/03/29/运维/Env/","title":"配置各种环境"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>配置各种环境 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJS"><span class="nav-number">1.</span> <span class="nav-text">NodeJS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">1.1.</span> <span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python"><span class="nav-number">2.</span> <span class="nav-text">Python</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PyTorch"><span class="nav-number">2.1.</span> <span class="nav-text">PyTorch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WSL"><span class="nav-number">3.</span> <span class="nav-text">WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WSL2-Docker"><span class="nav-number">3.2.</span> <span class="nav-text">WSL2 Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB-WSL"><span class="nav-number">3.3.</span> <span class="nav-text">迁移 WSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF-%E5%85%B3%E9%97%AD-HyperV"><span class="nav-number">3.4.</span> <span class="nav-text">开启 关闭 HyperV</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code"><span class="nav-number">4.</span> <span class="nav-text">VS Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91-C"><span class="nav-number">4.1.</span> <span class="nav-text">开发 C++</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83-MinGW-64"><span class="nav-number">4.1.1.</span> <span class="nav-text">配置编译环境  MinGW-64</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-Visual-Studio-Code"><span class="nav-number">4.1.2.</span> <span class="nav-text">下载 Visual Studio Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE"><span class="nav-number">4.1.3.</span> <span class="nav-text">创建第一个项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-%E7%89%88-VS-Code"><span class="nav-number">4.2.</span> <span class="nav-text">Web 版 VS Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VS-Code-Docker"><span class="nav-number">4.3.</span> <span class="nav-text">VS Code + Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VS-Code-%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91"><span class="nav-number">4.4.</span> <span class="nav-text">VS Code 远程开发</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV"><span class="nav-number">5.</span> <span class="nav-text">OpenCV</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenCV-CMake-%E7%BC%96%E8%AF%91"><span class="nav-number">5.1.</span> <span class="nav-text">OpenCV CMake 编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenCV-Visual-Stuido"><span class="nav-number">5.2.</span> <span class="nav-text">OpenCV + Visual Stuido</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenCV-QT-MingW"><span class="nav-number">5.3.</span> <span class="nav-text">OpenCV + QT + MingW</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vagrant"><span class="nav-number">6.</span> <span class="nav-text">Vagrant</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E8%84%9A%E6%9C%AC"><span class="nav-number">6.1.</span> <span class="nav-text">开机脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boost"><span class="nav-number">7.</span> <span class="nav-text">Boost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSYS2"><span class="nav-number">8.</span> <span class="nav-text">MSYS2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-Clang"><span class="nav-number">9.</span> <span class="nav-text">Windows Clang</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%BC%80%E5%8F%91"><span class="nav-number">10.</span> <span class="nav-text">前后端分离开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="nav-number">10.1.</span> <span class="nav-text">整体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker"><span class="nav-number">10.2.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django"><span class="nav-number">10.3.</span> <span class="nav-text">Django</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">10.3.1.</span> <span class="nav-text">配置开发环境中的环境变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue"><span class="nav-number">10.4.</span> <span class="nav-text">Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEVue-Cli%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%8E%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E6%96%87%E4%BB%B6"><span class="nav-number">10.4.1.</span> <span class="nav-text">配置Vue Cli开发环境与生产环境文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%90%8E%E7%AB%AF"><span class="nav-number">10.4.2.</span> <span class="nav-text">虚拟后端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx"><span class="nav-number">10.5.</span> <span class="nav-text">Nginx</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/03/29/%E8%BF%90%E7%BB%B4/Env/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="配置各种环境 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          配置各种环境
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-29 14:19:17" itemprop="dateCreated datePublished" datetime="2020-03-29T14:19:17+08:00">2020-03-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">开发运维</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h2 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>下载地址：<a target="_blank" rel="noopener" href="http://nodejs.cn/download/">官方网站</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g --registry=https://registry.npm.taobao.org</span><br><span class="line"><span class="comment"># 如果计算机禁止脚本运行，执行下面步骤，选 A</span></span><br><span class="line">set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
+
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h3 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h3><p>下载torch和torchvision</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://download.pytorch.org/whl/torch_stable.html</span><br></pre></td></tr></table></figure>
+
+<p>安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install /path_to_file/torch...</span><br><span class="line">pip install /path_to_file/torchvision...</span><br></pre></td></tr></table></figure>
+
+<h2 id="WSL"><a href="#WSL" class="headerlink" title="WSL"></a>WSL</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>可以到应用商店安装基于WSL的Ubuntu。下载安装完成后，可以通过命令切换到WSL 2。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl -l -v  <span class="comment"># 查看安装的子系统</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2  <span class="comment"># 切换到WSL 2</span></span><br></pre></td></tr></table></figure>
+
+<p>查看所有安装的WSL：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> \\wsl$</span><br></pre></td></tr></table></figure>
+
+<h3 id="WSL2-Docker"><a href="#WSL2-Docker" class="headerlink" title="WSL2 Docker"></a>WSL2 Docker</h3><p>更新系统到Windows 10 2004版本，打开WSL功能，下载安装<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/wsl2-kernel">WSL2补丁</a>。升级成功后，安装Docker安装包即可。</p>
+<p>可以去CUDA官网下载<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda/wsl/download">WSL CUDA驱动</a>。</p>
+<h3 id="迁移-WSL"><a href="#迁移-WSL" class="headerlink" title="迁移 WSL"></a>迁移 WSL</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wsl --shutdown  <span class="comment"># 关闭WSL</span></span><br><span class="line">wsl --<span class="built_in">export</span> docker-desktop-data E:\docker-desktop-data.tar  <span class="comment"># 导出数据</span></span><br><span class="line">wsl --unregister docker-desktop-data  <span class="comment"># 注销子系统</span></span><br><span class="line">wsl --import docker-desktop-data D:\wsl\docker-desktop-data\ E:\docker-desktop-data.tar --version 2  <span class="comment"># 重新挂载子系统到其他位置</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="开启-关闭-HyperV"><a href="#开启-关闭-HyperV" class="headerlink" title="开启 关闭 HyperV"></a>开启 关闭 HyperV</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform</span><br><span class="line">Disable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="VS-Code"><a href="#VS-Code" class="headerlink" title="VS Code"></a>VS Code</h2><h3 id="开发-C"><a href="#开发-C" class="headerlink" title="开发 C++"></a>开发 C++</h3><h4 id="配置编译环境-MinGW-64"><a href="#配置编译环境-MinGW-64" class="headerlink" title="配置编译环境  MinGW-64"></a>配置编译环境  MinGW-64</h4><p><a target="_blank" rel="noopener" href="https://www.jb51.net/softs/696088.html">点击进入MinGW-64下载页面</a>，下载完毕后，解压到一个固定的目录下，并将该目录的<code>../bin</code>目录添加至环境变量中。</p>
+<p>打开CMD（或Power Shell）输入gcc测试环境是否配置成功。如果成功，则显示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc: fatal error: no input files</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></table></figure>
+
+<h4 id="下载-Visual-Studio-Code"><a href="#下载-Visual-Studio-Code" class="headerlink" title="下载 Visual Studio Code"></a>下载 Visual Studio Code</h4><p><a target="_blank" rel="noopener" href="https://aka.ms/win32-x64-user-stable">点击下载Visual Studio Code</a>，下载完毕后安装打开。进入程序后，在插件栏中安装<code>Code Run</code>，<code>C/C++</code>两款插件。安装完毕后重启编辑器。</p>
+<p>Tips: 可以安装一个<code>Chinese</code>插件可以进行汉化。</p>
+<h4 id="创建第一个项目"><a href="#创建第一个项目" class="headerlink" title="创建第一个项目"></a>创建第一个项目</h4><p>打开一个空文件夹，在其下面创建<code>.vscode</code>文件夹（注意有个点），依次点击菜单栏的<code>调试</code>-&gt;<code>添加配置</code>选项，添加一个<code>C++(GDB/LLDB)</code>配置，第二步选择<code>g++.exe build and debug active file</code>，之后会启动调试，并显示调试失败。这里点击取消，编辑器将自动创建<code>launch.json</code>文件和<code>tasks.json</code>文件，这个文件中可以配置启动程序和调试程序所需的相关内容。这两个文件默认情况下是不需要修改的。如果调试失败，可以参考如下两个配置文件进行修改。文件内容如下：</p>
+<p><code>launch.json</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>      <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2.0&quot;</span><span class="punctuation">,</span>      <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>          <span class="punctuation">&#123;</span>              <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;(gdb) Launch&quot;</span><span class="punctuation">,</span> <span class="comment">// 配置名称            &quot;type&quot;: &quot;cppdbg&quot;,       // 这里只能为cppdbg              &quot;request&quot;: &quot;launch&quot;,    // 请求配置类型，可以为launch（启动）或attach（附加）              &quot;program&quot;: &quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;,// 将要进行调试的程序的路径              &quot;args&quot;: [],             // 程序调试时传递给程序的命令行参数，一般设为空即可              &quot;stopAtEntry&quot;: false,   // 设为true时程序将暂停在程序入口处，一般设置为false              &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;, // 调试程序时的工作目录，一般为$&#123;workspaceFolder&#125;即代码所在目录              &quot;environment&quot;: [],              &quot;externalConsole&quot;: true, // 调试时是否显示控制台窗口，一般设置为true显示控制台              &quot;MIMode&quot;: &quot;gdb&quot;,              &quot;miDebuggerPath&quot;: &quot;gdb.exe&quot;, // miDebugger的路径，注意这里要与MinGw的路径对应              &quot;preLaunchTask&quot;: &quot;g++&quot;, // 调试会话开始前执行的任务，一般为编译程序，c++为g++, c为gcc              &quot;setupCommands&quot;: [                  &#123;   		    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,                      &quot;text&quot;: &quot;-enable-pretty-printing&quot;,                      &quot;ignoreFailures&quot;: true                  &#125;              ]          &#125;      ]  &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>tasks.json</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558     // for the documentation about the tasks.json format    &quot;version&quot;: &quot;2.0.0&quot;,    &quot;tasks&quot;: [        &#123;            &quot;type&quot;: &quot;shell&quot;,            &quot;label&quot;: &quot;g++&quot;,            &quot;command&quot;: &quot;g++.exe&quot;,            &quot;args&quot;: [                   &quot;-g&quot;,                &quot;$&#123;file&#125;&quot;,                &quot;-o&quot;,                &quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;            ],            &quot;options&quot;: &#123;                &quot;cwd&quot;: &quot;&quot;            &#125;,            &quot;problemMatcher&quot;: [                &quot;$gcc&quot;            ]        &#125;    ]&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置完成后，添加一个简单的<code>CPP</code>文件，分别调试、直接运行一次测试功能是否正确。如果发现不能调试程序，可尝试重启编辑器。</p>
+<p><code>main.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span>int main(void)&#123;    std::cout&lt;&lt;<span class="string">&quot;Hello World...&quot;</span>&lt;&lt;std::endl;    return 0;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>安装插件<code>Code Runner</code>，配置参数为<code>Run in Terminal</code></p>
+<h3 id="Web-版-VS-Code"><a href="#Web-版-VS-Code" class="headerlink" title="Web 版 VS Code"></a>Web 版 VS Code</h3><p>首先确保安装<code>yarn</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org/npm i -g yarnyarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure>
+
+<p>下载安装运行代码（Windows 下）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth 1 https://github.com/microsoft/vscode.gitcd vscodeyarnyarn watchyarn gulp watch-web  yarn web</span><br></pre></td></tr></table></figure>
+
+<p>（Linux下，Code Server）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth 1 https://github.com/cdr/code-server.gitcd code-serversudo ./install.shsudo code-server --bind-addr 0.0.0.0:8080 --auth none</span><br></pre></td></tr></table></figure>
+
+<h3 id="VS-Code-Docker"><a href="#VS-Code-Docker" class="headerlink" title="VS Code + Docker"></a>VS Code + Docker</h3><p>在Docker服务器上，修改文件<code>/lib/systemd/system/docker.service</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375</span><br></pre></td></tr></table></figure>
+
+<p>再重启Docker</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reloadsystemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>在VS Code上安装Docker插件，打开设置，搜索<code>docker:host</code>，配置远程服务器。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp://192.168.1.101:2375</span><br></pre></td></tr></table></figure>
+
+<p>打开<code>Remote Container</code>，使用<code>Try a Sample</code>开启远程Docker。</p>
+<h3 id="VS-Code-远程开发"><a href="#VS-Code-远程开发" class="headerlink" title="VS Code 远程开发"></a>VS Code 远程开发</h3><p>开启OpenSSH服务，并在VS Code中安装插件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Remote - SSHRemote - WSLRemote - Container</span><br></pre></td></tr></table></figure>
+
+<p>完成后，在左侧<code>远程资源管理器</code>中添加远程主机。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@host</span><br></pre></td></tr></table></figure>
+
+<p>并提示保存config文件。如果需要密钥，可以用<code>ssh-add</code>添加密钥。</p>
+<h2 id="OpenCV"><a href="#OpenCV" class="headerlink" title="OpenCV"></a>OpenCV</h2><h3 id="OpenCV-CMake-编译"><a href="#OpenCV-CMake-编译" class="headerlink" title="OpenCV CMake 编译"></a>OpenCV CMake 编译</h3><p>使用CMake进行MingW编译。需要安装<code>CMake</code>和<code>MingW-w64</code>(QT自带)或MSVC(Visual Studio 20xx)。</p>
+<p>选择源程序目录<code>Source</code>和输出目录<code>Build</code>，点击<code>Configure</code>，选择<code>MinGW Makefiles</code>，选择<code>Finish</code>，等待完成。</p>
+<p>完成后，添加或修改如下选项：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BUILD_opencv_world             ONCMAKE_PREFIX_PATH              D:\Qt\<span class="number">5.14</span>.<span class="number">2</span>\mingw73_64\lib\cmake\Qt5   <span class="comment"># 如果是MSVC则不需要CMAKE_BUILD_TYPE               Debug                                   # 如果是MSVC则不需要OPENCV_ENABLE_ALLOCATOR_STATS  OFFWITH_OPENGL                    ONWITH_QT                        ON                                      # 如果使用 QT 就打开</span></span><br></pre></td></tr></table></figure>
+
+<p>点击<code>Generate</code>。</p>
+<p>待生成后，如果是Mingw，则使用命令行进入<code>Build</code>目录，输入指令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Qt\Tools\mingw730_64\bin\mingw32-make.exe -j 4D:\Qt\Tools\mingw730_64\bin\mingw32-make.exe install</span><br></pre></td></tr></table></figure>
+
+<p>注意，为了防止混淆，这里尽量使用完整的make程序的路径，因为还存在mingw730_32的32位编译器。</p>
+<p>如果是MSVC，则打开OpenCV.sln，在上方选择Debug或是Release，再右键解决方案，点击生成。生成后，右键Install，生成即可安装。</p>
+<p>如果出现<code>File Too Big</code>错误，可以修改相应的文件，如<code>D:\OpenCV4\opencv\build-mingw\modules\core\CMakeFiles\opencv_perf_core.dir\flags.make</code>：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CXX_FLAGS = -Wa,-mbig-obj ...</span><br></pre></td></tr></table></figure>
+
+<p>或直接修改OpenCV源代码中的<code>CMakeFiles.txt</code></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ========================== C/C++ options ==========================if(CMAKE_COMPILER_IS_GNUCXX)    add_compile_options(-Wa,-mbig-obj)endif(CMAKE_COMPILER_IS_GNUCXX)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="OpenCV-Visual-Stuido"><a href="#OpenCV-Visual-Stuido" class="headerlink" title="OpenCV + Visual Stuido"></a>OpenCV + Visual Stuido</h3><p>打开项目属性，编辑如下选项：</p>
+<p>配置：<code>Debug</code>；平台：<code>x64</code></p>
+<p>调试 -&gt; 环境：<code>PATH=D:\OpenCV4\opencv\build\x64\vc15\bin;%PATH%</code>，即配置OpenCV的环境变量。</p>
+<p>VC++目录：</p>
+<ul>
+<li>包含目录：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\OpenCV4\opencv\build\includeD:\OpenCV4\opencv\build\include\opencv2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>库目录：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\OpenCV4\opencv\build\x64\vc15\lib</span><br></pre></td></tr></table></figure>
+
+<p>连接器 -&gt; 输入 -&gt; 附加依赖项：<code>opencv_world430d.lib</code><br>如果配置的是<code>Release</code>，则输入<code>opencv_world430.lib</code></p>
+<h3 id="OpenCV-QT-MingW"><a href="#OpenCV-QT-MingW" class="headerlink" title="OpenCV + QT + MingW"></a>OpenCV + QT + MingW</h3><p>打开QT，新建工程，在.PRO文件中加入</p>
+<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INCLUDEPATH += <span class="attribute">D</span>:\OpenCV4\opencv\build-mingw\install\include\INCLUDEPATH += <span class="attribute">D</span>:\OpenCV4\opencv\build-mingw\install\include\opencv2LIBS += <span class="attribute">D</span>:\OpenCV4\opencv\build-mingw\install\x64\mingw\bin\libopencv_core430.dllLIBS += <span class="attribute">D</span>:\OpenCV4\opencv\build-mingw\install\x64\mingw\bin\libopencv_highgui430.dllLIBS += <span class="attribute">D</span>:\OpenCV4\opencv\build-mingw\install\x64\mingw\bin\libopencv_imgcodecs430.dllLIBS += <span class="attribute">D</span>:\OpenCV4\opencv\build-mingw\install\x64\mingw\bin\libopencv_imgproc430.dllLIBS += <span class="attribute">D</span>:\OpenCV4\opencv\build-mingw\install\x64\mingw\bin\libopencv_features2d430.dllLIBS += <span class="attribute">D</span>:\OpenCV4\opencv\build-mingw\install\x64\mingw\bin\libopencv_calib3d430.dll</span><br></pre></td></tr></table></figure>
+
+<p>之后构建程序并执行。如果出现程序无法打开，则可以做如下两种方案解决问题。<br>方案 1：将<code>D:\OpenCV4\opencv\build-mingw\install\x64\mingw\bin\</code>目录添加到环境变量下（可以在QT中设置项目独立环境变量：项目-&gt;构建环境）。<br>方案 2：将用到的DLL文件复制到<code>\build-xxxx-Desktop_Qt_5_14_2_MinGW_64_bit-Debug\debug</code>目录下。</p>
+<h2 id="Vagrant"><a href="#Vagrant" class="headerlink" title="Vagrant"></a>Vagrant</h2><h3 id="开机脚本"><a href="#开机脚本" class="headerlink" title="开机脚本"></a>开机脚本</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Version Ubuntu 16.04sudo mv /etc/apt/sources.list /etc/apt/sources.list.backsudo cat&gt;&gt;/etc/apt/sources.list&lt;&lt;EOF# deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricteddeb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-propertiesdeb http://mirrors.aliyun.com/ubuntu/ xenial main restricteddeb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-propertiesdeb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricteddeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-propertiesdeb http://mirrors.aliyun.com/ubuntu/ xenial universedeb http://mirrors.aliyun.com/ubuntu/ xenial-updates universedeb http://mirrors.aliyun.com/ubuntu/ xenial multiversedeb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiversedeb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-propertiesdeb http://archive.canonical.com/ubuntu xenial partnerdeb-src http://archive.canonical.com/ubuntu xenial partnerdeb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricteddeb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-propertiesdeb http://mirrors.aliyun.com/ubuntu/ xenial-security universedeb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverseEOFsudo apt-get updatecurl -sSL https://get.docker.com | shsudo cat&gt;&gt;/etc/docker/daemon.json&lt;&lt;EOF&#123;  &quot;registry-mirrors&quot;: [&quot;https://sfpj1t4c.mirror.aliyuncs.com&quot;]&#125;EOFsudo systemctl daemon-reloadsudo systemctl restart dockersudo apt-get install -y docker-compose</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Boost"><a href="#Boost" class="headerlink" title="Boost"></a>Boost</h2><p><a target="_blank" rel="noopener" href="https://www.boost.org/">下载Boost</a>，解压到某一路径。</p>
+<p>为VS 2019编译，使用<code>x86_x64 Cross Tools Command Prompt for VS 2019</code>工具，打开解压目录，运行<code>bootstrap.bat</code>，创建编译文件。<br>创建完成后执行指令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b2.exe --toolset=msvc-14.1 architecture=x86 address-model=64 <span class="built_in">link</span>=static --build-type=complete --with-system --with-thread --with-date_time --with-filesystem --with-serialization</span><br></pre></td></tr></table></figure>
+
+
+<p>如果为QT编译，则直接用命令行打开，输入：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bootstrap.bat gcc<span class="comment"># 等待完成后输入b2.exe --toolset=gcc architecture=x86 address-model=64 link=static --build-type=complete --with-system --with-thread --with-date_time --with-filesystem --with-serialization</span></span><br></pre></td></tr></table></figure>
+
+<p>编译完成即可。</p>
+<p>之后将Boost加入到环境变量（%BOOST_DIR%）。</p>
+<p>Visual Studio 中：<br>VC++包含目录中添加: %BOOST_DIR%;<br>VC++库目录中添加: %BOOST_DIR%\stage\lib;</p>
+<p>QT 中：<br>INCLUDEPATH +&#x3D; %BOOST_DIR%&#x2F;bin&#x2F;include<br>LIBS +&#x3D; %BOOST_DIR%&#x2F;bin&#x2F;lib&#x2F;libboost_regex-mgw49-mt-1_56.a</p>
+<h2 id="MSYS2"><a href="#MSYS2" class="headerlink" title="MSYS2"></a>MSYS2</h2><p>下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64/">MSYS2</a>，并安装。<br>配置环境变量到Path：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\msys64C:\msys64\usr\bin</span><br></pre></td></tr></table></figure>
+
+<p>修改如下文件：<br>C:\msys64\etc\pacman.d\mirrorlist.mingw32<br>C:\msys64\etc\pacman.d\mirrorlist.mingw64<br>C:\msys64\etc\pacman.d\mirrorlist.msys</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## mirrorlist.mingw32#### 32-bit Mingw-w64 repository mirrorlist#### 清华大学软件镜像Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/i686/## 中科大镜像Server = http://mirrors.ustc.edu.cn/msys2/mingw/i686/## msys2.orgServer = http://repo.msys2.org/mingw/i686/## Sourceforge 镜像Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/i686/## The UK Mirror Service Sourceforge mirrorServer = http://sourceforge.mirrorservice.org/m/ms/msys2/REPOS/MINGW/i686/## Sourceforge.netServer = http://downloads.sourceforge.net/project/msys2/REPOS/MINGW/i686## FutureAt 镜像Server = http://www2.futureware.at/~nickoe/msys2-mirror/msys/i686/## mirrorlist.mingw64#### 64-bit Mingw-w64 repository mirrorlist#### 清华大学软件镜像Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64/## 中科大镜像Server = http://mirrors.ustc.edu.cn/msys2/mingw/x86_64/## msys2.orgServer = http://repo.msys2.org/mingw/x86_64/## Sourceforge 镜像Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/## The UK Mirror Service Sourceforge mirrorServer = http://sourceforge.mirrorservice.org/m/ms/msys2/REPOS/MINGW/x86_64/## Sourceforge.netServer = http://downloads.sourceforge.net/project/msys2/REPOS/MINGW/x86_64## FutureAt 镜像Server = http://www2.futureware.at/~nickoe/msys2-mirror/msys/x86_64/## mirrorlist.msys#### MSYS2 repository mirrorlist#### 清华大学软件镜像Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/msys/$arch## 中科大镜像Server = http://mirrors.ustc.edu.cn/msys2/msys/$arch## msys2.orgServer = http://repo.msys2.org/msys/$arch## Sourceforge 镜像Server = https://sourceforge.net/projects/msys2/files/REPOS/msys/$arch## The UK Mirror Service Sourceforge mirrorServer = http://sourceforge.mirrorservice.org/m/ms/msys2/REPOS/msys/$arch## Sourceforge.netServer = http://downloads.sourceforge.net/project/msys2/REPOS/msys/$arch## FutureAt 镜像Server = http://www2.futureware.at/~nickoe/msys2-mirror/msys/$arch</span></span><br></pre></td></tr></table></figure>
+
+<p>更新软件包：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sypacman -Su</span><br></pre></td></tr></table></figure>
+
+<p>搜索软件包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sl | grep git</span><br></pre></td></tr></table></figure>
+
+<p>安装Git：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S git</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="Windows-Clang"><a href="#Windows-Clang" class="headerlink" title="Windows Clang"></a>Windows Clang</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://releases.llvm.org/download.html">下载Clang-LLVM for Windows</a>，安装后添加到环境变量Path中。</li>
+<li>安装<a target="_blank" rel="noopener" href="http://www.mingw-w64.org/doku.php">MinGW-w64</a>，添加bin目录到环境变量Path中。</li>
+<li>或使用MSVC。</li>
+<li>使用Clang编译程序。</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang++ -target x86_64-pc-windows-mingw </span><br></pre></td></tr></table></figure>
+
+<h2 id="前后端分离开发"><a href="#前后端分离开发" class="headerlink" title="前后端分离开发"></a>前后端分离开发</h2><h3 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h3><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use root/example as user/password credentials</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">&#x27;2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">django:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">python:3.8</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">8000</span><span class="string">:8000</span></span><br><span class="line">    <span class="attr">working_dir:</span> <span class="string">/usr/src/app</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">DJANGO_DATABASE:</span> <span class="string">backend</span></span><br><span class="line">      <span class="attr">DJANGO_DATABASE_HOST:</span> <span class="string">db</span></span><br><span class="line">      <span class="attr">DJANGO_DATABASE_PORT:</span> <span class="number">3306</span></span><br><span class="line">      <span class="attr">DJANGO_DATABASE_PSWD:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./django:/usr/src/app</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">bash</span> <span class="string">-c</span> <span class="string">&quot;pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple &amp;&amp; python manage.py makemigrations &amp;&amp; python manage.py migrate &amp;&amp; python manage.py runserver 0.0.0.0:8000&quot;</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">db</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">db:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql:5.7</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">root</span></span><br><span class="line">      <span class="attr">MYSQL_DATABASE:</span> <span class="string">backend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">3306</span><span class="string">:3306</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">~/sql_django:/var/lib/mysql</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">nginx:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./vue:/usr/share/nginx/html</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./vue_conf/nginx.conf:/etc/nginx/nginx.conf</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">adminer:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">adminer</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9080</span><span class="string">:8080</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h3><h4 id="配置开发环境中的环境变量"><a href="#配置开发环境中的环境变量" class="headerlink" title="配置开发环境中的环境变量"></a>配置开发环境中的环境变量</h4><p>在PyCharm中的<code>Edit Configurations</code>中，修改<code>Environment Variables</code>，添加环境变量。这样在Docker中就可以使用<code>environment</code>选项配置环境了。</p>
+<p>在Python文件中，使用如下方式载入环境变量。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">DJANGO_API = os.getenv(<span class="string">&#x27;DJANGO_API&#x27;</span>)</span><br><span class="line">DJANGO_DATABASE = os.getenv(<span class="string">&#x27;DJANGO_DATABASE&#x27;</span>)</span><br><span class="line">DJANGO_DATABASE_HOST = os.getenv(<span class="string">&#x27;DJANGO_DATABASE_HOST&#x27;</span>)</span><br><span class="line">DJANGO_DATABASE_PORT = os.getenv(<span class="string">&#x27;DJANGO_DATABASE_PORT&#x27;</span>)</span><br><span class="line">DJANGO_DATABASE_PSWD = os.getenv(<span class="string">&#x27;DJANGO_DATABASE_PSWD&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h4 id="配置Vue-Cli开发环境与生产环境文件"><a href="#配置Vue-Cli开发环境与生产环境文件" class="headerlink" title="配置Vue Cli开发环境与生产环境文件"></a>配置Vue Cli开发环境与生产环境文件</h4><p>创建<code>.env.production</code>和<code>.env.development</code>，用于存放两种环境下的配置参数。</p>
+<p><code>.env.production</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV = <span class="string">&#x27;development&#x27;</span></span><br><span class="line">VUE_APP_MODE = <span class="string">&#x27;development&#x27;</span></span><br><span class="line">VUE_APP_API_URL = <span class="string">&#x27;http://127.0.0.1:8000/&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>.env.development</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NODE_ENV = <span class="string">&#x27;production&#x27;</span></span><br><span class="line">VUE_APP_MODE = <span class="string">&#x27;production&#x27;</span></span><br><span class="line">VUE_APP_API_URL = <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Js文件中，通过下面的方式可以区分两种运行环境。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mode = process.<span class="property">env</span>.<span class="property">VUE_APP_MODE</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="虚拟后端"><a href="#虚拟后端" class="headerlink" title="虚拟后端"></a>虚拟后端</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i axios </span><br><span class="line">npm i mockjs</span><br></pre></td></tr></table></figure>
+
+<p>通过配置Mock可以实现模拟后端反馈数据。<br>首先配置axios模块，实现请求和响应拦截。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line">axios.<span class="property">defaults</span>.<span class="property">headers</span>.<span class="property">get</span>[<span class="string">&#x27;Content-Type&#x27;</span>] = <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span></span><br><span class="line">axios.<span class="property">defaults</span>.<span class="property">baseURL</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">VUE_APP_MODE</span> == <span class="string">&#x27;development&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// 请求拦截器</span></span><br><span class="line">    axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> token = <span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;userToken&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span> (token) &#123; <span class="comment">// 判断是否存在token，如果存在的话，则每个http header都加上token</span></span><br><span class="line">                config.<span class="property">headers</span>.<span class="property">accessToken</span> = token;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> config;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="comment">// 响应拦截器</span></span><br><span class="line">    axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> response;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> axios</span><br></pre></td></tr></table></figure>
+
+<p>创建<code>mock.js</code>文件，编写模拟后端接口。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* eslint-disable no-unused-vars */</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Mock</span> <span class="keyword">from</span> <span class="string">&#x27;mockjs&#x27;</span>;</span><br><span class="line"><span class="comment">// 配置拦截 ajax 的请求时的行为，支持的配置项目有 timeout。</span></span><br><span class="line"><span class="title class_">Mock</span>.<span class="title function_">setup</span>(&#123;</span><br><span class="line">    <span class="attr">timeout</span>: <span class="string">&#x27;200 - 300&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// const vCode = &#x27;123456&#x27;;</span></span><br><span class="line"><span class="comment">// function getVerificatCode(prarms) &#123;</span></span><br><span class="line"><span class="comment">//     const prarmsObj = JSON.parse(prarms.body);</span></span><br><span class="line"><span class="comment">//     return Object.assign(prarmsObj, &#123; vCode: vCode &#125;);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// function loginFun(prarms) &#123;</span></span><br><span class="line"><span class="comment">//     const prarmsObj = JSON.parse(prarms.body);</span></span><br><span class="line"><span class="comment">//     if (prarmsObj.code === vCode) &#123;</span></span><br><span class="line"><span class="comment">//         return &#123; code: 1, text: &#x27;登录成功&#x27; &#125;</span></span><br><span class="line"><span class="comment">//     &#125; else &#123;</span></span><br><span class="line"><span class="comment">//         return &#123; code: 2, text: &#x27;验证码有误，登录失败&#x27; &#125;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> raw_device_list = &#123;</span><br><span class="line">    <span class="attr">device_list</span>: [</span><br><span class="line">        &#123; <span class="string">&quot;id&quot;</span>: <span class="string">&quot;1001&quot;</span>, <span class="string">&quot;ip&quot;</span>: <span class="string">&#x27;192.168.3.101&#x27;</span>, <span class="string">&quot;status&quot;</span>: <span class="literal">true</span>, <span class="string">&quot;auto&quot;</span>: <span class="literal">true</span>, <span class="string">&#x27;comment&#x27;</span>: <span class="string">&#x27;院子里那个&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="string">&quot;id&quot;</span>: <span class="string">&quot;1002&quot;</span>, <span class="string">&quot;ip&quot;</span>: <span class="string">&#x27;192.168.3.102&#x27;</span>, <span class="string">&quot;status&quot;</span>: <span class="literal">false</span>, <span class="string">&quot;auto&quot;</span>: <span class="literal">true</span>, <span class="string">&#x27;comment&#x27;</span>: <span class="string">&#x27;屋子里那个&#x27;</span> &#125;,</span><br><span class="line">        &#123; <span class="string">&quot;id&quot;</span>: <span class="string">&quot;2004&quot;</span>, <span class="string">&quot;ip&quot;</span>: <span class="string">&#x27;192.168.3.123&#x27;</span>, <span class="string">&quot;status&quot;</span>: <span class="literal">true</span>, <span class="string">&quot;auto&quot;</span>: <span class="literal">null</span> &#125;,</span><br><span class="line">        &#123; <span class="string">&quot;id&quot;</span>: <span class="string">&quot;3002&quot;</span>, <span class="string">&quot;ip&quot;</span>: <span class="string">&#x27;192.168.3.132&#x27;</span>, <span class="string">&quot;status&quot;</span>: <span class="literal">true</span>, <span class="string">&quot;auto&quot;</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> raw_device_data = &#123;</span><br><span class="line">    <span class="string">&#x27;1001&#x27;</span>: [</span><br><span class="line">        &#123; <span class="attr">time</span>: <span class="string">&#x27;2020-06-09T11:11:03.841&#x27;</span>, <span class="attr">value</span>: <span class="number">10</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">time</span>: <span class="string">&#x27;2020-06-09T11:12:03.841&#x27;</span>, <span class="attr">value</span>: <span class="number">20</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">time</span>: <span class="string">&#x27;2020-06-09T12:13:03.841&#x27;</span>, <span class="attr">value</span>: <span class="number">30</span> &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&#x27;1002&#x27;</span>: [</span><br><span class="line">        &#123; <span class="attr">time</span>: <span class="string">&#x27;2020-06-09T13:11:03.841&#x27;</span>, <span class="attr">value</span>: <span class="number">10</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">time</span>: <span class="string">&#x27;2020-06-09T13:12:03.841&#x27;</span>, <span class="attr">value</span>: <span class="number">40</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">time</span>: <span class="string">&#x27;2020-06-09T13:13:03.841&#x27;</span>, <span class="attr">value</span>: <span class="number">20</span> &#125;,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">device_list</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// const prarmsObj = JSON.parse(prarms.body);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> raw_device_list</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">device_add</span>(<span class="params">param</span>) &#123;</span><br><span class="line">    <span class="comment">// eslint-disable-next-line no-unused-vars</span></span><br><span class="line">    <span class="keyword">const</span> paramObj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(param.<span class="property">body</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(paramObj)</span><br><span class="line">    <span class="keyword">return</span> param</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">VUE_APP_MODE</span> == <span class="string">&#x27;development&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// Mock.mock( url, post/get , 返回的数据)；</span></span><br><span class="line">    <span class="title class_">Mock</span>.<span class="title function_">mock</span>(<span class="string">&#x27;/api/device/list&#x27;</span>, <span class="string">&#x27;get&#x27;</span>, device_list);</span><br><span class="line">    <span class="title class_">Mock</span>.<span class="title function_">mock</span>(<span class="string">&#x27;/api/device/add&#x27;</span>, <span class="string">&#x27;post&#x27;</span>, device_add);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><code>main.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BootstrapVue</span>, <span class="title class_">IconsPlugin</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;bootstrap-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Video</span> <span class="keyword">from</span> <span class="string">&#x27;video.js&#x27;</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;./axios/axios&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;bootstrap/dist/css/bootstrap.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;bootstrap-vue/dist/bootstrap-vue.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;video.js/dist/video-js.css&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;./mocks/mock.js&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">BootstrapVue</span>)</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">IconsPlugin</span>)</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$video</span> = <span class="title class_">Video</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">axios</span> = axios</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">productionTip</span> = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">    router,</span><br><span class="line">    store,</span><br><span class="line">    <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>)</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p>配置Nginx，用于耦合前后端程序。为了防止出现跨域，可以通过反向代理设置后端到前端接口上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#user nobody;</span><br><span class="line">worker_processes 1;</span><br><span class="line">events &#123;</span><br><span class="line">	worker_connections 1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">	include mime.types;</span><br><span class="line">	default_type application/octet-stream;</span><br><span class="line">	sendfile on;</span><br><span class="line">	#tcp_nopush on;</span><br><span class="line">	#keepalive_timeout 0;</span><br><span class="line">	keepalive_timeout 65;</span><br><span class="line">	#gzip on;</span><br><span class="line">	gzip on;</span><br><span class="line">	gzip_min_length 5k;</span><br><span class="line">	gzip_buffers 4 16k;</span><br><span class="line">	#gzip_http_version 1.0;</span><br><span class="line">	gzip_comp_level 3;</span><br><span class="line">	gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;</span><br><span class="line">	gzip_vary on;</span><br><span class="line">	server &#123;</span><br><span class="line">		listen 80;</span><br><span class="line">		server_name nginx;</span><br><span class="line">		# 前端</span><br><span class="line">		location / &#123;</span><br><span class="line">			index index.html index.htm; #添加属性。</span><br><span class="line">			root /usr/share/nginx/html; #站点目录</span><br><span class="line">		&#125;</span><br><span class="line">		# 后端，反向代理</span><br><span class="line">		location /api/ &#123;</span><br><span class="line">			proxy_pass http://django:8000/;</span><br><span class="line">		&#125;</span><br><span class="line">		error_page 500 502 503 504 /50x.html;</span><br><span class="line">		location = /50x.html &#123;</span><br><span class="line">			root /usr/share/nginx/html;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+              <a href="/tags/VS-Code-C/" rel="tag"># VS Code & C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/03/24/%E5%89%8D%E7%AB%AF/WechatProgram/" rel="prev" title="微信小程序">
+                  <i class="fa fa-angle-left"></i> 微信小程序
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/03/29/Python/Paddle/" rel="next" title="百度 PaddlePaddle">
+                  百度 PaddlePaddle <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/03/29/%E8%BF%90%E7%BB%B4/Env/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

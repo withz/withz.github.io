@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="https://withz.github.io/2021/07/20/%E8%BF%90%E7%BB%B4/Linux/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-20T08:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.360Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2021/07/20/%E8%BF%90%E7%BB%B4/Linux/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2021/07/20/%E8%BF%90%E7%BB%B4/Linux/","path":"2021/07/20/运维/Linux/","title":"Linux"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IO"><span class="nav-number">1.</span> <span class="nav-text">IO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">进程操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tools"><span class="nav-number">3.</span> <span class="nav-text">Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim"><span class="nav-number">3.1.</span> <span class="nav-text">Vim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Vimrc"><span class="nav-number">3.1.1.</span> <span class="nav-text">配置 Vimrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.2.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">3.1.3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E4%B8%8E%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%BE%91"><span class="nav-number">3.1.4.</span> <span class="nav-text">缓冲区与多文件编辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visual-%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.5.</span> <span class="nav-text">Visual 模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Apparmor"><span class="nav-number">4.</span> <span class="nav-text">Apparmor</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-number">4.1.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="nav-number">4.1.1.</span> <span class="nav-text">文件属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4"><span class="nav-number">4.1.2.</span> <span class="nav-text">文件命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="nav-number">4.1.3.</span> <span class="nav-text">开机启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu-18-04"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">Ubuntu 18.04</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1"><span class="nav-number">4.1.4.</span> <span class="nav-text">路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">设置静态地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%B4%E6%97%B6%E4%BF%AE%E6%94%B9%E8%B7%AF%E7%94%B1%E9%A1%BA%E5%BA%8F"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">临时修改路由顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E4%BF%AE%E6%94%B9%E8%B7%AF%E7%94%B1%E9%A1%BA%E5%BA%8F"><span class="nav-number">4.1.4.3.</span> <span class="nav-text">工具修改路由顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">4.1.5.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="nav-number">4.1.6.</span> <span class="nav-text">用户管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86"><span class="nav-number">4.1.7.</span> <span class="nav-text">磁盘管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vi-vim"><span class="nav-number">4.1.8.</span> <span class="nav-text">vi&#x2F;vim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.9.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%89%8D%E5%90%8E%E5%8F%B0%E5%88%87%E6%8D%A2"><span class="nav-number">4.1.10.</span> <span class="nav-text">程序的前后台切换</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2021/07/20/%E8%BF%90%E7%BB%B4/Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Linux | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-20 16:00:00" itemprop="dateCreated datePublished" datetime="2021-07-20T16:00:00+08:00">2021-07-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">开发运维</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+
+<h1 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h1><ul>
+<li>阻塞IO，即常见的IO模型。一般设计为一个线程负责一个IO。</li>
+<li>非阻塞IO，即使用poll，即轮询的方式，虽然不会阻塞，但是会大量占用CPU。</li>
+<li>IO复用，即使用select，即向系统内核递交一批感兴趣的描述符，内核会轮询这些描述符，直到有其中一个IO有数据。可以用一个线程操作一组IO。</li>
+<li>信号驱动IO，即使用信号处理函数来操作IO，用起来就像是使用中断处理函数。</li>
+<li>异步IO，即向内核提交好缓冲区，内核收到数据后自动将数据填充到缓冲区，并向进程发送信号。不常见。</li>
+<li>epoll，与select相比，时间复杂度为o(1)，使用水平触发和边缘触发两种方式。<ul>
+<li>水平触发：只要这个文件描述符还有数据可读，每次 epoll_wait都会返回它的事件，提醒用户程序去操作。</li>
+<li>边缘触发：通过 epoll_wait 调用会得到有事件通知的文件描述符，对于每一个被通知的文件描述符，如可读，则必须将该文件描述符一直读到空。可能会阻塞。</li>
+</ul>
+</li>
+</ul>
+<h1 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h1><p>Ctrl+z - 挂起任务</p>
+<p>fg - 切到前台</p>
+<p>bg - 切到后台</p>
+<p>jobs - 查看后台任务</p>
+<p>disown - 脱离终端  <code>disown %2</code> <code>disown -a</code></p>
+<h1 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h1><h2 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h2><p>Vim：多级撤销，语法高亮，自动补全，插件，通过网络配置文件，多文件编辑，编辑压缩文件。</p>
+<h3 id="配置-Vimrc"><a href="#配置-Vimrc" class="headerlink" title="配置 Vimrc"></a>配置 Vimrc</h3><p>Vimrc：Vim配置文件。分为用户级别和系统级别。每一行为一个命令。通过配置Vimrc可以配置Vim界面和用法。配置既可以写在Vimrc中，也可以在运行时输入命令。</p>
+<p>配置显示行号</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> number </span><br><span class="line">:<span class="built_in">set</span> nonumber </span><br><span class="line">:<span class="built_in">set</span> number? <span class="comment"># 查看是否开启</span></span><br></pre></td></tr></table></figure>
+
+<p>配置光标</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> ruler </span><br><span class="line">:<span class="built_in">set</span> noruler</span><br><span class="line">:<span class="built_in">set</span> ruler? <span class="comment"># 查看是否开启</span></span><br></pre></td></tr></table></figure>
+
+<p>配置查找高亮</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> hls </span><br><span class="line">:<span class="built_in">set</span> nohls</span><br><span class="line">:<span class="built_in">set</span> hls? <span class="comment"># 查看是否开启</span></span><br><span class="line">:<span class="built_in">set</span> ignorecase <span class="comment"># 忽略大小写</span></span><br></pre></td></tr></table></figure>
+
+<p>其他配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> autoindent <span class="comment"># 自动缩进</span></span><br><span class="line">:<span class="built_in">set</span> smartindent <span class="comment"># 编程语言自动缩进</span></span><br><span class="line">:<span class="built_in">set</span> expandtab  <span class="comment"># 空格代替Tab</span></span><br><span class="line">:map <span class="comment"># 设置快捷键</span></span><br><span class="line">:<span class="built_in">let</span> <span class="comment"># 赋值</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><p>普通模式：打开时即是普通模式。此时有：</p>
+<ul>
+<li>输入数字，按回车 - 跳转到某行</li>
+</ul>
+<p>可视模式：按下<code>v</code>，可以选中文本。</p>
+<p>插入模式：按下<code>i</code>，可以输入文本。</p>
+<p>命令模式：按下<code>:</code>，之后可以输入命令。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>搜索</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/content</span><br></pre></td></tr></table></figure>
+
+<p>命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:h vimrc <span class="comment"># 查看 Vimrc 帮助</span></span><br><span class="line">:version <span class="comment"># 查看版本</span></span><br><span class="line">:e ~/.vimrc <span class="comment"># 编辑文件</span></span><br></pre></td></tr></table></figure>
+
+<p>移动光标</p>
+<ul>
+<li><code>h</code>: 左</li>
+<li><code>j</code>: 下</li>
+<li><code>k</code>: 上</li>
+<li><code>l</code>: 右</li>
+<li><code>0</code>: 行首，包含缩进</li>
+<li><code>shift + 6</code>: 行首，不含缩进</li>
+<li><code>shift + 4</code>: 行尾</li>
+<li><code>w/W</code>: 移动单词首</li>
+<li><code>b/B</code>: 反向移动</li>
+<li><code>e/E</code>: 移动到单词尾</li>
+<li><code>ge</code>: 反向移动</li>
+<li><code>ctrl + f</code>: 向下翻页</li>
+<li><code>ctrl + b</code>: 向上翻页</li>
+<li><code>ctrl + d</code>: 向下翻半页</li>
+<li><code>ctrl + u</code>: 向上翻半页</li>
+<li><code>1g/g</code>: 移动到第一行</li>
+<li><code>g + ctrl</code>: 文件信息</li>
+<li><code>&gt;&gt;</code>: 缩进</li>
+<li><code>&lt;&lt;</code>: 反缩进</li>
+<li><code>:70-80&gt;</code>: 70-80行缩进</li>
+<li><code>:71&gt;3</code>: 71-74行缩进</li>
+</ul>
+<p>寄存器：</p>
+<ul>
+<li>无名寄存器：默认使用</li>
+<li>数字寄存器：0-9共10寄存器，0是复制专用。</li>
+<li>有名寄存器：可以被命名</li>
+<li>黑洞寄存器：相对于删除</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:reg <span class="comment"># 进入寄存器</span></span><br></pre></td></tr></table></figure>
+
+<p>复制</p>
+<ul>
+<li><code>yy</code>: 复制，到默认寄存器和<code>0</code>寄存器</li>
+</ul>
+<p>删除</p>
+<ul>
+<li><code>dd</code>: 剪切，到<code>1</code>寄存器</li>
+</ul>
+<p>粘贴</p>
+<ul>
+<li><code>p</code>:</li>
+</ul>
+<p>撤销</p>
+<ul>
+<li><code>u</code>:</li>
+</ul>
+<p>重做</p>
+<ul>
+<li><code>ctrl + r</code></li>
+</ul>
+<p>删除</p>
+<ul>
+<li><code>&quot;_d</code>: 进入黑洞寄存器</li>
+</ul>
+<p>字符转化大小写</p>
+<ul>
+<li><code>~</code></li>
+</ul>
+<p>单词转化大小写</p>
+<ul>
+<li><code>g~</code></li>
+</ul>
+<p>重复操作</p>
+<ul>
+<li><code>.</code></li>
+</ul>
+<p>查找</p>
+<ul>
+<li><code>f/F</code>: 查找字符</li>
+<li><code>/</code>: 查找字符串</li>
+<li><code>n/N</code>: 查找之间跳转</li>
+</ul>
+<p>替换</p>
+<ul>
+<li><code>[range]s[ubstitute]/&#123;pattern&#125;/&#123;string&#125;/[flags]</code></li>
+<li><code>:s/set/SET/g</code>: 当前行替换</li>
+<li><code>%s/set/SSS/g</code>: 全局替换</li>
+<li><code>shift + r/R</code>: 替换当前行</li>
+<li><code>r</code>: 替换字符</li>
+</ul>
+<h3 id="缓冲区与多文件编辑"><a href="#缓冲区与多文件编辑" class="headerlink" title="缓冲区与多文件编辑"></a>缓冲区与多文件编辑</h3><p>缓冲区：</p>
+<ul>
+<li>查看缓冲区列表<code>:files</code>, <code>:buffers</code>, <code>:ls</code></li>
+<li><code>:bf/bp/bn/bl/b[num]</code>: 切换缓冲区</li>
+<li><code>:ball</code>: 编辑所有</li>
+<li><code>:wall!</code>: 保存所有</li>
+<li><code>:qall!</code>: 退出所有</li>
+<li><code>:1-3bd</code>: 关闭缓冲区</li>
+</ul>
+<p>多窗口分屏</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -O/o[num] <span class="comment"># 水平/垂直分屏</span></span><br></pre></td></tr></table></figure>
+
+<p>创建分配</p>
+<ul>
+<li><code>ctrl + w c/q</code>: 关闭当前窗口</li>
+<li><code>ctrl + w s</code>: 上下分割当前文件</li>
+<li><code>:sp filename</code>: 上下分割，打开新文件</li>
+<li><code>ctrl + w v</code>: 左右分割当前文件</li>
+<li><code>:vsp filename</code>: 左右分割，打开新文件</li>
+</ul>
+<p>切换分配</p>
+<ul>
+<li><code>ctrl + w K</code>: 向上移动</li>
+<li><code>ctrl + w J</code>: 向下移动</li>
+<li><code>ctrl + w L</code>: 向右移动</li>
+<li><code>ctrl + w H</code>: 向左移动</li>
+<li><code>ctrl + w +</code>: 增加高度</li>
+<li><code>ctrl + w -</code>: 减小高度</li>
+<li><code>ctrl + w =</code>: 保持一致</li>
+</ul>
+<p>标签分组</p>
+<ul>
+<li><code>:tabnew</code>: 新建标签</li>
+<li><code>:tabfind</code>: 在新标签中打开文件</li>
+<li><code>:tabs</code>: 显示标签列表</li>
+<li><code>:tabclose</code>: 关闭当前标签</li>
+<li><code>:tabonly</code>: 仅保留当前标签</li>
+<li><code>:tabn/p/first/last</code>: 跳转标签</li>
+<li><code>:tabm</code>: 移动标签</li>
+<li><code>gt/T</code>: 跳转标签</li>
+<li><code>ngt</code>: 跳转标签</li>
+</ul>
+<h3 id="Visual-模式"><a href="#Visual-模式" class="headerlink" title="Visual 模式"></a>Visual 模式</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">viw <span class="comment"># 选中单词</span></span><br><span class="line">vis <span class="comment"># 选中句子</span></span><br><span class="line">vip <span class="comment"># 选中段落</span></span><br><span class="line">vi( <span class="comment"># 选中括号中的内容</span></span><br><span class="line">vi[ <span class="comment"># 选中括号中的内容</span></span><br><span class="line">vit <span class="comment"># 选中标签中的内容</span></span><br></pre></td></tr></table></figure>
+
+<p>可视化模块</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v <span class="comment"># 面向字符</span></span><br><span class="line">V/shift + v <span class="comment"># 面向行</span></span><br><span class="line">ctrl + v <span class="comment"># 面向块</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Apparmor"><a href="#Apparmor" class="headerlink" title="Apparmor"></a>Apparmor</h1><p>Linux 下的沙箱功能。</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h3><p>文件类型<br>d: 目录<br>-: 文件<br>l: 链接文件<br>b: 存储设备<br>c: 串行设备</p>
+<p>文件权限<br>属主：读写执行<br>属组<br>其他用户</p>
+<p>更改权限</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chgrp</span> 属组 文件</span><br><span class="line"><span class="built_in">chown</span> 属主 文件</span><br><span class="line"><span class="built_in">chown</span> 属主:属组 文件</span><br><span class="line"><span class="built_in">chmod</span> 775 文件或目录</span><br><span class="line"><span class="built_in">chmod</span> +/-/=</span><br><span class="line"><span class="built_in">chmod</span> u=rwx,o=r  (u,g,o,a 用户)</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件命令"><a href="#文件命令" class="headerlink" title="文件命令"></a>文件命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span>    <span class="comment"># 查看文件 -a -d -l</span></span><br><span class="line"><span class="built_in">cd</span>    <span class="comment"># 打开目录 </span></span><br><span class="line"><span class="built_in">pwd</span>   <span class="comment"># 当前目录 -P 实际路径</span></span><br><span class="line"><span class="built_in">mkdir</span> <span class="comment"># 创建目录 -m 配置权限 -p 递归创建所有目录</span></span><br><span class="line"><span class="built_in">rmdir</span> <span class="comment"># 删除目录 -p 递归删除所有目录</span></span><br><span class="line"><span class="built_in">cp</span>  <span class="comment"># 复制 -a pdr -d 复制链接的源文件 -f 强制 -i 覆盖时先询问 -l 硬链接操作 -p 复制文件和属性（备份常用） -r 递归复制  -s 复制为符号连接档 -u 如果目标旧才更新</span></span><br><span class="line"><span class="built_in">rm</span>  <span class="comment"># 删除 -f -i 询问 -r</span></span><br><span class="line"><span class="built_in">mv</span>  <span class="comment"># 移动 -f -i -u</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span>  <span class="comment"># 显示内容 -A vET -b 列行号 -E 结尾用$标出 -n 列行号，带空白行 -T 显示Tab -v 列出特殊字符</span></span><br><span class="line"><span class="built_in">tac</span>  <span class="comment"># 显示内容，倒序</span></span><br><span class="line"><span class="built_in">nl</span>   <span class="comment"># 显示内容，并标行号</span></span><br><span class="line">more <span class="comment"># 一页一页显示 / 搜索字符串 :f 显示行数和文件名 q 退出 b 往回翻页</span></span><br><span class="line">less <span class="comment"># 同上，但可以向前翻页 ? 向前搜索字符串 n 重复前一个搜索 N 反向重复前一个搜索</span></span><br><span class="line"><span class="built_in">head</span> <span class="comment"># 只看前几行</span></span><br><span class="line"><span class="built_in">tail</span> <span class="comment"># 只看后几行</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><p>一般 Linux 启动过程：</p>
+<ol>
+<li>Bios 启动</li>
+<li>boot-loader 启动 </li>
+<li>启动内核</li>
+<li>内核初始化</li>
+<li>初始化最后一步，启动pid &#x3D; 1的init进程</li>
+</ol>
+<p>init：是一个守护进程，相应的机制有 sysvinit upstart<br>sysvinit：是对 &#x2F;etc&#x2F;init.d 配置，service也是通过配置这一项实现开机启动的<br>upstart：这一机制在ubuntu用过一段时间后抛弃<br>systemd：用于克服sysvinit的缺点，功能强大，但是系统复杂</p>
+<p>systemd 常用工具箱：</p>
+<ul>
+<li>systemctl</li>
+<li>journalctl</li>
+<li>notify</li>
+<li>analyze</li>
+<li>cgls</li>
+<li>cgtop</li>
+<li>loginctl</li>
+<li>nspawn</li>
+</ul>
+<p>service 配置文件：</p>
+<ul>
+<li>WantedBy：服务所在的target，<a target="_blank" rel="noopener" href="https://www.freedesktop.org/software/systemd/man/bootup.html#System%20Manager%20Bootup">官方有一张表</a>可以查看所有的选项。</li>
+</ul>
+<h4 id="Ubuntu-18-04"><a href="#Ubuntu-18-04" class="headerlink" title="Ubuntu 18.04"></a>Ubuntu 18.04</h4><p>在Ubuntu 18.04上完全使用SystemCtl来配置启动项，与之前的版本有很大区别，没有了<code>init.d</code>配置启动的方法。</p>
+<p>打开<code>/lib/systemd/system/rc-local.service</code>，在后面追加：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Install]  </span><br><span class="line">WantedBy=multi-user.target  </span><br><span class="line">Alias=rc-local.service</span><br></pre></td></tr></table></figure>
+
+<p>编辑启动项配置文件：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/rc.local</span><br></pre></td></tr></table></figure>
+
+<p>配置启动内容</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh -e</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动内容</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;abc&quot;</span> &gt; /usr/local/test.log</span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+
+<p>修改启动项的权限</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> +x /etc/rc.local</span><br></pre></td></tr></table></figure>
+
+<p>打开启动项：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> rc-local</span><br></pre></td></tr></table></figure>
+
+<p>其他SystemCtl命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload <span class="comment"># 重新加载配置文件</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><h4 id="设置静态地址"><a href="#设置静态地址" class="headerlink" title="设置静态地址"></a>设置静态地址</h4><p>修改文件<code>/etc/dhcp/dhcpd.conf</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subnet 192.168.0.0 netmask 255.255.255.0 &#123;  option routers 192.168.0.1;  option subnet-mask 255.255.255.0;  range dynamic-bootp 192.168.0.100 192.168.0.200;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="临时修改路由顺序"><a href="#临时修改路由顺序" class="headerlink" title="临时修改路由顺序"></a>临时修改路由顺序</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route del default gw 192.168.0.1 eth0route add default gw 192.168.0.1 dev eth0 metric 323</span><br></pre></td></tr></table></figure>
+
+<h4 id="工具修改路由顺序"><a href="#工具修改路由顺序" class="headerlink" title="工具修改路由顺序"></a>工具修改路由顺序</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ifmetric wlan0 50</span><br></pre></td></tr></table></figure>
+
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p>bin: 存储常用命令<br>boot: linux启动核心文件<br>dev: 设备<br>etc: 配置<br>home: 用户目录<br>lib: 动态链接共享库<br>lost+found:系统非法关机后，存放的文件<br>media: U盘，光驱等设备<br>mnt: 临时挂载其他文件系统<br>opt: 额外安装软件所需的目录，如oracle数据库<br>proc: 系统内存映射，虚拟目录，存储在内存上<br>root: 管理员主目录<br>sbin: 管理员程序<br>selinux: Redhat&#x2F;CentOS特有，类似于防火墙<br>srv: 服务启动后需要提取的数据<br>sys: 文件系统sysfs，管理内核设备，进程，伪终端<br>tmp: 存放临时文件<br>usr: 重要，用户的应用程序，文件等，类似于Program Files文件夹<br>usr&#x2F;bin: 系统用户的应用程序<br>usr&#x2F;sbin: 超级用户的应用程序<br>usr&#x2F;src: 内核源代码的默认目录<br>var: 存放不断扩充的东西，例如日志，网站等<br>run: 临时文件系统，存储系统启动后的信息。该文件夹重启后清除</p>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><h3 id="vi-vim"><a href="#vi-vim" class="headerlink" title="vi&#x2F;vim"></a>vi&#x2F;vim</h3><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>~&#x2F;.bashrc</p>
+<h3 id="程序的前后台切换"><a href="#程序的前后台切换" class="headerlink" title="程序的前后台切换"></a>程序的前后台切换</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 让程序在后台执行</span></span><br><span class="line">./command &amp;</span><br><span class="line"><span class="comment"># 查看后台程序</span></span><br><span class="line"><span class="built_in">jobs</span> -l</span><br><span class="line"><span class="comment"># 切换后台程序到前台</span></span><br><span class="line"><span class="built_in">fg</span> %[number]</span><br><span class="line"><span class="comment"># 终止后台程序</span></span><br><span class="line"><span class="built_in">kill</span> %[number]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换前台程序到后台，并暂停</span></span><br><span class="line">ctrl + z</span><br><span class="line"><span class="comment"># 后台程序由暂停变为继续执行</span></span><br><span class="line"><span class="built_in">bg</span> %[number]</span><br><span class="line"><span class="comment"># 不间断执行</span></span><br><span class="line"><span class="built_in">nohup</span></span><br><span class="line"><span class="comment"># 查看nohup日志</span></span><br><span class="line"><span class="built_in">tail</span> -fn 50 nohup.out</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/05/13/%E6%B8%B8%E6%88%8F/GameStart/" rel="prev" title="游戏开发">
+                  <i class="fa fa-angle-left"></i> 游戏开发
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/Algorithm/" rel="next" title="算法">
+                  算法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2021/07/20/%E8%BF%90%E7%BB%B4/Linux/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

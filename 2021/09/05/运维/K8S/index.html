@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K8S">
+<meta property="og:url" content="https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/k8s_struct.jpg">
+<meta property="og:image" content="https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/k8s_master.jpg">
+<meta property="og:image" content="https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/k8s_node.jpg">
+<meta property="og:image" content="c:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211128152526212.png">
+<meta property="article:published_time" content="2021-09-05T12:10:22.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.360Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="K8S">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/k8s_struct.jpg">
+
+
+<link rel="canonical" href="https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/","path":"2021/09/05/运维/K8S/","title":"K8S"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>K8S | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kubernetes"><span class="nav-number">1.</span> <span class="nav-text">Kubernetes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%8D%95%E8%8A%82%E7%82%B9Kubernetes%E9%9B%86%E7%BE%A4"><span class="nav-number">1.2.</span> <span class="nav-text">创建单节点Kubernetes集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pod"><span class="nav-number">1.3.</span> <span class="nav-text">Pod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Replicate"><span class="nav-number">1.4.</span> <span class="nav-text">Replicate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deployment"><span class="nav-number">1.5.</span> <span class="nav-text">Deployment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%9A%E8%8A%82%E7%82%B9Kubernetes%E9%9B%86%E7%BE%A4"><span class="nav-number">1.6.</span> <span class="nav-text">创建多节点Kubernetes集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service"><span class="nav-number">1.7.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ClusterIP"><span class="nav-number">1.7.1.</span> <span class="nav-text">ClusterIP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodePort"><span class="nav-number">1.7.2.</span> <span class="nav-text">NodePort</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84-1"><span class="nav-number">2.</span> <span class="nav-text">架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Server"><span class="nav-number">2.1.</span> <span class="nav-text">API Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-Manager"><span class="nav-number">2.2.</span> <span class="nav-text">Controller Manager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scheduler"><span class="nav-number">2.3.</span> <span class="nav-text">Scheduler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ETCD"><span class="nav-number">2.4.</span> <span class="nav-text">ETCD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kubelet"><span class="nav-number">2.5.</span> <span class="nav-text">Kubelet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KubeProxy"><span class="nav-number">2.6.</span> <span class="nav-text">KubeProxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CoreDNS"><span class="nav-number">2.7.</span> <span class="nav-text">CoreDNS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ingress-Controller"><span class="nav-number">2.8.</span> <span class="nav-text">Ingress Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fedetation"><span class="nav-number">2.9.</span> <span class="nav-text">Fedetation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dashboard"><span class="nav-number">2.10.</span> <span class="nav-text">Dashboard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus"><span class="nav-number">2.11.</span> <span class="nav-text">Prometheus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELK"><span class="nav-number">2.12.</span> <span class="nav-text">ELK</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">控制器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">网络通信方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS"><span class="nav-number">5.1.</span> <span class="nav-text">CentOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu"><span class="nav-number">5.2.</span> <span class="nav-text">Ubuntu</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93Harbor"><span class="nav-number">6.</span> <span class="nav-text">搭建私有仓库Harbor</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kubectl-%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">Kubectl 命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E6%B8%85%E5%8D%95"><span class="nav-number">8.</span> <span class="nav-text">资源清单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">9.</span> <span class="nav-text">容器生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Init-Container%E6%8E%A2%E6%B5%8B"><span class="nav-number">9.1.</span> <span class="nav-text">Init Container探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A2%E9%92%88%E6%8E%A2%E6%B5%8B"><span class="nav-number">9.2.</span> <span class="nav-text">探针探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%EF%BC%8C%E9%80%80%E5%87%BA"><span class="nav-number">9.3.</span> <span class="nav-text">启动，退出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pod-%E5%88%86%E7%B1%BB"><span class="nav-number">10.</span> <span class="nav-text">Pod 分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E4%B8%BB%E5%BC%8F"><span class="nav-number">10.1.</span> <span class="nav-text">自主式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8%E7%AE%A1%E7%90%86%E5%BC%8F"><span class="nav-number">10.2.</span> <span class="nav-text">控制器管理式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReplicaSet"><span class="nav-number">11.</span> <span class="nav-text">ReplicaSet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deployment-1"><span class="nav-number">12.</span> <span class="nav-text">Deployment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DaemonSet"><span class="nav-number">13.</span> <span class="nav-text">DaemonSet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Job"><span class="nav-number">14.</span> <span class="nav-text">Job</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Service-1"><span class="nav-number">15.</span> <span class="nav-text">Service</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ingress"><span class="nav-number">16.</span> <span class="nav-text">Ingress</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">17.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="K8S | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          K8S
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-05 20:10:22" itemprop="dateCreated datePublished" datetime="2021-09-05T20:10:22+08:00">2021-09-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index"><span itemprop="name">开发运维</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+
+
+
+
+<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><p>参考：<a target="_blank" rel="noopener" href="https://feisky.gitbooks.io/kubernetes/content/">序言 · Kubernetes指南 (gitbooks.io)</a></p>
+<p>Kubernetes，简称k8s，也是容器编排工具，功能上与Swarm相同。在前期时，Docker一直以Swarm为主，后面将逐步过渡至k8s上。</p>
+<p>Kubernetes由谷歌制作，因此国内可能会无法访问。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kelseyhightower">Kubernetes的重要人物</a>，通过该页面可以查看一些关于Kubernetes的介绍。</p>
+<p><a target="_blank" rel="noopener" href="https://labs.play-with-k8s.com/">Kubernetes Playground</a>，通过该页面可以不安装Kubernetes就可以使用。</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><img src="/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/k8s_struct.jpg" class="" title="Kubernetes 架构">
+
+<p>Kubernetes也分为两种角色：Master节点与Node节点。</p>
+<img src="/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/k8s_master.jpg" class="" title="Kubernetes Master">
+
+<p>Master主要包含：</p>
+<ul>
+<li>API Server：是外界访问集群的接口；</li>
+<li>Scheduler：是均衡调度容器的模块；</li>
+<li>Controller：控制容器的伸缩；</li>
+<li>etcd：分布式存储。</li>
+</ul>
+<img src="/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/k8s_node.jpg" class="" title="Kubernetes Node">
+
+<p>Node主要包含：</p>
+<ul>
+<li>Pod：是调度的最基本单位，是具有相同（network） namespace的容器的组合。</li>
+<li>Docker：也可以使用其他容器技术，这里使用Docker。</li>
+<li>kubelet：是Master控制节点的接口，负责管理Pod。</li>
+<li>kube-proxy：负责负载均衡，端口转发等功能。</li>
+<li>Fluentd：查询与采集日志。</li>
+<li>Optional Add-ons: DNS, UI, etc.</li>
+</ul>
+<p>另外还有Image Registry负责保存Image。</p>
+<h2 id="创建单节点Kubernetes集群"><a href="#创建单节点Kubernetes集群" class="headerlink" title="创建单节点Kubernetes集群"></a>创建单节点Kubernetes集群</h2><p>Minikube：<br><a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/docs/start/">安装教程</a><br><a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/docs/">使用教程</a><br><a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/docs/examples/">示例</a></p>
+<p>其他参考：<br><a target="_blank" rel="noopener" href="https://help.ubuntu.com/community/KVM/Installation">Ubuntu 安装 KVM</a><br><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">安装kubectl工具</a></p>
+<p>以下过程为基于Ubuntu的，其他系统自行参考。</p>
+<p>首先安装kubectl工具：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载kubectl工具</span></span><br><span class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改为可执行文件</span></span><br><span class="line"><span class="built_in">chmod</span> +x ./kubectl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将文件放置到环境变量bin中</span></span><br><span class="line">sudo <span class="built_in">mv</span> ./kubectl /usr/local/bin/kubectl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本信息</span></span><br><span class="line">kubectl version --client</span><br></pre></td></tr></table></figure>
+
+<p>可以使用Minikube创建单节点Kubernetes集群。首先安装Minikube（Ubuntu）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载安装Minikube</span></span><br><span class="line">curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \</span><br><span class="line">   &amp;&amp; sudo install minikube-linux-amd64 /usr/local/bin/minikube</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看是否支持虚拟化</span></span><br><span class="line">egrep -q <span class="string">&#x27;vmx|svm&#x27;</span> /proc/cpuinfo &amp;&amp; <span class="built_in">echo</span> <span class="built_in">yes</span> || <span class="built_in">echo</span> no</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用VirtualBox作为驱动启动集群</span></span><br><span class="line">minikube start --vm-driver=virtualbox</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置VirtualBox为默认驱动</span></span><br><span class="line">minikube config <span class="built_in">set</span> vm-driver virtualbox</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以使用KVM作为驱动启动集群</span></span><br><span class="line">minikube start --vm-driver=kvm2</span><br></pre></td></tr></table></figure>
+
+<p>下面开始创建单节点集群：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建集群</span></span><br><span class="line">minikube start</span><br><span class="line"><span class="comment"># 查看集群配置</span></span><br><span class="line">kubectl config view</span><br><span class="line"><span class="comment"># 查看context，每一个context表示一种配置</span></span><br><span class="line">kubectl config get-contexts</span><br><span class="line"><span class="comment"># 配置minikube</span></span><br><span class="line">kubectl config use-context minikube</span><br><span class="line"><span class="comment"># 查看集群情况</span></span><br><span class="line">kubectl cluster-info</span><br><span class="line"><span class="comment"># 登录虚拟机</span></span><br><span class="line">minikube ssh</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pod"><a href="#Pod" class="headerlink" title="Pod"></a>Pod</h2><p>Pod是调度的最基本单位，一个Pod拥有一个IP，并且可以包含Volume，Container等，它们之间可以通过localhost相互访问，就像是一台机器上的两个进程相互访问。</p>
+<p>这里创建一个pod_nginx.yml脚本：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">ports:</span> </span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是一些常用命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建这个Pod：</span></span><br><span class="line">kubectl create -f pod_nginx.yml</span><br><span class="line"><span class="comment"># 删除Pod：</span></span><br><span class="line">kubectl delete -f pod_nginx.yml</span><br><span class="line"><span class="comment"># 查看部署的Pod：</span></span><br><span class="line"><span class="comment"># -o wide 可以显示详细信息</span></span><br><span class="line">kubectl get pods -o wide</span><br><span class="line"><span class="comment"># 进入第一个Pod，-c表示第几个，不加表示默认的第一个</span></span><br><span class="line">kubectl <span class="built_in">exec</span> -it nginx -c 1 sh</span><br><span class="line"><span class="comment"># 查看Pod的详细信息</span></span><br><span class="line">kubectl describe pods nginx</span><br><span class="line"><span class="comment"># 映射集群端口到本地，格式  本地端口:集群端口</span></span><br><span class="line">kubectl port-forward nginx 8080:80</span><br></pre></td></tr></table></figure>
+
+<h2 id="Replicate"><a href="#Replicate" class="headerlink" title="Replicate"></a>Replicate</h2><p>首先创建一个文件<code>rs_nginx.yml</code>：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">appVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="comment"># 如果是高版本，可以用ReplicaSet</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicationController</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">spec:</span></span><br><span class="line">        <span class="attr">containers:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">            <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">            <span class="attr">ports:</span></span><br><span class="line">              <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>创建Replicate并可以做如下实验：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建Replicate</span></span><br><span class="line">kubectl create -f rs_nginx.yml</span><br><span class="line"><span class="comment"># 查看Replicate</span></span><br><span class="line">kubectl get rc</span><br><span class="line"><span class="comment"># 查看内部的Pod</span></span><br><span class="line">kubectl get pods</span><br><span class="line"><span class="comment"># 删除单个Pod，pod_name可以用get pods查看</span></span><br><span class="line">kubectl delete pods pod_name</span><br><span class="line"><span class="comment"># 删除后会发现会有新的Pod被创建</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要扩展Pod数量（或收缩Pod数量）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl scale rc nginx --replicas=4</span><br></pre></td></tr></table></figure>
+
+<p>最后删除Replicate：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete -f rc_nginx.yml</span><br></pre></td></tr></table></figure>
+
+<p>关于ReplicaSet，可以参考如下文档：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicaSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">tier:</span> <span class="string">frontend</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span> </span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">tier:</span> <span class="string">frontend</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">tier:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>扩展的时候使用</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl scale rs nginx --replicas=4</span><br></pre></td></tr></table></figure>
+
+<h2 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h2><p>Deployment指明了我们期望创建的集群，以及相应容器的版本，而其他内容则全部交给Kubernetes来实现。使用Deployment可以实现版本升级。</p>
+<p>首先创建<code>deployment_nginx</code>：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">appVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-deployment</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">container:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">nginx:1.12.2</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建</span></span><br><span class="line">kubectl create -f deployment_nginx.yml</span><br><span class="line"><span class="comment"># 查看deployment，-o wide表示更多信息</span></span><br><span class="line">kubectl get deployment -o wide</span><br><span class="line"><span class="comment"># 查看ReplicaSet</span></span><br><span class="line">kubectl get rs</span><br><span class="line"><span class="comment"># 查看Pods</span></span><br><span class="line">kubectl get pods</span><br></pre></td></tr></table></figure>
+
+<p>更新升级Deployment：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="built_in">set</span> image deployment nginx-deployment nginx=nginx:1.13</span><br><span class="line"><span class="comment"># 再次查看deployment，可以发现nginx已经更新</span></span><br><span class="line">kubectl get deployment -o wide</span><br><span class="line"><span class="comment"># 查看更新日志</span></span><br><span class="line">kubectl rollout <span class="built_in">history</span> deployment nginx-deployment</span><br></pre></td></tr></table></figure>
+
+<p>撤销更新</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl rollout undo deployment nginx-deployment</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建多节点Kubernetes集群"><a href="#创建多节点Kubernetes集群" class="headerlink" title="创建多节点Kubernetes集群"></a>创建多节点Kubernetes集群</h2><p>创建多节点Kubernetes集群，可以使用kubeadm，kops或是Tectonic（10 Nodes以内免费）。这里使用Tectonic（基于Vagrant）。</p>
+<p><a target="_blank" rel="noopener" href="https://coreos.com/tectonic">Tectonic官网</a><br><a target="_blank" rel="noopener" href="https://github.com/AlexxNica/tectonic-sandbox">Tectonic Sandbox Github页 非官方</a></p>
+<p>安装好Tectonic后，配置Tectonic与minikube并存可以到kubernetes官网查看<code>Configure Access to Multiple Clusters</code>。</p>
+<p>查看Node：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get node</span><br></pre></td></tr></table></figure>
+
+<p>可以看到刚刚创建的两个Node，即两个虚拟机。</p>
+<p>集群使用的<a target="_blank" rel="noopener" href="https://kubernetes.lo/docs/concepts/cluster-administration/networking/">网络插件</a>可以在此页查看。</p>
+<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><p>Service主要有三种类型：</p>
+<ul>
+<li>ClusterIP：只有集群内部可以访问的IP。 </li>
+<li>NodePort：可以对外提供访问。</li>
+<li>LoadBalancer：由服务商（阿里云，腾讯云）提供，可以让我们将服务交给服务商管理。</li>
+</ul>
+<h3 id="ClusterIP"><a href="#ClusterIP" class="headerlink" title="ClusterIP"></a>ClusterIP</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对外暴露Pod端口，默认是ClusterIP</span></span><br><span class="line">kybectl expose pods nginx-pod</span><br><span class="line"><span class="comment"># 查看服务</span></span><br><span class="line">kybectl get svc</span><br><span class="line"><span class="comment"># 这样可以在集群内部访问Pod提供的服务</span></span><br></pre></td></tr></table></figure>
+
+<p>创建文件<code>deployment_python_http.yml</code>：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">service-test</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLables:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">service_test_pod</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">service_test_pod</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">simple-http</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">python:2.7</span></span><br><span class="line">          <span class="attr">imagePullPolicy:</span>  <span class="string">IfNotPresent</span></span><br><span class="line">          <span class="attr">command:</span>  [<span class="string">&quot;/bin/bash&quot;</span>]</span><br><span class="line">          <span class="attr">args:</span> [<span class="string">&quot;-c&quot;</span>, <span class="string">&quot;echo \&quot; &lt;p&gt;Hello from $(hostname)&lt;/p&gt;\&quot; &gt; index.html; python -m SimpleHTTPServer 8080&quot;</span>]</span><br><span class="line">          <span class="attr">ports:</span> </span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">http</span></span><br><span class="line">              <span class="attr">containerPort:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+
+<p>创建Department：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建Deployment</span></span><br><span class="line">kybectl create -f deployment_python_http.yml</span><br><span class="line"><span class="comment"># 创建服务</span></span><br><span class="line">kubectl expose deployment service-test</span><br><span class="line"><span class="comment"># 查看服务</span></span><br><span class="line">kubectl get svc</span><br></pre></td></tr></table></figure>
+
+<p>下面编辑yml文件，准备更新：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl edit deployment service-test</span><br></pre></td></tr></table></figure>
+
+<p>更改echo内容，保存退出，Pod就被更新了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除服务</span></span><br><span class="line">kubectl delete services nginx-deployment</span><br></pre></td></tr></table></figure>
+
+<h3 id="NodePort"><a href="#NodePort" class="headerlink" title="NodePort"></a>NodePort</h3><p>创建文件<code>pod_nginx.yml</code>：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-pod</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx-container</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">      <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx-port</span></span><br><span class="line">          <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>创建Pod：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create -f pod_nginx.yml</span><br></pre></td></tr></table></figure>
+
+<p>为Pod指定服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl expose pods nginx-pod --<span class="built_in">type</span>=NodePort</span><br><span class="line"><span class="comment"># 查看服务</span></span><br><span class="line">kubectl get svc</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以通过Node访问到服务了。但是一但Pod被关闭，服务就无法使用了。因此可以使用下面的方法：</p>
+<p>创建<code>service_nginx.yml</code>：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">32333</span> <span class="comment"># 此两处必须介于30000到32768</span></span><br><span class="line">      <span class="attr">nodePort:</span> <span class="number">32333</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="string">nginx-port</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br></pre></td></tr></table></figure>
+
+<p>开启服务：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create -f service_nginx.yml</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以访问了。</p>
+<p>kops</p>
+<p>kops是Kubernetes自己开发的用于生产环境的工具。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops">kops Github页面</a></p>
+<p>安装方法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | <span class="built_in">cut</span> -d <span class="string">&#x27;&quot;&#x27;</span> -f 4)/kops-linux-amd64</span><br><span class="line"><span class="built_in">chmod</span> +x kops-linux-amd64</span><br><span class="line">sudo <span class="built_in">mv</span> kops-linux-amd64 /usr/local/bin/kops</span><br></pre></td></tr></table></figure>
+
+<p>建立集群：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kops create cluster --node-count=2 --name=k8s</span><br></pre></td></tr></table></figure>
+
+<p>删除集群：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kops delete cluster --name=k8s --<span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="架构-1"><a href="#架构-1" class="headerlink" title="架构"></a>架构</h1><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211128152526212.png" alt="image-20211128152526212"></p>
+<h2 id="API-Server"><a href="#API-Server" class="headerlink" title="API Server"></a>API Server</h2><p>K8S 的Rest接口，所有组件都来访问这个。</p>
+<h2 id="Controller-Manager"><a href="#Controller-Manager" class="headerlink" title="Controller Manager"></a>Controller Manager</h2><p>维持副本期望数目。</p>
+<h2 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h2><p>接受任务，选择节点分配任务。</p>
+<h2 id="ETCD"><a href="#ETCD" class="headerlink" title="ETCD"></a>ETCD</h2><p>分布式键值数据库，Rest接口。</p>
+<h2 id="Kubelet"><a href="#Kubelet" class="headerlink" title="Kubelet"></a>Kubelet</h2><p>操作 容器，维持Pod生命周期</p>
+<h2 id="KubeProxy"><a href="#KubeProxy" class="headerlink" title="KubeProxy"></a>KubeProxy</h2><p>写入规则到 iptables，ipvs 实现服务映射。</p>
+<h2 id="CoreDNS"><a href="#CoreDNS" class="headerlink" title="CoreDNS"></a>CoreDNS</h2><p>可以为集群中的SVC创建A记录。</p>
+<h2 id="Ingress-Controller"><a href="#Ingress-Controller" class="headerlink" title="Ingress Controller"></a>Ingress Controller</h2><p>实现七层代理。官方只有四层代理。</p>
+<h2 id="Fedetation"><a href="#Fedetation" class="headerlink" title="Fedetation"></a>Fedetation</h2><p>提供多K8S统一管理。</p>
+<h2 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h2><p>提供K8S访问接口。</p>
+<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><p>提供K8S监控。</p>
+<h2 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h2><p>提供K8S集群日志统一分析平台。</p>
+<h1 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h1><p>ReplicationController - 始终保持Pod为用户定义数量，多删少补。</p>
+<p>ReplicaSet - 同ReplicationController，建议使用ReplicaSet。支持集合式Selector（根据Pod Label匹配）。命令式：使用<code>create</code>启动。</p>
+<p>Deployment - 自动管理ReplicaSet和Pot，支持滚动更新，回滚，扩容，缩容，暂停，继续。声明式：使用<code>apply</code>启动。</p>
+<p>DaemonSet - 确保某些Node上运行一个Pod副本。会根据Node加入和离开动态创建Pod。守护进程、运行监控、日志、集群存储。</p>
+<p>Job - 负责批处理任务，仅执行一次。如果退出代码非 0 会重新执行。</p>
+<p>Cron Job - 基于时间的Job。</p>
+<p>StatefulSet - 解决有状态服务问题。场景：持久化存储、命名网络、有序部署、有序扩展、有序收缩。</p>
+<p>HPA - 支持根据资源使用率伸缩集群节点数量。可以控制控制器。</p>
+<h1 id="网络通信方式"><a href="#网络通信方式" class="headerlink" title="网络通信方式"></a>网络通信方式</h1><p>同一个Pod内部使用Localhost访问。</p>
+<p>所有Pod可以通过对方IP直接访问（Overlay）。采用Flanneld。</p>
+<p>Pod与Service采用iptables、Lvs方式等。</p>
+<p>Pod到外网，使用Stun。</p>
+<p>外网访问Pod，使用Service。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>官方安装教程：<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">安装 kubeadm | Kubernetes</a></p>
+<p>Master x 1 + Node x 2 + Harbor（镜像仓库） + Router（软路由，采用koolshare）。</p>
+<p>创建以上5台虚拟机。</p>
+<p>网络架构</p>
+<p>主机网络 -&gt; Koolshare -&gt; K8s x 3</p>
+<p>设置主机名、MAC、Host文件、UUID，保证相互访问。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname k8s-master </span><br><span class="line">cat /sys/class/dmi/id/product_uuid</span><br></pre></td></tr></table></figure>
+
+<p>需要安装IPVS。</p>
+<h2 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h2><p>安装依赖</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y conntrack ntpdate ipvsadm ipset jq iptables curl sysstat libseccomp wget vim net-tools git</span><br></pre></td></tr></table></figure>
+
+<p>关闭防火墙</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">system stop firewalld &amp;&amp; systemctl <span class="built_in">disable</span> firewalld</span><br><span class="line">yum -y install iptables-services &amp;&amp; systemctl start iptables &amp;&amp; systemctl <span class="built_in">enable</span> iptables &amp;&amp; iptables -F &amp;&amp; service iptables save</span><br></pre></td></tr></table></figure>
+
+<p>关闭 SELinux</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; sed -i <span class="string">&#x27;/ swap / s/^\(.*\)$/#\1/g&#x27;</span> /etc/fstab </span><br><span class="line">setenforce 0 &amp;&amp; sed -i <span class="string">&#x27;s/^SELINUX=.*/SELINUX=disabled/&#x27;</span> /etc/selinux/config</span><br></pre></td></tr></table></figure>
+
+<p>调整内核参数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt; kubernetes.conf &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">net.bridge.bridge-nf-call-iptables=1</span></span><br><span class="line"><span class="string">net.bridge.bridge-nf-call-ip6tables=1</span></span><br><span class="line"><span class="string">net.ipv4.ip_forward=1</span></span><br><span class="line"><span class="string">net.ipv4.tcp_tw_recycle=0</span></span><br><span class="line"><span class="string">vm.swappiness=0</span></span><br><span class="line"><span class="string">vm.overcommit_memory=1</span></span><br><span class="line"><span class="string">vm.panic_on_oom=0</span></span><br><span class="line"><span class="string">fs.inotify.max_user_instances=8192</span></span><br><span class="line"><span class="string">fs.inotify.max_user_watches=1048576</span></span><br><span class="line"><span class="string">fs.file-max=52706963</span></span><br><span class="line"><span class="string">fs.nr_open=52706963</span></span><br><span class="line"><span class="string">net.ipv6.conf.all.disable_ipv6=1</span></span><br><span class="line"><span class="string">net.netfilter.nf_conntrack_max=2310720</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="built_in">cp</span> kubernetes.conf /etc/sysctl.d/kubernetes.conf</span><br><span class="line">sysctl -p /etc/sysctl.d/kubernetes.conf</span><br></pre></td></tr></table></figure>
+
+<p>调整时区</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-timezone Asia/Shanghai</span><br><span class="line">timedatectl set-local-rtc 0</span><br><span class="line">systemctl restart rsyslog</span><br><span class="line">systemctl restart crond</span><br></pre></td></tr></table></figure>
+
+<p>关闭不需要的服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop postfix &amp;&amp; systemctl <span class="built_in">disable</span> postfix</span><br></pre></td></tr></table></figure>
+
+<p>设置rsyslogd和systemd journald</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /var/log/journal</span><br><span class="line"><span class="built_in">mkdir</span> /etc/systemd/journald.conf.d</span><br><span class="line"><span class="built_in">cat</span> &gt; /etc/systemd/journald.conf.d/99-prophet.conf &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">[Journal]</span></span><br><span class="line"><span class="string">Storage=persistent</span></span><br><span class="line"><span class="string">Compress=yes</span></span><br><span class="line"><span class="string">SyncIntervalSec=5m</span></span><br><span class="line"><span class="string">RateLimitInberval=30s</span></span><br><span class="line"><span class="string">RateLimitBurst=1000</span></span><br><span class="line"><span class="string">SystemMaxUse=10G</span></span><br><span class="line"><span class="string">SystemMaxFileSize=200M</span></span><br><span class="line"><span class="string">MaxRetentionSec=2week</span></span><br><span class="line"><span class="string">ForwardToSyslog=no</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">systemctl restart systemd-journald</span><br></pre></td></tr></table></figure>
+
+<p>Kube-Proxy 开启IPVS 前置条件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">modprobe br_netfilter</span><br><span class="line"><span class="built_in">cat</span> &gt; /etc/sysconfig/modules/ipvs.modules &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">#!/bin/bash</span></span><br><span class="line"><span class="string">modprobe -- ip_vs</span></span><br><span class="line"><span class="string">modprobe -- ip_vs_rr</span></span><br><span class="line"><span class="string">modprobe -- ip_vs_wrr</span></span><br><span class="line"><span class="string">modprobe -- ip_vs_sh</span></span><br><span class="line"><span class="string">modprobe -- nf_conntrack_ipv4</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="built_in">chmod</span> 755 /etc/sysconfig/modules/ipvs.modules &amp;&amp; bash /etc/sysconfig/modules/ipvs.modules &amp;&amp; lsmod | grep -e ip_vs -e nf_conntrack_ipv4</span><br></pre></td></tr></table></figure>
+
+<p>安装Docker</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.docker.com | sh</span><br><span class="line">sudo <span class="built_in">cat</span>&gt;/etc/docker/daemon.json&lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;registry-mirrors&quot;: [&quot;https://sfpj1t4c.mirror.aliyuncs.com&quot;],</span></span><br><span class="line"><span class="string">  &quot;log-driver&quot;: &quot;json-file&quot;,</span></span><br><span class="line"><span class="string">  &quot;log-opts&quot;: &#123;</span></span><br><span class="line"><span class="string">  	&quot;max-size&quot;: &quot;100m&quot;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">sudo systemctl daemon-reload  <span class="comment"># 加载阿里云加速镜像</span></span><br><span class="line">sudo systemctl restart docker</span><br><span class="line">sudo groupadd docker    <span class="comment"># 添加当前用户到docker组</span></span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line">newgrp docker</span><br><span class="line">sudo apt-get install -y docker-compose   <span class="comment"># 安装 docker compose</span></span><br></pre></td></tr></table></figure>
+
+<p>安装Kubeadm</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">[kubernetes]</span></span><br><span class="line"><span class="string">name=Kubernetes</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span></span><br><span class="line"><span class="string">enabled=1</span></span><br><span class="line"><span class="string">gpgcheck=0</span></span><br><span class="line"><span class="string">repo_gpgcheck=0</span></span><br><span class="line"><span class="string">gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">yum install -y kubelet-1.16.0 kubeadm-1.16.0 kubectl-1.16.0</span><br><span class="line">systemctl <span class="built_in">enable</span> kubelet</span><br></pre></td></tr></table></figure>
+
+<p>部署Master</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init \</span><br><span class="line">  --apiserver-advertise-address=192.168.153.34 \</span><br><span class="line">  --image-repository registry.aliyuncs.com/google_containers \</span><br><span class="line">  --kubernetes-version v1.16.0 \</span><br><span class="line">  --service-cidr=10.1.0.0/16 \</span><br><span class="line">  --pod-network-cidr=10.244.0.0/16</span><br><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">sudo <span class="built_in">cp</span> -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">sudo <span class="built_in">chown</span> $(<span class="built_in">id</span> -u):$(<span class="built_in">id</span> -g) <span class="variable">$HOME</span>/.kube/config</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config <span class="built_in">print</span> init-defaults &gt; kubeadm-config.yaml</span><br><span class="line">kubeadm init --config=kubeadm-config.yaml --experimental-upload-certs | <span class="built_in">tee</span> kubeadm-init.log</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kubeadm-config.yaml</span></span><br><span class="line"><span class="attr">localAPIEndpoint:</span></span><br><span class="line">  <span class="attr">advertiseAddress:</span> <span class="number">192.168</span><span class="number">.66</span><span class="number">.10</span> <span class="comment"># Master</span></span><br><span class="line"><span class="attr">kubernetesVersion:</span> <span class="string">v1.15.1</span></span><br><span class="line"><span class="attr">networking:</span></span><br><span class="line">  <span class="attr">podSubnet:</span> <span class="string">&quot;10.244.0.0/16&quot;</span></span><br><span class="line">  <span class="attr">serviceSubnet:</span> <span class="string">&quot;10.96.0.0/12&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">kubeproxy.conf.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">KubeProxyConfiguration</span></span><br><span class="line"><span class="attr">featureGates:</span></span><br><span class="line">  <span class="attr">SupportIPVSProxyMode:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mode:</span> <span class="string">ipvs</span></span><br></pre></td></tr></table></figure>
+
+<p>为普通用户创建kubectl的token</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">sudo <span class="built_in">cp</span> -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">sudo <span class="built_in">chown</span> $(<span class="built_in">id</span> -u):$(<span class="built_in">id</span> -g) <span class="variable">$HOME</span>/.kube/config</span><br></pre></td></tr></table></figure>
+
+<p>部署Flannel插件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</span><br></pre></td></tr></table></figure>
+
+<p>查看运行状态</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod -n kube-system -o wide -w</span><br><span class="line">kubectl get node</span><br></pre></td></tr></table></figure>
+
+<p>加入Worker</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubeadm <span class="built_in">join</span> 192.168.66.10:6443 --token 6qf11n.pdyzp2zki1ydb2fc \</span><br><span class="line">    --discovery-token-ca-cert-hash sha256:e9055d8b3cfcf40330124f5da18e820ebcb6eb9ff28eb64c0f593e0fb154b755</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>关闭防火墙</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw <span class="built_in">disable</span></span><br></pre></td></tr></table></figure>
+
+<p>禁用 Swap</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo swapoff -a</span><br><span class="line"><span class="comment">#修改/etc/fstab，注释掉swap那行，持久化生效</span></span><br><span class="line">sudo vi /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>修改时区</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo timedatectl set-timezone Asia/Shanghai</span><br><span class="line">sudo systemctl restart rsyslog </span><br></pre></td></tr></table></figure>
+
+<p>设置可以看到bridged traffic</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;&lt;<span class="string">EOF | sudo tee /etc/sysctl.d/k8s.conf</span></span><br><span class="line"><span class="string">net.bridge.bridge-nf-call-ip6tables = 1</span></span><br><span class="line"><span class="string">net.bridge.bridge-nf-call-iptables = 1</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">sudo sysctl --system</span><br></pre></td></tr></table></figure>
+
+<p>设置rp_filter</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改/etc/sysctl.d/10-network-security.conf</span></span><br><span class="line">sudo vi /etc/sysctl.d/10-network-security.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">#将下面两个参数的值从2修改为1</span></span><br><span class="line"><span class="comment">#net.ipv4.conf.default.rp_filter=1</span></span><br><span class="line"><span class="comment">#net.ipv4.conf.all.rp_filter=1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#然后使之生效</span></span><br><span class="line">sudo sysctl --system</span><br></pre></td></tr></table></figure>
+
+
+
+<p>安装Docker</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.docker.com | sh</span><br><span class="line">sudo <span class="built_in">cat</span>&gt;&gt;/etc/docker/daemon.json&lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  &quot;registry-mirrors&quot;: [&quot;https://sfpj1t4c.mirror.aliyuncs.com&quot;]</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line">sudo systemctl daemon-reload  <span class="comment"># 加载阿里云加速镜像</span></span><br><span class="line">sudo systemctl restart docker</span><br><span class="line">sudo groupadd docker    <span class="comment"># 添加当前用户到docker组</span></span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line">newgrp docker</span><br><span class="line">sudo apt-get install -y docker-compose   <span class="comment"># 安装 docker compose</span></span><br></pre></td></tr></table></figure>
+
+<p>安装 Kubeadm</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; sudo apt-get install -y ca-certificates curl software-properties-common apt-transport-https curl</span><br><span class="line">curl -s https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add -</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/kubernetes.list &lt;&lt;<span class="string">EOF </span></span><br><span class="line"><span class="string">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y kubelet kubeadm kubectl</span><br><span class="line">sudo apt-mark hold kubelet kubeadm kubectl</span><br></pre></td></tr></table></figure>
+
+<p>初始化</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo kubeadm init --pod-network-cidr 172.16.0.0/16 \</span><br><span class="line">    --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers</span><br></pre></td></tr></table></figure>
+
+<p>为普通用户创建kubectl的token</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">sudo <span class="built_in">cp</span> -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">sudo <span class="built_in">chown</span> $(<span class="built_in">id</span> -u):$(<span class="built_in">id</span> -g) <span class="variable">$HOME</span>/.kube/config</span><br></pre></td></tr></table></figure>
+
+<p>安装Calico</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载 https://docs.projectcalico.org/v3.11/manifests/calico.yaml</span></span><br><span class="line"><span class="comment">#修改CALICO_IPV4POOL_CIDR，然后</span></span><br><span class="line">kubectl apply -f calico.yaml</span><br></pre></td></tr></table></figure>
+
+<p>安装Worker</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubeadm <span class="built_in">join</span> 192.168.0.95:6443 --token x.xxx \</span><br><span class="line">        --discovery-token-ca-cert-hash sha256:xxxxx</span><br></pre></td></tr></table></figure>
+
+<p>安装Dashboard</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以下载下来自己配置</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">k8s-app:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">17030</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">8443</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">externalIPs:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">192.168</span><span class="number">.0</span><span class="number">.95</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">k8s-app:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">    </span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">admin-user</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">rbac.authorization.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ClusterRoleBinding</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">admin-user</span></span><br><span class="line"><span class="attr">roleRef:</span></span><br><span class="line">  <span class="attr">apiGroup:</span> <span class="string">rbac.authorization.k8s.io</span></span><br><span class="line">  <span class="attr">kind:</span> <span class="string">ClusterRole</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">cluster-admin</span></span><br><span class="line"><span class="attr">subjects:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">admin-user</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kubernetes-dashboard</span></span><br></pre></td></tr></table></figure>
+
+<p>获取登录所需的token</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>安装Controller Ingress</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/baremetal/deploy.yaml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">helm.sh/chart:</span> <span class="string">ingress-nginx-2.0.3</span></span><br><span class="line">    <span class="attr">app.kubernetes.io/name:</span> <span class="string">ingress-nginx</span></span><br><span class="line">    <span class="attr">app.kubernetes.io/instance:</span> <span class="string">ingress-nginx</span></span><br><span class="line">    <span class="attr">app.kubernetes.io/version:</span> <span class="number">0.32</span><span class="number">.0</span></span><br><span class="line">    <span class="attr">app.kubernetes.io/managed-by:</span> <span class="string">Helm</span></span><br><span class="line">    <span class="attr">app.kubernetes.io/component:</span> <span class="string">controller</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">ingress-nginx-controller</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">ingress-nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">http</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="string">http</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">https</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">443</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="string">https</span></span><br><span class="line">  <span class="attr">externalIPs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">192.168</span><span class="number">.0</span><span class="number">.95</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">192.168</span><span class="number">.0</span><span class="number">.34</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app.kubernetes.io/name:</span> <span class="string">ingress-nginx</span></span><br><span class="line">    <span class="attr">app.kubernetes.io/instance:</span> <span class="string">ingress-nginx</span></span><br><span class="line">    <span class="attr">app.kubernetes.io/component:</span> <span class="string">controller</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="搭建私有仓库Harbor"><a href="#搭建私有仓库Harbor" class="headerlink" title="搭建私有仓库Harbor"></a>搭建私有仓库Harbor</h1><p>配置Docker</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;insecure-registeries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://hostname&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>下载Harbor</p>
+<p>编辑harbor.cfg</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname = xxx</span><br></pre></td></tr></table></figure>
+
+<p>创建Https证书</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /data/cert</span><br><span class="line"><span class="built_in">cd</span> !$</span><br><span class="line">openssl genrsa -des3 -out server.key 2048</span><br><span class="line">openssl req -new -key server.key -out server.csr</span><br><span class="line"><span class="built_in">cp</span> server.key server.key.org</span><br><span class="line">openssl rsa -<span class="keyword">in</span> server.key.org -out server.key <span class="comment"># 退密码</span></span><br><span class="line">openssl x509 -req -days 365 -<span class="keyword">in</span> server.csr -signkey server.key -out server.crt</span><br><span class="line"><span class="built_in">chmod</span> a+x *</span><br><span class="line"><span class="built_in">cd</span> -</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+<p>为各个节点添加host解析Harbor hostname</p>
+<p>登录：admin&#x2F;Harbor12345</p>
+<h1 id="Kubectl-命令"><a href="#Kubectl-命令" class="headerlink" title="Kubectl 命令"></a>Kubectl 命令</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="built_in">help</span></span><br><span class="line">kubectl explain</span><br><span class="line">kubectl run xxx --replicas=1</span><br><span class="line">kubectl get rs</span><br><span class="line">kubectl get pod</span><br><span class="line">kubectl get deployment</span><br><span class="line">kubectl delete pod xxx</span><br><span class="line">kubectl scale --replicas=3 xxx </span><br><span class="line">kubectl <span class="built_in">exec</span> pod-name -it -- /bin/sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="资源清单"><a href="#资源清单" class="headerlink" title="资源清单"></a>资源清单</h1><p>级别：</p>
+<ul>
+<li>命名空间：kubeadm 默认安装到 kube-system</li>
+<li>集群：无需指定命名空间</li>
+<li>元数据：HPA，通过指标操作</li>
+</ul>
+<p>类型</p>
+<ul>
+<li>工作负载：Pod，ReplicaSet、Deployment、StatefulSet、DaemonSet、Job、CronJob</li>
+<li>服务发现与负载均衡资源：Service、Ingress</li>
+<li>配置与存储：Volume、CSI（容器存储接口）</li>
+<li>特殊存储卷：ConfigMap（配置中心）、Secret、DownwardAPI（外部信息输入到容器）</li>
+<li>集群级资源：Namespace、Node、Role、ClusterRole、RoleBinding、ClusterRoleBinding</li>
+<li>元数据资源：HPA、PodTemplate、LimitRange</li>
+</ul>
+<p>常用字段：</p>
+<ul>
+<li>version - kubectl api-versions</li>
+<li>kind - Pod &#x2F; Deployment …</li>
+<li>metadata<ul>
+<li>name</li>
+<li>namespace</li>
+</ul>
+</li>
+<li>spec<ul>
+<li>containers[]<ul>
+<li>name</li>
+<li>image</li>
+<li>imagePullPolicy - Always &#x2F; Never &#x2F; IfNotPresent</li>
+<li>command[]</li>
+<li>args[]</li>
+<li>workingDir</li>
+<li>volumeMounts[]<ul>
+<li>name</li>
+<li>mountPath</li>
+<li>readOnly</li>
+</ul>
+</li>
+<li>ports[]<ul>
+<li>name</li>
+<li>containerPort</li>
+<li>hostPort</li>
+<li>protocol - TCP  &#x2F; UDP</li>
+</ul>
+</li>
+<li>env[]<ul>
+<li>name</li>
+<li>value</li>
+</ul>
+</li>
+<li>resources<ul>
+<li>limits<ul>
+<li>cpu</li>
+<li>memory</li>
+</ul>
+</li>
+<li>requests<ul>
+<li>cpu</li>
+<li>memory</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>restartPolicy</li>
+<li>nodeSelector</li>
+<li>imagePullSecrets</li>
+<li>hostNetwork</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pod.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">app-pod</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">app-pod-label</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">app</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br></pre></td></tr></table></figure>
+
+<p>运行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f pod.yaml</span><br><span class="line">kubectl create -f pod.yaml</span><br></pre></td></tr></table></figure>
+
+<p>查看日志</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod</span><br><span class="line">kubectl describe pod app-pod</span><br><span class="line">kubectl <span class="built_in">log</span> app-pod -c app</span><br></pre></td></tr></table></figure>
+
+<p>删除</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete pod app-pod</span><br></pre></td></tr></table></figure>
+
+<h1 id="容器生命周期"><a href="#容器生命周期" class="headerlink" title="容器生命周期"></a>容器生命周期</h1><p>Pause - 启动网络和数据卷</p>
+<p>Init Container - 创建阶段：多个，前一个执行完成后一个执行，包含初始化的工具，可以具有不同的文件视图，可以用于探测依赖服务是否启动。初始化阶段结束后删除，全部删除后才开始Main Container。</p>
+<p>Main Container - 部署阶段</p>
+<p>Start</p>
+<p>Readiness - 就绪检测</p>
+<p>Liveness - 生存检测</p>
+<p>Stop</p>
+<h2 id="Init-Container探测"><a href="#Init-Container探测" class="headerlink" title="Init Container探测"></a>Init Container探测</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># init.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">app-pod</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">app-pod-label</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">...</span></span><br><span class="line">  <span class="attr">initContainers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">app</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">command:</span> [<span class="string">&#x27;sh&#x27;</span>, <span class="string">&#x27;-c&#x27;</span>, <span class="string">&#x27;echo until nslookup db; do echo waiting for db; sleep 2; done;&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># db.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">app-service</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">app-service-label</span></span><br><span class="line">    <span class="attr">version:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="探针探测"><a href="#探针探测" class="headerlink" title="探针探测"></a>探针探测</h2><p>容器出现如下情况时表示容器启动成功</p>
+<ul>
+<li>Exec Action - 容器内指令返回 0 时</li>
+<li>Tcp - 当容器端口打开时</li>
+<li>Http Get - 指定端口和路径上Get返回2xx，3xx时</li>
+</ul>
+<p>存活检测：失败则删除容器</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="attr">livenessProbe:</span></span><br><span class="line">      <span class="attr">exec:</span></span><br><span class="line">        <span class="attr">command:</span> [<span class="string">&#x27;test&#x27;</span>, <span class="string">&#x27;-e&#x27;</span>, <span class="string">&#x27;/tmp/live&#x27;</span>]</span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>就绪检测：失败则删除容器</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="attr">readinessProbe:</span></span><br><span class="line">      <span class="attr">httpGet:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="string">http</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">/index.html</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="启动，退出"><a href="#启动，退出" class="headerlink" title="启动，退出"></a>启动，退出</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">db</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="attr">lifecycle:</span></span><br><span class="line">      <span class="attr">postStart:</span></span><br><span class="line">        <span class="attr">exec:</span></span><br><span class="line">          <span class="attr">command:</span> [<span class="string">...</span>]</span><br><span class="line">      <span class="attr">preStop:</span></span><br><span class="line">        <span class="attr">exec:</span></span><br><span class="line">          <span class="attr">command:</span> [<span class="string">...</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Pod-分类"><a href="#Pod-分类" class="headerlink" title="Pod 分类"></a>Pod 分类</h1><p>可以包含多个容器。这些容器共用Pod的网络地址，存储。</p>
+<h2 id="自主式"><a href="#自主式" class="headerlink" title="自主式"></a>自主式</h2><p>不被管理</p>
+<h2 id="控制器管理式"><a href="#控制器管理式" class="headerlink" title="控制器管理式"></a>控制器管理式</h2><p>被控制器管理数目。</p>
+<h1 id="ReplicaSet"><a href="#ReplicaSet" class="headerlink" title="ReplicaSet"></a>ReplicaSet</h1><p>副本集按照标签管理。同一个标签算一个集合。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl explain rs</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicaSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">frontend</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">tier:</span> <span class="string">frontend</span></span><br><span class="line">  <span class="attr">template:</span>  <span class="comment"># pod</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">tier:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">php</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">php</span></span><br><span class="line">          <span class="attr">env:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">HOST</span></span><br><span class="line">            <span class="attr">value:</span> <span class="string">localhost</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Deployment-1"><a href="#Deployment-1" class="headerlink" title="Deployment"></a>Deployment</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">template:</span>  <span class="comment"># pod</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">          <span class="attr">ports:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+<p>扩容</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl scale deployment nginx-deployment --replicas 10</span><br></pre></td></tr></table></figure>
+
+<p>自动扩容</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl autoscale deployment nginx-deployment --min=10 --max=15 --cpu-percent=80</span><br></pre></td></tr></table></figure>
+
+<p>更新</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl <span class="built_in">set</span> image deployment/nginx-deployment nginx=nginx:1.9.1</span><br></pre></td></tr></table></figure>
+
+<p>回滚</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl rollout undo deployment/nginx-deployment</span><br></pre></td></tr></table></figure>
+
+<h1 id="DaemonSet"><a href="#DaemonSet" class="headerlink" title="DaemonSet"></a>DaemonSet</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">DaemonSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">daemonset-example</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">daemonset</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">daemonset-example</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">daemonset-example</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">daemonset-example</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<h1 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Job</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pi</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">pi</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">daemonset-example</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">perl</span></span><br><span class="line">      <span class="attr">restartPolicy:</span> <span class="string">Never</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Service-1"><a href="#Service-1" class="headerlink" title="Service"></a>Service</h1><p>ClusterIP：一个Service背后有多个同类Pod，它们共用一个ClusterIP，也就是Service的IP。</p>
+<p>NodePort：在ClusterIP基础上，Servcie也会在所在Node上映射一个端口到自己的服务上。</p>
+<p>LoadBalance：在NodePort基础上，借助云供应商创建外部负载均衡器，将请求转发给Node:Service</p>
+<p>ExternalName：将集群外部服务引入到集群内部来。</p>
+<h1 id="Ingress"><a href="#Ingress" class="headerlink" title="Ingress"></a>Ingress</h1><p>七层负载均衡。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><a target="_blank" rel="noopener" href="https://gitee.com/moxi159753/LearningNotes/tree/master/K8S">LearningNotes: Java学习笔记，主要来源于B站上视频的学习，同时会记录平时一些学习和项目中遇到的问题，同步更新在蘑菇博客，如果对我的博客网站感兴趣的话，欢迎关注我的 蘑菇博客项目 笔记主要涵盖：Java，Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等 如果笔记对您有帮助的话，欢迎star支持，谢谢~ - Gitee.com</a></p>
+<p>概念：</p>
+<ul>
+<li>资源编排</li>
+<li>Pod</li>
+<li>Node</li>
+<li>Controller<ul>
+<li>RS</li>
+<li>Deployment</li>
+<li>DaemonSet</li>
+</ul>
+</li>
+<li>Service</li>
+<li>Secret</li>
+<li>ConfigMap</li>
+<li>Ingress</li>
+<li>Helm</li>
+<li>NFS</li>
+<li>PV、PVC</li>
+<li>Dashboard</li>
+<li>HAProxy</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/K8S/" rel="tag"># K8S</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/21/Java/DesignPattern/" rel="prev" title="设计模式">
+                  <i class="fa fa-angle-left"></i> 设计模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/02/%E6%95%A3%E8%A3%85%E7%AC%94%E8%AE%B0/2021/" rel="next" title="2021 笔记">
+                  2021 笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2021/09/05/%E8%BF%90%E7%BB%B4/K8S/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

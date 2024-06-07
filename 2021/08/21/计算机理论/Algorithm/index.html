@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法">
+<meta property="og:url" content="https://withz.github.io/2021/08/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/Algorithm/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-21T09:14:47.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.340Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2021/08/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/Algorithm/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2021/08/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/Algorithm/","path":"2021/08/21/计算机理论/Algorithm/","title":"算法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>算法 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF"><span class="nav-number">2.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">3.</span> <span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">4.</span> <span class="nav-text">双指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87"><span class="nav-number">6.</span> <span class="nav-text">面试准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">7.</span> <span class="nav-text">算法复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">对数器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">9.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BFPRT"><span class="nav-number">9.1.</span> <span class="nav-text">BFPRT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP"><span class="nav-number">9.2.</span> <span class="nav-text">KMP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">9.3.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="nav-number">9.4.</span> <span class="nav-text">并查集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">10.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">11.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%AE%97%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">图算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-1"><span class="nav-number">13.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">14.</span> <span class="nav-text">预处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-number">15.</span> <span class="nav-text">其他问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NP-%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98"><span class="nav-number">16.</span> <span class="nav-text">NP 完全问题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2021/08/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/Algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="算法 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-21 17:14:47" itemprop="dateCreated datePublished" datetime="2021-08-21T17:14:47+08:00">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">计算机理论</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://labuladong.gitbook.io/algo/">参考</a></p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>动态规划问题的一般形式就是求最值，例如：最长递增子序列呀，最小编辑距离等。求解动态规划的核心问题是穷举。</p>
+<p>动态规划三要素：</p>
+<ul>
+<li>重叠子问题：需要「备忘录」或者「DP table」来优化穷举过程，避免不必要的计算。</li>
+<li>最优子结构：子问题间必须互相独立。</li>
+<li>状态转移方程：最困难部分，思路：明确「状态」 -&gt; 定义 dp 数组&#x2F;函数的含义 -&gt; 明确「选择」-&gt; 明确 base case。</li>
+</ul>
+<p>备忘录：一般使用数组，也可以使用哈希表。<br>DP table：采用自底向上的方法，去除递归，改为循环。<br>进一步优化：采用自底向上方法，还可以节省空间，去除不再需要的历史状态。</p>
+<p>时间复杂度计算：子问题总数 * 每个子问题的时间</p>
+<p>解题思路</p>
+<ol>
+<li>首先确定子问题以及子问题是否相互独立。</li>
+<li>列出状态转义方程。<ol>
+<li>确定状态：原问题和子问题中变换的变量。</li>
+<li>确定dp函数：被递归调用的函数（自变量，因变量）。</li>
+<li>确定选择状态的条件</li>
+<li>明确最小子问题base case</li>
+</ol>
+</li>
+<li>解除重复子问题<ol>
+<li>使用备忘录</li>
+<li>使用dp table，定义dp数组（自变量，因变量）</li>
+</ol>
+</li>
+</ol>
+<p>最优子结构：并不是动态规划问题专有的。也就是说，很多问题其实都具有最优子结构，只是其中大部分不具有重叠子问题。</p>
+<p>如果问题中没有最优子结构，那么久改造它，让它有。找最优子结构的过程，其实就是证明状态转移方程正确性的过程，方程符合最优子结构就可以写暴力解了，写出暴力解就可以看出有没有重叠子问题了，有则优化，无则 OK。</p>
+<h1 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h1><p>解决一个回溯问题，实际上就是一个决策树的遍历过程。不像动态规划存在重叠子问题可以优化，回溯算法就是纯暴力穷举，复杂度一般都很高。</p>
+<ul>
+<li>路径：也就是已经做出的选择。</li>
+<li>选择列表：也就是你当前可以做的选择。</li>
+<li>结束条件：也就是到达决策树底层，无法再做选择的条件。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">result = []</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">backtrack</span>(<span class="params">路径, 选择列表</span>):</span><br><span class="line">    <span class="keyword">if</span> 满足结束条件:</span><br><span class="line">        result.add(路径)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> 选择 <span class="keyword">in</span> 选择列表:</span><br><span class="line">        做选择</span><br><span class="line">        backtrack(路径, 选择列表)</span><br><span class="line">        撤销选择</span><br></pre></td></tr></table></figure>
+
+<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><p>二分查找：思路很简单，细节是魔鬼。<br>为了能够清晰展示所有细节，尽量用<code>else if</code>而不是<code>else</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">binarySearch</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> left = <span class="number">0</span>, right = ...;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(...) &#123;</span><br><span class="line">        <span class="comment">// 这样是为了防止数值过大导致溢出</span></span><br><span class="line">        <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">            left = ...</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">            right = ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一般的查找一个数（没有重复元素）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">binarySearch</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> left = <span class="number">0</span>; </span><br><span class="line">    <span class="type">int</span> right = nums.length - <span class="number">1</span>; <span class="comment">// 注意，是最后一个元素的索引，用的是闭区间 [x, y]</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right) &#123; <span class="comment">// right = nums.length - 1 所有用 &lt;=</span></span><br><span class="line">        <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == target)</span><br><span class="line">            <span class="keyword">return</span> mid; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">            left = mid + <span class="number">1</span>; <span class="comment">// 注意</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target)</span><br><span class="line">            right = mid - <span class="number">1</span>; <span class="comment">// 注意</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 跳出循环的条件 left == right + 1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>A: <code>while(left &lt; right)</code> 的终止条件是 <code>left == right</code>，这时候区间<code>[x, x]</code>被漏掉，要在最后单独判断该区间。否则就用<code>while(left &lt;= right)</code>作为终止条件。</p>
+<p>B: <code>left = mid + 1</code>，<code>right = mid - 1</code>，由于<code>mid</code>已经被搜索过了，因此在新的区间中去掉<code>mid</code>。</p>
+<p>寻找左侧边界的二分搜索</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">left_bound</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> right = nums.length; <span class="comment">// 注意，用了左闭右开区间 [x, y)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123; <span class="comment">// 注意，结束条件是 [x, x)</span></span><br><span class="line">        <span class="type">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) &#123; <span class="comment">// 当找到target时，不会立即退出，而是继续缩小搜索范围</span></span><br><span class="line">            right = mid;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">            right = mid; <span class="comment">// 注意，由于左闭右开区间，取左半区间时已经消除mid了</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left; <span class="comment">// 结果含义：比target小的数有几个</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 因此也可以是</span></span><br><span class="line">    <span class="comment">// target 比所有数都大</span></span><br><span class="line">    <span class="keyword">if</span> (left == nums.length) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="comment">// 类似之前算法的处理方式</span></span><br><span class="line">    <span class="keyword">return</span> nums[left] == target ? left : <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">left_bound</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 搜索区间为 [left, right]</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">        <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">            <span class="comment">// 搜索区间变为 [mid+1, right]</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">            <span class="comment">// 搜索区间变为 [left, mid-1]</span></span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">            <span class="comment">// 收缩右侧边界</span></span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果使用了闭区间，那么在得到结果区间[x, x]后，不会返回，而是计算了一次 right = mid - 1 变成了[x, x-1]</span></span><br><span class="line">    <span class="comment">// 由于 while 的退出条件是 left == right + 1，当 target 比 nums 中所有元素都大时，会存在索引越界</span></span><br><span class="line">    <span class="comment">// 检查出界情况</span></span><br><span class="line">    <span class="keyword">if</span> (left &gt;= nums.length || nums[left] != target)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h1><p><code>unordered_map</code> 就是哈希表（字典），它的一个方法 <code>count(key)</code> 相当于 <code>containsKey(key)</code> 可以判断键 key 是否存在。可以使用方括号访问键对应的值 <code>map[key]</code>。需要注意的是，如果该 key 不存在，C++ 会自动创建这个 key，并把 <code>map[key]</code> 赋值为 <code>0</code>。</p>
+<p>滑动窗口：</p>
+<ol>
+<li>初始化 left &#x3D; right &#x3D; 0，把索引闭区间 [left, right] 称为一个「窗口」。</li>
+<li>不断地增加 right 指针扩大窗口 [left, right]，直到窗口中的字符串符合要求。</li>
+<li>我们停止增加 right，转而不断增加 left 指针缩小窗口 [left, right]，直到窗口中的字符串不再符合要求。</li>
+<li>重复第 2 和第 3 步，直到 right 到达字符串 S 的尽头。</li>
+</ol>
+<p>总结：先移动右指针找到可行解，再移动左指针优化可行解。最后找到所有优化的可行解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (right &lt; s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">    <span class="comment">// window 滑动窗口，采用哈希表，用于判断是否含有某字符</span></span><br><span class="line">    window.<span class="built_in">add</span>(s[right]);</span><br><span class="line">    right++;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (valid) &#123;</span><br><span class="line">        window.<span class="built_in">remove</span>(s[left]);</span><br><span class="line">        left++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>快慢指针：<br>判定链表中是否含有环：如果有环，那么快指针总会碰到慢指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast, slow;</span><br><span class="line">    fast = slow = head;</span><br><span class="line">    <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (fast == slow) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>找到环：当快慢指针相遇时，让其中任一个指针指向头节点，然后让它俩以相同速度前进，再次相遇时所在的节点位置就是环开始的位置。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 判断有环</span></span><br><span class="line">    ListNode fast, slow;</span><br><span class="line">    fast = slow = head;</span><br><span class="line">    <span class="keyword">while</span> (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        <span class="keyword">if</span> (fast == slow) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 上面的代码类似 hasCycle 函数</span></span><br><span class="line">    slow = head;</span><br><span class="line">    <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">        fast = fast.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>找链表中点；<br>找链表倒数第K个元素。</p>
+<p>左右指针：一般初始化为 left &#x3D; 0, right &#x3D; nums.length - 1 。<br>二分查找；<br>两数之和；<br>反转数组；<br>滑动窗口。</p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>排序应该考虑数据的特点：</p>
+<ul>
+<li>一般情况下：快排</li>
+<li>包含大量重复元素：三路快排</li>
+<li>近乎有序：插入排序</li>
+<li>有限范围：计数排序</li>
+<li>稳定排序：归并排序</li>
+<li>内存不足：外排序</li>
+<li>无法随机存取：归并排序</li>
+</ul>
+<h1 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h1><p>准备的主要内容：</p>
+<ul>
+<li>梳理项目<ul>
+<li>项目经历</li>
+<li>遇到的实际问题</li>
+</ul>
+</li>
+<li>遇到过的难以解决的BUG</li>
+<li>面向对象与设计模式</li>
+<li>网络、安全、内存、并发等问题</li>
+<li>系统规模，系统设计，承载量</li>
+</ul>
+<p>个人经历，结合项目：</p>
+<ul>
+<li>遇到的最大的挑战</li>
+<li>犯过的错误</li>
+<li>经历的失败</li>
+<li>最享受的工作内容</li>
+<li>遇到冲突的解决方法</li>
+<li>做过的与众不同的事</li>
+</ul>
+<p>做好问面试官的问题：</p>
+<ul>
+<li>小组的运行模式</li>
+<li>项目的后续规划</li>
+<li>产品中的某个问题如何解决的</li>
+<li>为什么选择这个技术和标准</li>
+<li>我在这个小组中有机会深入学习某个技术吗</li>
+</ul>
+<p>低概率算法面试题：</p>
+<ul>
+<li>红黑树</li>
+<li>B-Tree</li>
+<li>斐波那契堆</li>
+<li>计算几何</li>
+<li>数论</li>
+<li>FFT</li>
+</ul>
+<p>常见算法面试题：</p>
+<ul>
+<li>排序算法</li>
+<li>数据结构的实现：堆，二叉树，图</li>
+<li>数据结构的使用：链表，栈，队列，哈希表，图，Trie，并查集</li>
+<li>算法：深度优先，广度优先，二分查找，递归</li>
+<li>基本思想：递归，分治，回溯，贪心，动态规划</li>
+</ul>
+<p>推荐</p>
+<ul>
+<li>LeetCode</li>
+<li>HackerRank</li>
+</ul>
+<p>关键词：</p>
+<ul>
+<li>是否有序</li>
+<li>时间复杂度</li>
+<li>空间复杂度</li>
+<li>数据规模</li>
+</ul>
+<p>找思路和优化：</p>
+<ul>
+<li>设计几个简单的测试用例</li>
+<li>考虑暴力解法，再优化</li>
+<li>使用常见的算法和数据结构</li>
+<li>空间换时间</li>
+<li>排序</li>
+</ul>
+<p>一定要会白板编程：</p>
+<ul>
+<li>堆</li>
+<li>快排</li>
+<li>…</li>
+</ul>
+<h1 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h1><p>一秒内各个复杂度能力：</p>
+<ul>
+<li>n^2 - 10^4</li>
+<li>n - 10^8 </li>
+<li>nlogn - 10^7</li>
+</ul>
+<h1 id="对数器"><a href="#对数器" class="headerlink" title="对数器"></a>对数器</h1><p>使用最不容易出错的方法实现一个程序，再用这个程序测试自己的算法。</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="BFPRT"><a href="#BFPRT" class="headerlink" title="BFPRT"></a>BFPRT</h2><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>异或：满足交换律。</p>
+<p>找到一个数组中一个出现奇数次的数：偶数个数异或为零。</p>
+<p>取int最右侧的1：N &amp; ((~N) + 1)，</p>
+<p>有两个数（a，b）出现奇数次，其他都是偶数次：所有数异或，相对于 a 异或 b 且结果不为 0，取结果int最右侧的 1。例如是第x位，那么a和b的第x位一定不同。此时可以按照第八位不同来将数组划分成两半。各自找出组内唯一的奇数次数。</p>
+<p>大小写转化</p>
+<ul>
+<li>转小写 <code>(&#39;a&#39; | &#39; &#39;) = &#39;a&#39;, (&#39;A&#39; | &#39; &#39;) = &#39;a&#39;</code></li>
+<li>转大写 <code>(&#39;a&#39; &amp; &#39;_&#39;) = &#39;A&#39;, (&#39;A&#39; &amp; &#39;_&#39;) = &#39;A&#39;</code></li>
+<li>大小写呼唤 <code>(&#39;a&#39; ^ &#39;_&#39;) = &#39;A&#39;, (&#39;A&#39; ^ &#39;_&#39;) = &#39;a&#39;</code></li>
+</ul>
+<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>快慢指针：</p>
+<ul>
+<li>找中点（上中点，下中点），中点上一个点：先处理头节点，不足3个节点的情况。</li>
+</ul>
+<p>判断链表回文：</p>
+<ul>
+<li>栈：所有元素入栈，然后取出一个元素，与链表元素比对，直到完成所有比对。</li>
+<li>修改链表后半个方向</li>
+</ul>
+<p>划分为元素左边小，中间等，右边大：考虑换头。</p>
+<ul>
+<li>利用数组</li>
+<li>划分为3个区，每个区存储2个边界，再把链表放入3个区中，最后串联所有区。</li>
+</ul>
+<p>复制链表：链表上每个节点还有额外指针指向其他元素</p>
+<ul>
+<li>使用哈希表，旧节点与新节点一一映射。</li>
+</ul>
+<p>判断链表是否相交，可能存在环</p>
+<ul>
+<li>判断环，得到环的第一个节点。<ul>
+<li>使用 Set，存储内存地址。</li>
+<li>快慢指针，相遇后，快指针从头开始，每次一步，直到再相遇。</li>
+</ul>
+</li>
+<li>如果都无环，一定是 Y 结构</li>
+<li>使用 Set</li>
+<li>记录两个链表长度，先判断他们最后节点是同一个节点，如果是，则一定相交。长链表先走，走到长度一致的位置开始，然后两链表一起走，一定会同时走到相交节点。</li>
+<li>如果有环，一个无环，则一定不相交</li>
+<li>两个都有环：不相交，相交且有相同的入环节点，相交且入环节点不同。</li>
+<li>相交且有相同的入环节点：与 Y 结构解法类似</li>
+<li>相交且入环节点不同、不相交：判断一个环上是否同时存在两个入环节点。</li>
+</ul>
+<p>约瑟夫环问题</p>
+<ul>
+<li>循环链表</li>
+</ul>
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p>非递归遍历：</p>
+<ul>
+<li>先序遍历：弹出就打印，先压入右，再压入左。</li>
+<li>中序遍历：先压缩左边界所有节点，之后弹出一个节点打印，来到它的右树，再压入其所有左边界。</li>
+<li>后序遍历：不严格方式，先序遍历的逆序，用栈收集元素。严格方式，要借用辅助指针。h指针表示上一个处理的节点，c指针表示当前处理的节点，然后判断c的左右两个还是是否右h，根据情况判断处理子树还是处理栈中元素。</li>
+<li>按层遍历：使用队列。查看一行是否遍历结束，使用标志变量。</li>
+</ul>
+<p>序列化、反序列化：遇到空节点也要输出。</p>
+<ul>
+<li>先序遍历</li>
+<li>层序遍历</li>
+</ul>
+<p>打印一颗二叉树：</p>
+<ul>
+<li>补成满二叉树打印</li>
+<li>设计树的输出顺序：右-头-左，然后按行输出</li>
+</ul>
+<p>中序找后继节点</p>
+<ul>
+<li>右树上最左结点，或祖先是左子树的结点</li>
+</ul>
+<p>判断平衡树</p>
+<ul>
+<li>使用二叉树：考虑左右子树需要为自己提供的信息</li>
+</ul>
+<p>返回整棵树的最大距离</p>
+<ul>
+<li>左树的最大距离 + 右树的最大距离，或左(右)树自己的最大距离</li>
+</ul>
+<p>找出二叉树中的最大搜索二叉树</p>
+<ul>
+<li>左(右)树自己的最大搜索二叉树，或包含自己的最大搜索二叉树<ul>
+<li>获取子树的：最大值，最小值，是否是搜索二叉树，包含的搜索二叉树大小</li>
+</ul>
+</li>
+</ul>
+<p>判断满二叉树：</p>
+<ul>
+<li>2^L - 1 &lt;&#x3D; H</li>
+</ul>
+<p>判断完全二叉树：</p>
+<ul>
+<li>宽度优先遍历，有右子树但无左子树则不是，都有则继续，只有左或没有子树，则后续都必须是叶子结点。</li>
+</ul>
+<p>找两个结点的公共祖先</p>
+<ul>
+<li>利用 Set ，并用 Map 记录子父关系</li>
+<li>自己是目标结点，目标结点在左子树，或右子树，或不存在。</li>
+</ul>
+<p>贪心算法：证明有效的方法是举反例</p>
+<ul>
+<li>排序：不一定有传递性，贪心算法的排序需要传递性</li>
+</ul>
+<p>线段树：区间中增删改查，算法复杂度是 log N</p>
+<ul>
+<li>数组先补成 2^N 长度，再以此构建一个满二叉树</li>
+<li>每个结点设计标记：lazy，change，update 标记</li>
+</ul>
+<h1 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h1><p>遍历</p>
+<ul>
+<li>宽度优先遍历<ul>
+<li>考虑环的问题：标记法，数组 或 Set</li>
+</ul>
+</li>
+<li>深度优先遍历</li>
+</ul>
+<p>拓扑排序</p>
+<ul>
+<li>队列：每次入度为零的点加入</li>
+<li>数组：排序结果</li>
+</ul>
+<p>最小生成树</p>
+<ul>
+<li>堆：存放边</li>
+</ul>
+<p>最短路径</p>
+<ul>
+<li>Dijkstra</li>
+</ul>
+<h1 id="动态规划-1"><a href="#动态规划-1" class="headerlink" title="动态规划"></a>动态规划</h1><p>一共<code>4</code>种模型。</p>
+<p>打印字符串的子序列</p>
+<ul>
+<li>暴力递归，参数包括：字符串，当前的字符序号，之前所形成的答案（叶节点用），当前使用的路径。叶结点处理路径结果。</li>
+<li>去重后只求个数，动态规划</li>
+</ul>
+<p>打印字符串的全排列</p>
+<ul>
+<li>暴力递归：<code>str[i]</code>之后的所有字符都有机会到<code>str[i]</code>位置，之前的都是定好的。</li>
+</ul>
+<p>从左往右尝试模型：</p>
+<ul>
+<li><code>111</code>可以转化为<code>AAA</code>或<code>KA</code></li>
+<li>0-1背包：不变量，货物的重量，价值，包裹的大小；变量，选择了哪些货物，已经存放了多少重量（或剩余的空间）；因变量，总价值</li>
+</ul>
+<p>范围上尝试模型</p>
+<ul>
+<li>数值不同的纸牌排成一条线，玩家A和玩家B依次拿走纸牌，且每次只能拿最左或最右的纸牌。如果A先拿，则获胜者的分数是多少。需要参数：数组，范围的左右边界。<ul>
+<li>base case - 如果范围内只有一个纸牌，则直接返回这个纸牌</li>
+<li>要么选左边的牌，要么选右面的牌，选完后变后手。</li>
+<li>站在先手的角度考虑，求先手的函数要max，求后手的函数要min</li>
+</ul>
+</li>
+</ul>
+<p>多样本位置全对应的尝试模型</p>
+<p>寻找业务限制的尝试模型</p>
+<p>经典问题</p>
+<ul>
+<li>N 皇后问题<ul>
+<li>优化：位运算，斜线限制使用位移</li>
+</ul>
+</li>
+</ul>
+<p>动态规划的解法：先暴力写法，再改记忆化搜索算法，再改经典动态规划（可不改）。如果状态出现枚举行为，则改经典动态规划后会继续优化（利用状态转移做优化）。看一个格子依赖谁，每次依赖多少，就可以压缩到多少。</p>
+<ul>
+<li>记忆化搜索：键要包括变量，值要设定初始值。</li>
+</ul>
+<p>特殊问题：</p>
+<ul>
+<li>取石子问题，合并石子问题，四边形不等式。</li>
+<li>摆放广告牌问题。</li>
+<li>斜率优化</li>
+<li>初始值设置</li>
+</ul>
+<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><ul>
+<li>前缀和</li>
+<li>前缀树</li>
+<li>排序</li>
+</ul>
+<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><p>海盗分金币问题：分析设定，从小依次递推</p>
+<p>欧拉信封问题：找递推公式 F(n) &#x3D; (n-1) * (f(n-2) + f(n-1)), 初值 0, 1, 2</p>
+<h1 id="NP-完全问题"><a href="#NP-完全问题" class="headerlink" title="NP 完全问题"></a>NP 完全问题</h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/20/%E8%BF%90%E7%BB%B4/Linux/" rel="prev" title="Linux">
+                  <i class="fa fa-angle-left"></i> Linux
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/21/Java/Spring/" rel="next" title="Spring">
+                  Spring <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2021/08/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/Algorithm/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

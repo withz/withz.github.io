@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 科学计算">
+<meta property="og:url" content="https://withz.github.io/2020/02/09/Python/PythonScience/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-09T04:04:06.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.328Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/02/09/Python/PythonScience/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/02/09/Python/PythonScience/","path":"2020/02/09/Python/PythonScience/","title":"Python 科学计算"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python 科学计算 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">数据与科学计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda"><span class="nav-number">1.1.</span> <span class="nav-text">Anaconda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow"><span class="nav-number">1.2.</span> <span class="nav-text">Tensorflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyTorch"><span class="nav-number">1.3.</span> <span class="nav-text">PyTorch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">1.4.</span> <span class="nav-text">数据分析与可视化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jupyter-Notebook"><span class="nav-number">1.4.1.</span> <span class="nav-text">Jupyter Notebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matplotlib"><span class="nav-number">1.4.2.</span> <span class="nav-text">Matplotlib</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy"><span class="nav-number">1.5.</span> <span class="nav-text">Numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ndarray"><span class="nav-number">1.5.1.</span> <span class="nav-text">ndarray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.2.</span> <span class="nav-text">数组操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.3.</span> <span class="nav-text">IO操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPU-%E5%8A%A0%E9%80%9F"><span class="nav-number">1.5.4.</span> <span class="nav-text">GPU 加速</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pandas"><span class="nav-number">1.6.</span> <span class="nav-text">Pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DataFrame"><span class="nav-number">1.6.1.</span> <span class="nav-text">DataFrame</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Panel-%EF%BC%88%E5%8D%B3%E5%B0%86%E5%BC%83%E7%94%A8%EF%BC%89"><span class="nav-number">1.6.2.</span> <span class="nav-text">Panel （即将弃用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Series"><span class="nav-number">1.6.3.</span> <span class="nav-text">Series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">1.6.4.</span> <span class="nav-text">数据操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%98%E5%9B%BE"><span class="nav-number">1.6.5.</span> <span class="nav-text">绘图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO%E6%93%8D%E4%BD%9C-1"><span class="nav-number">1.6.6.</span> <span class="nav-text">IO操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="nav-number">1.6.7.</span> <span class="nav-text">处理缺失值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="nav-number">1.6.8.</span> <span class="nav-text">数据离散化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E5%B9%B6"><span class="nav-number">1.6.9.</span> <span class="nav-text">合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E8%A1%A8%E4%B8%8E%E9%80%8F%E8%A7%86%E8%A1%A8"><span class="nav-number">1.6.10.</span> <span class="nav-text">交叉表与透视表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%BB%84%E4%B8%8E%E8%81%9A%E5%90%88"><span class="nav-number">1.6.11.</span> <span class="nav-text">分组与聚合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SFrame"><span class="nav-number">1.7.</span> <span class="nav-text">SFrame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scipy"><span class="nav-number">1.8.</span> <span class="nav-text">Scipy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scikit-Learn"><span class="nav-number">1.9.</span> <span class="nav-text">Scikit-Learn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="nav-number">1.10.</span> <span class="nav-text">Python 数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="nav-number">1.10.1.</span> <span class="nav-text">获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%9B%A0%E5%AD%90%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="nav-number">1.10.2.</span> <span class="nav-text">单因子数据分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">1.10.3.</span> <span class="nav-text">可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%9B%A0%E5%AD%90%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="nav-number">1.10.4.</span> <span class="nav-text">多因子数据分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.10.5.</span> <span class="nav-text">特征工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%96%E6%8E%98%E5%BB%BA%E6%A8%A1"><span class="nav-number">1.10.6.</span> <span class="nav-text">挖掘建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0"><span class="nav-number">1.10.7.</span> <span class="nav-text">模型评估</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">常用库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="nav-number">2.1.</span> <span class="nav-text">数据收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B8%85%E9%9B%B6%E4%B8%8E%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">数据清零与操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">2.3.</span> <span class="nav-text">数据可视化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A8%A1"><span class="nav-number">2.4.</span> <span class="nav-text">建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E8%A7%A3%E9%87%8A"><span class="nav-number">2.5.</span> <span class="nav-text">模型解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E9%9F%B3%E5%A4%84%E7%90%86"><span class="nav-number">2.6.</span> <span class="nav-text">语音处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86"><span class="nav-number">2.7.</span> <span class="nav-text">图像处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.8.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2"><span class="nav-number">2.9.</span> <span class="nav-text">模型部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.10.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/02/09/Python/PythonScience/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python 科学计算 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 科学计算
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-09 12:04:06" itemprop="dateCreated datePublished" datetime="2020-02-09T12:04:06+08:00">2020-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h1 id="数据与科学计算"><a href="#数据与科学计算" class="headerlink" title="数据与科学计算"></a>数据与科学计算</h1><h2 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h2><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">下载地址</a></p>
+<p>配置清华源，打开<code>Anaconda Prompt</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+
+<p>或修改user文件夹下的.condarc文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: true</span><br><span class="line">channel_alias: https://mirrors.tuna.tsinghua.edu.cn/anaconda</span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br></pre></td></tr></table></figure>
+
+<p>运行命令清除缓存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda clean -i</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><p>创建虚拟环境。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n test_env python=3.7</span><br></pre></td></tr></table></figure>
+
+<p>创建完成后，在<code>开始菜单-&gt;Anaconda3—&gt;Anaconda Navigator</code>中可以看到创建完成的环境。</p>
+<p>在Anaconda Prompt中启动虚拟环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate test_env</span><br></pre></td></tr></table></figure>
+
+<p>安装CPU版Tensorflow</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install tensorflow -i https://pypi.tuna.tsinghua.edu.cn/simple/</span><br></pre></td></tr></table></figure>
+
+<p>搜索安装GPU版</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda search tensorflow-gpu</span><br><span class="line">conda install tensorflow-gpu=1.15.0</span><br></pre></td></tr></table></figure>
+
+<p>Tensorflow与CUDA版本对应</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>CUDA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.2 - 1.4</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>1.5 - 1.12</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>1.13 - 1.15</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>10.1</td>
+</tr>
+</tbody></table>
+<h2 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h2><p>安装<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">PyTorch</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision cudatoolkit=10.1 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<p>离线安装方式，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/win-64/">安装包下载</a>或<a target="_blank" rel="noopener" href="https://conda.anaconda.org/pytorch/win-64/pytorch-1.5.0-py3.7_cuda101_cudnn7_0.tar.bz2">官方下载</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --offline pytorch-1.5.0-py3.7_cuda101_cudnn7_0.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<p>或到安装目录下<code>C:\Users\xxx\anaconda3\pkgs</code>替换安装包。</p>
+<h2 id="数据分析与可视化"><a href="#数据分析与可视化" class="headerlink" title="数据分析与可视化"></a>数据分析与可视化</h2><p>安装环境：</p>
+<p>编辑<code>requirements.txt</code>文件，安装依赖。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">matplotlib==2.2.2 # 画图工具</span><br><span class="line">numpy=1.14.2      # 运算工具</span><br><span class="line">pandas==0.20.3    # 数据处理工具</span><br><span class="line">TA-Lib==0.4.16  # 技术指标库</span><br><span class="line">tables==3.4.2   # 读取 hdf5</span><br><span class="line">jupyter=1.0.0   # 展示数据平台</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h3><p>原名Ipython Notebook，是一个基于Web的Python IDE，支持Julia，Python，R三种语言，在画图、数据展示方面非常方便。</p>
+<p>运行Jupyter：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<p>默认在<a href="http://localhost:8888打开IDE。">http://localhost:8888打开IDE。</a></p>
+<p>Cell：一对In Out称为Cell。有编辑模式和命令模式，类似与Vim。</p>
+<p>编辑快捷键：</p>
+<ul>
+<li>Shift + Enter：执行，并下移</li>
+<li>Ctrl + Enter：执行，不移动</li>
+</ul>
+<p>命令快捷键：</p>
+<ul>
+<li>A：在上方添加Cell</li>
+<li>B：在下方添加Cell</li>
+<li>D + D：删除Cell</li>
+</ul>
+<p>Markdown：在上方改为标记。</p>
+<h3 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h3><p>Matplotlib是用来开发2D，3D图表的工具。可以参考Echarts。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"># 魔法函数：仅仅在IPython中使用，此句表示可以内嵌绘图，并且可以省略掉plt.show()这一步。</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(</span><br><span class="line">    [1, 0, 8],  # 横坐标</span><br><span class="line">    [4, 2, 6]   # 纵坐标</span><br><span class="line">)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>Matplotlib有三层结构：</p>
+<ul>
+<li>容器层：提供画板（Canvas），画布（Figure）以及绘图区&#x2F;坐标系（Axes，SubPlot）。</li>
+<li>辅助显示层：显示图例，刻度，网格等内容。</li>
+<li>图像层：显示图像的内容。</li>
+</ul>
+<p>常用方法有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"># 定义数据</span><br><span class="line">x = range(10)</span><br><span class="line">y = [random.uniform(10, 20) for i in x]   # uniform 均匀分布</span><br><span class="line"></span><br><span class="line">x_labels = [f&quot;11:&#123;i:02&#125;&quot; for i in x]    # 设置步长为 5</span><br><span class="line">y_labels = range(40)</span><br><span class="line"></span><br><span class="line">u = range(10)</span><br><span class="line">v = [random.uniform(40, 50) for i in x]</span><br><span class="line"></span><br><span class="line"># 创建画布  容器层</span><br><span class="line">plt.figure(</span><br><span class="line">    figsize=(20, 8),  # 图像的尺寸</span><br><span class="line">    dpi=300  # 图像的DPI</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 创建折线图  图像层</span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"># 添加坐标轴刻度</span><br><span class="line">plt.xticks(x[::5], x_labels[::5])</span><br><span class="line">plt.yticks(y[::5])</span><br><span class="line"></span><br><span class="line"># 添加网格</span><br><span class="line">plt.grid(</span><br><span class="line">    True,              # 是否显示</span><br><span class="line">    linestyle=&#x27;--&#x27;,    # 形状</span><br><span class="line">    alpha=0.3          # 透明度</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 添加标题</span><br><span class="line">plt.xlabel(&quot;Time&quot;)</span><br><span class="line">plt.ylabel(&quot;Temp&quot;)</span><br><span class="line">plt.title(&quot;The Plot&quot;)</span><br><span class="line"></span><br><span class="line"># 添加多条曲线  图像层</span><br><span class="line">plt.plot(u, v, color=&quot;r&quot;, linestyle=&quot;--&quot;, label=&quot;CN&quot;)</span><br><span class="line"></span><br><span class="line"># 图例，要求plot必须设置label属性</span><br><span class="line">plt.legend(loc=&quot;lower left&quot;)  # 显示位置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 保存图像</span><br><span class="line">plt.savefig(path)</span><br><span class="line"></span><br><span class="line"># 显示图像，并释放资源</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>如果绘制多个图像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 设置 1 x 2 的绘图区，用法类似于plot</span><br><span class="line">figure, axes = plt.subplots(nrows=1, ncols=2)</span><br><span class="line"></span><br><span class="line">axes[0].plot(x, y)</span><br><span class="line">axes[1].plot(u, v)</span><br><span class="line"></span><br><span class="line">axes[0].legend()</span><br><span class="line">axes[1].legend()</span><br><span class="line"></span><br><span class="line">axes[0].grid(True)</span><br><span class="line">axes[1].grid(True)</span><br><span class="line"></span><br><span class="line">axes[0].set_xticks()</span><br><span class="line">axes[1].set_xticks()</span><br><span class="line"></span><br><span class="line">axes[0].set_xlabel()</span><br><span class="line">axes[1].set_xlabel()</span><br></pre></td></tr></table></figure>
+
+<p>也可以画其他图像。</p>
+<p>散点图（scatter）：观察数据的分布规律</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></table></figure>
+
+<p>柱状图（bar）：统计对比数据 单柱：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.bar(x, y, </span><br><span class="line">    width=0.5,       # 柱状图宽度</span><br><span class="line">    align=&#x27;center&#x27;, # 对齐方式</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>多柱：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.bar(x, y1, </span><br><span class="line">    width=0.2,       # 柱状图宽度</span><br><span class="line">    align=&#x27;center&#x27;, # 对齐方式</span><br><span class="line">)</span><br><span class="line">plt.bar([i+0.1 for i in x], y2, </span><br><span class="line">    width=0.2,       # 柱状图宽度</span><br><span class="line">    align=&#x27;center&#x27;, # 对齐方式</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>直方图（histogram）：反应一组连续数据的分布</p>
+<p>组数 &#x3D; 极差 &#x2F; 组距 &#x3D; (max - min) &#x2F; bins</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">distance = 3</span><br><span class="line">bins = (max(x) - min(x)) // distance</span><br><span class="line"></span><br><span class="line">plt.hist(x, </span><br><span class="line">    bins=bins,</span><br><span class="line">    density=True  # 是否显示频率</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">plt.xticks(range(min(x), max(x) + 2, distance))</span><br></pre></td></tr></table></figure>
+
+<p>饼图（pie）：分类数据的占比情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.pie(x, </span><br><span class="line">    labels=bins,      # 每部分名称</span><br><span class="line">    autopct=&quot;%1.2f%%&quot; # 占比显示格式</span><br><span class="line">)</span><br><span class="line">plt.axis(&#x27;equal&#x27;)     # 变圆</span><br><span class="line">plt.legend()</span><br></pre></td></tr></table></figure>
+
+<p>如果无法正常显示中文，可以增加配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.rcParams[&#x27;font.sans-serif&#x27;]=[&#x27;SimHei&#x27;] #解决中文显示</span><br><span class="line">plt.rcParams[&#x27;axes.unicode_minus&#x27;] = False #解决符号无法显示</span><br></pre></td></tr></table></figure>
+
+<p>或是一劳永逸的（Windows）：</p>
+<p>删除<del>&#x2F;.matplotlib&#x2F;下的缓存文件； 新增</del>&#x2F;.matplotlib&#x2F;matplotlibrc配置文件，修改内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">backend:TkAgg</span><br><span class="line">font.famly: sans-serif</span><br><span class="line">font.sans-serif: SimHei</span><br><span class="line">axes.unicode_minus: False</span><br></pre></td></tr></table></figure>
+
+<h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><p>Numpy 是一款高效的运算工具，用于快速处理任意维度的数据。</p>
+<h3 id="ndarray"><a href="#ndarray" class="headerlink" title="ndarray"></a>ndarray</h3><p>数组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">score = np.array([</span><br><span class="line">    [1, 2, 3],</span><br><span class="line">    [4, 5, 6]</span><br><span class="line">])  # ndarray 类型，2维</span><br><span class="line"></span><br><span class="line">score = np.array([</span><br><span class="line">    [</span><br><span class="line">        [1, 2, 3],</span><br><span class="line">        [4, 5, 6]</span><br><span class="line">    ],</span><br><span class="line">    [</span><br><span class="line">        [1, 2, 3],</span><br><span class="line">        [4, 5, 6]</span><br><span class="line">    ]</span><br><span class="line">], dtype=np.int32)    # 3维，,32位int</span><br></pre></td></tr></table></figure>
+
+<p>ndarray在底层使用C语言编写，内部解除了GIL，因此效率大大增加。ndarray因此也支持了向量化运算。</p>
+<p>ndarray 包含了几种属性：</p>
+<ul>
+<li>ndarray.shape：数组维度的元组（“m行n列”等描述）</li>
+<li>ndarray.ndim：数组维度</li>
+<li>ndarray.size：元素数量</li>
+<li>ndarray.itemsize：每个元素的长度</li>
+<li>ndarray.dtype：元素类型，如np.bool，np.int32，np.uint16，np.float64，np.complex64，np.object，np.string，np.unicode等</li>
+</ul>
+<h3 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h3><p>数组的生成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 全0数组，也可以加dtpye，order参数</span><br><span class="line">np.zeros(shape)</span><br><span class="line"># 全1数组</span><br><span class="line">np.ones(shape)</span><br><span class="line"># 现有数组生成</span><br><span class="line">np.array(list)  # 深拷贝数组</span><br><span class="line">np.copy(a)      # 深拷贝数组</span><br><span class="line">np.asarray(a)   # 浅拷贝数组</span><br><span class="line"># 生成固定范围的数组</span><br><span class="line">np.linspace(0, 100, 7)   # 0到100，7个数，闭区间</span><br><span class="line">np.arange(0, 100, 7)     # 0到100，步长7，左闭右开</span><br></pre></td></tr></table></figure>
+
+<p>随机数生成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 均匀分布，返回0~1的一组均匀分布的数</span><br><span class="line">np.random.rand()</span><br><span class="line"># 均匀分布，从[low,high)中随机采样，size指定输出样本数目，可以是int或元组</span><br><span class="line">np.random.uniform(low, high, size=None)</span><br><span class="line"># 标准正态分布，获取一个或多个样本</span><br><span class="line">np.random.randn()</span><br><span class="line"># 正态分布，loc为均值，scale为标准差</span><br><span class="line">np.random.normal(loc, scale, size=None)</span><br></pre></td></tr></table></figure>
+
+<p>数组操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 定义</span><br><span class="line">data = np.array([</span><br><span class="line">    [1, 2, 3, 4],</span><br><span class="line">    [10, 20, 30, 40],</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"># 选择元素：二维数组，选择第一行的前三个</span><br><span class="line">data[0, 0:3]  # 切片操作为左闭右开</span><br><span class="line"># 改变形状：重新分割数据，并返回</span><br><span class="line">data.reshape(shape)</span><br><span class="line"># 改变形状：直接改变原始数据</span><br><span class="line">data.resize(shape)</span><br><span class="line"># 数组转置</span><br><span class="line">data.T()</span><br><span class="line"># 类型修改</span><br><span class="line">data.astype(&quot;int32&quot;)</span><br><span class="line"># 序列化</span><br><span class="line">data.tostring()</span><br><span class="line"># 去重</span><br><span class="line">np.unique(data)</span><br><span class="line"># 一维化</span><br><span class="line">data.flatten()</span><br></pre></td></tr></table></figure>
+
+<p>数组运算：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># 逻辑运算：</span><br><span class="line">res = data &gt; 2  # 对每一个数字做计算并返回结果</span><br><span class="line">data[data &gt; 2]  # 返回满足条件的部分数据</span><br><span class="line">data[data &gt; 2] = 1.9  # 对满足条件的数据做运算</span><br><span class="line">np.all()        # 如果全部是True就返回True</span><br><span class="line">np.any()        # 如果有True就返回True</span><br><span class="line">np.where(condition, a, b)  # 满足condition的元素置为a，否则置为b</span><br><span class="line">condition = np.logical_and(con_a, con_b) # 条件与运算</span><br><span class="line">condition = np.logical_or(con_a, con_b)  # 条件或运算</span><br><span class="line"></span><br><span class="line"># 统计运算：</span><br><span class="line">np.min(data, axis=-1)   # axis 表示按行还是按列</span><br><span class="line">np.max(data, axis=-1)</span><br><span class="line">np.median()   # 中位数</span><br><span class="line">np.mean()     # 均值</span><br><span class="line">np.std()      # 标准差</span><br><span class="line">np.var()      # 均方差  std 的平方</span><br><span class="line">np.sum()</span><br><span class="line">np.argmax(data, axis=1)  # 返回最大值索引</span><br><span class="line"></span><br><span class="line"># 数组间运算，要遵循广播机制</span><br><span class="line">data + 1       # 对每一个元素运算</span><br><span class="line">data1 * data2  # 对应元素运算</span><br><span class="line"></span><br><span class="line"># 矩阵运算，此处的矩阵必须是二维数组</span><br><span class="line">mt = np.mat(data)  # 转化为矩阵</span><br><span class="line"># 矩阵乘法</span><br><span class="line">np.matmul(mt1, mt2)</span><br><span class="line">np.dot(mt1, mt2)</span><br><span class="line">mt1 * mt2</span><br><span class="line"></span><br><span class="line"># 数组合并</span><br><span class="line">np.hstack((a, b))  # 水平拼接</span><br><span class="line">np.vstack((a, b))  # 垂直拼接</span><br><span class="line">np.concatenate((a, b), axis=0)  # 任意拼接，需要设置轴</span><br><span class="line"></span><br><span class="line"># 数组分割</span><br><span class="line">np.split(x, 3)    # 按个数分割</span><br><span class="line">np.split(x, [1, 3, 5])  # 按索引分割</span><br></pre></td></tr></table></figure>
+
+<h3 id="IO操作"><a href="#IO操作" class="headerlink" title="IO操作"></a>IO操作</h3><p>读取数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 无法读取字符串</span><br><span class="line">data = np.genfromtxt(&quot;data.csv&quot;, delimiter=&#x27;,&#x27;)</span><br><span class="line"># 处理缺失值：直接删除缺失值，插值处理缺失</span><br><span class="line"># 获取缺失值个数</span><br><span class="line">nan_num = np.count_nonzero(data[:, i][t[:, i] != t[:, i]])</span><br><span class="line"># 判断缺失</span><br><span class="line">np.isnan(i)</span><br></pre></td></tr></table></figure>
+
+<h3 id="GPU-加速"><a href="#GPU-加速" class="headerlink" title="GPU 加速"></a>GPU 加速</h3><p>首先需要<code>CUDA</code>，<code>CUDNN</code>，可以到官网下载。</p>
+<p>查看本机CUDA情况可以到<code>控制面板</code>-&gt;<code>NVIDIA控制面板</code>-&gt;<code>帮助</code>-&gt;<code>系统信息</code>-&gt;<code>组件</code>里面查看。</p>
+<p>通过使用Visual Studio可以开发CUDA应用，例如查看一个NVIDIA CUDA的例子： 使用Visual Stuido打开项目：CUDA安装目录-&gt;Samples，配置1_Utilities-&gt;deviceQuery-&gt;右键设置为启动项目，执行，就可以看到CUDA信息了。</p>
+<p>安装 cupy：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># For CUDA 8.0</span><br><span class="line">pip install cupy-cuda80</span><br><span class="line"></span><br><span class="line"># For CUDA 9.0</span><br><span class="line">pip install cupy-cuda90</span><br><span class="line"></span><br><span class="line"># For CUDA 9.1</span><br><span class="line">pip install cupy-cuda91</span><br><span class="line"></span><br><span class="line"># For CUDA 9.2</span><br><span class="line">pip install cupy-cuda92</span><br><span class="line"></span><br><span class="line"># For CUDA 10.0</span><br><span class="line">pip install cupy-cuda100</span><br><span class="line"></span><br><span class="line"># For CUDA 10.1</span><br><span class="line">pip install cupy-cuda101</span><br><span class="line"></span><br><span class="line"># Install CuPy from source</span><br><span class="line">pip install cupy</span><br></pre></td></tr></table></figure>
+
+<p>使用方法同numpy一样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import cupy as cp</span><br><span class="line"># numpy 用法</span><br><span class="line">x=np.ones((1024,512,4,4))*1024.</span><br><span class="line">y=np.ones((1024,512,4,1))*512.3254</span><br><span class="line">for i in range(20):</span><br><span class="line">    z=x*y</span><br><span class="line"># cupy 用法</span><br><span class="line">x=cp.ones((1024,512,4,4))*1024.</span><br><span class="line">y=cp.ones((1024,512,4,1))*512.3254</span><br><span class="line">for i in range(20):</span><br><span class="line">    z=x*y</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2><p>Pandas 也是处理数据的工具。拥有便捷的数据处理能力，读取文件也方便，同时很好的的结合了matplotlib。</p>
+<h3 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h3><p>尽管numpy在数据计算方面较python原始的方法有很大优势，但是同时也缺失了数据含义的展示。因此DataFrame在这方面进行了增强。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 添加行列索引</span><br><span class="line">row_labels = [f&quot;第&#123;i:02&#125;&quot; for i in range(10)]</span><br><span class="line"></span><br><span class="line"># 或使用日期</span><br><span class="line">col_labels = pd.date_range(start=&quot;20200101&quot;, period=5, freq=&quot;B&quot;)</span><br><span class="line"></span><br><span class="line">data = pd.DataFrame(np.random.normal(0, 1, (10, 5)),</span><br><span class="line">    index=row_labels,  # 行索引</span><br><span class="line">    colums=col_labels  # 列索引</span><br><span class="line">)  # 正态分布</span><br></pre></td></tr></table></figure>
+
+<p>常用属性有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br><span class="line">data.index   # 必须批量修改索引</span><br><span class="line">data.columns</span><br><span class="line">data.values  # 去除索引后的数据，ndarray</span><br><span class="line">data.T</span><br></pre></td></tr></table></figure>
+
+<p>常用方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">head()  # 返回前几行</span><br><span class="line">tail()  # 返回后几行</span><br><span class="line">reset_index(drop=True)  # 重置索引</span><br><span class="line">set_index(&quot;字段名&quot;, drop=True)  # 单个索引</span><br><span class="line">set_index([&quot;字段1&quot;, &quot;字段2&quot;], drop=True)  # 多个索引</span><br><span class="line"># 对于多级索引还有属性：</span><br><span class="line">data.index.names  </span><br><span class="line">data.index.levels</span><br></pre></td></tr></table></figure>
+
+<h3 id="Panel-（即将弃用）"><a href="#Panel-（即将弃用）" class="headerlink" title="Panel （即将弃用）"></a>Panel （即将弃用）</h3><p>是DataFrame的容器，是存储三维数据的结构。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pdata = pd.Panel(</span><br><span class="line">    np.arange(24).reshape(4, 3, 2),</span><br><span class="line">    items=list(&quot;ABCD&quot;),</span><br><span class="line">    major_axis=pd.date_range(&quot;20200101&quot;, period=3),</span><br><span class="line">    minor_axis=[&#x27;1&#x27;, &#x27;2&#x27;]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 查看某一组数据</span><br><span class="line">pdata[&#x27;A&#x27;]</span><br><span class="line">pdata.major_axis(&quot;&quot;)</span><br><span class="line">pdata.minor_axis(&quot;1&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Series"><a href="#Series" class="headerlink" title="Series"></a>Series</h3><p>Series 是带索引的一维数组。</p>
+<p>创建Series</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 数组</span><br><span class="line">sr = pd.Series(np.arange(10), index=[...])</span><br><span class="line"># 或字典</span><br><span class="line">sr = pd.Series(&#123;&#x27;a&#x27;: 1, &#x27;b&#x27;: 2, &#x27;c&#x27;: 3&#125;)</span><br><span class="line"># 或已有数据</span><br><span class="line">sr = data.iloc[1, :]</span><br></pre></td></tr></table></figure>
+
+<p>常用属性有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index   # 索引</span><br><span class="line">values  # 数值</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"># 直接索引，先列后行</span><br><span class="line">data[&quot;字段&quot;][&quot;记录&quot;]</span><br><span class="line"># 按名索引</span><br><span class="line">data.loc[&quot;记录&quot;][&quot;字段&quot;]</span><br><span class="line">data.loc[&quot;记录&quot;, &quot;字段&quot;]</span><br><span class="line"># 按数字索引</span><br><span class="line">data.iloc[1][2]</span><br><span class="line"># 混合索引 （即将弃用）</span><br><span class="line">data.ix[0:4, [&quot;字段1&quot;, &quot;字段2&quot;]]</span><br><span class="line"></span><br><span class="line"># 赋值</span><br><span class="line">data[&quot;字段&quot;] = 100  # 按列</span><br><span class="line">data.loc[&quot;记录&quot;, &quot;字段&quot;] = 100  # 单个</span><br><span class="line"></span><br><span class="line"># 排序</span><br><span class="line">data.sort_values(by=&quot;字段&quot;, ascending=False)</span><br><span class="line">data.sort_values(by=[&quot;字段1&quot;, &quot;字段2&quot;], ascending=False)</span><br><span class="line">data.sort_index()</span><br><span class="line"></span><br><span class="line"># 算数运算</span><br><span class="line">data[&quot;字段&quot;] + 3</span><br><span class="line">data[&quot;字段&quot;].add(3)</span><br><span class="line"></span><br><span class="line"># 逻辑运算</span><br><span class="line">data[data[&quot;字段&quot;] &gt; 2]</span><br><span class="line">data[(data[&quot;字段&quot;] &gt; 2) &amp; (data[&quot;字段&quot;] &lt; 10)]</span><br><span class="line">data.query(&quot;字段 &gt; 2 &amp; 字段 &lt; 10&quot;)</span><br><span class="line">data[data[&quot;字段&quot;].isin([100, 50])]</span><br><span class="line"></span><br><span class="line"># 统计运算</span><br><span class="line">min</span><br><span class="line">max</span><br><span class="line">mean</span><br><span class="line">median</span><br><span class="line">var</span><br><span class="line">std</span><br><span class="line">describe()  # 获取每个字段的所有统计指标</span><br><span class="line">idxmax()    # max的索引</span><br><span class="line">idxmin()   </span><br><span class="line"># 累计统计函数，查看走势</span><br><span class="line">cumsum()</span><br><span class="line">cumsum().plot()  # 顺便画图</span><br><span class="line">cummax()</span><br><span class="line">cummin()</span><br><span class="line">cumprod()</span><br><span class="line"></span><br><span class="line"># 自定义运算</span><br><span class="line">apply(func, axis=0)</span><br><span class="line"></span><br><span class="line"># 按列删除</span><br><span class="line">data.drop([&quot;字段&quot;], axis=1)</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h3><p>绘图函数如： DataFrame.plot() Series.plot()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># kind 参数，图像类型</span><br><span class="line">plot(x=&quot;字段1&quot;, y=&quot;字段2&quot;, kind=&quot;scatter&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="IO操作-1"><a href="#IO操作-1" class="headerlink" title="IO操作"></a>IO操作</h3><p>读取数据，且可以识别表头等，支持CVS，JSON，HTML，Execl，HDF5，SQL等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># 读取CVS</span><br><span class="line">data = pd.read_csv(</span><br><span class="line">    path, </span><br><span class="line">    usecols=[&#x27;字段1&#x27;, &#x27;字段2&#x27;],</span><br><span class="line">    names=[&quot;字段名1&quot;, &quot;字段名2&quot;]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 存储CSV</span><br><span class="line">data.to_csv(</span><br><span class="line">    path, </span><br><span class="line">    columns=[&#x27;字段&#x27;],</span><br><span class="line">    header=True,      # 是否写入表头</span><br><span class="line">    mode=&quot;wa&quot;,        # 写模式</span><br><span class="line">    index=True        # 是否写入索引</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 读取HDF5</span><br><span class="line">data = pd.read_hdf(</span><br><span class="line">    path,</span><br><span class="line">    key=[&#x27;字段&#x27;]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 存储HDF5</span><br><span class="line">data.to_hdf(</span><br><span class="line">    path,</span><br><span class="line">    key=[&#x27;字段&#x27;]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 读取JSON</span><br><span class="line">data = pd.read_json(</span><br><span class="line">    path,</span><br><span class="line">    orient=&quot;records&quot;  # 读入的形式，读入成记录</span><br><span class="line">    lines=True        # 每一行是否有换行</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 存储JSON</span><br><span class="line">data.to_json(</span><br><span class="line">    path,</span><br><span class="line">    orient=&quot;records&quot;</span><br><span class="line">    lines=True</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h3><p>当缺失的值为NAN时：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 判断是否有Null</span><br><span class="line">pd.isnull(data)</span><br><span class="line">pd.isnull(data).any()  # 列出所有字段是否缺失</span><br><span class="line">pd.notnull(data)</span><br><span class="line">pd.notnull(data).all()</span><br><span class="line"></span><br><span class="line"># 将所有缺失值置0</span><br><span class="line">data[pd.isnull(data)]</span><br><span class="line"></span><br><span class="line"># 删除有缺失值的样本 inplace 是否修改原始 DataFrames</span><br><span class="line">dropna(inplace=False)</span><br><span class="line"># 替换缺失</span><br><span class="line">fillna(value, inplace=False)</span><br><span class="line"># 均值替换</span><br><span class="line">fillna(data[&#x27;字段&#x27;].mean(), inplace=False)</span><br></pre></td></tr></table></figure>
+
+<p>当缺失值为其他形式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 替换</span><br><span class="line">replace(to_replace=&quot;?&quot;, value=np.nan)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据离散化"><a href="#数据离散化" class="headerlink" title="数据离散化"></a>数据离散化</h3><p>通过对数据分类，并按分组分别统计处理数据。 方式：one-hot编码（哑编码）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 分组</span><br><span class="line"># 自动分组</span><br><span class="line">sr = data.qcout(data, bins)</span><br><span class="line"># 自定义分组，给定边界</span><br><span class="line">sr = data.cut(data, [10, 20, 30]) </span><br><span class="line"></span><br><span class="line"># 编码</span><br><span class="line">get_dummies(sr, prefix=&#x27;&#x27;)</span><br><span class="line"># 查看每个分组的情况</span><br><span class="line">sr.value_counts()</span><br></pre></td></tr></table></figure>
+
+<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 按位置拼接，如果按列拼接，要字段一致</span><br><span class="line">pd.concat([data1, data2], axis=1)</span><br><span class="line"># 按索引合并，on 索引，inner 内连接</span><br><span class="line">pd.merge(left, right, how=&#x27;inner&#x27;, on=[&#x27;字段1&#x27;, &#x27;字段2&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h3 id="交叉表与透视表"><a href="#交叉表与透视表" class="headerlink" title="交叉表与透视表"></a>交叉表与透视表</h3><p>用于探索两个变量的关系。</p>
+<p>交叉表：用于查看两列数据之间的关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.crosstab(data[&#x27;字段1&#x27;], data[&#x27;字段2&#x27;])</span><br></pre></td></tr></table></figure>
+
+<p>透视表：也是用于查看两列数据之间的关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pivot_table(data[&#x27;字段1&#x27;], data[&#x27;字段2&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h3 id="分组与聚合"><a href="#分组与聚合" class="headerlink" title="分组与聚合"></a>分组与聚合</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 根据字段1分组，根据字段2聚合</span><br><span class="line">data.groupby(by=&quot;字段1&quot;)[&#x27;字段2&#x27;].max()</span><br><span class="line">data[&#x27;字段2&#x27;].groupby(col[&quot;字段1&quot;]).max()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="SFrame"><a href="#SFrame" class="headerlink" title="SFrame"></a>SFrame</h2><h2 id="Scipy"><a href="#Scipy" class="headerlink" title="Scipy"></a>Scipy</h2><h2 id="Scikit-Learn"><a href="#Scikit-Learn" class="headerlink" title="Scikit-Learn"></a>Scikit-Learn</h2><h2 id="Python-数据分析"><a href="#Python-数据分析" class="headerlink" title="Python 数据分析"></a>Python 数据分析</h2><p>步骤</p>
+<ol>
+<li>获取数据</li>
+<li>探索分析，可视化</li>
+<li>预处理</li>
+<li>分析建模</li>
+<li>模型评估</li>
+</ol>
+<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><p>手段</p>
+<ul>
+<li>数据仓库：与数据库面向业务不同，数据仓库基于主题记录，是为了数据分析服务。</li>
+<li>检测与抓取：爬虫解析网页。<ul>
+<li>urllib &#x2F; urllib2 &#x2F; requests &#x2F; scrapy </li>
+<li>PhantomJS &#x2F; beautifulSoup &#x2F; Xpath - 解析 DOM，执行JavaScript</li>
+</ul>
+</li>
+<li>填写，埋点，日志：<ul>
+<li>填写：用户填写的信息</li>
+<li>埋点：跟踪用户使用情况（页面停留时间，跳出率），用于复现用户的操作过程。</li>
+<li>日志：前端日志、后端日志。</li>
+</ul>
+</li>
+<li>计算：通过已有数据生成的衍生数据</li>
+</ul>
+<p>数据集</p>
+<ul>
+<li>Kaggle &amp; 天池</li>
+<li>ImageNet &#x2F; Open Images</li>
+<li>统计局、政府机构、公司财报</li>
+</ul>
+<h3 id="单因子数据分析"><a href="#单因子数据分析" class="headerlink" title="单因子数据分析"></a>单因子数据分析</h3><p>Pandas 读取数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">df = pd.readcsv(&quot;&quot;)</span><br><span class="line">df.head(10)</span><br></pre></td></tr></table></figure>
+
+<p>偏态：中位数与均值有差别。 S &#x3D; (1&#x2F;n) * sum((xi - xp)^3) &#x2F; ((1&#x2F;n) * sum((xi - xp)^2))^(3&#x2F;2)</p>
+<p>峰度：数据集中程度的衡量。正态分布是K &#x3D; 3，一般低于1或大于5则不是正态分布。 K &#x3D; (1&#x2F;n) * sum((xi - xp)^4) &#x2F; ((1&#x2F;n) * sum((xi - xp)^2))^2</p>
+<p>三大分布：卡方、t分布、F分布。</p>
+<p>抽样理论：误差、精度、抽样数量。下面两种情况的计算公式不一样。</p>
+<ul>
+<li>重复抽样</li>
+<li>不重复抽样</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">df[&quot;col&quot;].mean()  # 均值</span><br><span class="line">df[&quot;col&quot;].median()  # 中位数</span><br><span class="line">df[&quot;col&quot;].quantile(q=0.25)  # 分位数</span><br><span class="line">df[&quot;col&quot;].mode()  # 众数，可能有多个</span><br><span class="line">df[&quot;col&quot;].std()  # 标准差</span><br><span class="line">df[&quot;col&quot;].var()  # 方差</span><br><span class="line">df[&quot;col&quot;].sum()  # 求和（或字符串相连）</span><br><span class="line">df[&quot;col&quot;].skew()  # 偏态系数（负数是右偏，正数左偏）</span><br><span class="line">df[&quot;col&quot;].kurt()  # 峰态系数（负数是比正态平缓，正数比正态尖凸）</span><br><span class="line"></span><br><span class="line">import scipy.stats as ss</span><br><span class="line"># 正态分布 mvsk = (均值，方差，偏态，峰态)</span><br><span class="line">ss.norm.stats(moments=&quot;mvsk&quot;)</span><br><span class="line"># 概率密度函数</span><br><span class="line">ss.norm.pdf()</span><br><span class="line"># 概率分布函数的反函数，输入 (0, 1)</span><br><span class="line">ss.norm.ppf()</span><br><span class="line"># 概率分布函数</span><br><span class="line">ss.norm.cdf()</span><br><span class="line"># 得到符合正态分布的数字</span><br><span class="line">ss.norm.rvs(size=10)</span><br><span class="line"># F 分布</span><br><span class="line">ss.f</span><br><span class="line"># T 分布</span><br><span class="line">ss.t</span><br><span class="line"></span><br><span class="line"># 抽样</span><br><span class="line">df.sample(n=10)  # 抽10个</span><br><span class="line">df.sample(frac=0.01) # 抽 1%</span><br></pre></td></tr></table></figure>
+
+<p>数学分类</p>
+<ul>
+<li>定类数据：无序，离散。数值化处理。</li>
+<li>定序数据：有序，可比大小，离散。数值化处理。</li>
+<li>定距数据：连续，可求差值，比大小，但没有绝对零点。例如温度，不能说谁比谁温度高几倍。归一化处理。</li>
+<li>定比数据：连续，可求差值，比大小，有绝对零点，可求比值</li>
+</ul>
+<p>单属性分析</p>
+<ul>
+<li>异常值分析：<ul>
+<li>连续异常值：取四分位数 Q1 Q2 Q3，则区间范围 (Q1 - k * (Q3 - Q1), Q3 + k * (Q3 - Q1)) 外的算异常值。k通常取值为 (1.5, 3)。异常值可能会让一系列数据失效。一般舍弃或取边界值代替。</li>
+<li>离散异常值：定义范围以外的值。一般舍弃或用特殊标记处理。</li>
+<li>知识异常值：不符合常理的值。</li>
+</ul>
+</li>
+<li>对比分析：<ul>
+<li>绝对数比较：成绩，身高</li>
+<li>相对数比较：<ul>
+<li>结构相对数：产品合格率，考试通过率</li>
+<li>比例相对数：三大产业比例</li>
+<li>比较相对数：不同时期下的某商品价格</li>
+<li>动态相对数：用户数量增速</li>
+<li>强度相对数：人均GDP，粮食亩产</li>
+</ul>
+</li>
+<li>比较方法：<ul>
+<li>时间维度</li>
+<li>空间维度</li>
+<li>经验与计划的比较：例如失业率达到某值就会社会动荡</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结构分析：分析部分与总体之间的关系<ul>
+<li>静态结构分析</li>
+<li>动态结构分析</li>
+</ul>
+</li>
+<li>分布分析：<ul>
+<li>直接获得概率分布</li>
+<li>是不是正态分布</li>
+<li>极大似然</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv()</span><br><span class="line"></span><br><span class="line"># 检查去除异常值</span><br><span class="line">df[df[&quot;satisfaction_level&quot;].isnull()]</span><br><span class="line">df = df.dropna()</span><br><span class="line"># df = df.dropna(axis=0, how=&quot;any&quot;) # axis = 0 行  1 列</span><br><span class="line"># df = df.fillna()</span><br><span class="line"></span><br><span class="line"># 直方图</span><br><span class="line">sl = df[&quot;satisfaction_level&quot;].dropna()</span><br><span class="line">np.histogram(sl.values, bins=np.arange(0, 1.1, 0.1)) # (0, 1.1) 之间，间隔 0.1</span><br></pre></td></tr></table></figure>
+
+<p>处理连续异常值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">le = df[&quot;last_evaluation&quot;]</span><br><span class="line">q_low = le.quantile(q=0.25)</span><br><span class="line">q_high = le.quantile(q=0.75)</span><br><span class="line">q_interval = q_high - q_low</span><br><span class="line">k = 1.5</span><br><span class="line">le = le[le &lt; q_high + k * q_interval][le &gt; q_low - k * q_interval]</span><br></pre></td></tr></table></figure>
+
+<p>查看离散值峰度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pj = df[&quot;number_projcet&quot;]</span><br><span class="line">pj.value_counts()</span><br><span class="line">pj.value_counts(normalize=True).sort_index()</span><br></pre></td></tr></table></figure>
+
+<p>数据分段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pj.value_counts(bins=10)   # 左开右闭</span><br><span class="line">pj.histogram(sl.values, bins=10)  # 左闭右开</span><br></pre></td></tr></table></figure>
+
+<p>分组聚合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(&quot;department&quot;).mean()</span><br><span class="line">df.loc[:, [&#x27;last_evaluation&#x27;, &#x27;department&#x27;]].groupby(&quot;department&quot;).mean()</span><br><span class="line">df.loc[:, [&#x27;average_monthly_hours&#x27;, &#x27;department&#x27;]].groupby(&#x27;department&#x27;)[&#x27;average_monthly_hours&#x27;].apply(lambda x: x.max() - x.min())</span><br></pre></td></tr></table></figure>
+
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><p>常用库</p>
+<ul>
+<li>matplotlib</li>
+<li>seaborn</li>
+<li>plotly</li>
+</ul>
+<p>条形图、柱状图：观察离散值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib notebook # Jupyter notebook 使用</span><br><span class="line"># %matplotlib inline</span><br><span class="line"></span><br><span class="line"># 设置图像风格</span><br><span class="line">sns.set_style(style=&#x27;darkgrid&#x27;)</span><br><span class="line"></span><br><span class="line">plt.title(&#x27;Salary&#x27;)</span><br><span class="line">plt.xlabel(&#x27;salary&#x27;)</span><br><span class="line">plt.ylabel(&#x27;count&#x27;)</span><br><span class="line">plt.xticks(</span><br><span class="line">    np.arange(len(df[&#x27;salary&#x27;].value_counts())) + 0.5, # +0.5 使其右移</span><br><span class="line">    df[&#x27;salary&#x27;].value_counts().index</span><br><span class="line">)</span><br><span class="line">plt.axis([0, 4, 0, 10000])</span><br><span class="line">plt.bar(</span><br><span class="line">    np.arange(len(df[&#x27;salary&#x27;].value_counts())) + 0.5, </span><br><span class="line">    df[&#x27;salary&#x27;].value_counts(),</span><br><span class="line">    width=0.5</span><br><span class="line">)</span><br><span class="line"># 添加标注</span><br><span class="line">for x, y in zip(np.arange(len(df[&#x27;salary&#x27;].value_counts())) + 0.5, df[&#x27;salary&#x27;].value_counts()):</span><br><span class="line">    # Label (x, y) 坐标，标注的值，水平位置，垂直位置</span><br><span class="line">    plt.text(x, y, y, ha=&#x27;center&#x27;, va=&#x27;bottom&#x27;)</span><br><span class="line">sns.countplot(x=&#x27;salary&#x27;, data=df)</span><br><span class="line"># sns.countplot(x=&#x27;salary&#x27;, hue=&#x27;department&#x27;, data=df)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>直方图：观察连续值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df = df.dropna()</span><br><span class="line">f = plt.figure()</span><br><span class="line">f.add_subplot(1, 3, 1)</span><br><span class="line">sns.histplot(df[&#x27;satisfaction_level&#x27;], bins=10, kde=True)</span><br><span class="line">f.add_subplot(1, 3, 2)</span><br><span class="line">sns.histplot(df[&#x27;last_evaluation&#x27;], bins=10, kde=True)</span><br><span class="line">f.add_subplot(1, 3, 3)</span><br><span class="line">sns.histplot(df[&#x27;average_monthly_hours&#x27;], bins=10, kde=True)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>箱线图：上界、下界、四分位数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sns.boxplot(y=df[&#x27;time_spend_company&#x27;])  # 竖着</span><br><span class="line">plt.show()</span><br><span class="line">sns.boxplot(x=df[&#x27;time_spend_company&#x27;], saturation=0.75, whis=3)  # 横着</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>折线图：数据变化走势</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sub_df = df.groupby(&#x27;time_spend_company&#x27;).mean()</span><br><span class="line"># sns.pointplot(sub_df.index, sub_df[&#x27;left&#x27;])</span><br><span class="line">sns.pointplot(x=&#x27;time_spend_company&#x27;, y=&#x27;left&#x27;, data=df)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>饼图：结构分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lb = df[&#x27;department&#x27;].value_counts().index</span><br><span class="line">explodes = [0.1 if i == &#x27;sales&#x27; else 0 for i in lb] # 间隔</span><br><span class="line">plt.pie(</span><br><span class="line">    df[&#x27;department&#x27;].value_counts(normalize=True),</span><br><span class="line">    labels=lb,</span><br><span class="line">    autopct=&quot;%1.1f%%&quot;,</span><br><span class="line">    colors=sns.color_palette(&quot;Reds&quot;),</span><br><span class="line">    explode=explodes</span><br><span class="line">)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>其他方案：</p>
+<ul>
+<li>散点图</li>
+<li>极轴图</li>
+<li>雷达图</li>
+<li>气泡图</li>
+</ul>
+<h3 id="多因子数据分析"><a href="#多因子数据分析" class="headerlink" title="多因子数据分析"></a>多因子数据分析</h3><p>假设检验：根据假设条件，从样本推断总体，或推断样本与样本之间的关系。</p>
+<ul>
+<li>原假设 H0 符合某个分布</li>
+<li>备择假设 H1 不符合该分布</li>
+<li>检验统计量：用于判断是否符合某个分布</li>
+<li>显著性水平：确定拒绝域 (取0.05)</li>
+<li>最后计算P值，或样本统计值，做出判断（P &gt; 0.05 接受）</li>
+</ul>
+<p>检验方法</p>
+<ul>
+<li>u 检验：检验是否复合正态分布</li>
+<li>卡方检验：检验两个因素之间是否有比较强的联系</li>
+<li>T 分布检验：分布是否一致</li>
+<li>F 检验（方差检验）：多样本，两两之间是否有差异<ul>
+<li>SST 整体的方差 </li>
+<li>SSM 组间平方和：每组与整体均值的平方和 </li>
+<li>SSE 组内平方和：数据与组内的均值的平方和</li>
+<li>F &#x3D; (SSM &#x2F; (m - 1)) &#x2F; (SSE &#x2F; (n - m))</li>
+</ul>
+</li>
+</ul>
+<p>相关系数</p>
+<ul>
+<li>Pearson 皮尔逊相关系数：因变量与自变量的相关性</li>
+<li>Spearman 斯皮尔曼相关系数：跟名次有关，适合相对的比较</li>
+</ul>
+<p>线性回归：分析两变量之间定量关系。</p>
+<ul>
+<li>效果判定：决定系数（一元），残差不相关（多元），DW 检验（范围(0, 4)，好的回归 DW&#x3D;2）</li>
+</ul>
+<p>主成分分析：提取区分度大的维度</p>
+<ul>
+<li>求特征协方差矩阵</li>
+<li>求特征值，特征向量</li>
+<li>取最大的k个特征值</li>
+<li>重新投影样本点到特征向量上</li>
+</ul>
+<p>奇异值分解：一种PCA方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import scipy.stats as ss</span><br><span class="line"></span><br><span class="line"># 产生20个符合正态分布的数据</span><br><span class="line">norm = ss.norm.rvs(size=20)</span><br><span class="line"># 检查是否符合正态分布（采用偏度和峰度方法）得到 检验统计量的值 和 P值</span><br><span class="line">ss.normaltest(norm)</span><br><span class="line"># 卡方 检验统计量的值  P值  自由度  理论分布</span><br><span class="line">ss.chi2_contingency([[15, 95], [85, 15]])</span><br><span class="line"># T分布 检验统计量的值  P值</span><br><span class="line">ss.ttest_ind(ss.norm.rvs(size=10), ss.norm.rvs(size=20))</span><br><span class="line"># 方差检验 </span><br><span class="line">ss.f_oneway([49, 50, 39, 40, 43], [28, 32, 30, 26, 34], [38, 40, 45, 42, 48])</span><br></pre></td></tr></table></figure>
+
+<p>通过QQ图方法判断一个分布是否与某已知分布重合。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from statsmodels.graphics.api import qqplot</span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line"></span><br><span class="line"># 检验是否是正态分布</span><br><span class="line">plt.show(qqplot(</span><br><span class="line">    ss.norm.rvs(size=100)</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+
+<p>计算相关性系数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 构造数据</span><br><span class="line">sa = pd.Series([1, 2, 11, 24, 13, 3, 5])</span><br><span class="line">sb = pd.Series([5, 4, 12, 25, 11, 7, 1])</span><br><span class="line">df = pd.DataFrame(np.array([sa, sb]).T) # 转化为两个列向量</span><br><span class="line"></span><br><span class="line"># 求斯皮尔曼相关系数</span><br><span class="line">sa.corr(sb, method=&#x27;spearman&#x27;)</span><br><span class="line"></span><br><span class="line"># 求皮尔逊相关系数</span><br><span class="line">df.corr()</span><br></pre></td></tr></table></figure>
+
+<p>线性回归</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line"># 构造数据</span><br><span class="line">x = np.arange(10).astype(np.float64).reshape((10, 1))</span><br><span class="line">y = x * 3 + 4 + np.random.random((10, 1))</span><br><span class="line"></span><br><span class="line"># 线性回归</span><br><span class="line">reg = LinearRegression()</span><br><span class="line">res = reg.fit(x, y)</span><br><span class="line">y_pred = reg.predict(x)</span><br><span class="line">reg.coef_  # 斜率</span><br><span class="line">reg.intercept_  # 截距</span><br></pre></td></tr></table></figure>
+
+<p>PCA 降维</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.decomposition import PCA</span><br><span class="line"># 构造数据</span><br><span class="line">d = np.array([</span><br><span class="line">    np.array([2.5, 0.5, 2.2, 1.9, 3.1, 2.3, 2, 1, 1.5, 1.1]),</span><br><span class="line">    np.array([2.4, 0.7, 2.9, 2.2, 3, 2.7, 1.6, 1.1, 1.6, 0.9])</span><br><span class="line">]).T</span><br><span class="line"></span><br><span class="line"># PCA 降维（奇异值分解）</span><br><span class="line">low = PCA(n_components=1) # 降到 1 维</span><br><span class="line">low.fit(d)</span><br><span class="line">low.explained_variance_ratio_ # 保留的信息比例</span><br><span class="line">low.fit_transform(d) # 降维后的数据</span><br><span class="line"></span><br><span class="line"># 自定义 PCA</span><br><span class="line">def my_pca(data, n_components=1000):</span><br><span class="line">    mean_vals = np.mean(data, axis=0) # 每个属性的均值</span><br><span class="line">    mid = data - mean_vals</span><br><span class="line">    cov_mat = np.cov(mid, rowvar=False) # 按列求协方差</span><br><span class="line">    from scipy import linalg</span><br><span class="line">    eig_vals, eig_vects = linalg.eig(np.mat(cov_mat)) # 求特征值，特征向量</span><br><span class="line">    eig_vals_index = np.argsort(eig_vals) # 获取排序后的下标</span><br><span class="line">    eig_vals_index = eig_vals_index[: -(n_components + 1): -1]</span><br><span class="line">    eig_vects = eig_vects[:, eig_vals_index] # 取出特征向量</span><br><span class="line">    low_dim_mat = np.dot(mid, eig_vects)  # 计算投影后的新矩阵</span><br><span class="line">    return low_dim_mat, eig_vals</span><br></pre></td></tr></table></figure>
+
+<p>复合分析</p>
+<ul>
+<li>交叉分析：分析属性和属性之间的关系</li>
+<li>分组分析：先分组再分析比较。一般与其他手段配合使用。<ul>
+<li>钻取：一种常用的分组手段，作用是改变数据维度的层次。分为向上钻取，向下钻取。</li>
+<li>分组一般针对离散属性，对于连续属性则需要离散化。连续数据离散化：分割（一阶）、拐点（二阶）、聚类、不纯度（Gini系数）</li>
+</ul>
+</li>
+<li>相关分析<ul>
+<li>连续属性：直接计算</li>
+<li>离散属性：<ul>
+<li>二类离散：皮尔逊相关系数、不纯度（Gini系数）</li>
+<li>多类定序离散：可以编码为连续值，进行皮尔逊相关系数计算，但是会失真</li>
+<li>熵：（单位：Bit）<ul>
+<li>条件熵</li>
+<li>互信息：信息增益，条件熵相对于原来的熵减少的信息，对于分类数目多的特征，有不正确的偏向，不确定性是上不封顶的。 I(X, Y) &#x3D; H(Y) - H(Y|X) &#x3D; H(X) - H(X|Y)</li>
+<li>熵的增益率：为了解决互信息上不封顶的特性而定，该值范围为 (0, 1)。但是该值不是对称的。 I(X, Y) &#x2F; H(Y)</li>
+<li>相关性：解决熵的增益率的对称问题。 corr(X, Y) &#x3D; I(X, Y) &#x2F; sqrt(H(X) * H(Y))</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>因子分析：从多个属性中分析共性的方法。<ul>
+<li>探索性因子分析：通过协方差矩阵、相关性矩阵分析，来转化、降维，得到最主要的因子。例如：主成分分析。</li>
+<li>验证性因子分析：验证因子与关注的属性有什么关联。假设检验、回归分析等。</li>
+</ul>
+</li>
+<li>聚类分析</li>
+<li>回归分析</li>
+</ul>
+<p>交叉分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"># 获取数据</span><br><span class="line">df = pd.read_csv(&#x27;.\\data\\HR.csv&#x27;)</span><br><span class="line">df = df.dropna()</span><br><span class="line"></span><br><span class="line"># 不同部门之间的离职率分布是否一致：T 分布检验</span><br><span class="line">ind = df.groupby(&#x27;department&#x27;).indices</span><br><span class="line">sval = df[&#x27;left&#x27;].iloc[ind[&#x27;sales&#x27;]].values  # Sales 部门</span><br><span class="line">tval = df[&#x27;left&#x27;].iloc[ind[&#x27;technical&#x27;]].values  # Technical 部门</span><br><span class="line">ss.ttest_ind(sval, tval)  # T 分布检查，检查是否有显著差异</span><br><span class="line"></span><br><span class="line"># 所有部门之间的关系</span><br><span class="line">key = list(ind.keys())</span><br><span class="line">mat = np.zeros([len(key), len(key)])</span><br><span class="line">for i in range(len(key)):</span><br><span class="line">    for j in range(len(key)):</span><br><span class="line">        p_val = ss.ttest_ind(</span><br><span class="line">            df[&#x27;left&#x27;].iloc[ind[key[i]]].values, </span><br><span class="line">            df[&#x27;left&#x27;].iloc[ind[key[j]]].values</span><br><span class="line">        )[1]  # P 值绝对值越大，显著性差异越大</span><br><span class="line">        mat[i][j] = p_val</span><br><span class="line"></span><br><span class="line"># 热力图</span><br><span class="line">sns.heatmap(mat, xticklabels=key, yticklabels=key)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 过去5年是否有晋升：数据透视表</span><br><span class="line">pivtb = pd.pivot_table(</span><br><span class="line">    df, </span><br><span class="line">    values=&#x27;left&#x27;, </span><br><span class="line">    index=[&#x27;promotion_last_5years&#x27;, &#x27;salary&#x27;],</span><br><span class="line">    columns=[&#x27;Work_accident&#x27;],</span><br><span class="line">    aggfunc=np.mean  # 聚合函数</span><br><span class="line">)</span><br><span class="line">sns.heatmap(pivtb, vmin=0, vmax=1, cmap=sns.color_palette(&quot;Reds&quot;, n_colors=256))</span><br></pre></td></tr></table></figure>
+
+<p>分组分析与钻取</p>
+<ul>
+<li>向上钻取：汇总分组数据</li>
+<li>向下钻取：展开分组，查看数据的细节</li>
+<li>Gini系数：有标注的情况下可以使用。<ul>
+<li>D - 标注，被关注的属性（是否离职）</li>
+<li>Ck - 被比较的属性（工资水平）</li>
+<li>Gini(D) &#x3D; 1 - sum( (Ck &#x2F; D)^2 )</li>
+<li>对于连续值，需要 (1) 将 C 切分为两部分，计算Gini系数 (2) 遍历不同的切分位置重复(1)，得到最小的Gini系数和切分位置</li>
+<li>决策树 CART 算法</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 离散值</span><br><span class="line">sns.barplot(</span><br><span class="line">    x=&#x27;salary&#x27;,</span><br><span class="line">    y=&#x27;left&#x27;,</span><br><span class="line">    hue=&#x27;department&#x27;,</span><br><span class="line">    data=df</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 连续值</span><br><span class="line">sc = df[&#x27;satisfaction_level&#x27;]</span><br><span class="line">sns.barplot(</span><br><span class="line">    list(range(len(sc))),</span><br><span class="line">    sc.sort_values()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>相关分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"># 连续值：相关系数</span><br><span class="line">sns.heatmap(df.corr(), vmin=-1, vmax=1)  # 自动过滤离散值</span><br><span class="line"># 离散值：熵，条件熵，互信息（熵增益），熵的增益率</span><br><span class="line"># 熵：定义不确定性。都是一类，那么熵就是零；如果各类都差不多，熵最大。</span><br><span class="line"># 条件熵：在一定条件下的熵。</span><br><span class="line"># 相关性：互信息 / 标准差乘积的二次根</span><br><span class="line">m = pd.Series([&#x27;x1&#x27;, &#x27;x1&#x27;, &#x27;x2&#x27;, &#x27;x2&#x27;, &#x27;x2&#x27;, &#x27;x2&#x27;])</span><br><span class="line">n = pd.Series([&#x27;y1&#x27;, &#x27;y1&#x27;, &#x27;y1&#x27;, &#x27;y2&#x27;, &#x27;y2&#x27;, &#x27;y2&#x27;])</span><br><span class="line"></span><br><span class="line">def getEntropy(s):</span><br><span class="line">    s = pd.Series(s)</span><br><span class="line">    p = s.groupby(s).count().values / float(len(s))  # 概率</span><br><span class="line">    return -(np.log2(p) * p).sum()</span><br><span class="line">getEntropy(m)</span><br><span class="line"></span><br><span class="line">def getCondEntropy(s1, s2):</span><br><span class="line">    # 获取 S1 下 S2 的分布</span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    for i in list(range(len(s1))):</span><br><span class="line">        d[s1[i]] = d.get(s1[i], []) + [s2[i]]</span><br><span class="line">    return sum([getEntropy(d[k]) * len(d[k]) / float(len(s1)) for k in d])</span><br><span class="line">getCondEntropy(m, n)  # 条件熵，不对称</span><br><span class="line"></span><br><span class="line">def getEntropyGain(s1, s2):</span><br><span class="line">    return getEntropy(s2) - getCondEntropy(s1, s2)</span><br><span class="line">getEntropyGain(n, m)  # 互信息，对称</span><br><span class="line"></span><br><span class="line">def getEntropyGainRatio(s1, s2):</span><br><span class="line">    return getEntropyGain(s1, s2) / getEntropy(s2)</span><br><span class="line">getEntropyGainRatio(m, n)  # 熵增益率，不对称</span><br><span class="line"></span><br><span class="line">import math</span><br><span class="line">def getDiscreteCorr(s1, s2):</span><br><span class="line">    return getEntropyGain(s1, s2) / math.sqrt(getEntropy(s1) * getEntropy(s2))</span><br><span class="line">getDiscreteCorr(m, n)  # 离散值的相关性度量，对称</span><br><span class="line"></span><br><span class="line">def getProbSS(s):  # 概率平方和</span><br><span class="line">    s = pd.Series(s)</span><br><span class="line">    p = s.groupby(s).count().values / float(len(s))</span><br><span class="line">    return sum(p**2)</span><br><span class="line"></span><br><span class="line">def getGini(s1, s2):</span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    for i in list(range(len(s1))):</span><br><span class="line">        d[s1[i]] = d.get(s1[i], []) + [s2[i]]</span><br><span class="line">    return 1 - sum([getProbSS(d[k]) * len(d[k]) / float(len(s1)) for k in d])</span><br><span class="line">getGini(m, n)  # 基尼系数，不对称</span><br></pre></td></tr></table></figure>
+
+<p>因子分析（成分分析）</p>
+<ul>
+<li>探索性因子分析：降维</li>
+<li>验证性因子分析：假设检验，相关分析，回归分析等</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(&#x27;.\\data\\HR.csv&#x27;).dropna()</span><br><span class="line">pca = PCA(n_components=7)</span><br><span class="line">mat = pca.fit_transform(df.drop(  # 去掉离散值</span><br><span class="line">    labels=[&#x27;salary&#x27;, &#x27;department&#x27;, &#x27;left&#x27;],</span><br><span class="line">    axis=1</span><br><span class="line">))</span><br><span class="line">pca.explained_variance_ratio_</span><br></pre></td></tr></table></figure>
+
+<p>总结</p>
+<ul>
+<li>连续 - 连续 ：相关系数，假设检验</li>
+<li>连续 - 二值离散 ：相关系数，连续二值化（最小Gini切分，最大熵增益切分）</li>
+<li>连续 - 非二值离散 ：相关系数（定序）</li>
+<li>二值离散 - 二值离散 ：相关系数，熵相关，F分值</li>
+<li>非二值离散 - 非二值离散 ：熵相关，Gini，相关系数（定序）</li>
+</ul>
+<h3 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h3><p>数据集越好，质量越高，则模型复杂度越低。数据的好坏决定了模型的好坏。需要善于观察数据，积累经验。</p>
+<ul>
+<li>特征使用<ul>
+<li>数据选择</li>
+<li>可用性判断：安全，成本，时效性</li>
+</ul>
+</li>
+<li>特征获取<ul>
+<li>特征来源</li>
+<li>特征存储</li>
+</ul>
+</li>
+<li>特征处理<ul>
+<li>数据清洗</li>
+<li>特征预处理</li>
+</ul>
+</li>
+<li>特征监控：针对模型的长期使用</li>
+<li>现有特征</li>
+<li>探寻新特征</li>
+</ul>
+<p>数据样本抽样</p>
+<ul>
+<li>样本要具有代表性</li>
+<li>处理样本平衡问题</li>
+<li>考虑全量数据</li>
+</ul>
+<p>异常值处理：丢弃或转换异常值</p>
+<ul>
+<li>空值<ul>
+<li>字符串 None</li>
+<li>数字 NaN</li>
+</ul>
+</li>
+<li>重复值</li>
+<li>连续属性的异常值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">isnull()</span><br><span class="line">dropna(subset=[&#x27;field&#x27;])</span><br><span class="line">duplicated([&#x27;field&#x27;])</span><br><span class="line">drop_duplicates([&#x27;field&#x27;], keep=&#x27;first&#x27;) # 重复时要保留的项目</span><br><span class="line">interpolate(mthod=&quot;&quot;, order=&quot;&quot;) # 插值，根据相邻的两个值的平均值</span><br><span class="line"># 还可以使用条件筛选的方法</span><br></pre></td></tr></table></figure>
+
+<p>标注：确定含义。</p>
+<p>特征预处理</p>
+<ul>
+<li>特征选择：剔除与标注不相关和冗余的特征，提高效率，提升准确度<ul>
+<li>数据规约<ul>
+<li>过滤思想：考察与标注的关系。</li>
+<li>包裹思想：确定一个评价指标，通过每次迭代去掉一部分特征，直到评价指标下降过快为止，找到评价指标最优的子集。RFE算法。</li>
+<li>嵌入思想：根据模型结果来判断特征的重要性。一般采用正则化的方法。</li>
+</ul>
+</li>
+<li>数据抽样</li>
+</ul>
+</li>
+<li>特征变换：对数、指数、离散、平滑、归一化、数值化、正规化<ul>
+<li>对指化：扩大或缩小尺度。Softmax。</li>
+<li>离散化、分箱：连续值可能会有噪声，或算法不支持连续数据，或数据非线性，需要离散化。<ul>
+<li>等频、等深：排序，分组，每组元素个数相同。之后再用标记替代该值。</li>
+<li>等距、等宽：利用极差等宽划分数据。</li>
+<li>自因变量优化：</li>
+</ul>
+</li>
+<li>归一化：缩放到 (0, 1) 之间</li>
+<li>标准化：将数据转化为标准形式，标准不做规定。 Z-Score 转化</li>
+<li>数值化：<ul>
+<li>标签化：每一类给一个数字表示，保留原本的信息。</li>
+<li>独热编码，One-Hot 编码：转化为向量，每两类之间的距离相等。</li>
+</ul>
+</li>
+<li>正规化：规范化，一般用在对象上（所有特征），模型的参数上（所有参数的L2范数为1）</li>
+</ul>
+</li>
+<li>特征降维<ul>
+<li>PCA：无标注参与</li>
+<li>LDA：有标注参与：不同标注之间距离尽可能大，同一标注之间距离尽可能小。</li>
+</ul>
+</li>
+<li>特征衍生：现有特征相互组合得到的新特征<ul>
+<li>加减乘除</li>
+<li>求导</li>
+<li>人工归纳</li>
+</ul>
+</li>
+</ul>
+<p>特征选择</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import scipy.stats as ss</span><br><span class="line"></span><br><span class="line">from sklearn.svm import SVR</span><br><span class="line">from sklearn.tree import DecisionTreeRegressor</span><br><span class="line">from sklearn.feature_selection import SelectKBest, RFE, SelectFromModel # 过滤，包裹，嵌入</span><br><span class="line"></span><br><span class="line"># 数据</span><br><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    &#x27;A&#x27;: ss.norm.rvs(size=10),</span><br><span class="line">    &#x27;B&#x27;: ss.norm.rvs(size=10),</span><br><span class="line">    &#x27;C&#x27;: ss.norm.rvs(size=10),</span><br><span class="line">    &#x27;D&#x27;: np.random.randint(low=0, high=2, size=10)</span><br><span class="line">&#125;)</span><br><span class="line">x = df.loc[:, [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;]]</span><br><span class="line">y = df.loc[:, &#x27;D&#x27;]</span><br><span class="line"></span><br><span class="line"># 过滤</span><br><span class="line">skb = SelectKBest(k=2) # 保留 2 个特征</span><br><span class="line">skb.fit(x, y)  # 可以用卡方，互信息，F值等</span><br><span class="line">skb.transform(x)</span><br><span class="line"></span><br><span class="line"># 包裹</span><br><span class="line">rfe = RFE(estimator=SVR(kernel=&#x27;linear&#x27;), n_features_to_select=2, step=1) # step 每次迭代去掉几个特征</span><br><span class="line">rfe.fit_transform(x, y)</span><br><span class="line"></span><br><span class="line"># 嵌入</span><br><span class="line">sfm = SelectFromModel(estimator=DecisionTreeRegressor(), threshold=0.2) # threshold 决定了保留几个特征</span><br><span class="line">sfm.fit_transform(x, y)</span><br></pre></td></tr></table></figure>
+
+<p>特征变换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ll = [6, 8, 10, 15, 16, 24, 25, 40, 67]</span><br><span class="line"></span><br><span class="line"># 等深分箱</span><br><span class="line">pd.qcut(ll, q=3, low=[&#x27;low&#x27;])  # pd.qcut(ll, q=3, labels=[&#x27;low&#x27;, &#x27;mid&#x27;, &#x27;high&#x27;])</span><br><span class="line"># Categories (3, interval[float64]): [(5.999, 13.333] &lt; (13.333, 24.333] &lt; (24.333, 67.0]]</span><br><span class="line"># [&#x27;low&#x27;, &#x27;low&#x27;, &#x27;low&#x27;, &#x27;mid&#x27;, &#x27;mid&#x27;, &#x27;mid&#x27;, &#x27;high&#x27;, &#x27;high&#x27;, &#x27;high&#x27;]</span><br><span class="line"></span><br><span class="line"># 等宽分箱</span><br><span class="line">pd.cut(ll, bins=3)</span><br><span class="line"># Categories (3, interval[float64]): [(5.939, 26.333] &lt; (26.333, 46.667] &lt; (46.667, 67.0]]</span><br><span class="line"># [&#x27;low&#x27;, &#x27;low&#x27;, &#x27;low&#x27;, &#x27;low&#x27;, &#x27;low&#x27;, &#x27;low&#x27;, &#x27;low&#x27;, &#x27;mid&#x27;, &#x27;high&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>归一化与标准化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import MinMaxScaler, StandardScaler</span><br><span class="line">MinMaxScaler().fit_transform(np.array([1, 3, 10, 15, 20]).reshape(-1, 1))</span><br><span class="line">StandardScaler().fit_transform(np.array([1, 1, 1, 1, 0, 0, 0, 0]).reshape(-1, 1))</span><br></pre></td></tr></table></figure>
+
+<p>数值化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import LabelEncoder, OneHotEncoder</span><br><span class="line"># 标签编码</span><br><span class="line">LabelEncoder().fit_transform(np.array([&#x27;Down&#x27;, &#x27;Up&#x27;, &#x27;Up&#x27;, &#x27;Down&#x27;]).reshape(-1, 1))</span><br><span class="line"># OneHot 编码</span><br><span class="line">lb_encoder = LabelEncoder()</span><br><span class="line">lb_trans_f = lb_encoder.fit_transform(np.array([&#x27;Red&#x27;, &#x27;Blue&#x27;, &#x27;Yello&#x27;]))</span><br><span class="line">oht_encoder = OneHotEncoder().fit(lb_trans_f.reshape(-1, 1))</span><br><span class="line">oht_encoder.transform(lb_encoder.transform(np.array([&#x27;Yello&#x27;, &#x27;Yello&#x27;, &#x27;Blue&#x27;]).reshape(-1, 1))).toarray()</span><br></pre></td></tr></table></figure>
+
+<p>正规化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import Normalizer</span><br><span class="line">Normalizer(norm=&#x27;L1&#x27;).fit_transform(np.array([[1, 1, 3, -1, 2]]))  # 对行正规化</span><br></pre></td></tr></table></figure>
+
+<p>LDA</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span><br><span class="line"></span><br><span class="line">x = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])</span><br><span class="line">y = np.array([1, 1, 1, 2, 2, 2])</span><br><span class="line"># 降到一维</span><br><span class="line">LinearDiscriminantAnalysis(n_components=1).fit_transform(x, y)  </span><br><span class="line"># 也可以坐判别器使用</span><br><span class="line">clf = LinearDiscriminantAnalysis(n_components=1).fit(x, y) </span><br><span class="line">clf.predict([0.8, 1])</span><br></pre></td></tr></table></figure>
+
+<p>数据预处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"># %matplotlib notebook</span><br><span class="line">import seaborn as sns</span><br><span class="line">import scipy.stats as ss</span><br><span class="line">from sklearn.decomposition import PCA</span><br><span class="line">from sklearn.svm import SVR</span><br><span class="line">from sklearn.tree import DecisionTreeRegressor</span><br><span class="line">from sklearn.feature_selection import SelectKBest, RFE, SelectFromModel </span><br><span class="line">from sklearn.preprocessing import MinMaxScaler, StandardScaler</span><br><span class="line">from sklearn.preprocessing import LabelEncoder, OneHotEncoder</span><br><span class="line">from sklearn.preprocessing import Normalizer</span><br><span class="line">from sklearn.discriminant_analysis import LinearDiscriminantAnalysis</span><br><span class="line">from sklearn.decompositiion import PCA</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(&quot;./data/HR.csv&quot;).dropna()</span><br><span class="line"># 1. 清洗数据 可以抽样</span><br><span class="line">df = df.dropna(subset=[&#x27;satisfaction_level&#x27;, &#x27;last_evaluation&#x27;])</span><br><span class="line">df = df[df[&#x27;satisfaction_level&#x27;] &lt;= 1][df[&#x27;salary&#x27;] != &#x27;nme&#x27;]</span><br><span class="line"># 2. 得到标注</span><br><span class="line">label = df[&#x27;left&#x27;]</span><br><span class="line">df = df.drop(&#x27;left&#x27;, axis=1)</span><br><span class="line"># 3. 特征选择：根据相关性矩阵，清除不相关的属性（可选）</span><br><span class="line"># 4. 特征处理</span><br><span class="line"># 连续值</span><br><span class="line">scaler_list = [False, False, False, False, False, False, False]</span><br><span class="line">col_list = [&#x27;satisfaction_level&#x27;, &#x27;last_evaluation&#x27;, &#x27;number_project&#x27;, &#x27;average_monthly_hours&#x27;, </span><br><span class="line">            &#x27;time_spend_company&#x27;, &#x27;Work_accident&#x27;, &#x27;promotion_last_5years&#x27;]</span><br><span class="line">for i, scaler in enumerate(scaler_list):</span><br><span class="line">    if not scaler: </span><br><span class="line">        df[col_list[i]] = MinMaxScaler().fit_transform(df[col_list[i]].values.reshape(-1, 1)).reshape(1, -1)[0]</span><br><span class="line">    else:</span><br><span class="line">        df[col_list[i]] = StandardScaler().fit_transform(df[col_list[i]].values.reshape(-1, 1)).reshape(1, -1)[0]</span><br><span class="line"># 离散值</span><br><span class="line">scaler_list = [True, False]</span><br><span class="line">col_list = [&#x27;department&#x27;, &#x27;salary&#x27;]</span><br><span class="line">salary_map = &#123;&#x27;low&#x27;: 0, &#x27;medium&#x27;: 1, &#x27;high&#x27;: 2&#125;</span><br><span class="line">for i, scaler in enumerate(scaler_list):</span><br><span class="line">    if not scaler: </span><br><span class="line">        if col_list[i] == &#x27;salary&#x27;: df[col_list[i]] = [salary_map[s] for s in df[&#x27;salary&#x27;].values]</span><br><span class="line">        else: df[col_list[i]] = LabelEncoder().fit_transform(df[col_list[i]])</span><br><span class="line">        df[col_list[i]] = MinMaxScaler().fit_transform(df[col_list[i]].values.reshape(-1, 1)).reshape(1, -1)[0]</span><br><span class="line">    else:</span><br><span class="line">        df = pd.get_dummies(df, columns=[col_list[i]]) # One Hot </span><br><span class="line"># 降维</span><br><span class="line">lower_d = False</span><br><span class="line">lower_d_n = 3</span><br><span class="line">if lower_d: df = PCA(n_components=lower_d_n).fit_transform(df.values)</span><br></pre></td></tr></table></figure>
+
+<h3 id="挖掘建模"><a href="#挖掘建模" class="headerlink" title="挖掘建模"></a>挖掘建模</h3><p>数据集</p>
+<ul>
+<li>训练集 60% </li>
+<li>验证集 20% ：多次训练验证得到参数最优的模型</li>
+<li>测试集 20% ：评价模型的泛化能力</li>
+</ul>
+<p>切分数据集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">fv = df.values</span><br><span class="line">lv = label.values</span><br><span class="line">xtt, xvalid, ytt, yvalid = train_test_split(fv, lv, test_size=0.2) # 验证集  其他</span><br><span class="line">xtrain, xtest, ytrain, ytest = train_test_split(xtt, ytt, test_size=0.25) # 测试集  训练集</span><br></pre></td></tr></table></figure>
+
+<p>存取模型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.externals import joblib</span><br><span class="line">joblib.dump(knnc, &#x27;knnc&#x27;)</span><br><span class="line">knnc = joblic.load(&#x27;knnc&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>分类：</p>
+<ul>
+<li>KNN：<ul>
+<li>距离：欧氏距离，曼哈顿距离，闵可夫斯基距离</li>
+<li>KD 树：快速寻找最近点。</li>
+<li>算法思想：找一个点最近的N个邻居，在N个邻居中和哪类最像就是哪类</li>
+</ul>
+</li>
+<li>朴素贝叶斯：<ul>
+<li>朴素：特征之间是相互独立的</li>
+<li>拉普拉斯平滑：0 和 1 需要被平滑，否则无法比较。（加一或减一）</li>
+<li>GaussianNB - 特征符合正态分布 - MultinomialNB - 特征为离散值 - BernoulliNB - 特征为二值化离散值</li>
+<li>生成模型：先求出输入与输出的联合概率分布，再求类别归类的概率。朴素贝叶斯</li>
+<li>判别模型：直接得到输出时对应的最大分类的概率。</li>
+</ul>
+</li>
+<li>决策树：每次根据信息增益最大的切分<ul>
+<li>连续值需要切分</li>
+<li>规则用尽，特征用完：采用投票方式，多次使用特征</li>
+<li>过拟合：剪枝</li>
+</ul>
+</li>
+<li>支持向量机<ul>
+<li>min L&#x3D;(w^2)&#x2F;2 st. y(wx+b) &gt;&#x3D; 1</li>
+<li>如果出现异常点， min(max(L))</li>
+<li>扩维：核函数</li>
+</ul>
+</li>
+<li>集成方法：弱可学习分类器集合<ul>
+<li>强可学习：多项式复杂度，效果明显</li>
+<li>弱可学习：多项式复杂度，效果不明显</li>
+<li>袋装法（并行）：多个模型投票（均值）<ul>
+<li>随机森林：确定树的数量，每棵树用到的特征数，树的训练集</li>
+<li>不需要剪枝防止过拟合</li>
+</ul>
+</li>
+<li>提升法（串行）：多个模型串联，所有模型加权求和得到结果<ul>
+<li>Adaboost：精度高，灵活调控，不用担心过拟合，简化特征工程流程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Logistic 映射 </li>
+<li>人工神经网络</li>
+</ul>
+<p>KNN</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.neighbors import NearestNeighbors, KNeighborsClassifier</span><br><span class="line"># NearestNeighbors</span><br><span class="line">samples = [[0, 0, 2], [1, 0, 0], [0, 0, 1]]</span><br><span class="line">neigh = NearestNeighbors(n_neighbors=2, radius=0.4) #  邻居的数量为 2</span><br><span class="line">neigh.fit(samples)</span><br><span class="line">neigh.kneighbors([[0, 0, 1.3]], 2, return_distance=False)  # 获得最近2个点的索引</span><br><span class="line"># KNeighborsClassifier</span><br><span class="line">x = [[0], [1], [2], [3]]</span><br><span class="line">y = [0, 0, 1, 1]</span><br><span class="line">neigh = KNeighborsClassifier(n_neighbors=3)</span><br><span class="line">neigh.fit(x, y)</span><br><span class="line">neigh.predict([[1.1]])</span><br><span class="line"></span><br><span class="line"># 本文数据集测试</span><br><span class="line"># 引入评价指标</span><br><span class="line">from sklearn.metrics import accuracy_score, recall_score, f1_score</span><br><span class="line">knnc = KNeighborsClassifier(n_neighbors=5)</span><br><span class="line">knnc.fit(xtrain, ytrain)</span><br><span class="line">ypred = knnc.predict(xvalid)</span><br><span class="line">print(f&#x27;acc:&#123;accuracy_score(yvalid, ypred)&#125;, rec:&#123;recall_score(yvalid, ypred)&#125;, f1:&#123;f1_score(yvalid, ypred)&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>朴素贝叶斯</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.naive_bayes import BernoulliNB  # 特征是离散二值化的</span><br><span class="line">from sklearn.naive_bayes import GaussianNB   # 特征符合高斯分布</span><br><span class="line">models = [</span><br><span class="line">    (&#x27;KNN&#x27;, KNeighborsClassifier(n_neighbors=3)),</span><br><span class="line">    (&#x27;GaussianNB&#x27;, GaussianNB()),</span><br><span class="line">    (&#x27;BernoulliNB&#x27;, BernoulliNB())</span><br><span class="line">]</span><br><span class="line">for clname, cl in models:</span><br><span class="line">    cl.fit(xtrain, ytrain)</span><br><span class="line">    xy = [(xtrain, ytrain), (xvalid, yvalid), (xtest, ytest)]</span><br><span class="line">    for i in range(len(xy)):</span><br><span class="line">        xp = xy[i][0]</span><br><span class="line">        yp = xy[i][1]</span><br><span class="line">        ypred = cl.predict(xp)</span><br><span class="line">        print(f&#x27;&#123;clname&#125;, &#123;i&#125;: acc:&#123;accuracy_score(yp, ypred)&#125;, rec:&#123;recall_score(yp, ypred)&#125;, f1:&#123;f1_score(yp, ypred)&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>决策树</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">models = [</span><br><span class="line">    # 参数：max_depth, min_samples_split</span><br><span class="line">    (&#x27;DecisionTreeGini&#x27;, DecisionTreeClassifier()),</span><br><span class="line">    (&#x27;DecisionTreeEntropy&#x27;, DecisionTreeClassifier(criterion=&quot;entropy&quot;)),</span><br><span class="line">]</span><br><span class="line">for clname, cl in models:</span><br><span class="line">    cl.fit(xtrain, ytrain)</span><br><span class="line">    xy = [(xtrain, ytrain), (xvalid, yvalid), (xtest, ytest)]</span><br><span class="line">    for i in range(len(xy)):</span><br><span class="line">        xp = xy[i][0]</span><br><span class="line">        yp = xy[i][1]</span><br><span class="line">        ypred = cl.predict(xp)</span><br><span class="line">        print(f&#x27;&#123;clname&#125;, &#123;i&#125;: acc:&#123;accuracy_score(yp, ypred)&#125;, rec:&#123;recall_score(yp, ypred)&#125;, f1:&#123;f1_score(yp, ypred)&#125;&#x27;)</span><br><span class="line"># 绘制决策树 Graphviz 要安装并添加到环境变量中</span><br><span class="line">import pydotplus</span><br><span class="line">from sklearn.externals.six import StringIO</span><br><span class="line">from sklearn.tree import export_graphviz</span><br><span class="line">dot_data = export_graphviz(</span><br><span class="line">    cl, </span><br><span class="line">    out_file=None, </span><br><span class="line">    feature_names=features.columns.values, </span><br><span class="line">    class_names=[&#x27;NotLeft&#x27;, &#x27;Left&#x27;], </span><br><span class="line">    fill=True, </span><br><span class="line">    rounded=True, </span><br><span class="line">    special_characters=True</span><br><span class="line">)</span><br><span class="line">graph = pydotplus.graph_from_dot_data(dot_data)</span><br><span class="line">graph.write_pdf(&#x27;dt.pdf&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>支持向量机</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.svm import SVC</span><br><span class="line">models = [</span><br><span class="line">    # C 精度，错分点惩罚度</span><br><span class="line">    (&quot;SVC&quot;, SVC(C=1)), </span><br><span class="line">]</span><br><span class="line">for clname, cl in models:</span><br><span class="line">    cl.fit(xtrain, ytrain)</span><br><span class="line">    xy = [(xtrain, ytrain), (xvalid, yvalid), (xtest, ytest)]</span><br><span class="line">    for i in range(len(xy)):</span><br><span class="line">        xp = xy[i][0]</span><br><span class="line">        yp = xy[i][1]</span><br><span class="line">        ypred = cl.predict(xp)</span><br><span class="line">        print(f&#x27;&#123;clname&#125;, &#123;i&#125;: acc:&#123;accuracy_score(yp, ypred)&#125;, rec:&#123;recall_score(yp, ypred)&#125;, f1:&#123;f1_score(yp, ypred)&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>随机森林与Adaboost</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier</span><br><span class="line">from sklearn.svm import SVC</span><br><span class="line">models = [</span><br><span class="line">    # N_estimators 决策树个数，criterion 使用方法，max_features 特征数</span><br><span class="line">    # 最大深度，是否有放回采样 ...</span><br><span class="line">    (&quot;RandomForest&quot;, RandomForestClassifier()),</span><br><span class="line">    # 级联分类器数量，学习率，</span><br><span class="line">    (&quot;AdaBoost&quot;, AdaBoostClassifier()),</span><br><span class="line">]</span><br><span class="line">for clname, cl in models:</span><br><span class="line">    cl.fit(xtrain, ytrain)</span><br><span class="line">    xy = [(xtrain, ytrain), (xvalid, yvalid), (xtest, ytest)]</span><br><span class="line">    for i in range(len(xy)):</span><br><span class="line">        xp = xy[i][0]</span><br><span class="line">        yp = xy[i][1]</span><br><span class="line">        ypred = cl.predict(xp)</span><br><span class="line">        print(f&#x27;&#123;clname&#125;, &#123;i&#125;: acc:&#123;accuracy_score(yp, ypred)&#125;, rec:&#123;recall_score(yp, ypred)&#125;, f1:&#123;f1_score(yp, ypred)&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>回归</p>
+<ul>
+<li>线性回归：H(X) &#x3D; w * X<ul>
+<li>最小二乘法</li>
+<li>梯度下降法</li>
+<li>正则化<ul>
+<li>岭回归</li>
+<li>Lasso回归</li>
+<li>弹性回归</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>决策树</li>
+<li>支持向量机</li>
+<li>集成方法</li>
+<li>Logistic 回归：一般用作分类器</li>
+<li>人工神经网络<ul>
+<li>感知器的串并联</li>
+<li>输入层：输入范围[0, 1]</li>
+<li>输出层：one-hot</li>
+<li>激活函数：sigmod relu tanh softplus</li>
+<li>反向传播算法</li>
+<li>随机梯度下降：容易陷入最优解</li>
+<li>问题<ul>
+<li>易受离群点影像，容易过拟合：需要正则化、dropout</li>
+<li>结果要 softmax 转化（结果的和为 1）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>回归树与提升树<ul>
+<li>GBDT 梯度提升决策树：泛化能力强</li>
+<li>XgBoost ：支持并行计算</li>
+</ul>
+</li>
+</ul>
+<p>线性回归</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LinearRegression, Ridge, Lasso</span><br><span class="line">from sklearn.metrics import mean_squared_error</span><br><span class="line">features = df[[&#x27;number_project&#x27;, &#x27;average_monthly_hours&#x27;]]</span><br><span class="line">label = df[&#x27;last_evaluation&#x27;]</span><br><span class="line">regr = Ridge(alpha=0.6)</span><br><span class="line">regr = Lasso(alpha=0.002)</span><br><span class="line">regr = LinearRegression()</span><br><span class="line">regr.fit(features.values, label.values)</span><br><span class="line">Y_pred = regr.predict(features.values)</span><br><span class="line">print(regr.coef_, mean_squared_error(Y_pred, label.values))</span><br></pre></td></tr></table></figure>
+
+<p>Logistic 回归 线性回归</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LogisticRegression</span><br><span class="line">from sklearn.metrics import mean_squared_error</span><br><span class="line">features = df[[&#x27;number_project&#x27;, &#x27;average_monthly_hours&#x27;]]</span><br><span class="line">label = df[&#x27;last_evaluation&#x27;]</span><br><span class="line"></span><br><span class="line">models = [</span><br><span class="line">    # penalty 正则化 C 正则化因子 tol 精度 solver 方法 </span><br><span class="line">    # 迭代次数 </span><br><span class="line">    (&quot;LogisticRegression&quot;, LogisticRegression()),</span><br><span class="line">]</span><br><span class="line">for clname, cl in models:</span><br><span class="line">    cl.fit(xtrain, ytrain)</span><br><span class="line">    xy = [(xtrain, ytrain), (xvalid, yvalid), (xtest, ytest)]</span><br><span class="line">    for i in range(len(xy)):</span><br><span class="line">        xp = xy[i][0]</span><br><span class="line">        yp = xy[i][1]</span><br><span class="line">        ypred = cl.predict(xp)</span><br><span class="line">        print(f&#x27;&#123;clname&#125;, &#123;i&#125;: acc:&#123;accuracy_score(yp, ypred)&#125;, rec:&#123;recall_score(yp, ypred)&#125;, f1:&#123;f1_score(yp, ypred)&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>人工神经网络</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># PyBrain 反向传播算法包</span><br><span class="line"># Keras</span><br><span class="line">from keras.models import Sequential</span><br><span class="line">from keras.layers.core import Dense, Activation</span><br><span class="line">from keras.optimizers import SGD</span><br><span class="line">model = Sequential() # 神经网络序列</span><br><span class="line">model.add(Dense(50, input_dim=len(f_v[0])))  # 加入稠密层（参数：输出维度，输入维度），也可以是卷积层</span><br><span class="line">model.add(Activation(&#x27;sigmoid&#x27;))</span><br><span class="line">model.add(Dense(2))  # 此处可省略输入层维度</span><br><span class="line">model.add(Activation(&#x27;softmax&#x27;))</span><br><span class="line">sgd = SGD(lr=0.1)</span><br><span class="line">model.compile(loss=&#x27;mean_squared_error&#x27;, optimizer=sgd)  #optimizer=&#x27;adam&#x27;</span><br><span class="line">model.fit(</span><br><span class="line">    xtrain, </span><br><span class="line">    np.array([[0, 1] if i == 1 else [1, 0] for i in ytrain]), </span><br><span class="line">    nb_epoch=100, </span><br><span class="line">    batch_size=8999)</span><br><span class="line">xy = [(xtrain, ytrain), (xvalid, yvalid), (xtest, ytest)]</span><br><span class="line">for i in range(len(xy)):</span><br><span class="line">    x = xy[i][0]</span><br><span class="line">    y = xy[i][1]</span><br><span class="line">    ypred = model.predict_classes(x)</span><br><span class="line">    print(f&#x27;NN, &#123;i&#125;: acc:&#123;accuracy_score(yp, ypred)&#125;, rec:&#123;recall_score(yp, ypred)&#125;, f1:&#123;f1_score(yp, ypred)&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>回归树与提升树</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble import GradientBoostingClassifier</span><br><span class="line">models = [</span><br><span class="line">    # penalty 正则化 C 正则化因子 tol 精度 solver 方法 </span><br><span class="line">    # 迭代次数 </span><br><span class="line">    (&quot;GBDT&quot;, GradientBoostingClassifier(max_depth=6, n_estimators=100)),</span><br><span class="line">]</span><br><span class="line">for clname, cl in models:</span><br><span class="line">    cl.fit(xtrain, ytrain)</span><br><span class="line">    xy = [(xtrain, ytrain), (xvalid, yvalid), (xtest, ytest)]</span><br><span class="line">    for i in range(len(xy)):</span><br><span class="line">        xp = xy[i][0]</span><br><span class="line">        yp = xy[i][1]</span><br><span class="line">        ypred = cl.predict(xp)</span><br><span class="line">        print(f&#x27;&#123;clname&#125;, &#123;i&#125;: acc:&#123;accuracy_score(yp, ypred)&#125;, rec:&#123;recall_score(yp, ypred)&#125;, f1:&#123;f1_score(yp, ypred)&#125;&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>聚类</p>
+<ul>
+<li>Kmeans<ul>
+<li>初试：随机选取N个中心</li>
+<li>中心：取数据的均值</li>
+<li>距离：欧氏距离</li>
+<li>问题<ul>
+<li>初始中心影像：多随机选几次</li>
+<li>离群点：K-Medoids</li>
+<li>K的确定：轮廓系数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DBSCAN<ul>
+<li>E 邻域</li>
+<li>核心对象</li>
+<li>直接密度可达</li>
+<li>密度可达</li>
+<li>密度相连</li>
+<li>问题<ul>
+<li>离群点不敏感</li>
+<li>需要KD-Tree辅助</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>层次聚类<ul>
+<li>每次连接距离最近的点</li>
+<li>簇间距离：最短距离，最长距离，平均距离，Ward</li>
+<li>聚类灵活</li>
+<li>计算复杂度高</li>
+<li>离群点影像大</li>
+</ul>
+</li>
+<li>图分裂<ul>
+<li>形成连通图，再逐一分裂</li>
+<li>承受系数</li>
+<li>分裂阈值</li>
+<li>自顶向下的算法</li>
+<li>图的建立方式、分裂方式可以非常灵活</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.datasets import make_circles, make_blobs, make_moons</span><br><span class="line">from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering</span><br><span class="line"></span><br><span class="line">n_samples = 1000</span><br><span class="line">circles = make_circles(n_samples=n_samples, factor=0.5, noise=0.05) # factor 内外圆间距</span><br><span class="line">moons = make_moons(n_samples=n_samples, noise=0.05)</span><br><span class="line">blobs = make_blobs(n_samples=n_samples, randon_state=1, noise=0.05, center_box=(-1, 1), cluster_std=0.1)</span><br><span class="line">random_data = np.random.rand(n_samples, 2)</span><br><span class="line">colors = &#x27;bgrcmyk&#x27;</span><br><span class="line">data = [circles, moons, blobs, random_data]</span><br><span class="line"></span><br><span class="line">models = [</span><br><span class="line">    (&#x27;None&#x27;, None),</span><br><span class="line">    # Kmeans</span><br><span class="line">    (&#x27;Kmeans&#x27;, KMeans(n_clusters=2)),</span><br><span class="line">    # DBSCAN</span><br><span class="line">    (&#x27;DBSCAN&#x27;, DBSCAN(min_samples=3, eps=0.2)),</span><br><span class="line">    # Agglomerative</span><br><span class="line">    (&#x27;Agglomerative&#x27;, AgglomerativeClustering(n_clusters=3, linkage=&#x27;ward&#x27;)),</span><br><span class="line">]</span><br><span class="line">]</span><br><span class="line">f = plt.figure()</span><br><span class="line">for inx, clt in enumerate(models):</span><br><span class="line">    clname, clt = clt</span><br><span class="line">    for i, dataset in enumerate(data):</span><br><span class="line">        X, Y = dataset</span><br><span class="line">        if not clt: clt_res = [0 for item in range(len(X))]</span><br><span class="line">        else: </span><br><span class="line">            clt.fit(X)</span><br><span class="line">            clt_res = clt.labels_.astype(np.int)</span><br><span class="line">        f.add_subplot(len(models), len(data), inx * len(data) + i + 1)</span><br><span class="line">        [plt.scatter(X[p, 0], X[p, 1], color=colors[clt_res[p]]) for p in range(len(X))]</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>关联规则：反映一个事物与其他事物之间的关联性和相互依存性</p>
+<ul>
+<li>项目：一个物品</li>
+<li>事务：一次交易种的一个物品清单</li>
+<li>项集：若干个项目的集合（一次事务中的）</li>
+<li>频繁项集：包含某些固定项目频繁出现</li>
+<li>支持度：项集在总项集中出现的概率</li>
+<li>置信度：<code>X</code>发生的情况下，由<code>(X-&gt;Y)</code>中推出<code>Y</code>的概率</li>
+<li>提升度：<code>(X-&gt;Y)</code>置信度 <code>/</code> <code>Y</code>支持度<ul>
+<li><code>&lt; 1</code> 相斥</li>
+<li><code>&gt; 1</code> 提升</li>
+</ul>
+</li>
+<li>Apriori算法：求取频繁项集</li>
+<li>序列规则<ul>
+<li>Apriori-All<ul>
+<li>AprBlk AprLayer AprNode</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">from itertools import combinations</span><br><span class="line">def comb(lst):</span><br><span class="line">    ret=[]</span><br><span class="line">    for i in range(1,len(lst)+1):</span><br><span class="line">        ret+=list(combinations(lst,i))</span><br><span class="line">    return ret</span><br><span class="line">class AprLayer(object):</span><br><span class="line">    d=dict()</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.d=dict()</span><br><span class="line">class AprNode(object):</span><br><span class="line">    def __init__(self,node):</span><br><span class="line">        self.s=set(node)</span><br><span class="line">        self.size=len(self.s)</span><br><span class="line">        self.lnk_nodes=dict()</span><br><span class="line">        self.num=0</span><br><span class="line">    def __hash__(self):</span><br><span class="line">        return hash(&quot;__&quot;.join(sorted([str(itm) for itm in list(self.s)])))</span><br><span class="line">    def __eq__(self, other):</span><br><span class="line">        if &quot;__&quot;.join(sorted([str(itm) for itm in list(self.s)]))==&quot;__&quot;.join(sorted([str(itm) for itm in list(other.s)])):</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line">    def isSubnode(self,node):</span><br><span class="line">        return self.s.issubset(node.s)</span><br><span class="line">    def incNum(self,num=1):</span><br><span class="line">        self.num+=num</span><br><span class="line">    def addLnk(self,node):</span><br><span class="line">        self.lnk_nodes[node]=node.s</span><br><span class="line"></span><br><span class="line">class AprBlk():</span><br><span class="line">    def __init__(self,data):</span><br><span class="line">        cnt=0</span><br><span class="line">        self.apr_layers = dict()</span><br><span class="line">        self.data_num=len(data)</span><br><span class="line">        for datum in data:</span><br><span class="line">            cnt+=1</span><br><span class="line">            datum=comb(datum)</span><br><span class="line">            nodes=[AprNode(da) for da in datum]</span><br><span class="line">            for node in nodes:</span><br><span class="line">                if not node.size in self.apr_layers:</span><br><span class="line">                    self.apr_layers[node.size]=AprLayer()</span><br><span class="line">                if not node in self.apr_layers[node.size].d:</span><br><span class="line">                    self.apr_layers[node.size].d[node]=node</span><br><span class="line">                self.apr_layers[node.size].d[node].incNum()</span><br><span class="line">            for node in nodes:</span><br><span class="line">                if node.size==1:</span><br><span class="line">                    continue</span><br><span class="line">                for sn in node.s:</span><br><span class="line">                    sub_n=AprNode(node.s-set([sn]))</span><br><span class="line">                    self.apr_layers[node.size-1].d[sub_n].addLnk(node)</span><br><span class="line"></span><br><span class="line">    def getFreqItems(self,thd=1,hd=1):</span><br><span class="line">        freq_items=[]</span><br><span class="line">        for layer in self.apr_layers:</span><br><span class="line">            for node in self.apr_layers[layer].d:</span><br><span class="line">                if self.apr_layers[layer].d[node].num&lt;thd:</span><br><span class="line">                    continue</span><br><span class="line">                freq_items.append((self.apr_layers[layer].d[node].s,self.apr_layers[layer].d[node].num))</span><br><span class="line">        freq_items.sort(key=lambda x:x[1],reverse = True)</span><br><span class="line">        return freq_items[:hd]</span><br><span class="line"></span><br><span class="line">    def getConf(self,low=True, h_thd=10, l_thd=1, hd=1):</span><br><span class="line">        confidence = []</span><br><span class="line">        for layer in self.apr_layers:</span><br><span class="line">            for node in self.apr_layers[layer].d:</span><br><span class="line">                if self.apr_layers[layer].d[node].num &lt; h_thd:</span><br><span class="line">                    continue</span><br><span class="line">                for lnk_node in node.lnk_nodes:</span><br><span class="line">                    if lnk_node.num &lt; l_thd:</span><br><span class="line">                        continue</span><br><span class="line">                    conf = float(lnk_node.num) / float(node.num)</span><br><span class="line">                    confidence.append([node.s, node.num, lnk_node.s, lnk_node.num, conf])</span><br><span class="line"></span><br><span class="line">        confidence.sort(key=lambda x: x[4])</span><br><span class="line">        if low:</span><br><span class="line">            return confidence[:hd]</span><br><span class="line">        else:</span><br><span class="line">            return confidence[-hd::-1]</span><br><span class="line"></span><br><span class="line">class AssctAnaClass():</span><br><span class="line">    def fit(self,data):</span><br><span class="line">        self.apr_blk=AprBlk(data)</span><br><span class="line">        return self</span><br><span class="line">    def get_freq(self,thd=1,hd=1):</span><br><span class="line">        return self.apr_blk.getFreqItems(thd=thd,hd=hd)</span><br><span class="line">    def get_conf_high(self,thd,h_thd=10):</span><br><span class="line">        return self.apr_blk.getConf(low=False, h_thd=h_thd, l_thd=thd)</span><br><span class="line">    def get_conf_low(self,thd,hd,l_thd=1):</span><br><span class="line">        return self.apr_blk.getConf(h_thd=thd,l_thd=l_thd,hd=hd)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    data=[</span><br><span class="line">        [&quot;牛奶&quot;,&quot;啤酒&quot;,&quot;尿布&quot;],</span><br><span class="line">        [&quot;牛奶&quot;,&quot;啤酒&quot;,&quot;咖啡&quot;,&quot;尿布&quot;],</span><br><span class="line">        [&quot;香肠&quot;,&quot;牛奶&quot;,&quot;饼干&quot;],</span><br><span class="line">        [&quot;尿布&quot;,&quot;果汁&quot;,&quot;啤酒&quot;],</span><br><span class="line">        [&quot;钉子&quot;,&quot;啤酒&quot;],</span><br><span class="line">        [&quot;尿布&quot;,&quot;毛巾&quot;,&quot;香肠&quot;],</span><br><span class="line">        [&quot;啤酒&quot;,&quot;毛巾&quot;,&quot;尿布&quot;,&quot;饼干&quot;]</span><br><span class="line">    ]</span><br><span class="line">    print(&quot;Freq&quot;,AssctAnaClass().fit(data).get_freq(thd=3,hd=10))</span><br><span class="line">    print(&quot;Conf&quot;,AssctAnaClass().fit(data).get_conf_high(thd=3,h_thd=3))</span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    main()     </span><br></pre></td></tr></table></figure>
+
+<p>半监督学习</p>
+<ul>
+<li>生成模型</li>
+<li>判别模型<ul>
+<li>标签传播算法：与已标注的样本相似度高的标为同一个标签<ul>
+<li>RBF 相似度</li>
+<li>KNN 相似度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>标签传播算法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from sklearn import datasets</span><br><span class="line"></span><br><span class="line">iris=datasets.load_iris()</span><br><span class="line">labels=np.copy(iris.target)</span><br><span class="line">random_unlabeled_points=np.random.rand(len(iris.target))</span><br><span class="line">random_unlabeled_points=random_unlabeled_points&lt;0.7</span><br><span class="line">Y=labels[random_unlabeled_points]</span><br><span class="line">labels[random_unlabeled_points]=-1</span><br><span class="line">print(&quot;Unlabeled Number:&quot;,list(labels).count(-1))</span><br><span class="line"></span><br><span class="line">from sklearn.semi_supervised import LabelPropagation</span><br><span class="line">label_prop_model=LabelPropagation()</span><br><span class="line">label_prop_model.fit(iris.data,labels)</span><br><span class="line">Y_pred=label_prop_model.predict(iris.data)</span><br><span class="line">Y_pred=Y_pred[random_unlabeled_points]</span><br><span class="line">from sklearn.metrics import accuracy_score,recall_score,f1_score</span><br><span class="line">print(&quot;ACC:&quot;,accuracy_score(Y,Y_pred))</span><br><span class="line">print(&quot;REC:&quot;,recall_score(Y,Y_pred,average=&quot;micro&quot;))</span><br><span class="line">print(&quot;F-Score&quot;,f1_score(Y,Y_pred,average=&quot;micro&quot;))</span><br></pre></td></tr></table></figure>
+
+<h3 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h3><p>分类模型：</p>
+<ul>
+<li>二分类：比较模型的输出和真实标签<ul>
+<li>Y_pred：输出为概率值，要经过阈值再二值化，得到正负类</li>
+<li>混淆矩阵：TP，FN（漏），FP（错），TN<ul>
+<li>TP[0, 0], FN[1, 0], FP[0, 1], TN[1, 1]</li>
+<li>正对角线表示正确分类的部分</li>
+<li>正确率：正对角线 &#x2F; 所有</li>
+<li>召回率：TP &#x2F; 第一列 - 真实的正类中被认出的正类</li>
+<li>F-分数：权衡召回率和准确率</li>
+<li>查准率：TP &#x2F; 第一行 - 认出的正类中真正的正类</li>
+<li>错误接受率</li>
+<li>错误拒绝率</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多分类：<ul>
+<li>多元混淆矩阵：对角线上是分类正确的类</li>
+<li>准确率：与二分类一致</li>
+<li>召回率、F-分数：<ul>
+<li>采用二分类方法</li>
+<li>加权求平均</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ROC<ul>
+<li>横轴：FPR</li>
+<li>纵轴：TPR - 召回率</li>
+<li>阈值：尽量取图像拐点</li>
+</ul>
+</li>
+<li>AUC<ul>
+<li>ROC下的面积</li>
+</ul>
+</li>
+<li>增益图<ul>
+<li>横轴：测试集的比例</li>
+<li>纵轴：正样本比例 &#x2F; 平均比例</li>
+<li>反应分类器的分类效果</li>
+</ul>
+</li>
+<li>KS图<ul>
+<li>横轴：测试集的比例</li>
+<li>纵轴：TPR与FPR</li>
+<li>反应分类器的区分度</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from sklearn.metrics import roc_curve, auc, roc_auc_score</span><br><span class="line">f = plt.figure()</span><br><span class="line">y_pred, y_test = np.array(Yp[:, 1]).reshape((1, -1)[0]), np.array(Ypt[:, 1]).reshape((1, -1)[0])</span><br><span class="line">f.add_subplot(1, 3, 1)</span><br><span class="line">fpr, tpr, threshold = roc_curve(y_test, y_pred)</span><br><span class="line">plt.plot(fpr, tpr)</span><br><span class="line">print(&#x27;AUC: &#x27;, auc(fpr, tpr))</span><br><span class="line">print(&#x27;AUC_SCORE: &#x27;, roc_auc_score(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+
+<p>回归模型</p>
+<ul>
+<li>MAE：残差绝对值的平均值，无法求导</li>
+<li>MSE：均方差</li>
+<li>RMSE：均方差的二次跟</li>
+<li>R2_SCORE 决定系数：SSR &#x2F; SST，预测值的离散程度与真实值的离散程度</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&#x27;MSE: &#x27;, mean_squared_error(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+
+<p>非监督模型</p>
+<ul>
+<li>聚类<ul>
+<li>RMS</li>
+<li>轮廓系数：<ul>
+<li>簇内平均距离（内聚度），簇间平均距离（分离度）</li>
+<li>要求数据是服从正态分布</li>
+</ul>
+</li>
+<li>根据业务制定指标</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import silhouette_score</span><br><span class="line">print(silhouette_score(X, clt_res.labels_))</span><br></pre></td></tr></table></figure>
+
+<p>关联模型</p>
+<ul>
+<li>支持度</li>
+<li>置信度</li>
+<li>提升度</li>
+</ul>
+<h1 id="常用库"><a href="#常用库" class="headerlink" title="常用库"></a>常用库</h1><h2 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h2><p><a target="_blank" rel="noopener" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a>是一个HTML和XML解析器，可为被解析的页面创建解析树，从而用于从web页面中提取数据。从网页中提取数据的过程称为网页抓取。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2015/10/beginner-guide-web-scraping-beautiful-soup-python/">操作指南</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2015/10/beginner-guide-web-scraping-beautiful-soup-python/">Scrapy</a>是一个用于大规模网页抓取的框架。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install scrapy</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2017/07/web-scraping-in-python-using-scrapy/">操作方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.seleniumhq.org/">Selenium</a>是一个倍受欢迎的自动化浏览器工具。在业界常用于测试，但对于网页抓取也非常方便。</p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2019/05/scraping-classifying-youtube-video-data-python-selenium/">操作方法</a></p>
+<h2 id="数据清零与操作"><a href="#数据清零与操作" class="headerlink" title="数据清零与操作"></a>数据清零与操作</h2><p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/">Pandas</a>是用Python语言编写的，主要用于数据操作和数据分析。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2016/01/12-pandas-techniques-python-data-manipulation/">操作方法1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2015/07/11-steps-perform-data-analysis-pandas-python/">操作方法2</a></p>
+<p><a target="_blank" rel="noopener" href="https://pyod.readthedocs.io/en/latest/">PyOD</a>用于处理异常值。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyod</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2019/02/outlier-detection-python-pyod/">操作方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.numpy.org/">NumPy</a>可进行高速多维数组运算。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://spacy.io/">Spacy</a>是一个非常有用且灵活的自然语言处理( NLP )库和框架，用于清理创建模型的文本文档。与类似用途的其他库相比，SpaCy速度更快。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install -U spacy</span><br><span class="line">python -m spacy download en</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2017/04/natural-language-processing-made-easy-using-spacy-in-python/">操作方法</a></p>
+<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><p><a target="_blank" rel="noopener" href="https://matplotlib.org/">Matplotlib</a>是Python中最流行的数据可视化库。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install matplotlib</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2015/04/comprehensive-guide-data-exploration-sas-using-python-numpy-scipy-matplotlib-pandas/">操作方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/">Seaborn</a>是另一个基于matplotlib的绘图库。它是一个为绘制有吸引力的图像而提供高级接口的python库。matplotlib能实现功能，Seaborn只是以另一种更吸引人的视觉方式来实现。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install seaborn</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://bokeh.pydata.org/en/latest/">Bokeh</a>是一个面向现代网页浏览器的交互式可视化库，为大量数据集提供优美的通用图形结构。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install bokeh</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2015/08/interactive-data-visualization-library-python-bokeh/">操作方法</a></p>
+<h2 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h2><p><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/">Scikit-learn</a>是Python构建模型中的佼佼者。支持在机器学习中执行的不同操作，如分类、回归、聚类和模型选择等。</p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2015/01/scikit-learn-python-machine-learning-tool/">操作方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/">TensorFlow</a>由谷歌开发，是一个流行的深度学习库，可帮助构建、培训不同模型。是一个开放源码的端到端平台。TensorFlow提供简单的模型构建，强大的机器学习生产，以及强大的实验工具和库。</p>
+<p><a target="_blank" rel="noopener" href="https://www.tensorflow.org/install">安装方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2017/03/tensorflow-understanding-tensors-and-graphs/">操作方法1</a> <a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2017/06/getting-started-with-deep-learning-using-keras-in-r/">操作方法2</a></p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/">PyTorch</a>是一个基于Python的科学计算包，是NumPy的替代品，可使用GPU的强大功能。</p>
+<p>· 深度学习研究型平台，拥有最大灵活性和最快速度</p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">安装方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2018/02/pytorch-tutorial/">操作方法1</a> <a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2019/01/guide-pytorch-neural-networks-case-studies/">操作方法2</a></p>
+<h2 id="模型解释"><a href="#模型解释" class="headerlink" title="模型解释"></a>模型解释</h2><p><a target="_blank" rel="noopener" href="https://github.com/marcotcr/lime">Lime</a>是一种算法（库），可以解释任何分类器或回归量的预测。</p>
+<p>安装方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install lime</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2017/06/building-trust-in-machine-learning-models/">操作方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/h2oai/mli-resources">H2O</a>自动化机器学习的市场领导者。提供简单的数据可视化技术，用于表示高度特征交互和非线性模型行为，通过可视化提供机器学习可解释性（MLI），说明建模结果和模型中特征的影响。</p>
+<p><a target="_blank" rel="noopener" href="https://www.h2o.ai/wp-content/uploads/2018/01/Machine-Learning-Interpretability-MLI_datasheet_v4-1.pdf">操作方法</a></p>
+<h2 id="语音处理"><a href="#语音处理" class="headerlink" title="语音处理"></a>语音处理</h2><p><a target="_blank" rel="noopener" href="https://librosa.github.io/librosa/">Librosa</a>是一个用于音乐和音频分析的Python库。它提供了创建音乐信息检索系统所需的构建块。</p>
+<p><a target="_blank" rel="noopener" href="https://librosa.github.io/librosa/install.html">安装方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/">操作方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/CPJKU/madmom">Madmom</a>是一个用于音频数据分析的很棒的Python库。它是一个用Python编写的音频信号处理库，主要用于音乐信息检索（MIR）任务。</p>
+<p>安装方法：依赖Numpy，Scipy，Cython，Mido</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install madmom</span><br></pre></td></tr></table></figure>
+
+<p>测试依赖：PyTest，Fuaudio，PuFftw</p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2018/02/audio-beat-tracking-for-music-information-retrieval/">操作方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tyiannak/pyAudioAnalysis">pyAudioAnalysis</a>是一个用于音频特征提取、分类和分段的Python库，涵盖广泛的音频分析任务，例如：</p>
+<ul>
+<li>对未知声音进行分类</li>
+<li>检测音频故障并排除长时间录音中的静音时段</li>
+<li>进行监督和非监督的分割</li>
+<li>提取音频缩略图等等</li>
+</ul>
+<p>安装方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyAudioAnalysis</span><br></pre></td></tr></table></figure>
+
+<h2 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h2><p><a target="_blank" rel="noopener" href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_intro/py_intro.html">OpenCV-Python</a>是用于图像处理的Python API，结合了OpenCV C ++ API和Python语言的最佳特性。主要用于解决计算机视觉问题。</p>
+<p>安装方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install opencv-python</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2018/12/introduction-face-detection-video-deep-learning-python/">操作方法1</a> <a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2019/03/opencv-functions-computer-vision-python/">操作方法2</a></p>
+<p><a target="_blank" rel="noopener" href="https://scikit-image.org/">Scikit-image</a>是另一个用于图像处理的python库，是用于执行多个不同图像处理任务的算法集合。可用于图像分割、几何变换、色彩空间操作、分析、过滤，形态学、特征检测等等。</p>
+<p>安装方法：依赖Numpy，Scipy，Joblib</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U scikit-learn</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://pillow.readthedocs.io/en/stable/">Pillow</a>是从PIL（Python Imaging Library）派生出来的，在一些Linux发行版（如Ubuntu）中被用作原始PIL的替代。</p>
+<p>安装方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Pillow</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2019/06/ai-comic-zain-issue-2-facial-recognition-computer-vision/">操作方法</a></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><a target="_blank" rel="noopener" href="http://initd.org/psycopg/">Psycopg</a>是Python编程语言中最流行的PostgreSQL（高级开源代码关系数据库）适配器。</p>
+<p>安装方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install psycopg2</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.sqlalchemy.org/">SQLAlchemy</a>是最流行的数据库语言。SQLAlchemy是pythonSQL工具包和对象关系映射器，它为应用程序开发人员提供了SQL的全部功能，且极具灵活性。</p>
+<p>安装方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install SQLAlchemy</span><br></pre></td></tr></table></figure>
+
+<h2 id="模型部署"><a href="#模型部署" class="headerlink" title="模型部署"></a>模型部署</h2><p><a target="_blank" rel="noopener" href="http://flask.pocoo.org/docs/1.0/">Flask</a>是一个用Python编写的Web框架，广泛用于部署数据科学模型。</p>
+<p><a target="_blank" rel="noopener" href="https://www.analyticsvidhya.com/blog/2017/09/machine-learning-models-as-apis-using-flask/">操作方法</a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>下面的网站包含了字符编码，文件处理，图像处理，游戏与多媒体，大数据与科学计算，人工智能与机器学习，系统与命令行，数据库，Web框架，安全，GUI库等相关内容。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98366871">其他库参考</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/09/Python/PythonWeb/" rel="prev" title="Python Web">
+                  <i class="fa fa-angle-left"></i> Python Web
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/09/Python/PythonGUI/" rel="next" title="Python GUI">
+                  Python GUI <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/02/09/Python/PythonScience/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

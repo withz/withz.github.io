@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D 建模与引擎">
+<meta property="og:url" content="https://withz.github.io/2020/03/14/%E6%B8%B8%E6%88%8F/3dmaxExec/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-14T11:24:36.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.332Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="3D">
+<meta property="article:tag" content="3D MAX">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/03/14/%E6%B8%B8%E6%88%8F/3dmaxExec/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/03/14/%E6%B8%B8%E6%88%8F/3dmaxExec/","path":"2020/03/14/游戏/3dmaxExec/","title":"3D 建模与引擎"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>3D 建模与引擎 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-Max-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">3D Max 基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%BD%8D"><span class="nav-number">1.1.1.</span> <span class="nav-text">单位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A6%96%E9%80%89%E9%A1%B9"><span class="nav-number">1.1.2.</span> <span class="nav-text">首选项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3"><span class="nav-number">1.2.</span> <span class="nav-text">文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.3.</span> <span class="nav-text">快捷键</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-Max-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-1"><span class="nav-number">2.</span> <span class="nav-text">3D Max 基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F"><span class="nav-number">2.1.</span> <span class="nav-text">菜单栏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E9%9D%A2%E6%9D%BF"><span class="nav-number">2.2.</span> <span class="nav-text">命令面板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA"><span class="nav-number">2.2.1.</span> <span class="nav-text">创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9"><span class="nav-number">2.2.2.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1"><span class="nav-number">2.2.3.</span> <span class="nav-text">层次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E5%8A%A8"><span class="nav-number">2.2.4.</span> <span class="nav-text">运动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA"><span class="nav-number">2.2.5.</span> <span class="nav-text">显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.2.6.</span> <span class="nav-text">实用程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A2%E7%8A%B6%E4%B8%8E%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">形状与修改器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%A4%E5%87%BA"><span class="nav-number">2.3.1.</span> <span class="nav-text">挤出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%AF%E6%9B%B2"><span class="nav-number">2.3.2.</span> <span class="nav-text">弯曲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E7%BC%96%E8%BE%91%E6%A0%B7%E6%9D%A1%E7%BA%BF"><span class="nav-number">2.3.3.</span> <span class="nav-text">可编辑样条线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%A6%E5%89%8A"><span class="nav-number">2.3.4.</span> <span class="nav-text">车削</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%B6%E6%A0%BC"><span class="nav-number">2.3.5.</span> <span class="nav-text">晶格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E5%B7%A5%E5%85%B7%EF%BC%88%E5%A4%8D%E5%90%88%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="nav-number">2.3.6.</span> <span class="nav-text">布尔工具（复合对象）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%AB%E6%8F%8F"><span class="nav-number">2.3.7.</span> <span class="nav-text">扫描</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%80%92%E8%A7%92%E5%89%96%E9%9D%A2"><span class="nav-number">2.3.8.</span> <span class="nav-text">倒角剖面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%BE%E6%A0%B7%EF%BC%88%E5%A4%8D%E5%90%88%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="nav-number">2.3.9.</span> <span class="nav-text">放样（复合对象）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%99%AA%E6%B3%A2"><span class="nav-number">2.3.10.</span> <span class="nav-text">噪波</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E6%96%99-Cloth"><span class="nav-number">2.3.11.</span> <span class="nav-text">布料 Cloth</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FFD"><span class="nav-number">2.3.12.</span> <span class="nav-text">FFD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B3%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.13.</span> <span class="nav-text">壳命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%A3%E6%AD%A5%E5%91%BD%E4%BB%A4%EF%BC%88%E5%A4%8D%E5%90%88%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="nav-number">2.3.14.</span> <span class="nav-text">散步命令（复合对象）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%90%88%E5%B9%B6%EF%BC%88%E5%A4%8D%E5%90%88%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="nav-number">2.3.15.</span> <span class="nav-text">图像合并（复合对象）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UVW-%E8%B4%B4%E5%9B%BE%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="nav-number">2.3.16.</span> <span class="nav-text">UVW 贴图修改器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E7%BC%96%E8%BE%91%E5%A4%9A%E8%BE%B9%E5%BD%A2"><span class="nav-number">2.4.</span> <span class="nav-text">可编辑多边形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%B3%E5%A2%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">2.5.</span> <span class="nav-text">石墨工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB"><span class="nav-number">2.6.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">2.6.1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-1"><span class="nav-number">2.6.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C"><span class="nav-number">2.6.3.</span> <span class="nav-text">制作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VRay-%E6%B8%B2%E6%9F%93"><span class="nav-number">2.7.</span> <span class="nav-text">VRay 渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-2"><span class="nav-number">2.7.1.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%90%E8%B4%A8"><span class="nav-number">2.8.</span> <span class="nav-text">材质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%81%AF%E5%85%89"><span class="nav-number">2.9.</span> <span class="nav-text">灯光</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA"><span class="nav-number">2.10.</span> <span class="nav-text">相机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-number">3.</span> <span class="nav-text">场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%92%E8%89%B2"><span class="nav-number">4.</span> <span class="nav-text">角色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E7%BB%98%E5%88%B6"><span class="nav-number">4.1.</span> <span class="nav-text">角色绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E8%B4%B4%E5%9B%BE"><span class="nav-number">4.2.</span> <span class="nav-text">角色贴图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E5%8A%A8%E7%94%BB"><span class="nav-number">4.3.</span> <span class="nav-text">角色动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AA%A8%E9%AA%BC"><span class="nav-number">4.3.1.</span> <span class="nav-text">骨骼</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%92%99%E7%9A%AE"><span class="nav-number">4.3.2.</span> <span class="nav-text">蒙皮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E6%83%85%E7%BB%91%E5%AE%9A"><span class="nav-number">4.3.3.</span> <span class="nav-text">表情绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%9B%E5%8F%91"><span class="nav-number">4.3.4.</span> <span class="nav-text">毛发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E5%8A%9B%E5%AD%A6"><span class="nav-number">4.3.5.</span> <span class="nav-text">动力学</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">制作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%9B%BE"><span class="nav-number">5.1.</span> <span class="nav-text">构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E4%BD%8E%E6%A8%A1"><span class="nav-number">5.2.</span> <span class="nav-text">制作低模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%95%E5%88%BB%E4%BD%8E%E6%A8%A1"><span class="nav-number">5.3.</span> <span class="nav-text">雕刻低模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%A8%A1%E6%8B%93%E6%89%91%E5%88%B0%E4%BD%8E%E6%A8%A1"><span class="nav-number">5.4.</span> <span class="nav-text">高模拓扑到低模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%95%E5%BC%80%E4%BD%8E%E6%A8%A1UV"><span class="nav-number">5.5.</span> <span class="nav-text">展开低模UV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%B4%E5%9B%BE%E7%BB%98%E5%88%B6"><span class="nav-number">5.6.</span> <span class="nav-text">贴图绘制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%B1%E8%A7%86%E6%95%88%E6%9E%9C"><span class="nav-number">6.</span> <span class="nav-text">影视效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C4D"><span class="nav-number">6.1.</span> <span class="nav-text">C4D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAYA"><span class="nav-number">6.2.</span> <span class="nav-text">MAYA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">渲染器</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/03/14/%E6%B8%B8%E6%88%8F/3dmaxExec/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="3D 建模与引擎 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3D 建模与引擎
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-14 19:24:36" itemprop="dateCreated datePublished" datetime="2020-03-14T19:24:36+08:00">2020-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B8%B8%E6%88%8F%E4%B8%8E3D/" itemprop="url" rel="index"><span itemprop="name">游戏与3D</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h2 id="3D-Max-基本操作"><a href="#3D-Max-基本操作" class="headerlink" title="3D Max 基本操作"></a>3D Max 基本操作</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h4><p>自定义 -&gt; 单位设置 -&gt;<br>：显示单位比例 -&gt; 公制 -&gt; 毫米<br>：系统单位设置 -&gt; 系统单位比例 -&gt; 1.0 毫米</p>
+<h4 id="首选项"><a href="#首选项" class="headerlink" title="首选项"></a>首选项</h4><p>自定义 -&gt; 首选项 -&gt; 常规 -&gt;<br>：按方向自动切换窗口&#x2F;交叉<br>：场景撤销次数</p>
+<p>自定义 -&gt; 首选项 -&gt; 常规 -&gt;<br>：保存时压缩<br>：自动备份 30分钟一次</p>
+<p>自定义 -&gt; 首选项 -&gt; 视口 -&gt;<br>：选择&#x2F;预览亮显 预览-轮廓 选择-轮廓</p>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><p>打开参考图片：<br>文件 -&gt; 查看图像文件</p>
+<p>归档，压缩保存所有资源：<br>文件 -&gt; 归档</p>
+<p>导入，CAD，模型等：<br>文件 -&gt; 导入 -&gt; 导入<br>文件 -&gt; 导入 -&gt; 合并</p>
+<p>不同视图中创建物体，其长宽的方向是不一样的。</p>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>F3：线框模式<br>F4：实体模式</p>
+<p>F5：X轴约束<br>F6：Y轴约束<br>F7：Z轴约束<br>F8：平面约束</p>
+<p>F10：渲染设置</p>
+<p>G：隐藏&#x2F;显示栅格<br>Q：框选选择对象<br>H：按名称选择对象</p>
+<p>W：移动<br>E：旋转<br>R：缩放<br>S：捕捉<br>A：角度捕捉<br>Space：锁定<br>Shift：加选&#x2F;复制<br>Alt：减选&#x2F;旋转</p>
+<p>M：材质编辑器</p>
+<p>Shift + Z：恢复视图<br>L：恢复左视图<br>T：恢复顶视图<br>F：恢复前视图<br>C：摄像机视角<br>Alt + X：半透明显示<br>Shift + F：安全框显示</p>
+<p>1：切换点层级<br>2：切换线层级<br>3：切换样条线&#x2F;边界层级<br>4：切换面层级<br>5：切换体层级</p>
+<p>8：环境</p>
+<h2 id="3D-Max-基本操作-1"><a href="#3D-Max-基本操作-1" class="headerlink" title="3D Max 基本操作"></a>3D Max 基本操作</h2><h3 id="菜单栏"><a href="#菜单栏" class="headerlink" title="菜单栏"></a>菜单栏</h3><p>轴点：<br>该物体轴点<br>公共轴点<br>其他物体轴点：在视图中选取轴点</p>
+<p>选择并放置：<br>选择一个物体放置到另一个物体上</p>
+<p>捕捉工具，右键选择捕捉点：<br>2维捕捉<br>2.5维捕捉：用的最多<br>3维捕捉</p>
+<p>捕捉工具，右键：<br>选择捕捉点<br>选项：捕捉到冻结对象 勾选<br>选项：启用轴约束 勾选</p>
+<p>角度捕捉工具</p>
+<p>轴约束工具：<br>需要在选项中点出来：工具栏-&gt;右键-&gt;轴约束</p>
+<p>复制：两个物体无任何关联<br>实例：两个物体有关联，参数改变时一同改变，操作时不会改变<br>参考：父子关系，被复制的是子体。父体被改变，则子体改变，反之不会。</p>
+<p>阵列工具：<br>选中一个物体，点击工具 -&gt; 阵列。<br>阵列有移动，旋转，缩放三种阵列方式。</p>
+<p>镜像工具：<br>变换：复制或变换。<br>几何体：使用镜像修改器</p>
+<p>对齐：<br>对齐，快速对齐，法线对齐，放置高光，摄像机对齐，视图对齐等功能。</p>
+<h3 id="命令面板"><a href="#命令面板" class="headerlink" title="命令面板"></a>命令面板</h3><h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p>包括几何体，图形，灯光，摄像机，辅助对象，空间扭曲，系统。<br>修改项：类型，颜色，名称，参数等。</p>
+<p>二维图形：渲染-&gt;在渲染&#x2F;视口中启用，可以产生厚度。</p>
+<p>绘制二维图形，可以去掉勾选“开始新图形”，绘制一个复杂二维图形。</p>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><p>可以添加修改器。<br>可以点击配置修改器集，显示按钮显示修改器。</p>
+<h4 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h4><p>包含轴，IK，链接。</p>
+<h4 id="运动"><a href="#运动" class="headerlink" title="运动"></a>运动</h4><p>动画时使用。</p>
+<h4 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h4><p>隐藏显示对象。</p>
+<h4 id="实用程序"><a href="#实用程序" class="headerlink" title="实用程序"></a>实用程序</h4><p>塌陷，灯光检查等。</p>
+<h3 id="形状与修改器"><a href="#形状与修改器" class="headerlink" title="形状与修改器"></a>形状与修改器</h3><h4 id="挤出"><a href="#挤出" class="headerlink" title="挤出"></a>挤出</h4><p>对于二维图形可以使用挤出命令，可以变成三维图形。</p>
+<h4 id="弯曲"><a href="#弯曲" class="headerlink" title="弯曲"></a>弯曲</h4><p>使3维物体弯曲。</p>
+<p>可以通过使用限制，限制弯曲部分。</p>
+<h4 id="可编辑样条线"><a href="#可编辑样条线" class="headerlink" title="可编辑样条线"></a>可编辑样条线</h4><p>可编辑样条线，编辑样条线。</p>
+<p>点：<br>类型：线性，平滑，贝塞尔，贝塞尔角点<br>断开：点变为两个点<br>优化：在线上加点<br>焊接：两个点变一个点<br>插入：在线上加点，并可移动<br>设为首顶点<br>融合：将线上的点合并<br>循环：切换下一个点<br>圆角：点变圆角<br>切角：点变切角<br>删除：删除点。</p>
+<p>线：<br>创建线<br>附加：加入到图像中。<br>优化：在线上加点<br>插入：加点且可以改位置<br>隐藏<br>删除<br>拆分：等分线段<br>分离：离开样条线</p>
+<p>样条线：<br>轮廓：向外添加一个轮廓，并给定间距，轮廓方向（内外）和点的方向（逆顺时针）相关。通过反转可以改变方向<br>布尔：布尔操作（在一个样条线内）<br>修建：删除部分样条线，连接处是两个点，需要焊接。<br>炸开：样条线分离成多个样条线</p>
+<h4 id="车削"><a href="#车削" class="headerlink" title="车削"></a>车削</h4><p>修改轴，角度，分段数，方向，对齐，输出等。<br>有时需要反转法线。</p>
+<h4 id="晶格"><a href="#晶格" class="headerlink" title="晶格"></a>晶格</h4><p>用于制作钢架结构或水晶灯。</p>
+<p>几何体：<br>仅来自顶点（支柱）<br>末端封口</p>
+<h4 id="布尔工具（复合对象）"><a href="#布尔工具（复合对象）" class="headerlink" title="布尔工具（复合对象）"></a>布尔工具（复合对象）</h4><p>布尔运算：并，交，差，合并，附加，插入</p>
+<p>合并：并集和交集共同运算。<br>附加：依然是两个独立物体。<br>插入：差集和B对象。<br>盖印：只是在A上面留下B的轮廓<br>切面：只是在A上面切下B的轮廓</p>
+<h4 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h4><p>制作石膏线条，天花板等。<br>根据截面在路径上绘制。</p>
+<h4 id="倒角剖面"><a href="#倒角剖面" class="headerlink" title="倒角剖面"></a>倒角剖面</h4><p>经典：<br>可以使用剖面线型。</p>
+<p>改进：<br>挤出，倒角宽度，深度等。</p>
+<h4 id="放样（复合对象）"><a href="#放样（复合对象）" class="headerlink" title="放样（复合对象）"></a>放样（复合对象）</h4><p>2维图像 + 路径。</p>
+<p>在修改器下面，可以看到变形选项（扭曲等）</p>
+<h4 id="噪波"><a href="#噪波" class="headerlink" title="噪波"></a>噪波</h4><p>强度，噪点等。</p>
+<h4 id="布料-Cloth"><a href="#布料-Cloth" class="headerlink" title="布料 Cloth"></a>布料 Cloth</h4><p>对象属性：<br>改为布料。<br>压力：添加数值，点击模拟（关掉重力）。</p>
+<h4 id="FFD"><a href="#FFD" class="headerlink" title="FFD"></a>FFD</h4><p>施加压力</p>
+<h4 id="壳命令"><a href="#壳命令" class="headerlink" title="壳命令"></a>壳命令</h4><p>给平面添加厚度，截面可以使用其他图像。</p>
+<p>使用3维图形拾取2维图形。</p>
+<p>僵角拉直。</p>
+<h4 id="散步命令（复合对象）"><a href="#散步命令（复合对象）" class="headerlink" title="散步命令（复合对象）"></a>散步命令（复合对象）</h4><p>使用某个A对象，点击拾取分布B对象，让A在B内散落分布。</p>
+<h4 id="图像合并（复合对象）"><a href="#图像合并（复合对象）" class="headerlink" title="图像合并（复合对象）"></a>图像合并（复合对象）</h4><p>可以实现文字投影到球上的效果。</p>
+<h4 id="UVW-贴图修改器"><a href="#UVW-贴图修改器" class="headerlink" title="UVW 贴图修改器"></a>UVW 贴图修改器</h4><p>贴图：平面，柱面，球形，长方体等<br>长宽高等。</p>
+<h3 id="可编辑多边形"><a href="#可编辑多边形" class="headerlink" title="可编辑多边形"></a>可编辑多边形</h3><p>点：</p>
+<ul>
+<li>选择：<ul>
+<li>忽略背面</li>
+<li>收缩，扩大</li>
+<li>软选择（山脉，地形）</li>
+</ul>
+</li>
+<li>编辑<ul>
+<li>移除：只消除点 </li>
+<li>Delete 面也删掉</li>
+<li>断开：断开面</li>
+<li>挤出，二次挤出</li>
+<li>切角：增加点</li>
+<li>目标焊接</li>
+<li>连接：连接线段</li>
+<li>移除孤立点</li>
+</ul>
+</li>
+</ul>
+<p>边：</p>
+<ul>
+<li>选择：<ul>
+<li>循环</li>
+<li>环形</li>
+<li>扩大</li>
+<li>收缩</li>
+</ul>
+</li>
+<li>编辑<ul>
+<li>分割：分割为两个部分</li>
+<li>切角</li>
+<li>焊接</li>
+<li>桥：填充空洞</li>
+<li>连接：增加分段数</li>
+</ul>
+</li>
+<li>编辑几何体<ul>
+<li>重复上一个：重复上一次命令</li>
+<li>创建直线</li>
+<li>塌陷：塌陷为一个点</li>
+<li>附加</li>
+<li>分离：单独分离</li>
+<li>切片平面：切割直线</li>
+<li>平面化：将边整齐</li>
+</ul>
+</li>
+</ul>
+<p>边界（未封口的地方）：</p>
+<ul>
+<li>编辑边界<ul>
+<li>挤出</li>
+<li>插入顶点</li>
+<li>切角</li>
+<li>封口</li>
+<li>桥</li>
+</ul>
+</li>
+</ul>
+<p>面：</p>
+<ul>
+<li>编辑多边形：<ul>
+<li>插入顶点</li>
+<li>挤出（组，局部法线，按多边形）</li>
+<li>轮廓：面缩放</li>
+<li>倒角：挤出并放大（组，局部法线，按多边形）</li>
+<li>插入：内部插入一个面</li>
+<li>翻转：法线反转</li>
+<li>桥：拉伸成体</li>
+<li>从边旋转：拾取轴</li>
+<li>沿样条线挤出</li>
+<li>编辑三角剖分（旋转面斜线）</li>
+</ul>
+</li>
+</ul>
+<p>元素：</p>
+<ul>
+<li>细分曲面：圆润<ul>
+<li>线的远近影响圆润从成都</li>
+</ul>
+</li>
+<li>绘制变形<ul>
+<li>推拉：拉起平面</li>
+<li>松弛：推下平面</li>
+</ul>
+</li>
+</ul>
+<h3 id="石墨工具"><a href="#石墨工具" class="headerlink" title="石墨工具"></a>石墨工具</h3><p>建模：</p>
+<ul>
+<li>多边形建模<ul>
+<li>预览子对象</li>
+<li>转换为可编辑多边形</li>
+<li>生成拓扑：线段变为斜线段</li>
+</ul>
+</li>
+<li>修改选择<ul>
+<li>循环，环形</li>
+<li>点间距</li>
+<li>增减循环，环形</li>
+<li>扩大，缩小</li>
+<li>相似</li>
+<li>轮廓</li>
+<li>快速循环，环形</li>
+</ul>
+</li>
+<li>编辑<ul>
+<li>重复</li>
+<li>快速切片</li>
+<li>快速循环</li>
+<li>绘制连接（Shift 中线）</li>
+<li>细分曲面（圆润）</li>
+<li>剪切（切割工具）</li>
+<li>约束（到边，面，法线）</li>
+</ul>
+</li>
+<li>几何体<ul>
+<li>从选项中选择边（四边形化选择）</li>
+</ul>
+</li>
+<li>循环</li>
+<li>三角剖分</li>
+<li>细分<ul>
+<li>网格平滑</li>
+<li>细化</li>
+</ul>
+</li>
+<li>可见性<ul>
+<li>隐藏选择对象</li>
+</ul>
+</li>
+<li>对齐<ul>
+<li>生成平面</li>
+</ul>
+</li>
+<li>属性<br>自由形式：</li>
+<li>多边形绘制<ul>
+<li>图形：绘制图像</li>
+<li>样条线</li>
+<li>曲面：绘制面</li>
+<li>拓扑：依据线自动产生面</li>
+<li>条带：绘制面</li>
+<li>分支：绘制凸起</li>
+</ul>
+</li>
+<li>绘制变形：<ul>
+<li>偏移</li>
+<li>偏移旋转</li>
+<li>偏移缩放</li>
+<li>噪波</li>
+<li>放大<br>选择：</li>
+</ul>
+</li>
+<li>角度：选择某一角度的面</li>
+<li>凹面，图面</li>
+<li>旋转轴</li>
+<li>按边数<br>对象绘制：</li>
+<li>绘制对象<ul>
+<li>绘制选定对象</li>
+<li>绘制列表中的对象<br>填充：</li>
+</ul>
+</li>
+<li>动画中使用</li>
+</ul>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>右侧：运动编辑<br>菜单栏：图形编辑器 -&gt; 新建轨迹图</p>
+<ul>
+<li>曲线编辑器</li>
+<li>摄影表<ul>
+<li>添加关键点</li>
+<li>设置过滤器：选定对象切换</li>
+<li>设置动画过滤器<ul>
+<li>左上角按钮</li>
+<li>勾选：控制器类型</li>
+</ul>
+</li>
+<li>编辑 -&gt; 控制器 -&gt; 指定：其他控制器<ul>
+<li>Beize控制器：位移动画</li>
+<li>位置XYZ控制器</li>
+</ul>
+</li>
+<li>插值：非匀速运动<ul>
+<li>自定义插值（最后一个）</li>
+<li>进入曲线编辑器：编辑插值曲线</li>
+</ul>
+</li>
+<li>越界：如何循环动画，控制器 -&gt; 超出范围类型<ul>
+<li>恒定，周期，循环</li>
+<li>往复，线性，相对重复</li>
+</ul>
+</li>
+<li>可见性轨迹：调整可见性<ul>
+<li>编辑 -&gt; 可见性轨迹 -&gt; 添加</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>父子关系</p>
+<ul>
+<li>选择并连接：上方工具栏上，可以跟随动画。</li>
+<li>只影响：移动，旋转，缩放</li>
+<li>连接性父子关系：子物体牵动父物体</li>
+<li>非连接性父子关系：子物体不影响父物体</li>
+<li>物体坐标轴：轴 -&gt; 对齐到世界</li>
+<li>图解视图：查看物体关系</li>
+</ul>
+<p>子模式动画：对物体某个点&#x2F;线做动画</p>
+<ul>
+<li>首先先创建一次自动关键动画</li>
+<li>之后在摄影表中出现</li>
+</ul>
+<p>组：</p>
+<ul>
+<li>组合：可以批量动画</li>
+<li>集合：可以批量动画，调光，过滤色</li>
+<li>解组：解散组</li>
+<li>打开：临时解开组</li>
+<li>附加：将某一个物体加入到组</li>
+<li>分离：将物体分出物体</li>
+<li>炸开：彻底解开所有组</li>
+</ul>
+<p>预览选项：工具 -&gt; 预览 -&gt; 抓取视口 -&gt; 生成预览<br>右侧：显示面板 -&gt; 轨迹 -&gt; 勾选：显示运动轨迹</p>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><p>右下角，时间配置 -&gt;<br>：PAL 制<br>：帧数</p>
+<h4 id="制作"><a href="#制作" class="headerlink" title="制作"></a>制作</h4><p>启动：自动关键点（随手关闭）<br>一次只制作一个物体的动画。</p>
+<h3 id="VRay-渲染"><a href="#VRay-渲染" class="headerlink" title="VRay 渲染"></a>VRay 渲染</h3><h4 id="配置-2"><a href="#配置-2" class="headerlink" title="配置"></a>配置</h4><p>渲染设置：<br>指定渲染器 -&gt; 产品级 -&gt; Vray<br>公用参数</p>
+<ul>
+<li>时间输出：单帧，范围</li>
+<li>渲染区域：视口，选定区域</li>
+<li>输出大小</li>
+<li>选项：渲染隐藏项，</li>
+<li>渲染输出</li>
+<li>指定渲染器<br>V-Ray 参数</li>
+<li>帧缓冲区：内置缓冲区&#x2F;3DMAX</li>
+<li>从Max获取参数</li>
+<li>全局开关：灯光，阴影，反射折射，覆盖材质（默认材质）</li>
+<li>交互式产品级渲染选项</li>
+<li>图像采样器（块，渐进）<ul>
+<li>测试：最小细分1，最大细分2，噪波0.1</li>
+<li>设计：最小细分2，最大细分4，噪波0.001</li>
+</ul>
+</li>
+<li>图像过滤器</li>
+<li>全局蒙特卡洛<ul>
+<li>使用局部细分</li>
+</ul>
+</li>
+<li>颜色贴图<ul>
+<li>类型：指数（液体），莱茵哈图（饱和度高）</li>
+<li>模式：伽马</li>
+</ul>
+</li>
+<li>摄像机：球型，360度（全景）<br>GI</li>
+<li>全局照明：灯光效果<ul>
+<li>首次引擎：发光贴图</li>
+<li>二次引擎：灯光缓存</li>
+</ul>
+</li>
+<li>发光贴图<ul>
+<li>预设：非常低（测试）</li>
+</ul>
+</li>
+<li>灯光缓存<ul>
+<li>细分：200（测试）1500-2000（实际）<br>设置：</li>
+</ul>
+</li>
+<li>系统：渲染顺序</li>
+<li>日志窗口：从不<br>渲染元素：</li>
+<li>折射效果</li>
+<li>反射效果</li>
+<li>法线效果</li>
+</ul>
+<p>在渲染页面，可以开启交互式渲染（倒数第三个按钮）<br>4.1版本中，可以在视口中交互式渲染</p>
+<h3 id="材质"><a href="#材质" class="headerlink" title="材质"></a>材质</h3><p>模式：精简模式与Slate模式</p>
+<p>选项 -&gt; 循环：显示更多材质球</p>
+<p>实例程序 -&gt; 重置：重置材质球</p>
+<p>点击Standard可以切换VRayMtl材质（在渲染设置中开启Vray）。</p>
+<p>背景：右边第3个按钮。</p>
+<p>下方按钮：指定，删除，吸取，视口中显示明暗处理材质（显示材质），转到父对象。</p>
+<p>漫反射：固有颜色和纹理。</p>
+<ul>
+<li>指定位图：点后面的框，位图<ul>
+<li>坐标：U 横向，V 纵向。</li>
+<li>偏移</li>
+<li>瓷砖：稠密程度</li>
+<li>角度：W 角度</li>
+<li>模糊：越大越模糊</li>
+</ul>
+</li>
+<li>位图参数</li>
+<li>输出：RGB级别</li>
+</ul>
+<p>反射：</p>
+<ul>
+<li>反射强度：数值越大越强</li>
+<li>反射光泽：模糊程度</li>
+<li>菲涅尔反射：关掉则全反射</li>
+<li>菲涅尔折射率：反射强度</li>
+<li>高光光泽（金属度）：0 非金属，1 金属。</li>
+</ul>
+<p>双向反射分布函数：调整反射变形（各向异性）</p>
+<p>折射：透明程度</p>
+<ul>
+<li>需要给一定厚度才正确。</li>
+<li>光泽度：模糊程度（不要太大）</li>
+<li>折射率：变形程度（玻璃，钻石等不同）</li>
+<li>影响阴影：控制影子的虚实程度</li>
+<li>烟雾颜色：物体颜色</li>
+<li>烟雾倍增：颜色深浅</li>
+</ul>
+<p>修改环境：<br>渲染 -&gt; 环境：背景颜色，贴图</p>
+<p>灯光材质 Vray 灯光材质：</p>
+<ul>
+<li>自发光颜色，<ul>
+<li>贴图（需要颜色全黑，添加UVW贴图修改器）</li>
+<li>亮度</li>
+</ul>
+</li>
+<li>右键面片，对象属性：<ul>
+<li>勾选背面消隐</li>
+<li>去掉接收阴影，透射阴影</li>
+</ul>
+</li>
+</ul>
+<h3 id="灯光"><a href="#灯光" class="headerlink" title="灯光"></a>灯光</h3><p>VRay 灯光</p>
+<ul>
+<li>类型：屏幕，球形等<ul>
+<li>尺寸</li>
+<li>颜色</li>
+<li>倍增</li>
+</ul>
+</li>
+<li>选项<ul>
+<li>不可见</li>
+<li>影响漫反射（是否发光）</li>
+<li>影响高光</li>
+<li>影响反射（反射会出现）</li>
+</ul>
+</li>
+<li>网格灯光<ul>
+<li>拾取网格（某个物体）</li>
+</ul>
+</li>
+</ul>
+<p>VRay IES 光域网（装饰，补光）<br>参数：</p>
+<ul>
+<li>IES 文件：灯光类型文件</li>
+<li>功率</li>
+<li>颜色</li>
+</ul>
+<p>VRay 太阳<br>参数：</p>
+<ul>
+<li>倍增</li>
+<li>位置：决定灯光颜色</li>
+<li>大小倍增：反光影子</li>
+<li>阴影细分：消除噪点</li>
+</ul>
+<h3 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h3><p>标准相机：<br>目标：</p>
+<ul>
+<li>镜头大小（24）</li>
+<li>高度：850-900</li>
+<li>剪切平面（进距剪切）</li>
+<li>右键 -&gt; 应用摄像机校正修改器</li>
+<li>修改器：推测</li>
+</ul>
+<p>物理相机</p>
+<ul>
+<li>焦距（24）</li>
+<li>快门</li>
+<li>曝光：<ul>
+<li>曝光增益</li>
+</ul>
+</li>
+<li>白平衡：调整冷暖</li>
+<li>启用渐晕（四个角变暗）</li>
+<li>景深<ul>
+<li>先调整目标点：焦平面</li>
+<li>光圈：3</li>
+<li>调整范围</li>
+</ul>
+</li>
+<li>运动模糊<ul>
+<li>快门速度</li>
+</ul>
+</li>
+</ul>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><h3 id="角色绘制"><a href="#角色绘制" class="headerlink" title="角色绘制"></a>角色绘制</h3><h3 id="角色贴图"><a href="#角色贴图" class="headerlink" title="角色贴图"></a>角色贴图</h3><h3 id="角色动画"><a href="#角色动画" class="headerlink" title="角色动画"></a>角色动画</h3><h4 id="骨骼"><a href="#骨骼" class="headerlink" title="骨骼"></a>骨骼</h4><h4 id="蒙皮"><a href="#蒙皮" class="headerlink" title="蒙皮"></a>蒙皮</h4><h4 id="表情绑定"><a href="#表情绑定" class="headerlink" title="表情绑定"></a>表情绑定</h4><h4 id="毛发"><a href="#毛发" class="headerlink" title="毛发"></a>毛发</h4><h4 id="动力学"><a href="#动力学" class="headerlink" title="动力学"></a>动力学</h4><h2 id="制作流程"><a href="#制作流程" class="headerlink" title="制作流程"></a>制作流程</h2><h3 id="构图"><a href="#构图" class="headerlink" title="构图"></a>构图</h3><h3 id="制作低模"><a href="#制作低模" class="headerlink" title="制作低模"></a>制作低模</h3><p>使用3D Max，Maya等软件。</p>
+<h3 id="雕刻低模"><a href="#雕刻低模" class="headerlink" title="雕刻低模"></a>雕刻低模</h3><p>ZBrush</p>
+<h3 id="高模拓扑到低模"><a href="#高模拓扑到低模" class="headerlink" title="高模拓扑到低模"></a>高模拓扑到低模</h3><p>Topo Gun<br>ZBrush自带的拓扑工具</p>
+<h3 id="展开低模UV"><a href="#展开低模UV" class="headerlink" title="展开低模UV"></a>展开低模UV</h3><p>使用3DMax或Maya，或其他工具。<br>最终烘焙发现贴图。</p>
+<h3 id="贴图绘制"><a href="#贴图绘制" class="headerlink" title="贴图绘制"></a>贴图绘制</h3><p>绘制漫反射贴图。</p>
+<h2 id="影视效果"><a href="#影视效果" class="headerlink" title="影视效果"></a>影视效果</h2><h3 id="C4D"><a href="#C4D" class="headerlink" title="C4D"></a>C4D</h3><h3 id="MAYA"><a href="#MAYA" class="headerlink" title="MAYA"></a>MAYA</h3><h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><p>DAZ<br>C4D Python<br>MAYA<br>ZBrush<br>Sketchup</p>
+<p>Unity<br>UE4<br>Vulkan</p>
+<h2 id="渲染器"><a href="#渲染器" class="headerlink" title="渲染器"></a>渲染器</h2><p>RENDER MAN<br>MENTAL RAY<br>MAXWELL RENDER<br>BRAZIL<br>VRAY<br>FINALRENDER<br>TURTLE<br>CARTOON</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/3D/" rel="tag"># 3D</a>
+              <a href="/tags/3D-MAX/" rel="tag"># 3D MAX</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/26/%E6%B8%B8%E6%88%8F/GraphTheory/" rel="prev" title="计算机图形学">
+                  <i class="fa fa-angle-left"></i> 计算机图形学
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/03/18/%E6%B8%B8%E6%88%8F/Unity3d/" rel="next" title="Unity 3D">
+                  Unity 3D <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/03/14/%E6%B8%B8%E6%88%8F/3dmaxExec/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"withz.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序">
+<meta property="og:url" content="https://withz.github.io/2020/03/24/%E5%89%8D%E7%AB%AF/WechatProgram/index.html">
+<meta property="og:site_name" content="Withz">
+<meta property="og:description" content="…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-24T13:32:55.000Z">
+<meta property="article:modified_time" content="2024-06-07T02:52:59.332Z">
+<meta property="article:author" content="Peng">
+<meta property="article:tag" content="微信小程序">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://withz.github.io/2020/03/24/%E5%89%8D%E7%AB%AF/WechatProgram/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://withz.github.io/2020/03/24/%E5%89%8D%E7%AB%AF/WechatProgram/","path":"2020/03/24/前端/WechatProgram/","title":"微信小程序"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>微信小程序 | Withz</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Withz</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a></li><li class="menu-item menu-item-tools"><a href="/tools/" rel="section"><i class="fa fa-flask fa-fw"></i>工具</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%84%E8%8C%83"><span class="nav-number">1.</span> <span class="nav-text">规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83"><span class="nav-number">1.1.</span> <span class="nav-text">设计规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%90%A5%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.</span> <span class="nav-text">运营规范</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91"><span class="nav-number">2.</span> <span class="nav-text">开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">文件结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#APP%E5%85%A5%E5%8F%A3-app-json"><span class="nav-number">4.</span> <span class="nav-text">APP入口 app.json</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E9%80%BB%E8%BE%91-about-js"><span class="nav-number">5.</span> <span class="nav-text">页面逻辑 about.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE-about-json"><span class="nav-number">6.</span> <span class="nav-text">页面配置 about.json</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E7%BB%93%E6%9E%84-about-wxml"><span class="nav-number">7.</span> <span class="nav-text">页面结构 about.wxml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E6%A0%B7%E5%BC%8F-about-wxss"><span class="nav-number">8.</span> <span class="nav-text">页面样式 about.wxss</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6"><span class="nav-number">9.</span> <span class="nav-text">组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">9.1.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image"><span class="nav-number">9.2.</span> <span class="nav-text">Image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text"><span class="nav-number">9.3.</span> <span class="nav-text">Text</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigator"><span class="nav-number">9.4.</span> <span class="nav-text">Navigator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%83%E5%B1%80"><span class="nav-number">10.</span> <span class="nav-text">布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%B3%95"><span class="nav-number">10.1.</span> <span class="nav-text">传统方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80"><span class="nav-number">10.2.</span> <span class="nav-text">弹性盒子布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8D%95%E4%BD%8D"><span class="nav-number">10.3.</span> <span class="nav-text">响应式单位</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="nav-number">11.</span> <span class="nav-text">数据绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="nav-number">11.1.</span> <span class="nav-text">条件渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="nav-number">11.2.</span> <span class="nav-text">列表渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AE%E6%92%AD"><span class="nav-number">11.3.</span> <span class="nav-text">轮播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">11.4.</span> <span class="nav-text">生命周期</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Peng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://withz.github.io/2020/03/24/%E5%89%8D%E7%AB%AF/WechatProgram/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Peng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Withz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="微信小程序 | Withz">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          微信小程序
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-24 21:32:55" itemprop="dateCreated datePublished" datetime="2020-03-24T21:32:55+08:00">2020-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-07 10:52:59" itemprop="dateModified" datetime="2024-06-07T10:52:59+08:00">2024-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>…</p>
+<span id="more"></span>
+
+<h1 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h1><h2 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h2><p>友好：页面应该重点突出，流程明确。<br>清洗：导航明确，减少等待，异常可控。<br>便捷：减少输入（使用其他IO），避免误操作，操作流程。<br>同一：视觉统一。</p>
+<h2 id="运营规范"><a href="#运营规范" class="headerlink" title="运营规范"></a>运营规范</h2><p>账号信息：描述（主要，用户搜索根据）<br>服务类目：类目与内容一致（体验良好）<br>功能：完整，无搜索推荐，不互推<br>内容：禁止诱导，不可营销与广告为主，禁止测试类，游戏（有专门的微信小游戏）<br>数据：获取用户数据需告知</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/">小程序官网</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/deug/wxadoc/dev/index.html">开发文档</a><br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/">开发者社区</a></p>
+<h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><p>从微信开发者页面下复制AppID到开发工具中，并取消使用快速模板。</p>
+<p>此时项目中只有<code>project.config.json</code>文件，需要创建<code>app.json</code>文件，用作启动文件。</p>
+<h1 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h1><p>一个小程序分为一个APP和多个Page。App又分为逻辑，公共配置，公共样式表三个文件（app.js, app.json, app.wxss），每Page分为逻辑，结构，样式表，配置（js, wxml, wxss, json）。</p>
+<p>渲染层 Webview<br>逻辑层 JsCore<br>微信客户端 Native：负责网络接口</p>
+<p>因此项目结构为</p>
+<ul>
+<li>project.config.json</li>
+<li>app.js</li>
+<li>app.json</li>
+<li>app.wxss</li>
+<li>images</li>
+<li>pages<ul>
+<li>about<ul>
+<li>about.js</li>
+<li>about.wxml</li>
+<li>about.wxss</li>
+<li>about.json</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="APP入口-app-json"><a href="#APP入口-app-json" class="headerlink" title="APP入口 app.json"></a>APP入口 app.json</h1><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// 每个页面的访问路径，相对路径</span></span><br><span class="line">    <span class="comment">// 第一个页面为初始页面</span></span><br><span class="line">    <span class="attr">&quot;pages&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;pages/about/about&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 对若干一级页面的入口链接</span></span><br><span class="line">    <span class="attr">&quot;tabBar&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;list&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Page 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;pagePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;iconPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;selectedIconPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;color&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#FFFFFF&quot;</span><span class="punctuation">,</span> <span class="comment">// 文本颜色</span></span><br><span class="line">        <span class="attr">&quot;selectedColor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#000000&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;window&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;navigationBarBackgroundColor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fff&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;navigationBarTextStyle&quot;</span><span class="punctuation">:</span> <span class="string">&quot;black&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;navigationBarTitleText&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Default Title&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="页面逻辑-about-js"><a href="#页面逻辑-about-js" class="headerlink" title="页面逻辑 about.js"></a>页面逻辑 about.js</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注册页面对象</span></span><br><span class="line"><span class="title class_">Page</span>(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="页面配置-about-json"><a href="#页面配置-about-json" class="headerlink" title="页面配置 about.json"></a>页面配置 about.json</h1><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;navigationBarTitleText&quot;</span><span class="punctuation">:</span> <span class="string">&quot;About&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;navigationBarBackgroundColor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fff&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;navigationBarTextStyle&quot;</span><span class="punctuation">:</span> <span class="string">&quot;black&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="页面结构-about-wxml"><a href="#页面结构-about-wxml" class="headerlink" title="页面结构 about.wxml"></a>页面结构 about.wxml</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">&quot;info&quot;</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="页面样式-about-wxss"><a href="#页面样式-about-wxss" class="headerlink" title="页面样式 about.wxss"></a>页面样式 about.wxss</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.info</span> &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p>通用属性：<br>class, id, style, bindtap, hidden, data-*</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>页框。<br>作用同div。</p>
+<h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><p>图像。<br>属性：<br>src: 可以用绝对或相对路径</p>
+<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>文本。</p>
+<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p>导航。可以实现跳转。不可被text包含。默认为块级元素。<br>属性：<br>url：目标页可用绝对路径<br>open-type：redirect，重定向；默认navigate，可返回；switchTab，一级页面切换<br>hover-class：按住效果</p>
+<h1 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h1><h2 id="传统方法"><a href="#传统方法" class="headerlink" title="传统方法"></a>传统方法</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="comment">/* vh表示 100%视口高度 */</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>; </span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line">text &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br><span class="line">image, text &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="弹性盒子布局"><a href="#弹性盒子布局" class="headerlink" title="弹性盒子布局"></a>弹性盒子布局</h2><p>从上往下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">    <span class="comment">/* 弹性盒子 */</span></span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="comment">/* 列方式 */</span></span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">    <span class="comment">/* 均匀间隔 */</span></span><br><span class="line">    <span class="attribute">justify-content</span>: space-around;</span><br><span class="line">    <span class="comment">/* 居中 */</span></span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="响应式单位"><a href="#响应式单位" class="headerlink" title="响应式单位"></a>响应式单位</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.about-banner</span>&#123;</span><br><span class="line">    <span class="comment">/* 750rpx 所有设备的宽度规定 */</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">375</span>rpx;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">375</span>rpx;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br><span class="line">text&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">30</span>rpx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h1><p>各个层次（渲染，逻辑等）有不同的进程，之间通过数据绑定和事件机制通信。</p>
+<p>在页面对象中可以定义数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 要绑定的数据</span></span><br><span class="line"><span class="title class_">Page</span>(&#123;</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">comment</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">imagePath</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">count</span>: <span class="number">100</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>绑定数据到前端。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;count&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重新渲染</span><br><span class="line"><span class="tag">&lt;<span class="name">text</span> <span class="attr">wx:if</span>=<span class="string">&quot;&#123;&#123;x&#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">只控制可见性</span><br><span class="line"><span class="tag">&lt;<span class="name">text</span> <span class="attr">hidden</span>=<span class="string">&quot;&#123;&#123;!x&#125;&#125;&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:for</span>=<span class="string">&quot;&#123;&#123;x_list&#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">&#123;&#123;index&#125;&#125;</span><br><span class="line">&#123;&#123;item.name&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="轮播"><a href="#轮播" class="headerlink" title="轮播"></a>轮播</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">是否显示底部指示器</span><br><span class="line">是否显示前一页和后一页的一小部分</span><br><span class="line"><span class="tag">&lt;<span class="name">swiper</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">indicator-dots</span>=<span class="string">&quot;&#123;&#123;true&#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">previous-margin</span>=<span class="string">&quot;50rpx&quot;</span>  </span></span><br><span class="line"><span class="tag">    <span class="attr">next-margin</span>=<span class="string">&quot;50rpx&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">swiper-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">text</span>&gt;</span>123<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">swiper-item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">swiper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 微信小程序</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/03/18/%E6%B8%B8%E6%88%8F/Unity3d/" rel="prev" title="Unity 3D">
+                  <i class="fa fa-angle-left"></i> Unity 3D
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/03/29/%E8%BF%90%E7%BB%B4/Env/" rel="next" title="配置各种环境">
+                  配置各种环境 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Peng</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  <a href="https://github.com/withz" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js","integrity":"sha256-g2xji1rlE3KsGVClvuxTbcR0Kn2+wtQADSff2Tbb4zA="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://withz.github.io/2020/03/24/%E5%89%8D%E7%AB%AF/WechatProgram/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
